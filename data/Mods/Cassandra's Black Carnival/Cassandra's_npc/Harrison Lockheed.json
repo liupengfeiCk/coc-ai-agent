@@ -1,21 +1,21 @@
 [
   {
-    "name": "Harrison Lockheed",
-    "occupation": "Hardware Store Owner / Arms Dealer",
+    "name": "哈里森·洛克希德",
+    "occupation": "五金店老板/军火商",
     "age": 45,
     "gender": "male",
-    "appearance": "A middle-aged man who squints his eyes when speaking, appearing somewhat cunning. He enjoys tinkering with small inventions in his shop.",
-    "personality": "Very talkative, enjoys being praised (subtlety is better). Enthusiastic about weapon modifications and firearms.",
-    "background": "Harrison Lockheed is the owner of a hardware store in Cassandra. Publicly, he runs a hardware store, but actually he is an arms dealer. Because many of his firearms do not comply with California regulations, weapons can only be sold secretly. He is also a weapon modification enthusiast. Ben Cleo and Adolph Carl both know about his arms business. He is protected by the local mafia.",
+    "appearance": "一个中年男人,说话时眯着眼睛,显得有些狡猾。他喜欢在店里摆弄小发明。",
+    "personality": "非常健谈,喜欢被赞美(微妙一点更好)。对武器改装和枪械充满热情。",
+    "background": "哈里森·洛克希德是卡珊德拉一家五金店的老板。公开地,他经营五金店,但实际上他是一名军火商。因为他的许多枪械不符合加州法规,武器只能秘密出售。他也是一个武器改装爱好者。本·克莱奥和阿道夫·卡尔都知道他的军火生意。他受到当地黑手党的保护。",
     "goals": [
-      "Maintain his hardware store as a front for arms dealing",
-      "Avoid legal trouble while selling illegal firearms"
+      "维持他的五金店作为军火交易的掩护",
+      "在出售非法枪械的同时避免法律麻烦"
     ],
     "secrets": [
-      "He is an arms dealer selling firearms that don't comply with California regulations",
-      "He knows the code phrase for buying guns: 'What happens when you hit a nail with a hammer?'",
-      "Ben Cleo and Adolph Carl know about his arms business",
-      "He is protected by the local mafia"
+      "他是军火商,出售不符合加州法规的枪械",
+      "他知道买枪的暗语:'用锤子敲钉子会发生什么?'",
+      "本·克莱奥和阿道夫·卡尔知道他的军火生意",
+      "他受到当地黑手党的保护"
     ],
     "attributes": {
       "STR": 50,
@@ -39,48 +39,48 @@
     "skills": {},
     "inventory": [
       {
-        "name": "Illegal firearms stock (kept out of sight)",
+        "name": "非法枪械库存(隐藏)",
         "properties": {
-          "clue": "Publicly a hardware store owner, actually an arms dealer; because some firearms do not comply with California regulations, weapons can only be sold secretly."
+          "clue": "公开是五金店老板,实际上是军火商;因为有些枪械不符合加州法规,武器只能秘密出售。"
         }
       },
       {
-        "name": "Weapon modification tools / hobby gear",
+        "name": "武器改装工具/爱好装备",
         "properties": {
-          "note": "The source material mentions he is a weapon modification enthusiast; if favorable relations are established, he may help investigators with simple modifications or create unconventional weapons (Keeper's discretion)."
+          "note": "源材料提到他是武器改装爱好者;如果建立良好关系,他可能帮助调查员进行简单改装或创造非常规武器(守密人酌情决定)。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "He is an arms dealer selling firearms that don't comply with California regulations. The code phrase to buy guns is: 'What happens when you hit a nail with a hammer?'",
+        "clueText": "他是军火商,出售不符合加州法规的枪械。买枪的暗语是:'用锤子敲钉子会发生什么?'",
         "category": "secret",
         "difficulty": "regular",
-        "relatedTo": ["Arms dealing", "Firearms", "Adolph Carl"]
+        "relatedTo": ["军火交易", "枪械", "阿道夫·卡尔"]
       },
       {
-        "clueText": "Ben Cleo and Adolph Carl both know about his arms business, and he is protected by the local mafia.",
+        "clueText": "本·克莱奥和阿道夫·卡尔都知道他的军火生意,他受到当地黑手党的保护。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["Ben Cleo", "Adolph Carl", "Mafia"]
+        "relatedTo": ["本·克莱奥", "阿道夫·卡尔", "黑手党"]
       }
     ],
     "relationships": [
       {
-        "targetName": "Ben Cleo",
+        "targetName": "本·克莱奥",
         "relationshipType": "ally",
         "attitude": 50,
-        "description": "Ben knows about his arms business and provides protection.",
-        "history": "Harrison operates under mafia protection."
+        "description": "本知道他的军火生意并提供保护。",
+        "history": "哈里森在黑手党保护下经营。"
       },
       {
-        "targetName": "Adolph Carl",
+        "targetName": "阿道夫·卡尔",
         "relationshipType": "neutral",
         "attitude": 30,
-        "description": "Adolph knows about his arms business and the code phrase.",
-        "history": "They have business connections."
+        "description": "阿道夫知道他的军火生意和暗语。",
+        "history": "他们有商业联系。"
       }
     ],
-    "notes": "Harrison is very talkative and enjoys being praised. If investigators gain his favor through conversation, he may help with simple weapon modifications or create unconventional weapons. He can tell investigators about three men in black clothes heading toward the train station platform if asked."
+    "notes": "哈里森非常健谈,喜欢被赞美。如果调查员通过对话获得他的好感,他可能会帮助进行简单的武器改装或创造非常规武器。如果被问到,他可以告诉调查员三个穿黑衣服的人朝火车站月台方向走。"
   }
 ]

@@ -1,79 +1,79 @@
 [
-    {
-      "name": "Cassandra Cemetery",
-      "description": "A quiet and desolate cemetery located on the outskirts of Cassandra, along the road leading to the logging camp. It appears ordinary at first glance, but hides disturbing signs of unnatural events connected to the spreading horror in the region.",
-      "snapshot": {
-        "name": "The Cemetery",
-        "location": "On the roadside between Cassandra town and the logging camp",
-        "description": "The cemetery lies not far from the abandoned logging camp. Rows of old tombstones stand in uneven lines, many weathered and neglected. The atmosphere is cold and still, with little sign of recent visitors. Among the graves is the resting place of Vincent’s wife—except her grave is empty, leaving behind an unsettling sense that something is profoundly wrong.",
-        "characters": [],
-        "clues": [
-          {
-            "clueText": "Vincent’s wife’s grave is completely empty.",
-            "category": "physical",
-            "difficulty": "automatic",
-            "location": "Vincent’s wife’s grave",
-            "reveals": ["Her body is missing", "Possible grave desecration or unnatural interference"]
-          },
-          {
-            "clueText": "The cemetery shows little sign of recent maintenance or visitation.",
-            "category": "observation",
-            "difficulty": "regular",
-            "location": "Throughout the cemetery",
-            "discoveryMethod": "Spot Hidden",
-            "reveals": ["The cemetery is rarely visited", "Events here may go unnoticed for long periods"]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "lighting",
-            "description": "Natural outdoor lighting, often gloomy due to cloud cover or surrounding trees.",
-            "mechanicalEffect": ""
-          },
-          {
-            "type": "sound",
-            "description": "Near-total silence, occasionally broken by wind or distant forest sounds.",
-            "mechanicalEffect": ""
-          },
-          {
-            "type": "temperature",
-            "description": "Noticeably colder than the surrounding town.",
-            "mechanicalEffect": ""
-          }
-        ],
-        "events": [
-          "Discovery of the empty grave",
-          "Uneasy realization that bodies may be taken rather than buried"
-        ],
-        "exits": [
-          {
-            "direction": "Main Path",
-            "destination": "Road to Cassandra Town",
-            "description": "A narrow path leading back toward town"
-          },
-          {
-            "direction": "Forest Road",
-            "destination": "Logging Camp",
-            "description": "The road continues deeper toward the abandoned logging camp"
-          }
-        ],
-        "keeperNotes": "The empty grave is a subtle but powerful clue suggesting corpse removal or resurrection-related activity. This scene works best as a quiet, unsettling discovery rather than an action-heavy encounter.",
-        "permanentChanges": [
-          "Once discovered, the empty grave confirms that the dead are not resting peacefully in Cassandra"
-        ]
-      },
-      "tags": ["cemetery", "empty grave", "unease", "death"],
-      "connections": [
+  {
+    "name": "卡森德拉墓地",
+    "description": "位于卡森德拉郊外的安静而荒凉的墓地,沿着通往伐木营的道路。乍一看似乎很普通,但隐藏着与该地区蔓延的恐怖有关的令人不安的非自然事件迹象。",
+    "snapshot": {
+      "name": "墓地",
+      "location": "卡森德拉镇与伐木营之间的路边",
+      "description": "墓地距离废弃的伐木营不远。一排排旧墓碑以不规则的线条排列,许多都已风化和被忽视。气氛冷清而静止,几乎没有近期访客的迹象。在坟墓中有文森特妻子的安息之地——除了她的坟墓是空的,留下了一种令人不安的感觉,即某些事情严重不对劲。",
+      "characters": [],
+      "clues": [
         {
-          "scenarioName": "Logging Camp",
-          "relationshipType": "leads_to",
-          "description": "The cemetery lies along the route to the abandoned logging camp."
+          "clueText": "文森特妻子的坟墓完全是空的。",
+          "category": "物理",
+          "difficulty": "自动",
+          "location": "文森特妻子的坟墓",
+          "reveals": ["她的尸体不见了", "可能存在坟墓亵渎或非自然干预"]
         },
         {
-          "scenarioName": "Vincent",
-          "relationshipType": "concurrent",
-          "description": "The empty grave directly relates to Vincent’s personal tragedy and motivations."
+          "clueText": "墓地几乎没有近期维护或访问的迹象。",
+          "category": "观察",
+          "difficulty": "常规",
+          "location": "整个墓地",
+          "discoveryMethod": "侦查",
+          "reveals": ["墓地很少有人访问", "这里的事件可能长期无人注意"]
         }
+      ],
+      "conditions": [
+        {
+          "type": "光照",
+          "description": "自然户外照明,由于云层或周围树木通常阴沉。",
+          "mechanicalEffect": ""
+        },
+        {
+          "type": "声音",
+          "description": "几乎完全安静,偶尔被风声或远处的森林声音打破。",
+          "mechanicalEffect": ""
+        },
+        {
+          "type": "温度",
+          "description": "明显比周围城镇更冷。",
+          "mechanicalEffect": ""
+        }
+      ],
+      "events": [
+        "发现空坟墓",
+        "不安地意识到尸体可能被带走而非埋葬"
+      ],
+      "exits": [
+        {
+          "direction": "主路",
+          "destination": "通往卡森德拉镇的道路",
+          "description": "一条通往城镇的狭窄小径"
+        },
+        {
+          "direction": "森林道路",
+          "destination": "伐木营",
+          "description": "道路继续向废弃伐木营深处延伸"
+        }
+      ],
+      "keeperNotes": "空坟墓是一个微妙但强有力的线索,暗示尸体移除或复活相关的活动。这个场景最好作为一个安静、令人不安的发现,而不是一个动作密集的遭遇。",
+      "permanentChanges": [
+        "一旦被发现,空坟墓确认了卡森德拉的死者并未安息"
       ]
-    }
-  ]
+    },
+    "tags": ["墓地", "空坟墓", "不安", "死亡"],
+    "connections": [
+      {
+        "scenarioName": "伐木营",
+        "relationshipType": "通向",
+        "description": "墓地位于通往废弃伐木营的路线上。"
+      },
+      {
+        "scenarioName": "文森特",
+        "relationshipType": "并发",
+        "description": "空坟墓直接关系到文森特的个人悲剧和动机。"
+      }
+    ]
+  }
+]

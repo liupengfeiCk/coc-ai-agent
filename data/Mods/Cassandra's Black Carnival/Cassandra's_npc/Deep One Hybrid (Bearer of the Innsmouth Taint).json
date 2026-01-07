@@ -1,18 +1,18 @@
 [
   {
-    "name": "Deep One Hybrid (Bearer of the Innsmouth Taint)",
-    "occupation": "Hybrid Humanoid / Mythos Bloodline",
+    "name": "深潜者混血(印斯茅斯污染携带者)",
+    "occupation": "混血人形 / 神话血统",
     "age": 0,
-    "appearance": "A largely human-looking individual bearing subtle but disturbing aquatic traits: slightly bulging, unblinking eyes; thickened lips; coarse skin; and an unusual body odor reminiscent of the sea. With age, these traits grow more pronounced as the transformation toward a true Deep One progresses.",
-    "personality": "Withdrawn, secretive, and inwardly conflicted. Younger hybrids may cling to human identity, while older ones who accept their aquatic heritage become calm, fatalistic, and increasingly alien in outlook.",
-    "background": "Deep One hybrids are the descendants of humans tainted by the Innsmouth bloodline. Though born human, they inevitably undergo a gradual transformation into full Deep Ones later in life. Some remain unaware of their heritage for years, while others are raised within communities that normalize or even revere their destiny.",
+    "appearance": "一个看起来很像人类的个体,带有微妙但令人不安的水生特征:略微凸出、不眨眼的眼睛;厚实的嘴唇;粗糙的皮肤;以及让人联想到大海的不寻常体味。随着年龄增长,这些特征变得更加明显,向真正深潜者的转变逐渐进行。",
+    "personality": "孤僻、神秘、内心矛盾。年轻的混血可能坚守人类身份,而接受水生遗产的年长者变得平静、宿命论且在世界观上越来越异类。",
+    "background": "深潜者混血是被印斯茅斯血统污染的人类后裔。虽然出生时是人类,但他们不可避免地在晚年逐渐转变为完全的深潜者。有些人多年不知道自己的遗产,而其他人在将他们的命运正常化甚至崇敬的社区中长大。",
     "goals": [
-      "Survive while hiding their true heritage",
-      "Eventually answer the call of the sea"
+      "在隐藏真实遗产的同时生存",
+      "最终回应大海的召唤"
     ],
     "secrets": [
-      "All hybrids will eventually transform into full Deep Ones if they live long enough",
-      "Older hybrids may already commune with Deep Ones or aquatic Mythos entities"
+      "所有混血如果活得足够长,最终都会转变为完全的深潜者",
+      "年长的混血可能已经与深潜者或水生神话实体交流"
     ],
     "attributes": {
       "STR": 55,
@@ -44,24 +44,24 @@
     "inventory": [],
     "clues": [
       {
-        "clueText": "Deep One hybrids age normally but will eventually undergo a complete transformation into Deep Ones.",
+        "clueText": "深潜者混血正常衰老,但最终会完全转变为深潜者。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Innsmouth",
-          "Deep Ones"
+          "印斯茅斯",
+          "深潜者"
         ]
       },
       {
-        "clueText": "Older hybrids who accept their heritage may possess forbidden spells.",
+        "clueText": "接受遗产的年长混血可能拥有禁忌法术。",
         "category": "rumor",
         "difficulty": "hard",
         "relatedTo": [
-          "Deep Ones"
+          "深潜者"
         ]
       }
     ],
     "relationships": [],
-    "notes": "Combat & Abilities:\n\nCombat Style:\nDeep One hybrids can use standard human weapons and attack once per round.\n\nAttacks:\n• Fighting 45% (22/9): Damage is based on the weapon used plus damage bonus, or unarmed strike for 1D3 + damage bonus.\n\nArmor:\nNone.\n\nSpells:\nOlder hybrids who have begun to accept their aquatic heritage have a 10% chance to know 1D3 spells.\n\nSkills (Racial Tendencies):\n• Stealth 46%\n• Swim 60%\n• Jump 45%\n• Dodge 30% (15/6)\n• Listen 50%\n\nSpecial Ability – Limited Aquatic Endurance:\nBefore fully transforming into Deep Ones, hybrids cannot breathe underwater. However, from early childhood they can hold their breath underwater for up to twice as long as a normal human.\n\nSanity Loss:\nSeeing a Deep One hybrid causes SAN loss of 0 / 1D4. Particularly horrifying individuals may cause increased loss (1 / 1D6 or higher) at the Keeper’s discretion.\n\nKeeper Notes:\nHybrids work best as slow-burn horror elements. Their tragedy lies in inevitability rather than immediate monstrosity, making them effective long-term NPCs or revelations tied to Innsmouth-related investigations."
+    "notes": "战斗与能力:\n\n战斗风格:\n深潜者混血可以使用标准人类武器,每回合攻击一次。\n\n攻击:\n• 战斗45%(22/9):伤害基于使用的武器加伤害加值,或徒手攻击1D3+伤害加值。\n\n护甲:\n无。\n\n法术:\n已经开始接受水生遗产的年长混血有10%的几率知道1D3个法术。\n\n技能(种族倾向):\n• 潜行46%\n• 游泳60%\n• 跳跃45%\n• 闪避30%(15/6)\n• 聆听50%\n\n特殊能力 – 有限水生耐力:\n在完全转变为深潜者之前,混血无法在水下呼吸。然而,从幼年起,他们在水下憋气的时间可达正常人类的两倍。\n\n理智损失:\n看到深潜者混血造成0/1D4点理智损失。根据守秘人判断,特别可怕的个体可能造成更大损失(1/1D6或更高)。\n\n守秘人提示:\n混血最适合作为缓慢燃烧的恐怖元素。他们的悲剧在于不可避免性而非立即的怪物性,使他们成为与印斯茅斯相关调查的有效长期NPC或揭示。"
   }
 ]

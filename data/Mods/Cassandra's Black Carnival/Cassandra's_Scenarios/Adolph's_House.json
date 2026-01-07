@@ -1,103 +1,103 @@
 [
-    {
-      "name": "Adolph's House",
-      "description": "A private residence in Cassandra belonging to Adolph, a well-dressed social con man who trades in secrets. What begins as a tense conversation quickly turns violent when inhuman attackers strike the house.",
-      "snapshot": {
-        "name": "Attack at Adolph's House",
-        "location": "Residential area of Cassandra",
-        "description": "The investigators arrive at Adolph’s home for questioning. The house appears ordinary and respectable, reflecting Adolph’s carefully maintained image. During the conversation, windows suddenly shatter and robed figures descend from the roof and walls, revealing themselves as grotesque spider-human hybrids intent on killing everyone inside.",
-        "characters": [
-          {
-            "name": "Adolph Carl",
-            "role": "Witness / suspect",
-            "status": "alive",
-            "location": "Inside the house",
-            "notes": "A con man who moves among the upper class and survives by selling sensitive information. He is evasive and untrustworthy, and may betray the investigators later."
-          },
-          {
-            "name": "Cultist attackers",
-            "role": "Hostile attackers",
-            "status": "active",
-            "location": "Roof, walls, and inside the house",
-            "notes": "Humanoid creatures disguised in black robes, later revealed to have bloated bodies and spider-like legs."
-          }
-        ],
-        "clues": [
-          {
-            "clueText": "The attackers are not human; beneath their robes they possess spider-like legs and grotesquely altered bodies.",
-            "category": "observation",
-            "difficulty": "automatic",
-            "location": "During the attack inside the house",
-            "discoveryMethod": "",
-            "reveals": ["Inhuman forces are directly involved in events surrounding Adolph."]
-          },
-          {
-            "clueText": "If Adolph survives, he admits he is a fraud living off selling secrets and sensitive information about influential people in Cassandra.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Conversation with Adolph after the attack",
-            "discoveryMethod": "Intimidate / Talk",
-            "reveals": ["Adolph knows many hidden secrets about key figures in Cassandra."]
-          },
-          {
-            "clueText": "Adolph mentions the Redstone Lady and the hardware store as relevant to his information network.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Conversation with Adolph",
-            "discoveryMethod": "Talk",
-            "reveals": ["Connections to the hardware store and the Redstone Lady."]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "sound",
-            "description": "Shattering glass, frantic movement, and violent struggle during the ambush.",
-            "mechanicalEffect": ""
-          },
-          {
-            "type": "other",
-            "description": "Sudden outbreak of combat in a confined indoor space.",
-            "mechanicalEffect": "Combat round is immediately triggered."
-          }
-        ],
-        "events": [
-          "Investigators begin questioning Adolph.",
-          "Black-robed attackers assault the house.",
-          "The attackers are revealed to be spider-human hybrids.",
-          "Adolph may be rescued and provide information."
-        ],
-        "exits": [
-          {
-            "direction": "Front door",
-            "destination": "Cassandra residential streets",
-            "description": "The main exit of the house, potentially blocked during the attack.",
-            "condition": ""
-          },
-          {
-            "direction": "Windows",
-            "destination": "Outside the house",
-            "description": "Broken windows created during the assault.",
-            "condition": "damaged"
-          }
-        ],
-        "keeperNotes": "This scene is designed as a sudden escalation into combat. Even if rescued, Adolph should remain unreliable and capable of betraying the investigators later.",
-        "permanentChanges": [
-          "Adolph’s house is damaged during the attack.",
-          "The investigators are directly exposed to inhuman enemies."
-        ]
-      },
-      "tags": ["ambush", "combat scene", "inhuman attackers", "conspiracy"],
-      "connections": [
+  {
+    "name": "阿道夫的家",
+    "description": "卡森德拉的一处私人住宅,属于阿道夫,一个衣冠楚楚、以秘密交易为生的社交骗子。原本紧张的对话很快演变成暴力事件,非人类的袭击者袭击了这所房子。",
+    "snapshot": {
+      "name": "阿道夫家的袭击",
+      "location": "卡森德拉住宅区",
+      "description": "调查员来到阿道夫的家进行询问。房子看起来普通而体面,反映了阿道夫精心维护的形象。在谈话过程中,窗户突然破碎,身穿长袍的人影从屋顶和墙壁降落,露出真面目——他们是怪诞的蜘蛛人混血体,意图杀死屋内所有人。",
+      "characters": [
         {
-          "scenarioName": "Hardware Store",
-          "relationshipType": "leads_to",
-          "description": "Adolph provides information linking events to the hardware store owner."
+          "name": "阿道夫·卡尔",
+          "role": "目击者/嫌疑人",
+          "status": "存活",
+          "location": "屋内",
+          "notes": "一个在上流社会周旋、靠出售敏感信息为生的骗子。他闪烁其词,不可信任,可能会在之后背叛调查员。"
         },
         {
-          "scenarioName": "Redstone Lady",
-          "relationshipType": "leads_to",
-          "description": "Adolph references the Redstone Lady as part of the hidden power structure in Cassandra."
+          "name": "邪教徒袭击者",
+          "role": "敌对袭击者",
+          "status": "活跃",
+          "location": "屋顶、墙壁和屋内",
+          "notes": "伪装成黑袍的类人生物,后来显露出臃肿的身体和蜘蛛般的腿。"
         }
+      ],
+      "clues": [
+        {
+          "clueText": "袭击者不是人类;在长袍下,他们拥有蜘蛛般的腿和怪诞变异的身体。",
+          "category": "观察",
+          "difficulty": "自动",
+          "location": "屋内袭击期间",
+          "discoveryMethod": "",
+          "reveals": ["非人类力量直接参与了围绕阿道夫的事件。"]
+        },
+        {
+          "clueText": "如果阿道夫幸存,他承认自己是个骗子,靠出售卡森德拉有影响力人物的秘密和敏感信息为生。",
+          "category": "证词",
+          "difficulty": "常规",
+          "location": "袭击后与阿道夫的对话",
+          "discoveryMethod": "恐吓/交谈",
+          "reveals": ["阿道夫知道卡森德拉关键人物的许多隐秘。"]
+        },
+        {
+          "clueText": "阿道夫提到红石女士和五金店与他的信息网络有关。",
+          "category": "证词",
+          "difficulty": "常规",
+          "location": "与阿道夫的对话",
+          "discoveryMethod": "交谈",
+          "reveals": ["与五金店和红石女士的联系。"]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "声音",
+          "description": "伏击期间玻璃破碎、疯狂移动和激烈搏斗的声音。",
+          "mechanicalEffect": ""
+        },
+        {
+          "type": "其他",
+          "description": "密闭室内空间突然爆发战斗。",
+          "mechanicalEffect": "立即触发战斗回合。"
+        }
+      ],
+      "events": [
+        "调查员开始询问阿道夫。",
+        "黑袍袭击者袭击房屋。",
+        "袭击者被揭露为蜘蛛人混血体。",
+        "阿道夫可能被救下并提供信息。"
+      ],
+      "exits": [
+        {
+          "direction": "前门",
+          "destination": "卡森德拉住宅街道",
+          "description": "房屋的主要出口,袭击期间可能被堵住。",
+          "condition": ""
+        },
+        {
+          "direction": "窗户",
+          "destination": "屋外",
+          "description": "袭击期间打破的窗户。",
+          "condition": "损坏"
+        }
+      ],
+      "keeperNotes": "这个场景旨在突然升级为战斗。即使被救下,阿道夫也应保持不可靠,并且能够在之后背叛调查员。",
+      "permanentChanges": [
+        "阿道夫的房子在袭击中受损。",
+        "调查员直接暴露于非人类敌人面前。"
       ]
-    }
-  ]
+    },
+    "tags": ["伏击", "战斗场景", "非人类袭击者", "阴谋"],
+    "connections": [
+      {
+        "scenarioName": "五金店",
+        "relationshipType": "通向",
+        "description": "阿道夫提供的信息将事件与五金店店主联系起来。"
+      },
+      {
+        "scenarioName": "红石女士",
+        "relationshipType": "通向",
+        "description": "阿道夫提到红石女士是卡森德拉隐藏权力结构的一部分。"
+      }
+    ]
+  }
+]

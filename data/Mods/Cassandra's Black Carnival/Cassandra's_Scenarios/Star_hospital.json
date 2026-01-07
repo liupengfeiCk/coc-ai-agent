@@ -1,146 +1,146 @@
 [
     {
-      "name": "Stars Hospital",
-      "description": "Stars Hospital is a moderately equipped but poorly managed medical facility in Cassandra. While outwardly functional, it suffers from lax internal control, uneven security coverage, and signs of external interference with its digital systems. It is a critical investigative location connected to the handling of Lucifero's body (THE SECOND CASE VICTIM).",
+      "name": "星辰医院",
+      "description": "星辰医院是卡桑德拉一家设备适中但管理不善的医疗设施。虽然表面上功能正常,但它受到松懈的内部控制、不均衡的安全覆盖以及数字系统受到外部干预迹象的困扰。这是与处理路西菲罗尸体(第二起案件受害者)相关的关键调查地点。",
       "snapshot": {
-        "name": "Stars Hospital",
-        "location": "Stars Hospital, Cassandra",
-        "description": "The hospital operates normally on the surface, with staff accustomed to routine police inquiries. Surveillance cameras cover most areas but leave exploitable blind spots. Certain internal departments—particularly medical storage and laboratories—are unusually well protected. The morgue records indicate suspicious recent activity related to THE SECOND CASE VICTIM (21-year-old Lucifero, December 22, 2003). IMPORTANT: The FIRST CASE victim (19-year-old girl, frozen in ice, December 22, 2002) was NEVER brought here.",
+        "name": "星辰医院",
+        "location": "卡桑德拉,星辰医院",
+        "description": "医院表面上正常运作,工作人员习惯于常规警方询问。监控摄像头覆盖大部分区域,但留下可利用的盲点。某些内部部门——特别是医疗储藏室和实验室——受到异常严密的保护。太平间记录显示与第二起案件受害者(21岁的路西菲罗,2003年12月22日)相关的可疑近期活动。重要:第一起案件受害者(19岁女孩,冻在冰中,2002年12月22日)从未被带到这里。",
         "characters": [
           {
-            "name": "Vincent Galenus",
-            "role": "hospital director / suspect",
-            "status": "alive",
-            "location": "Hospital (director's office or restricted areas)",
-            "notes": "Personally transported Lucifero's body (SECOND CASE VICTIM) to the crematorium according to hospital records. Possesses an ID card required to access restricted areas."
+            "name": "文森特·加列努斯",
+            "role": "医院院长 / 嫌疑人",
+            "status": "存活",
+            "location": "医院(院长办公室或限制区域)",
+            "notes": "根据医院记录,亲自将路西菲罗的尸体(第二起案件受害者)送到火葬场。拥有进入限制区域所需的身份证。"
           },
           {
-            "name": "Aberforth Locefern (Lucifero)",
-            "role": "victim (SECOND CASE)",
-            "status": "missing",
-            "location": "Originally morgue; currently unknown",
-            "notes": "THE SECOND MURDER CASE VICTIM (December 22, 2003): 21-year-old Black girl, killed by gunshot and knife. Hospital records show the body was registered and then rapidly transferred out. The corpse is no longer in the morgue. DISTINCT from the first case victim (19-year-old girl, frozen in ice, December 22, 2002)."
+            "name": "阿伯福斯·洛斯费恩(路西菲罗)",
+            "role": "受害者(第二起案件)",
+            "status": "失踪",
+            "location": "最初在太平间;目前不明",
+            "notes": "第二起谋杀案受害者(2003年12月22日):21岁的黑人女孩,被枪击和刀刺杀。医院记录显示尸体被登记,然后迅速转移出去。尸体不再在太平间。与第一起案件受害者(19岁女孩,冻在冰中,2002年12月22日)不同。"
           }
         ],
         "clues": [
           {
-            "clueText": "Hospital surveillance system is unusually resistant to hacking and intrusion.",
-            "category": "observation",
-            "difficulty": "automatic",
-            "location": "Hospital security system",
-            "discoveryMethod": "Consulting Simon or attempting system intrusion",
+            "clueText": "医院监控系统对黑客入侵和入侵具有异常的抵抗力。",
+            "category": "观察",
+            "difficulty": "自动",
+            "location": "医院安全系统",
+            "discoveryMethod": "咨询西蒙或尝试系统入侵",
             "reveals": [
-              "Someone has deliberately reinforced the hospital's digital security",
-              "The hospital is concealing sensitive activity"
+              "有人刻意加强了医院的数字安全",
+              "医院正在隐藏敏感活动"
             ]
           },
           {
-            "clueText": "Two areas stand out as suspicious: the pharmaceutical storage room and the laboratory.",
-            "category": "knowledge",
-            "difficulty": "regular",
-            "location": "Hospital internal layout",
-            "discoveryMethod": "Technical analysis or consultation with Simon",
+            "clueText": "两个区域显得可疑:药房储藏室和实验室。",
+            "category": "知识",
+            "difficulty": "普通",
+            "location": "医院内部布局",
+            "discoveryMethod": "技术分析或咨询西蒙",
             "reveals": [
-              "Restricted access areas likely tied to illicit experimentation or evidence handling"
+              "限制进入区域可能与非法实验或证据处理有关"
             ]
           },
           {
-            "clueText": "Morgue records show Lucifero's body (THE SECOND CASE VICTIM, 21-year-old, December 22, 2003) was transferred to the crematorium very recently by Vincent himself.",
-            "category": "document",
-            "difficulty": "automatic",
-            "location": "Hospital records / morgue logs",
-            "discoveryMethod": "Accessing hospital archives",
+            "clueText": "太平间记录显示路西菲罗的尸体(第二起案件受害者,21岁,2003年12月22日)最近被文森特本人转移到火葬场。",
+            "category": "文件",
+            "difficulty": "自动",
+            "location": "医院记录 / 太平间日志",
+            "discoveryMethod": "访问医院档案",
             "reveals": [
-              "Vincent Galenus is directly involved in the body's disappearance",
-              "The crematorium is a new investigative lead",
-              "This is the SECOND CASE victim, distinct from the first case (19-year-old, frozen in ice, December 22, 2002)"
+              "文森特·加列努斯直接参与了尸体的失踪",
+              "火葬场是一个新的调查线索",
+              "这是第二起案件受害者,与第一起案件(19岁,冻在冰中,2002年12月22日)不同"
             ]
           },
           {
-            "clueText": "Lucifero's corpse (SECOND CASE VICTIM) is missing from the morgue despite being officially logged. No records exist here for the FIRST CASE victim (19-year-old girl from Paradil Grand Hotel, December 22, 2002).",
-            "category": "physical",
-            "difficulty": "automatic",
-            "location": "Morgue",
-            "discoveryMethod": "Direct inspection",
+            "clueText": "路西菲罗的尸体(第二起案件受害者)尽管正式登记,但从太平间失踪。这里没有第一起案件受害者(帕拉迪尔大酒店19岁女孩,2002年12月22日)的记录。",
+            "category": "物理",
+            "difficulty": "自动",
+            "location": "太平间",
+            "discoveryMethod": "直接检查",
             "reveals": [
-              "Evidence tampering",
-              "Urgency and concealment surrounding the second victim",
-              "The first case victim's body was never brought to this hospital",
-              "Two separate cases with different body handling"
+              "证据篡改",
+              "围绕第二个受害者的紧迫性和隐瞒",
+              "第一起案件受害者的尸体从未被带到这家医院",
+              "两起独立案件,尸体处理不同"
             ]
           },
           {
-            "clueText": "Forensic records from the first case (December 22, 2002) are missing or incomplete. The first victim (19-year-old Black girl, frozen in ice) was never properly processed here.",
-            "category": "document",
-            "difficulty": "hard",
-            "location": "Hospital archives or police records",
-            "discoveryMethod": "Library Use or Credit Rating",
+            "clueText": "第一起案件(2002年12月22日)的法医记录缺失或不完整。第一个受害者(19岁的黑人女孩,冻在冰中)从未在这里得到适当处理。",
+            "category": "文件",
+            "difficulty": "困难",
+            "location": "医院档案或警方记录",
+            "discoveryMethod": "图书馆使用或信用评级",
             "reveals": [
-              "The first case was deliberately suppressed",
-              "Two separate murder cases, one year apart, with different handling",
-              "The first victim's body may have been disposed of differently"
+              "第一起案件被刻意压制",
+              "两起独立的谋杀案,相隔一年,处理方式不同",
+              "第一个受害者的尸体可能以不同方式处置"
             ]
           }
         ],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Clinical fluorescent lighting throughout most areas; dimmer conditions near storage and service corridors.",
+            "type": "照明",
+            "description": "大部分区域的临床荧光照明;储藏室和服务走廊附近较暗的条件。",
             "mechanicalEffect": ""
           },
           {
-            "type": "sound",
-            "description": "Routine hospital ambience—distant footsteps, carts, and ventilation noise.",
+            "type": "声音",
+            "description": "常规医院环境——远处的脚步声、推车和通风噪音。",
             "mechanicalEffect": ""
           },
           {
-            "type": "other",
-            "description": "Surveillance coverage with exploitable blind spots.",
-            "mechanicalEffect": "Stealth and infiltration possible with planning"
+            "type": "其他",
+            "description": "监控覆盖,但有可利用的盲点。",
+            "mechanicalEffect": "通过规划可能进行潜行和渗透"
           }
         ],
         "events": [
-          "Investigators may disguise themselves as police to access the hospital without suspicion",
-          "Failed disguises require alternate infiltration methods",
-          "Simon warns that forced hacking risks triggering alarms",
-          "Discovery that the SECOND CASE victim's body has already been moved escalates the investigation",
-          "Investigators learn the FIRST CASE victim was never brought here"
+          "调查员可能伪装成警察以在不引起怀疑的情况下进入医院",
+          "伪装失败需要替代渗透方法",
+          "西蒙警告强制黑客可能触发警报",
+          "发现第二起案件受害者的尸体已被转移使调查升级",
+          "调查员了解到第一起案件受害者从未被带到这里"
         ],
         "exits": [
           {
-            "direction": "Main Entrance",
-            "destination": "Avenue of Stars",
-            "description": "Public-facing entrance used by staff, patients, and visitors"
+            "direction": "正门",
+            "destination": "星光大道",
+            "description": "工作人员、患者和访客使用的面向公众的入口"
           },
           {
-            "direction": "Service Exit",
-            "destination": "Crematorium route",
-            "description": "Used for transporting bodies and supplies",
-            "condition": "restricted"
+            "direction": "服务出口",
+            "destination": "火葬场路线",
+            "description": "用于运输尸体和用品",
+            "condition": "限制"
           }
         ],
-        "keeperNotes": "Stars Hospital handles THE SECOND CASE VICTIM (Lucifero, 21-year-old, December 22, 2003). CRITICALLY: The FIRST CASE victim (19-year-old girl, frozen in ice, December 22, 2002) was NEVER brought here—her body was found in the hotel freezer and the case was suppressed. Emphasize that investigators are dealing with TWO SEPARATE CASES with TWO DIFFERENT BODIES, exactly one year apart. The hospital only has records for the second case. Evidence here confirms deliberate concealment of the second victim and pushes the investigation toward Vincent and the crematorium. Use surveillance pressure and time sensitivity to increase tension.",
+        "keeperNotes": "星辰医院处理第二起案件受害者(路西菲罗,21岁,2003年12月22日)。关键:第一起案件受害者(19岁女孩,冻在冰中,2002年12月22日)从未被带到这里——她的尸体在酒店冷冻室被发现,案件被压制。强调调查员正在处理两起独立案件,有两具不同的尸体,正好相隔一年。医院只有第二起案件的记录。这里的证据确认了对第二个受害者的刻意隐瞒,并将调查推向文森特和火葬场。使用监控压力和时间敏感性来增加紧张感。",
         "permanentChanges": [
-          "Lucifero's body (SECOND CASE VICTIM) is no longer accessible in the hospital once discovered missing"
+          "一旦发现失踪,路西菲罗的尸体(第二起案件受害者)就无法在医院获取"
         ]
       },
       "tags": [
-        "hospital",
-        "investigation",
-        "urban",
-        "restricted-access",
-        "evidence-tampering"
+        "医院",
+        "调查",
+        "城市",
+        "限制进入",
+        "证据篡改"
       ],
       "connections": [
         {
-          "scenarioName": "Avenue of Stars",
-          "relationshipType": "prerequisite",
-          "description": "Stars Hospital is listed under and accessed from Avenue of Stars during the investigation."
+          "scenarioName": "星光大道",
+          "relationshipType": "前置",
+          "description": "星辰医院在调查期间从星光大道列出并进入。"
         },
         {
-          "scenarioName": "Crematorium",
-          "relationshipType": "leads_to",
-          "description": "Hospital records indicate Lucifero's body (SECOND CASE VICTIM) was transferred there by Vincent."
+          "scenarioName": "火葬场",
+          "relationshipType": "导向",
+          "description": "医院记录表明路西菲罗的尸体(第二起案件受害者)被文森特转移到那里。"
         }
       ]
     }

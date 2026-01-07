@@ -1,14 +1,14 @@
 [
     {
-      "name": "Wind",
-      "occupation": "Diplomat (unconfirmed)",
+      "name": "温德",
+      "occupation": "外交官(未确认)",
       "age": 30,
       "gender": "male",
-      "appearance": "A thin, exhausted man with hollow eyes and an unsteady posture, often staring into space as if listening to voices no one else can hear.",
-      "personality": "Gentle and peace-loving by nature, but currently unstable, fearful, and fragmented due to severe psychological trauma.",
-      "background": "Wind is the fiancé of Isabella, the head nurse at Starlight Hospital. He arrived in Cassandra with two companions—Jun, a history professor, and Lyn, a retired soldier—wandering the town and its surroundings. After visiting the area near the incinerator, Jun disappeared. Wind was later found in a state of sudden mental collapse and was sent to the hospital by Lyn.",
+      "appearance": "一位瘦弱、疲惫的男性,眼睛空洞,姿势不稳,经常凝视空中,仿佛在聆听别人听不到的声音。",
+      "personality": "天性温和、热爱和平,但由于严重心理创伤,目前不稳定、恐惧、思维破碎。",
+      "background": "温德是星光医院护士长伊莎贝拉的未婚夫。他带着两位同伴——历史教授俊和退役军人琳——来到卡桑德拉,在小镇及其周边地区游荡。在参观焚化炉附近区域后,俊失踪了。温德后来被发现处于突然精神崩溃状态,被琳送往医院。",
       "goals": [
-        "Beg for someone to rescue Jun when briefly lucid"
+        "在短暂清醒时乞求有人去救俊"
       ],
       "secrets": [],
       "attributes": {
@@ -28,7 +28,7 @@
         "maxSanity": 40,
         "luck": 50,
         "mp": 8,
-        "conditions": ["temporary insanity"]
+        "conditions": ["暂时性疯狂"]
       },
       "skills": {
         "Psychology": 40,
@@ -38,41 +38,41 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "Jun disappeared near the incinerator while traveling together in Cassandra.",
+          "clueText": "俊在卡桑德拉一起旅行时在焚化炉附近失踪。",
           "category": "observation",
           "difficulty": "regular",
-          "relatedTo": ["Jun", "Incinerator"]
+          "relatedTo": ["俊", "焚化炉"]
         },
         {
-          "clueText": "Jun sacrificed himself to ensure Wind could escape alive, though no one knows this truth.",
+          "clueText": "俊牺牲自己以确保温德能活着逃脱,但没人知道这个真相。",
           "category": "secret",
           "difficulty": "extreme",
-          "relatedTo": ["Jun"]
+          "relatedTo": ["俊"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Isabella",
+          "targetName": "伊莎贝拉",
           "relationshipType": "family",
           "attitude": 70,
-          "description": "His fiancée and the head nurse at Starlight Hospital.",
-          "history": "Their engagement predates the Cassandra incident; Isabella now oversees his care."
+          "description": "他的未婚妻,星光医院的护士长。",
+          "history": "他们的订婚早于卡桑德拉事件;伊莎贝拉现在负责照顾他。"
         },
         {
-          "targetName": "Jun",
+          "targetName": "俊",
           "relationshipType": "friend",
           "attitude": 80,
-          "description": "A history professor who traveled with Wind and later vanished.",
-          "history": "Jun disappeared near the incinerator after protecting Wind."
+          "description": "与温德一起旅行后消失的历史教授。",
+          "history": "俊在保护温德后在焚化炉附近失踪。"
         },
         {
-          "targetName": "Lyn",
+          "targetName": "琳",
           "relationshipType": "friend",
           "attitude": 40,
-          "description": "A retired soldier who brought Wind to the hospital.",
-          "history": "Lyn remained with the vehicle while Jun and Wind explored; later rescued Wind."
+          "description": "将温德送到医院的退役军人。",
+          "history": "琳在俊和温德探索时留在车里;后来救了温德。"
         }
       ],
-      "notes": "Listed as a cameo NPC. Wind is mentally unstable and not suitable for direct investigation, but his fragmented memories can serve as emotional hooks and indirect clues."
+      "notes": "列为客串NPC。温德精神不稳定,不适合直接调查,但他破碎的记忆可以作为情感钩子和间接线索。"
     }
   ]

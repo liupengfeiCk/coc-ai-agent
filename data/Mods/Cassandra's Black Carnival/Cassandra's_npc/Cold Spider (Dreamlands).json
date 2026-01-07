@@ -1,18 +1,18 @@
 [
     {
-      "name": "Cold Spider (Dreamlands)",
-      "occupation": "Mythos Creature",
+      "name": "寒冷蜘蛛(梦境)",
+      "occupation": "神话生物",
       "age": 0,
-      "appearance": "An enormous, pallid spider-like entity native to the Dreamlands, far larger and more grotesque than its weakened real-world counterparts. Its body is covered in thick chitin, its many eyes gleam with unnatural intelligence, and its movements are both deliberate and unsettling.",
-      "personality": "Alien, solitary, and vicious. Despite possessing intelligence, cold spiders do not cooperate with one another and may even prey upon their own kind. They act purely according to predatory instinct and self-interest.",
-      "background": "Cold spiders originate in the Dreamlands and are associated with the Spider God Atlach-Nacha. In this realm they exist in a far more powerful and primordial form. Some legends speak of truly colossal specimens, dwarfing even normal Dreamlands cold spiders.",
+      "appearance": "一种原产于梦境的巨大、苍白的蜘蛛状实体,比其在现实世界中虚弱的对应物大得多且更怪诞。它的身体覆盖着厚厚的甲壳,许多眼睛闪烁着非自然的智慧,其动作既刻意又令人不安。",
+      "personality": "异类、独居、凶残。尽管拥有智力,寒冷蜘蛛彼此不合作,甚至可能捕食同类。它们纯粹根据捕食本能和自身利益行事。",
+      "background": "寒冷蜘蛛起源于梦境,与蜘蛛神阿特拉克-纳查有关。在这个领域,它们以更强大和原始的形态存在。一些传说提到真正的巨型标本,甚至矮化正常的梦境寒冷蜘蛛。",
       "goals": [
-        "Hunt and feed on prey encountered in the Dreamlands",
-        "Serve the broader, inscrutable designs of Atlach-Nacha"
+        "猎杀并捕食在梦境中遇到的猎物",
+        "为阿特拉克-纳查更广泛、难以理解的设计服务"
       ],
       "secrets": [
-        "Cold spiders may cannibalize one another",
-        "There exist exceptionally gigantic cold spiders beyond the norm"
+        "寒冷蜘蛛可能彼此残食",
+        "存在超出常规的异常巨大的寒冷蜘蛛"
       ],
       "attributes": {
         "STR": 140,
@@ -40,27 +40,27 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "Dreamlands cold spiders are far stronger and more resilient than those encountered in the waking world.",
+          "clueText": "梦境寒冷蜘蛛比清醒世界中遇到的蜘蛛更强大、更有韧性。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Dreamlands", "Atlach-Nacha"]
+          "relatedTo": ["梦境", "阿特拉克-纳查"]
         },
         {
-          "clueText": "Some cold spiders grow to truly gigantic size, inspiring far greater terror.",
+          "clueText": "一些寒冷蜘蛛会长到真正的巨型尺寸,引发更大的恐惧。",
           "category": "rumor",
           "difficulty": "hard",
-          "relatedTo": ["Cold Spider"]
+          "relatedTo": ["寒冷蜘蛛"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Atlach-Nacha",
+          "targetName": "阿特拉克-纳查",
           "relationshipType": "employer",
           "attitude": 80,
-          "description": "A distant but absolute patron entity tied to the spiders’ existence.",
-          "history": "Cold spiders are creatures associated with the webs and designs of Atlach-Nacha in the Dreamlands."
+          "description": "与蜘蛛存在相关的遥远但绝对的守护实体。",
+          "history": "寒冷蜘蛛是与梦境中阿特拉克-纳查的蛛网和设计相关的生物。"
         }
       ],
-      "notes": "Combat & Abilities:\n\nCombat Style:\nAlthough cold spiders possess intelligence, they do not cooperate with one another and may even engage in cannibalism. A bite injects deadly venom. Rumors persist of extraordinarily gigantic cold spiders. Each cold spider attacks once per round.\n\nAttacks:\n• Bite – 40%: Deals 1D3 damage plus venom. Venom POT equals 1/5 of the spider’s CON.\n\nCombat Maneuvers:\n• Web Projection – 60% (Entangle): Targets must succeed in a STR vs STR contest to escape. The effective STR of the web equals half the spider’s SIZ.\n\nArmor:\n6 points (thick chitinous shell).\n\nSpells:\nRoll 1D20; if the result is lower than the spider’s INT, the Keeper selects 1D3 spells for the spider to use.\n\nSanity Loss:\nSeeing a cold spider causes SAN loss of 0 / 1D10. Encountering a truly gigantic cold spider increases this to 1 / 1D20.\n\nKeeper Notes:\nDreamlands cold spiders are apex predators and should be treated as major threats rather than minor encounters."
+      "notes": "战斗与能力:\n\n战斗风格:\n尽管寒冷蜘蛛拥有智力,但它们彼此不合作,甚至可能进行残食。撕咬会注入致命毒液。有传言称存在异常巨大的寒冷蜘蛛。每只寒冷蜘蛛每回合攻击一次。\n\n攻击:\n• 撕咬 – 40%:造成1D3伤害加毒液。毒液POT等于蜘蛛体质的1/5。\n\n战斗技巧:\n• 蛛网投射 – 60%(缠绕):目标必须在力量对抗中成功才能逃脱。蛛网的有效力量等于蜘蛛体型的一半。\n\n护甲:\n6点(厚重甲壳)。\n\n法术:\n投1D20;如果结果低于蜘蛛的智力,守秘人为蜘蛛选择1D3个法术使用。\n\n理智损失:\n看到寒冷蜘蛛造成0/1D10点理智损失。遇到真正巨型的寒冷蜘蛛将此增加到1/1D20。\n\n守秘人提示:\n梦境寒冷蜘蛛是顶级掠食者,应被视为重大威胁而非次要遭遇。"
     }
   ]

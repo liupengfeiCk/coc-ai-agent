@@ -1,19 +1,19 @@
 [
   {
-    "name": "Angela",
-    "occupation": "Drug Dealer",
+    "name": "安吉拉",
+    "occupation": "毒品贩子",
     "age": 34,
     "gender": "female",
-    "appearance": "A woman of average build and appearance, able to blend into crowds easily. Dresses practically and inconspicuously, with nothing that draws overt attention.",
-    "personality": "Cautious, street-smart, pragmatic, and opportunistic. She is emotionally detached from most dealings and prioritizes self-preservation and profit.",
-    "background": "Angela is a long-time drug dealer who maintains regular transactions with Lux Lynch. She deals in marijuana, Arabian tea, and several psychoactive substances such as methylphenidate. She operates on the fringes of Cassandra’s social circles and avoids becoming deeply involved in the town’s darker mysteries.",
+    "appearance": "一个身材和外表普通的女人,能够轻松融入人群。穿着实用且不显眼,没有任何引人注目的地方。",
+    "personality": "谨慎、精通街头生存、务实且机会主义。她对大多数交易情感疏离,优先考虑自我保护和利润。",
+    "background": "安吉拉是一个长期的毒品贩子,与勒克斯·林奇保持定期交易。她经营大麻、阿拉伯茶叶和几种精神活性物质,如哌醋甲酯。她在卡珊德拉社交圈的边缘活动,避免深入参与镇上更黑暗的谜团。",
     "goals": [
-      "Maintain her drug trade without drawing police attention",
-      "Continue profitable dealings with trusted partners"
+      "在不引起警察注意的情况下维持她的毒品交易",
+      "与可信赖的合作伙伴继续盈利交易"
     ],
     "secrets": [
-      "She is involved in the distribution of multiple illegal psychoactive substances",
-      "She knows more about local underground trade networks than she admits"
+      "她参与多种非法精神活性物质的分销",
+      "她对当地地下交易网络了解得比她承认的要多"
     ],
     "attributes": {
       "STR": 50,
@@ -45,31 +45,31 @@
     },
     "inventory": [
       {
-        "name": "N/A",
+        "name": "无",
         "properties": {
-          "note": "Listed as cameo/non-major NPC; no inventory details provided in the document excerpt."
+          "note": "列为客串/非主要NPC;文档摘录中未提供库存详情。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "She regularly trades drugs with Lux Lynch.",
+        "clueText": "她定期与勒克斯·林奇交易毒品。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Lux Lynch"
+          "勒克斯·林奇"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Lux Lynch",
+        "targetName": "勒克斯·林奇",
         "relationshipType": "ally",
         "attitude": 40,
-        "description": "A regular trading partner in illegal substances.",
-        "history": "Angela has conducted long-term drug transactions with Lux, forming a mutually beneficial business relationship."
+        "description": "非法物质的定期交易伙伴。",
+        "history": "安吉拉与勒克斯进行了长期的毒品交易,形成了互利的商业关系。"
       }
     ],
-    "notes": "Angela is a minor NPC and does not actively participate in the investigators’ main investigation unless directly approached."
+    "notes": "安吉拉是一个次要NPC,除非直接接触,否则不会主动参与调查员的主要调查。"
   }
 ]

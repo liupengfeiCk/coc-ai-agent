@@ -1,28 +1,28 @@
 [
     {
-    "name": "Simon Laplace (Simon)",
-    "occupation": "Hacker / Drifter",
+    "name": "西蒙·拉普拉斯(西蒙)",
+    "occupation": "黑客 / 流浪者",
     "age": 30,
     "gender": "male",
-      "appearance": "A lean Caucasian man with a weary expression and unkempt hair. His clothing is often mismatched and worn from constant travel, giving him the look of someone who rarely stays in one place for long.",
-      "personality": "Protective, guilt-ridden, and restless. Simon shows a surprising sense of conscience despite his morally gray past. Distrustful of authority, but deeply loyal to the few people he cares about.",
-      "background": "Simon Laplace is a hacker with dissociative identity disorder (dual personality). His alter ego is Anatole. Simon is a skilled hacker who has been in a long-running online rivalry with Lucifero (Jenny Florence), though they never met in person. During the 2003 Reindeer Bar incident, Anatole was in control of the body and had an argument with Lucifero. Simon was one of the suspects in the murder case. He lives in Cassandra with Nancy Charlotte, running a flower shop. He discovered Patrizio's secrets by hacking into his computer over a year ago, downloading a mysterious image. He wants to stop Patrizio's cult activities but fears for his life if his identity as a hacker is revealed.",
+      "appearance": "一位瘦削的白人男性,表情疲惫,头发凌乱。衣服常常不搭配且因不断旅行而磨损,给人一种很少在一个地方久留的印象。",
+      "personality": "保护欲强、内疚、不安。尽管过去道德灰色,西蒙展现出令人惊讶的良心感。不信任权威,但对少数在乎的人深深忠诚。",
+      "background": "西蒙·拉普拉斯是一位患有分离性身份障碍(双重人格)的黑客。他的另一人格是阿纳托尔。西蒙是一位技术高超的黑客,与路西法罗(珍妮·弗洛伦斯)有长期的网络竞争,虽然他们从未见面。在2003年驯鹿酒吧事件中,阿纳托尔控制身体并与路西法罗发生争执。西蒙是谋杀案的嫌疑人之一。他与南希·夏洛特在卡桑德拉生活,经营一家花店。他在一年多前通过黑入帕特里齐奥的电脑发现了他的秘密,下载了一张神秘图片。他想阻止帕特里齐奥的邪教活动,但害怕如果他的黑客身份暴露会有生命危险。",
     "goals": [
-      "Protect Nancy and help her rebuild her life",
-      "Stop Patrizio's cult activities and prevent disaster in Cassandra",
-      "Keep his identity as a hacker secret to avoid being killed",
-      "Help investigators solve the murder cases and expose the truth"
+      "保护南希并帮助她重建生活",
+      "阻止帕特里齐奥的邪教活动并防止卡桑德拉的灾难",
+      "保密他的黑客身份以避免被杀",
+      "帮助调查员破解谋杀案并揭露真相"
     ],
     "secrets": [
-      "He is a skilled hacker who has been in a long-running online rivalry with Lucifero (Jenny Florence)",
-      "He has dissociative identity disorder - his alter ego Anatole was in control during the 2003 Reindeer Bar incident",
-      "Anatole had an argument with Lucifero at the Reindeer Bar, but Simon was not aware of this until later",
-      "He hacked into Patrizio's computer over a year ago and downloaded a mysterious image revealing Patrizio's cult activities",
-      "He was being tracked by both Lucifero and Martin (Ghost Hand) during the hack, but managed to escape",
-      "He knows Patrizio is building a cult organization and wants to stop him",
-      "He fears for his life if his identity as a hacker is revealed",
-      "He can help investigators crack encrypted phones and access digital evidence",
-      "He does not know that Adolph took the Qianwei System from the two-story wooden house"
+      "他是技术高超的黑客,与路西法罗(珍妮·弗洛伦斯)有长期网络竞争",
+      "他患有分离性身份障碍——他的另一人格阿纳托尔在2003年驯鹿酒吧事件中控制身体",
+      "阿纳托尔在驯鹿酒吧与路西法罗发生争执,但西蒙直到后来才知道",
+      "他在一年多前黑入帕特里齐奥的电脑,下载了揭示帕特里齐奥邪教活动的神秘图片",
+      "在黑客行动中,他被路西法罗和马丁(幽灵之手)追踪,但成功逃脱",
+      "他知道帕特里齐奥正在建立邪教组织并想阻止他",
+      "他害怕如果他的黑客身份暴露会有生命危险",
+      "他可以帮助调查员破解加密手机和访问数字证据",
+      "他不知道阿道夫从两层木屋拿走了千卫系统"
     ],
       "attributes": {
         "STR": 55,
@@ -55,78 +55,78 @@
     },
     "inventory": [
       {
-        "name": "Computer equipment and hacking tools",
+        "name": "电脑设备和黑客工具",
         "properties": {
-          "note": "Located in his workshop on the second floor of the flower shop. Used for hacking and monitoring networks."
+          "note": "位于花店二楼的工作室。用于黑客和监控网络。"
         }
       },
       {
-        "name": "Mysterious image from Patrizio's computer",
+        "name": "来自帕特里齐奥电脑的神秘图片",
         "properties": {
-          "clue": "An image downloaded from Patrizio's computer over a year ago, revealing Patrizio's cult activities. Viewing it requires an INT check and may cause SAN loss (1/1d4)."
+          "clue": "一年多前从帕特里齐奥电脑下载的图片,揭示帕特里齐奥的邪教活动。查看需要智力检定,可能造成理智损失(1/1d4)。"
         }
       },
       {
-        "name": "Old car with personal belongings",
+        "name": "装有个人物品的旧车",
         "properties": {
-          "note": "Used for travel with Nancy."
+          "note": "与南希一起旅行时使用。"
         }
       },
       {
-        "name": "Fake identification papers",
+        "name": "假身份证件",
         "properties": {
-          "note": "False identity documents."
+          "note": "虚假身份文件。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "Simon is a hacker who was in a long-running online rivalry with Lucifero (Jenny Florence), though they never met in person.",
+        "clueText": "西蒙是一位黑客,与路西法罗(珍妮·弗洛伦斯)有长期网络竞争,虽然他们从未见面。",
         "category": "knowledge",
         "difficulty": "hard",
-        "relatedTo": ["Jenny Florence (Lucifero)", "Hacking"]
+        "relatedTo": ["珍妮·弗洛伦斯(路西法罗)", "黑客"]
       },
       {
-        "clueText": "During the 2003 Reindeer Bar incident, Anatole (Simon's alter ego) was in control and had an argument with Lucifero, but Simon was not aware of this until later.",
+        "clueText": "在2003年驯鹿酒吧事件中,阿纳托尔(西蒙的另一人格)控制身体并与路西法罗发生争执,但西蒙直到后来才知道。",
         "category": "secret",
         "difficulty": "extreme",
-        "relatedTo": ["2003 Reindeer Bar murder", "Anatole", "Dissociative Identity Disorder"]
+        "relatedTo": ["2003年驯鹿酒吧谋杀案", "阿纳托尔", "分离性身份障碍"]
       },
       {
-        "clueText": "Simon hacked into Patrizio's computer over a year ago and downloaded a mysterious image revealing Patrizio's cult activities. He can help investigators crack encrypted phones and access digital evidence.",
+        "clueText": "西蒙在一年多前黑入帕特里齐奥的电脑,下载了揭示帕特里齐奥邪教活动的神秘图片。他可以帮助调查员破解加密手机和访问数字证据。",
         "category": "secret",
         "difficulty": "hard",
-        "relatedTo": ["Patrizio von Samsa", "Cult Activities", "Hacking"]
+        "relatedTo": ["帕特里齐奥·冯·萨姆萨", "邪教活动", "黑客"]
       },
       {
-        "clueText": "Simon can help investigators decode messages from Bruno's phone and Lucifero's phone, revealing important information about the murder cases.",
+        "clueText": "西蒙可以帮助调查员解码布鲁诺手机和路西法罗手机中的信息,揭示谋杀案的重要信息。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["Bruno Galilei", "Jenny Florence (Lucifero)", "2003 Reindeer Bar murder"]
+        "relatedTo": ["布鲁诺·伽利略", "珍妮·弗洛伦斯(路西法罗)", "2003年驯鹿酒吧谋杀案"]
       },
       {
-        "clueText": "Simon wants to stop Patrizio's cult activities but fears for his life if his identity as a hacker is revealed.",
+        "clueText": "西蒙想阻止帕特里齐奥的邪教活动,但害怕如果他的黑客身份暴露会有生命危险。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["Patrizio von Samsa"]
+        "relatedTo": ["帕特里齐奥·冯·萨姆萨"]
       }
     ],
       "relationships": [
         {
-          "targetName": "Nancy",
+          "targetName": "南希",
           "relationshipType": "family",
           "attitude": 80,
-          "description": "Acts as her protector and caretaker.",
-          "history": "Rescued her from exploitation and chose a drifting life to keep her safe."
+          "description": "担任她的保护者和照顾者。",
+          "history": "将她从剥削中拯救出来,选择流浪生活以保护她的安全。"
         },
         {
-          "targetName": "Anatole",
+          "targetName": "阿纳托尔",
           "relationshipType": "enemy",
           "attitude": -50,
-          "description": "Anatole disapproves of Simon’s choices and lifestyle.",
-          "history": "Their relationship deteriorated after Simon took Nancy away and rejected Anatole’s plans."
+          "description": "阿纳托尔不赞成西蒙的选择和生活方式。",
+          "history": "西蒙带走南希并拒绝阿纳托尔的计划后,他们的关系恶化。"
         }
       ],
-      "notes": "Simon may be reluctant to share information unless investigators convince him they pose no threat to Nancy."
+      "notes": "除非调查员说服西蒙他们不会对南希构成威胁,否则他可能不愿分享信息。"
     }
   ]

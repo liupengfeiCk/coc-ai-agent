@@ -1,15 +1,15 @@
 [
     {
-      "name": "Lyn",
-      "occupation": "Former Special Forces Soldier",
+      "name": "琳",
+      "occupation": "前特种部队士兵",
       "age": 36,
       "gender": "male",
-      "appearance": "A physically fit and battle-hardened man with quick movements and a fighter’s posture; looks capable and intimidating but otherwise unremarkable.",
-      "personality": "Hot-tempered and aggressive in conflicts, skeptical of the supernatural, prone to acting on impulse. Despite a short attention span, he is stubborn about certain principles and extremely reliable to his friends.",
-      "background": "Born in Detroit, Lyn grew up surrounded by violence and learned to fight from a young age. He later became a special forces soldier, developing strong combat instincts and a deep distrust of anything he cannot explain rationally. He is part of a close-knit group of friends connected through Bruno. During the Cassandra incident, Lyn was the one who sent Wind to the hospital and then contacted the others to go to the police station.",
+      "appearance": "一位身体健壮、久经沙场的男性,动作敏捷,姿势像战士;看起来有能力且令人生畏,但在其他方面不起眼。",
+      "personality": "在冲突中脾气暴躁且好斗,对超自然现象持怀疑态度,倾向于冲动行事。尽管注意力持续时间短,但他对某些原则很固执,对朋友极其可靠。",
+      "background": "出生在底特律,琳从小就被暴力包围,从小就学会了战斗。他后来成为特种部队士兵,发展出强大的战斗本能和对任何无法理性解释的事物的深深不信任。他是通过布鲁诺联系在一起的一群亲密朋友的一部分。在卡桑德拉事件中,琳是将温德送到医院然后联系其他人去警察局的人。",
       "goals": [
-        "Protect his friends from harm",
-        "Solve problems through direct and decisive action"
+        "保护朋友免受伤害",
+        "通过直接果断的行动解决问题"
       ],
       "secrets": [],
       "attributes": {
@@ -42,49 +42,49 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "After escorting Wind to the hospital, Lyn immediately contacted the others and went to the police station.",
+          "clueText": "护送温德到医院后,琳立即联系了其他人并去了警察局。",
           "category": "observation",
           "difficulty": "regular",
-          "relatedTo": ["Wind", "Police Station"]
+          "relatedTo": ["温德", "警察局"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Bruno Galilei",
+          "targetName": "布鲁诺·伽利略",
           "relationshipType": "friend",
           "attitude": 60,
-          "description": "A trusted acquaintance who connects the group together.",
-          "history": "Met through shared circles and mutual respect forged by dangerous situations."
+          "description": "一位可信的熟人,将团队联系在一起。",
+          "history": "通过共同圈子相识,通过危险情况建立相互尊重。"
         },
         {
-          "targetName": "Reid",
+          "targetName": "里德",
           "relationshipType": "friend",
           "attitude": 55,
-          "description": "A dependable companion within the group.",
-          "history": "Bonded through shared danger and mutual reliance."
+          "description": "团队中可靠的同伴。",
+          "history": "通过共同的危险和相互依赖建立纽带。"
         },
         {
-          "targetName": "Hawthorne",
+          "targetName": "霍桑",
           "relationshipType": "friend",
           "attitude": 55,
-          "description": "A cautious but loyal member of the group.",
-          "history": "Trust built over time through group cooperation."
+          "description": "团队中谨慎但忠诚的成员。",
+          "history": "通过团队合作随时间建立信任。"
         },
         {
-          "targetName": "Lily",
+          "targetName": "莉莉",
           "relationshipType": "friend",
           "attitude": 50,
-          "description": "A determined young detective.",
-          "history": "Fought and survived alongside her during earlier incidents."
+          "description": "一位坚定的年轻侦探。",
+          "history": "在早期事件中与她并肩战斗并幸存。"
         },
         {
-          "targetName": "Bigbear",
+          "targetName": "大熊",
           "relationshipType": "friend",
           "attitude": 50,
-          "description": "A physically imposing but good-natured ally.",
-          "history": "Part of the same friend group connected by Bruno."
+          "description": "一位身材魁梧但性格和善的盟友。",
+          "history": "布鲁诺联系在一起的同一朋友圈的一部分。"
         }
       ],
-      "notes": "Lyn firmly rejects the idea of monsters or magic, even when faced with unsettling evidence, preferring practical explanations and direct action."
+      "notes": "琳坚决拒绝怪物或魔法的想法,即使面对令人不安的证据,更喜欢实际解释和直接行动。"
     }
   ]

@@ -1,19 +1,19 @@
 [
     {
-    "name": "Unknown",
-    "occupation": "Traveler / Investigator (unofficial)",
+    "name": "无名女性",
+    "occupation": "旅行者 / 调查员(非官方)",
     "age": 19,
     "gender": "female",
-      "appearance": "A young woman of indeterminate background, travel-worn and tired, with signs of long-distance journeying and emotional strain.",
-      "personality": "Determined, anxious, and persistent; driven by guilt and familial attachment, yet unaware of the true cosmic horror surrounding her investigation.",
-      "background": "An unnamed Black woman, approximately 19 years old, who died on December 22, 2002 at the Paradil Hotel. She was not a local resident of Cassandra, so no missing person report exists. She came to Cassandra to investigate the disappearance of her younger sister, who ran away from home. Evidence indicates that her sister's last known destination was Cassandra. Her body was discovered in a cold storage unit in the hotel kitchen's basement, completely naked and encased in a large block of ice. The body showed no wounds. She had no identification documents and no relatives could be found. The case was quickly shelved and became a cold case.",
+      "appearance": "一位背景不明的年轻女性,风尘仆仆且疲惫,显示出长途旅行和情绪压力的迹象。",
+      "personality": "坚定、焦虑、执着;被内疚和家庭依恋驱使,但对围绕她调查的真正宇宙恐怖一无所知。",
+      "background": "一位无名黑人女性,约19岁,于2002年12月22日在帕拉迪尔酒店死亡。她不是卡桑德拉的本地居民,因此没有失踪人口报告。她来到卡桑德拉调查离家出走的妹妹的失踪。证据表明她妹妹最后已知的目的地是卡桑德拉。她的尸体在酒店厨房地下室的冷藏室中被发现,全身赤裸,被封在一大块冰中。尸体没有伤口。她没有身份证件,找不到亲属。案件很快被搁置,成为悬案。",
       "goals": [
-        "Find her missing sister",
-        "Uncover the truth behind her sister’s disappearance"
+        "找到失踪的妹妹",
+        "揭露妹妹失踪背后的真相"
       ],
       "secrets": [
-        "Her sister had already been sacrificed to Shub-Niggurath a year earlier",
-        "Her own death at the Paradil Hotel was never properly identified or investigated"
+        "她的妹妹一年前已经被献祭给莎布·尼古拉丝",
+        "她自己在帕拉迪尔酒店的死亡从未得到适当的身份确认或调查"
       ],
       "attributes": {
         "STR": 45,
@@ -42,47 +42,47 @@
       },
     "inventory": [
       {
-        "name": "Travel bag",
+        "name": "旅行包",
         "properties": {
-          "note": "Personal belongings, location unknown after death."
+          "note": "个人物品,死后下落不明。"
         }
       },
       {
-        "name": "Notes about her sister's disappearance",
+        "name": "关于妹妹失踪的笔记",
         "properties": {
-          "note": "Evidence that her sister's last known destination was Cassandra."
+          "note": "证据表明她妹妹最后已知的目的地是卡桑德拉。"
         }
       },
       {
-        "name": "Hotel receipt from Paradil Hotel",
+        "name": "帕拉迪尔酒店的酒店收据",
         "properties": {
-          "note": "Proof of her stay at the hotel before her death."
+          "note": "证明她死前在酒店住宿。"
         }
       }
     ],
       "clues": [
         {
-          "clueText": "Her sister’s final journey ended in Cassandra and she was never seen again afterward.",
+          "clueText": "她妹妹的最后旅程在卡桑德拉结束,之后再也没有被见过。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Cassandra", "Shub-Niggurath Cult"]
+          "relatedTo": ["卡桑德拉", "莎布·尼古拉丝邪教"]
         },
         {
-          "clueText": "Her sister had already been sacrificed to Shub-Niggurath one year before her arrival.",
+          "clueText": "她妹妹在她到达的一年前已经被献祭给莎布·尼古拉丝。",
           "category": "secret",
           "difficulty": "hard",
-          "relatedTo": ["Shub-Niggurath"]
+          "relatedTo": ["莎布·尼古拉丝"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Unknown Sister",
+          "targetName": "无名妹妹",
           "relationshipType": "family",
           "attitude": 80,
-          "description": "Her younger sister who ran away from home and disappeared.",
-          "history": "She traveled to Cassandra solely to find her sister, unaware that the cult had already sacrificed her."
+          "description": "离家出走并失踪的妹妹。",
+          "history": "她专程前往卡桑德拉寻找妹妹,却不知道邪教已经将她献祭。"
         }
       ],
-      "notes": "Victim of the 2002 Paradil Hotel murder case (the old case). Age approximately 19, Black female. Body found on December 22, 2002 in a cold storage unit in the hotel kitchen's basement, completely naked and encased in a large block of ice. No wounds on the body. No identification documents found, no relatives could be located. The case was quickly shelved and became a cold case. Bruno persistently investigated this case despite lack of support from superiors. The murderer was Martin Gin (Ghost Hand). Jenny Florence (Lucifero) witnessed the murder but did not reveal it until planning to tell Bruno in 2003."
+      "notes": "2002年帕拉迪尔酒店谋杀案(旧案)的受害者。年龄约19岁,黑人女性。尸体于2002年12月22日在酒店厨房地下室的冷藏室中被发现,全身赤裸,被封在一大块冰中。尸体没有伤口。未找到身份证件,无法找到亲属。案件很快被搁置,成为悬案。布鲁诺尽管上级不支持,仍坚持调查此案。凶手是马丁·金(幽灵之手)。珍妮·弗洛伦斯(路西法罗)目睹了谋杀但直到2003年计划告诉布鲁诺时才透露。"
     }
   ]

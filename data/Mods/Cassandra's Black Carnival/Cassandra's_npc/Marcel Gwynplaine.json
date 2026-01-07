@@ -1,23 +1,23 @@
 [
     {
-      "name": "Marcel Gwynplaine",
-      "occupation": "Unemployed drifter (former winery worker)",
+      "name": "马赛尔·格温普兰",
+      "occupation": "无业游民(前酿酒厂工人)",
       "age": 30,
       "gender": "male",
-      "appearance": "A scruffy man wearing an old, worn-out denim jacket. He looks unkempt and tired, with the appearance of someone who drinks heavily and neglects personal care.",
-      "personality": "Petty, resentful, and prone to complaining. Marcel likes to blame society for his failures, but beneath his constant grumbling he is timid and cowardly, easily frightened when real danger appears.",
-      "background": "Marcel was born and raised in Cassandra. He once left town for a year or two, boasting that he would make something of himself, but after seeing the wider world he realized his own mediocrity and returned home disillusioned. He worked at a winery until he was fired two months ago. Since then, he has lived a directionless life, drinking heavily and venting his bitterness about social inequality.",
+      "appearance": "一个邋遢的男人,穿着一件旧的破旧牛仔夹克。他看起来不修边幅且疲惫,像是一个酗酒且忽视个人卫生的人。",
+      "personality": "小气、怨恨且爱抱怨。马赛尔喜欢把失败归咎于社会,但在不断的抱怨之下,他胆小懦弱,当真正的危险出现时容易受惊。",
+      "background": "马赛尔在卡珊德拉出生长大。他曾离开小镇一两年,吹嘘自己会有所成就,但在看到更广阔的世界后,他意识到自己的平庸并失望地回到家。他在一家酿酒厂工作,直到两个月前被解雇。从那以后,他过着漫无目的的生活,酗酒并发泄对社会不平等的愤怒。",
       "goals": [
-        "Find a way to survive day to day without real work",
-        "Ventr his resentment and frustrations on others"
+        "找到一种不用真正工作就能日复一日生存的方法",
+        "向他人发泄他的怨恨和挫折"
       ],
       "secrets": [
-        "He witnessed a man with a distinctive scar/ birthmark emerging from the sewer on Crescent Street B around December 17 (this was Martin checking Lucifero's hideout)",
-        "He saw the victim (Lucifero) making a phone call in the restroom before she was killed",
-        "He saw a man in formal wear (Adolph) passing by on the way to the restroom, but the lighting was too dim to be certain",
-        "He discovered that the waiter mixed up the drink orders - he received Lucifero's expensive drink, and Lucifero's drink contained strong hallucinogenic drugs (which he didn't report to avoid trouble)",
-        "He had seen the victim before - earlier that afternoon at the bar, a tall slender man bumped into her and they had an argument",
-        "He was THE FIRST PERSON to discover the victim's body in the restroom - when he went to use the restroom, he noticed the women's restroom door was open, saw blood flowing out, pushed the door open and found the victim's body. However, he was afraid of being implicated and pretended not to see anything, trying to leave quietly. Philip's shouting caught him before he could escape"
+        "他在12月17日左右目睹了一个有明显疤痕/胎记的男人从新月街B的下水道出来(这是马丁检查露西弗罗的藏身处)",
+        "他在受害者(露西弗罗)被杀前看到她在洗手间打电话",
+        "他看到一个穿正装的男人(阿道夫)在去洗手间的路上经过,但光线太暗无法确定",
+        "他发现服务员搞混了饮料订单——他收到了露西弗罗的昂贵饮料,而露西弗罗的饮料中含有强烈的致幻药物(他为了避免麻烦没有报告)",
+        "他之前见过受害者——当天下午早些时候在酒吧,一个高瘦的男人撞到她,他们发生了争吵",
+        "他是第一个在洗手间发现受害者尸体的人——当他去洗手间时,注意到女洗手间的门开着,看到血流出来,推门进去发现了受害者的尸体。但他害怕被牵连,假装什么都没看到,试图悄悄离开。菲利普的大喊在他逃跑前抓住了他"
       ],
       "attributes": {
         "STR": 50,
@@ -46,49 +46,49 @@
         "Spot Hidden": 35
       },
       "inventory": [
-        "Cheap liquor",
-        "Worn denim jacket",
-        "Small amount of cash"
+        "廉价酒",
+        "破旧的牛仔夹克",
+        "少量现金"
       ],
       "clues": [
         {
-          "clueText": "Marcel was one of the workers fired from the winery.",
+          "clueText": "马赛尔是从酿酒厂被解雇的工人之一。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Winery"]
+          "relatedTo": ["酿酒厂"]
         },
         {
-          "clueText": "At the time of the 2003 Reindeer Bar incident, Marcel was seen sitting alone in a corner of the bar, visibly nervous and worried.",
+          "clueText": "在2003年驯鹿酒吧事件发生时,马赛尔被看到独自坐在酒吧的角落里,明显紧张和担心。",
           "category": "observation",
           "difficulty": "regular",
-          "relatedTo": ["Reindeer Bar", "2003 Reindeer Bar murder"]
+          "relatedTo": ["驯鹿酒吧", "2003年驯鹿酒吧谋杀案"]
         },
         {
-          "clueText": "Around December 17, Marcel witnessed a man with a distinctive scar/birthmark emerging from the sewer on Crescent Street B (this was Martin checking Lucifero's hideout).",
+          "clueText": "12月17日左右,马赛尔目睹了一个有明显疤痕/胎记的男人从新月街B的下水道出来(这是马丁检查露西弗罗的藏身处)。",
           "category": "observation",
           "difficulty": "hard",
-          "relatedTo": ["Martin Gin", "Sewer", "Crescent Street B"]
+          "relatedTo": ["马丁·金", "下水道", "新月街B"]
         },
         {
-          "clueText": "Marcel saw the victim (Lucifero) making a phone call in the restroom before she was killed, and saw a man in formal wear (Adolph) passing by.",
+          "clueText": "马赛尔在受害者(露西弗罗)被杀前看到她在洗手间打电话,并看到一个穿正装的男人(阿道夫)经过。",
           "category": "observation",
           "difficulty": "regular",
-          "relatedTo": ["Jenny Florence (Lucifero)", "2003 Reindeer Bar murder", "Adolph Carl"]
+          "relatedTo": ["珍妮·弗洛伦斯(露西弗罗)", "2003年驯鹿酒吧谋杀案", "阿道夫·卡尔"]
         },
         {
-          "clueText": "The waiter mixed up drink orders - Marcel received Lucifero's expensive drink, and Lucifero's drink contained strong hallucinogenic drugs (Devil's Breath/Borrachero).",
+          "clueText": "服务员搞混了饮料订单——马赛尔收到了露西弗罗的昂贵饮料,而露西弗罗的饮料中含有强烈的致幻药物(魔鬼的呼吸/波拉切罗)。",
           "category": "knowledge",
           "difficulty": "hard",
-          "relatedTo": ["2003 Reindeer Bar murder", "Devil's Breath", "Borrachero"]
+          "relatedTo": ["2003年驯鹿酒吧谋杀案", "魔鬼的呼吸", "波拉切罗"]
         },
         {
-          "clueText": "Marcel was THE FIRST PERSON to discover the victim's body in the restroom. When he went to use the restroom, he noticed the women's restroom door was open, saw blood flowing out, pushed the door open and found the victim's body. However, he was afraid of being implicated and pretended not to see anything, trying to leave quietly before Philip discovered the body and shouted.",
+          "clueText": "马赛尔是第一个在洗手间发现受害者尸体的人。当他去洗手间时,注意到女洗手间的门开着,看到血流出来,推门进去发现了受害者的尸体。但他害怕被牵连,假装什么都没看到,试图悄悄离开,然后菲利普发现了尸体并大喊。",
           "category": "witness",
           "difficulty": "hard",
-          "relatedTo": ["2003 Reindeer Bar murder", "Philip Scaletta"]
+          "relatedTo": ["2003年驯鹿酒吧谋杀案", "菲利普·斯卡莱塔"]
         }
       ],
       "relationships": [],
-      "notes": "Marcel is a key witness to the 2003 Reindeer Bar murder case. CRITICALLY: He was THE FIRST PERSON to discover the victim's body in the restroom - when he went to use the restroom, he noticed the women's restroom door was open, saw blood flowing out, pushed the door open and found the victim's body. However, he was afraid of being implicated and pretended not to see anything, trying to leave quietly. Philip Scaletta noticed Marcel's nervous expression, went to check the restroom, also discovered the body, and shouted - making Philip the first person to publicly discover and report the body. Marcel also witnessed several important details: Martin emerging from the sewer on December 17, the victim making a phone call before death, and Adolph passing by. He also discovered the drink order mix-up that revealed the hallucinogenic drugs. However, he is easily intimidated and may not reveal all information unless pressured. He is more useful as a nervous witness and atmospheric NPC than as a reliable source of information."
+      "notes": "马赛尔是2003年驯鹿酒吧谋杀案的关键目击者。关键:他是第一个在洗手间发现受害者尸体的人——当他去洗手间时,注意到女洗手间的门开着,看到血流出来,推门进去发现了受害者的尸体。但他害怕被牵连,假装什么都没看到,试图悄悄离开。菲利普·斯卡莱塔注意到马赛尔紧张的表情,去检查洗手间,也发现了尸体,然后大喊——使菲利普成为第一个公开发现并报告尸体的人。马赛尔还目睹了几个重要细节:12月17日马丁从下水道出来,受害者在死前打电话,以及阿道夫经过。他还发现了饮料订单混乱,揭示了致幻药物。然而,他容易被威胁,除非被施压,否则可能不会透露所有信息。他作为紧张的目击者和氛围NPC比作为可靠的信息来源更有用。"
     }
   ]

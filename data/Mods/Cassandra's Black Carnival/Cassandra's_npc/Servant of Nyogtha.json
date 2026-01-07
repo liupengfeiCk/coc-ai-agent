@@ -1,18 +1,18 @@
 [
     {
-      "name": "Servant of Nyogtha",
-      "occupation": "Mythos Cult Servitor / Aberrant Hybrid",
+      "name": "奈约格萨的仆从",
+      "occupation": "神话邪教仆役 / 畸变混血",
       "age": 0,
-      "appearance": "In human form, indistinguishable from an ordinary person. When partially revealed, black ichor seeps in place of blood. In full monstrous form, the body becomes a nauseating mass of cold gelatinous flesh, clawed limbs, fanged maw, and writhing worm-like tentacles that force their way into a victim’s bodily openings.",
-      "personality": "Emotionally distant, obedient, and utterly inhuman beneath the surface. Displays minimal individuality, driven by devotion to Nyogtha and predatory instinct once transformed.",
-      "background": "The Servants of Nyogtha are humans bound to the Outer God Nyogtha. During adolescence they learn forbidden rites and begin a gradual transformation. Some retain a human façade for years, while others fully convert into monstrous forms steeped in Nyogtha’s cold, abyssal essence.",
+      "appearance": "人类形态时与普通人无异。部分显现时,黑色脓液代替血液渗出。完全怪物形态时,身体变成令人作呕的冰冷胶质肉块,长着爪子的肢体、利齿之口,以及蠕动的蠕虫状触手,会强行钻入受害者的身体开口。",
+      "personality": "情感疏离,顺从,表面之下完全非人。几乎没有个性,由对奈约格萨的奉献和变形后的捕食本能驱动。",
+      "background": "奈约格萨的仆从是与外神奈约格萨绑定的人类。在青春期,他们学习禁忌仪式并开始逐渐转变。有些人能保持人类外表多年,而另一些则完全转变为浸透奈约格萨冰冷深渊本质的怪物形态。",
       "goals": [
-        "Serve Nyogtha and expand its influence",
-        "Capture, suffocate, and consume designated victims"
+        "侍奉奈约格萨并扩大其影响力",
+        "捕获、窒息和吞噬指定受害者"
       ],
       "secrets": [
-        "They can perfectly pass as human until revealing their true nature",
-        "Fully transformed servants command multiple Mythos spells tied to Nyogtha and other Great Old Ones"
+        "他们可以完美伪装成人类,直到显露真实本质",
+        "完全转变的仆从掌握多个与奈约格萨和其他旧日支配者相关的神话法术"
       ],
       "attributes": {
         "STR": 80,
@@ -41,27 +41,27 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "Servants of Nyogtha appear completely human until wounded or fully transformed.",
+          "clueText": "奈约格萨的仆从在受伤或完全转变之前看起来完全像人类。",
           "category": "observation",
           "difficulty": "regular",
-          "relatedTo": ["Nyogtha"]
+          "relatedTo": ["奈约格萨"]
         },
         {
-          "clueText": "All servants learn the spell Contact Nyogtha during adolescence.",
+          "clueText": "所有仆从在青春期都会学习接触奈约格萨法术。",
           "category": "knowledge",
           "difficulty": "hard",
-          "relatedTo": ["Nyogtha"]
+          "relatedTo": ["奈约格萨"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Nyogtha",
+          "targetName": "奈约格萨",
           "relationshipType": "employer",
           "attitude": 100,
-          "description": "Outer God master worshipped and served without question.",
-          "history": "The servants exist solely to enact Nyogtha’s will in the material world."
+          "description": "毫无疑问地崇拜和侍奉的外神主人。",
+          "history": "仆从的存在仅为在物质世界执行奈约格萨的意志。"
         }
       ],
-      "notes": "Combat & Abilities:\n\nForms:\n• Human Form: Indistinguishable from normal humans; fights as an ordinary person.\n• Monster Form: Reveals true aberrant body of cold, gelatinous flesh and tentacles.\n\nCombat Style:\nIn monster form, a servant may attack with two claws and one bite in the same round, OR attempt to grapple a target and pull them into a horrifying embrace.\n\nGrapple & Suffocation:\nIf a grapple succeeds, the victim must win a STR vs STR contest or be pressed against the servant’s cold, gelatinous body. Worm-like tentacles erupt and force themselves into the victim’s bodily openings, causing immediate SAN loss of 0 / 1D6.\nOnce grappled, the victim must pass a CON check each round or begin suffocating, taking 1D8 HP damage per round until they escape or die.\nWhile grappling and suffocating victims, the servant may still use its two claw attacks but cannot bite. A servant may grapple multiple targets, but must divide STR between contests. Movement drops to 1 while grappling.\n\nAttacks (Monster Form):\n• Claw – 65%: 1D6 + damage bonus.\n• Bite – 65%: 1D8 + damage bonus.\n• Grapple – 50%: Special (see above).\nEach servant attacks once per round.\n\nArmor & Immunities:\nAll servants of Nyogtha, in both human and monster forms, are immune to firearms and piercing weapons; other attacks deal minimum damage only. They are also immune to fire, acid, radiation, and electricity.\n\nSpells:\nAll servants know the spell Contact Nyogtha from adolescence. After full transformation, a servant knows 2D6 spells, mostly related to Nyogtha and other Great Old Ones.\n\nSanity Loss:\n• Seeing a servant in human form: No SAN loss.\n• Seeing black ichor ooze instead of blood: 0 / 1D3 SAN.\n• Witnessing a fully transformed servant: 1 / 1D10 SAN."
+      "notes": "战斗与能力:\n\n形态:\n• 人类形态:与普通人无法区分;像普通人一样战斗。\n• 怪物形态:显露由冰冷胶质肉体和触手构成的真实畸变身体。\n\n战斗风格:\n在怪物形态下,仆从可以在同一回合用两次爪击和一次撕咬攻击,或者尝试擒抱目标并将其拉入可怕的拥抱中。\n\n擒抱与窒息:\n如果擒抱成功,受害者必须在力量对抗中获胜,否则会被压向仆从冰冷的胶质身体。蠕虫状触手会爆发并强行钻入受害者的身体开口,造成0/1D6点理智损失。\n一旦被擒抱,受害者每回合必须通过体质检定,否则开始窒息,每回合受到1D8点生命值伤害,直到逃脱或死亡。\n在擒抱和窒息受害者时,仆从仍可使用两次爪击攻击,但无法撕咬。仆从可以擒抱多个目标,但必须在对抗中分配力量。擒抱时移动速度降至1。\n\n攻击(怪物形态):\n• 爪击 – 65%:1D6 + 伤害加值。\n• 撕咬 – 65%:1D8 + 伤害加值。\n• 擒抱 – 50%:特殊(见上文)。\n每个仆从每回合攻击一次。\n\n护甲与免疫:\n所有奈约格萨的仆从,无论人类还是怪物形态,都对枪械和穿刺武器免疫;其他攻击仅造成最小伤害。他们还对火焰、酸液、辐射和电力免疫。\n\n法术:\n所有仆从从青春期起就知道接触奈约格萨法术。完全转变后,仆从知道2D6个法术,大多与奈约格萨和其他旧日支配者有关。\n\n理智损失:\n• 看到人类形态的仆从:无理智损失。\n• 看到黑色脓液代替血液渗出:0/1D3理智。\n• 目击完全转变的仆从:1/1D10理智。"
     }
   ]

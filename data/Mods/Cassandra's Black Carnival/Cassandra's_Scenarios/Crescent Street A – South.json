@@ -1,48 +1,48 @@
 [
     {
-      "name": "Crescent Street A – South",
-      "description": "The southern stretch of Crescent Street A is a quiet, orderly street with little civilian presence. Unlike the northern section, it lacks residential or commercial buildings and feels intentionally restrained. The street primarily serves as an approach to the local police station, reinforcing its official and controlled character.",
+      "name": "新月街A - 南",
+      "description": "新月街A的南段是一条安静、有序的街道,几乎没有平民出现。与北段不同,这里缺少住宅或商业建筑,给人一种刻意克制的感觉。这条街道主要作为通往当地警察局的通道,强化了其官方和受控的特征。",
       "snapshot": {
-        "name": "Crescent Street A – South",
-        "location": "Southern section of Crescent Street A, Cassandra",
-        "description": "The street is clean but subdued, lined with functional street lamps and largely empty sidewalks. Foot traffic is rare, and most passersby appear to be officers or individuals with official business. The atmosphere feels tense but contained, as though the area is constantly under quiet surveillance. Conversations are hushed, and lingering attracts subtle attention.",
+        "name": "新月街A - 南",
+        "location": "卡桑德拉,新月街A南段",
+        "description": "街道干净但低调,两旁是功能性的路灯和基本空荡的人行道。行人很少见,大多数路过的人看起来都是警官或有公务的人。气氛感觉紧张但受控,仿佛该区域一直处于安静的监视之下。交谈声很轻,逗留会引起微妙的关注。",
         "characters": [],
         "clues": [],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Street lamps provide steady but dull illumination, leaving corners and doorways in partial shadow.",
-            "mechanicalEffect": "No mechanical effect; atmosphere-focused"
+            "type": "照明",
+            "description": "路灯提供稳定但暗淡的照明,让角落和门廊处于半阴影中。",
+            "mechanicalEffect": "无机制效果;仅用于氛围"
           },
           {
-            "type": "sound",
-            "description": "Occasional distant footsteps, the murmur of voices from inside the police building, and the hum of street lights.",
-            "mechanicalEffect": "No mechanical effect"
+            "type": "声音",
+            "description": "偶尔远处的脚步声、警察局内传来的低语声和路灯的嗡嗡声。",
+            "mechanicalEffect": "无机制效果"
           }
         ],
         "events": [],
         "exits": [
           {
-            "direction": "Main entrance",
-            "destination": "Cassandra Police Station",
-            "description": "The official entrance to the town’s police station, frequently guarded or observed.",
-            "condition": "accessible but monitored"
+            "direction": "正门",
+            "destination": "卡桑德拉警察局",
+            "description": "镇警察局的官方入口,经常有人看守或观察。",
+            "condition": "可通行但受监视"
           },
           {
-            "direction": "North",
-            "destination": "Crescent Street A – North",
-            "description": "Leads toward the busier northern section of Crescent Street A."
+            "direction": "北",
+            "destination": "新月街A - 北",
+            "description": "通向更繁忙的新月街A北段。"
           }
         ],
-        "keeperNotes": "This street functions as a transitional space rather than a clue-rich location. Its primary narrative purpose is to establish mood and control before investigators enter the police station. Use subtle observation or NPC reactions to reinforce tension rather than overt clues.",
+        "keeperNotes": "这条街道作为过渡空间而非线索丰富的地点。其主要叙事目的是在调查员进入警察局之前建立气氛和控制感。使用微妙的观察或NPC反应来强化紧张感,而不是明显的线索。",
         "permanentChanges": []
       },
-      "tags": ["street", "official-area", "low-activity", "controlled-space"],
+      "tags": ["街道", "官方区域", "低活动", "受控空间"],
       "connections": [
         {
-          "scenarioName": "Crescent Street A – North",
-          "relationshipType": "concurrent",
-          "description": "Both sections of Crescent Street A exist simultaneously and can be traversed freely."
+          "scenarioName": "新月街A - 北",
+          "relationshipType": "并发",
+          "description": "新月街A的两个部分同时存在,可以自由穿行。"
         }
       ]
     }

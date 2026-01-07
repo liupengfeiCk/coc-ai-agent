@@ -1,77 +1,77 @@
 [
     {
-      "name": "Paradil Grand Hotel",
-      "description": "A local hotel in Cassandra that became the site of the FIRST murder case on December 22, 2002—exactly one year before the Reindeer Bar murder. The hotel is known to locals but is not currently under active investigation by authorities. Its past incident is largely forgotten, recorded only as an anonymous death with no clear resolution.",
+      "name": "帕拉迪尔大酒店",
+      "description": "卡桑德拉的一家本地酒店,在2002年12月22日成为第一起谋杀案的现场——正好在驯鹿酒吧谋杀案一年前。酒店在当地人中为人所知,但目前没有受到当局的积极调查。其过去的事件基本上被遗忘了,只被记录为一起没有明确解决方案的匿名死亡事件。",
       "snapshot": {
-        "name": "Paradil Grand Hotel",
-        "location": "A standard mid-sized hotel in the town of Cassandra",
-        "timeRestriction": "day1 evening",
-        "description": "The hotel appears ordinary and functional, serving travelers and visitors. Beneath its mundane appearance, it carries the shadow of an unresolved incident: THE FIRST MURDER CASE occurred here on December 22, 2002—exactly one year before the Reindeer Bar murder. A 19-year-old Black girl was found dead in a freezer in the hotel kitchen's basement, her body completely naked and encased in a massive block of ice. The case was never fully investigated and never developed into a formal missing person case. The body has long since been removed and processed. Bruno arranges for investigators to stay here after questioning suspects at the Reindeer Bar. Around 2 AM, investigators will be attacked by two masked assailants.",
+        "name": "帕拉迪尔大酒店",
+        "location": "卡桑德拉镇的一家标准中型酒店",
+        "timeRestriction": "第一天晚上",
+        "description": "酒店看起来普通且功能性,为旅客和访客提供服务。在其平凡的外表下,它带有一个未解决事件的阴影:第一起谋杀案发生在2002年12月22日——正好在驯鹿酒吧谋杀案一年前。一名19岁的黑人女孩在酒店厨房地下室的冷冻室中被发现死亡,她的身体完全赤裸,被封在一大块冰中。该案件从未被充分调查,也从未发展成正式的失踪人口案件。尸体早已被移除和处理。布鲁诺在驯鹿酒吧询问嫌疑人后安排调查员住在这里。凌晨2点左右,调查员将被两名蒙面袭击者袭击。",
         "characters": [],
         "clues": [
           {
-            "clueText": "Record of the FIRST murder case: an unidentified 19-year-old Black girl found dead in the Paradil Grand Hotel on December 22, 2002—exactly one year before the Reindeer Bar murder.",
-            "category": "document",
-            "difficulty": "regular",
-            "location": "Hotel records or local archives",
-            "discoveryMethod": "Library Use or investigation of hotel records",
+            "clueText": "第一起谋杀案的记录:一名身份不明的19岁黑人女孩于2002年12月22日在帕拉迪尔大酒店被发现死亡——正好在驯鹿酒吧谋杀案一年前。",
+            "category": "文件",
+            "difficulty": "普通",
+            "location": "酒店记录或当地档案",
+            "discoveryMethod": "图书馆使用或酒店记录调查",
             "reveals": [
-              "The victim was not from Cassandra",
-              "The case was never fully investigated",
-              "This is the FIRST of two murder cases, separated by exactly one year",
-              "The body was found in a freezer, encased in ice—distinct from the second case"
+              "受害者不是卡桑德拉人",
+              "该案件从未被充分调查",
+              "这是两起谋杀案中的第一起,正好相隔一年",
+              "尸体在冷冻室中被发现,封在冰中——与第二起案件不同"
             ]
           },
           {
-            "clueText": "According to case records, the victim's body was discovered in the hotel kitchen's basement freezer on December 22, 2002, completely naked and encased in a massive block of ice—a distinctive method that differs from the second murder case. The body has since been removed.",
-            "category": "document",
-            "difficulty": "regular",
-            "location": "Hotel records, police case files, or investigation of hotel basement",
-            "discoveryMethod": "Library Use, investigation of hotel records, or police archives",
+            "clueText": "根据案件记录,受害者的尸体于2002年12月22日在酒店厨房地下室冷冻室被发现,完全赤裸,被封在一大块冰中——一种与第二起谋杀案不同的独特方法。尸体已被移除。",
+            "category": "文件",
+            "difficulty": "普通",
+            "location": "酒店记录、警方案件档案或酒店地下室调查",
+            "discoveryMethod": "图书馆使用、酒店记录调查或警方档案",
             "reveals": [
-              "The first case involved freezing the body in ice",
-              "This method is completely different from the second case (gunshot and knife)",
-              "The two cases may be connected but use different killing methods",
-              "The body was removed long ago—this is a past incident, not a current crime scene"
+              "第一起案件涉及将尸体冻在冰中",
+              "这种方法与第二起案件(枪击和刀刺)完全不同",
+              "这两起案件可能有联系,但使用不同的杀人方法",
+              "尸体很久以前就被移除了——这是过去的事件,不是当前的犯罪现场"
             ]
           },
           {
-            "clueText": "Information indicating the deceased woman came to Cassandra to search for her missing sister.",
-            "category": "knowledge",
-            "difficulty": "hard",
-            "location": "Cross-referenced testimonies or background investigation",
-            "discoveryMethod": "Interviews or research",
+            "clueText": "表明死者来卡桑德拉寻找失踪妹妹的信息。",
+            "category": "知识",
+            "difficulty": "困难",
+            "location": "交叉引用的证词或背景调查",
+            "discoveryMethod": "采访或研究",
             "reveals": [
-              "Her sister disappeared after traveling to Cassandra",
-              "A possible connection to cult activities",
-              "The first victim was investigating a disappearance before her own death"
+              "她的妹妹在前往卡桑德拉后失踪",
+              "与邪教活动的可能联系",
+              "第一个受害者在自己死亡前正在调查失踪案"
             ]
           }
         ],
         "conditions": [],
         "events": [
-          "December 22, 2002: THE FIRST MURDER CASE—A 19-year-old Black girl found dead in the hotel kitchen basement freezer, her body encased in ice",
-          "Day 1 night (around 2 AM): Investigators staying at the hotel are attacked by two masked assailants wearing black clothes and carrying clubs. The attackers will flee if defeated or after some time, jumping out of windows and climbing walls like spiders (SC 0/1d3)",
-          "After the attack: A hotel staff member arrives but does not believe the investigators' account of the attack. Investigators must use persuasion, bribery, or other methods to handle the situation, or the staff will threaten to call the police",
-          "If police are called: Lux responds and claims he was on duty at the station but did not see Bruno there",
-          "Easter egg: After dealing with the staff, a gunshot is heard from the circular corridor. If investigators follow, they encounter a group of out-of-towners: Lily (pink-haired), Hongsen, Lyn, Bigbear, and Reid. Lily's gun accidentally discharged, injuring Hongsen and Lyn. They mention their friend Wind came to meet his fiancée, and that their friend Bruno (a different person) and O'Neil are investigating a serial murder case targeting Black girls"
+          "2002年12月22日:第一起谋杀案——一名19岁的黑人女孩在酒店厨房地下室冷冻室被发现死亡,她的身体被封在冰中",
+          "第一天晚上(凌晨2点左右):住在酒店的调查员被两名穿着黑衣、携带棍棒的蒙面袭击者袭击。如果被击败或经过一段时间后,袭击者会逃跑,从窗户跳出并像蜘蛛一样爬墙(SC 0/1d3)",
+          "袭击后:一名酒店工作人员到达,但不相信调查员对袭击的描述。调查员必须使用说服、贿赂或其他方法来处理这种情况,否则工作人员会威胁报警",
+          "如果报警:勒克斯回应并声称他在局里值班,但没有看到布鲁诺在那里",
+          "彩蛋:处理完工作人员后,从环形走廊传来枪声。如果调查员跟随,他们会遇到一群外地人:莉莉(粉红头发)、红森、琳、大熊和里德。莉莉的枪意外走火,伤了红森和琳。他们提到他们的朋友Wind来见他的未婚妻,他们的朋友布鲁诺(另一个人)和奥尼尔正在调查针对黑人女孩的连环谋杀案"
         ],
         "exits": [
           {
-            "direction": "Main Entrance",
-            "destination": "Cassandra town streets",
-            "description": "The primary entrance and exit for guests and staff"
+            "direction": "正门",
+            "destination": "卡桑德拉镇街道",
+            "description": "客人和工作人员的主要出入口"
           }
         ],
-        "keeperNotes": "The Paradil Grand Hotel is the site of THE FIRST MURDER CASE (December 22, 2002). This case is CRITICALLY DISTINCT from the second case: the first victim was a 19-year-old Black girl found in a freezer, completely naked and encased in a massive block of ice. The second case (December 22, 2003) involved a 21-year-old Black girl (Lucifero) killed by gunshot and knife in the Reindeer Bar restroom. Emphasize that these are TWO SEPARATE CASES, exactly one year apart, with DIFFERENT BODIES and DIFFERENT METHODS. The first case serves as background foreshadowing and connects to Bruno's determination to solve both cases.",
+        "keeperNotes": "帕拉迪尔大酒店是第一起谋杀案(2002年12月22日)的现场。这个案件与第二起案件有关键区别:第一个受害者是一名19岁的黑人女孩,在冷冻室中被发现,完全赤裸并被封在一大块冰中。第二起案件(2003年12月22日)涉及一名21岁的黑人女孩(路西菲罗)在驯鹿酒吧卫生间被枪击和刀刺杀。强调这是两起独立案件,正好相隔一年,有不同的尸体和不同的方法。第一起案件作为背景铺垫,与布鲁诺解决两起案件的决心相关联。",
         "permanentChanges": []
       },
-      "tags": ["hotel", "past crime", "unresolved death", "outsider victim"],
+      "tags": ["酒店", "过去犯罪", "未解决死亡", "外来受害者"],
       "connections": [
         {
-          "scenarioName": "Cassandra Town",
-          "relationshipType": "concurrent",
-          "description": "The hotel is part of the town and its unresolved incident contributes to the broader mystery surrounding Cassandra."
+          "scenarioName": "卡桑德拉镇",
+          "relationshipType": "并发",
+          "description": "酒店是镇的一部分,其未解决的事件对围绕卡桑德拉的更广泛谜团有所贡献。"
         }
       ]
     }

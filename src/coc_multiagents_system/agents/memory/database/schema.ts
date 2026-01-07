@@ -1099,4 +1099,91 @@ export class CoCDatabase {
       clueRevelations: row.clue_revelations ? JSON.parse(row.clue_revelations) : null,
     }));
   }
+
+  /**
+   * Update or insert a single NPC relationship
+   * Used for incremental relationship updates during gameplay
+   */
+  upsertNPCRelationship(
+    sourceNpcId: string,
+    targetId: string,
+    targetName: string,
+    relationshipType: string,
+    attitude: number,
+    description?: string,
+    history?: string
+  ): void {
+    const database = this.db;
+    const relId = `${sourceNpcId}-rel-${targetId}`;
+    
+    const stmt = database.prepare(`
+      INSERT INTO npc_relationships (
+        id, source_id, target_id, target_name, relationship_type, attitude, description, history
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(source_id, target_id) DO UPDATE SET
+        target_name = excluded.target_name,
+        relationship_type = excluded.relationship_type,
+        attitude = excluded.attitude,
+        description = excluded.description,
+        history = excluded.history
+    `);
+    
+    stmt.run(
+      relId,
+      sourceNpcId,
+      targetId,
+      targetName,
+      relationshipType,
+      attitude,
+      description || null,
+      history || null
+    );
+  }
+
+  /**
+   * Batch update multiple NPC relationships
+   * More efficient for updating many relationships at once
+   */
+  batchUpsertNPCRelationships(relationships: Array<{
+    sourceNpcId: string;
+    targetId: string;
+    targetName: string;
+    relationshipType: string;
+    attitude: number;
+    description?: string;
+    history?: string;
+  }>): void {
+    if (relationships.length === 0) return;
+    
+    const database = this.db;
+    const stmt = database.prepare(`
+      INSERT INTO npc_relationships (
+        id, source_id, target_id, target_name, relationship_type, attitude, description, history
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(source_id, target_id) DO UPDATE SET
+        target_name = excluded.target_name,
+        relationship_type = excluded.relationship_type,
+        attitude = excluded.attitude,
+        description = excluded.description,
+        history = excluded.history
+    `);
+    
+    const transaction = this.db.transaction(() => {
+      for (const rel of relationships) {
+        const relId = `${rel.sourceNpcId}-rel-${rel.targetId}`;
+        stmt.run(
+          relId,
+          rel.sourceNpcId,
+          rel.targetId,
+          rel.targetName,
+          rel.relationshipType,
+          rel.attitude,
+          rel.description || null,
+          rel.history || null
+        );
+      }
+    });
+    
+    transaction();
+  }
 }

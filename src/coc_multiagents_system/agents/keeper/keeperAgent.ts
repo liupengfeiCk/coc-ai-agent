@@ -28,13 +28,19 @@ export class KeeperAgent {
    * Generate narrative description with clue revelation based on current game state and user query
    */
   async generateNarrative(characterInput: string, gameStateManager: GameStateManager): Promise<{narrative: string, clueRevelations: any, updatedGameState: GameState}> {
+    const totalStartTime = Date.now();
+    const timings: Record<string, number> = {};
+    
     const runtime = createRuntime();
     const gameState = gameStateManager.getGameState();
     
     // 1. Get complete scenario information
+    let stepStart = Date.now();
     const completeScenarioInfo = this.extractCompleteScenarioInfo(gameState);
+    timings['extractScenario'] = Date.now() - stepStart;
     
     // 2. Get all action results (including player and NPC actions)
+    stepStart = Date.now();
     const allActionResultsRaw = this.getAllActionResults(gameState);
     
     // Filter out diceRolls field (not used in template)
@@ -42,11 +48,15 @@ export class KeeperAgent {
     
     // 2.1. Get the latest complete action result (for backward compatibility)
     const latestCompleteActionResult = allActionResults.length > 0 ? allActionResults[allActionResults.length - 1] : null;
+    timings['extractActionResults'] = Date.now() - stepStart;
     
     // 3. Get complete attributes of NPCs involved in action results
+    stepStart = Date.now();
     const actionRelatedNpcs = this.extractActionRelatedNpcs(gameState, allActionResults);
+    timings['extractNPCs'] = Date.now() - stepStart;
     
     // 5. Detect scene changes, if changed then get previous scene information
+    stepStart = Date.now();
     const isTransition = gameState.temporaryInfo.transition;
     const previousScenarioInfo = isTransition ? this.extractPreviousScenarioInfo(gameState) : null;
     
@@ -70,8 +80,10 @@ export class KeeperAgent {
     //   visibility: evidence.visibility,
     // }));
     const ragResults: any[] = []; // Temporarily set to empty array
+    timings['prepareContext'] = Date.now() - stepStart;
     
     // 获取模板
+    stepStart = Date.now();
     const template = getKeeperTemplate();
     
     // Prepare template context (JSON-packed to keep template concise)
@@ -108,20 +120,38 @@ export class KeeperAgent {
 
     // Use template and LLM to generate narrative and clue revelations
     const prompt = composeTemplate(template, {}, templateContext, "handlebars");
+    timings['buildPrompt'] = Date.now() - stepStart;
+    
+    const promptChars = prompt.length;
+    console.log(`\n📝 [Keeper Agent] LLM请求统计:`);
+    console.log(`   Prompt字符数: ${promptChars} chars`);
 
     let response: string = "";
     let parsedResponse: any;
     const maxAttempts = 2; // Try up to 2 times
+    let totalLlmTime = 0;
+    let totalParseTime = 0;
 
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       try {
+        const llmStart = Date.now();
         response = await generateText({
           runtime,
           context: prompt,
           modelClass: ModelClass.MEDIUM,
         });
+        const llmDuration = Date.now() - llmStart;
+        totalLlmTime += llmDuration;
+        timings[`llmCall_attempt${attempt}`] = llmDuration;
+        
+        if (attempt === 1) {
+          console.log(`   Response字符数: ${response.length} chars`);
+          console.log(`   总字符数: ${promptChars + response.length} chars`);
+          console.log(`   LLM耗时: ${llmDuration}ms\n`);
+        }
 
         // Extract JSON from response (in case LLM wraps it in markdown code blocks)
+        const parseStart = Date.now();
         const jsonText =
           response.match(/```(?:json)?\s*([\s\S]*?)```/i)?.[1] ||
           response.match(/\{[\s\S]*\}/)?.[0];
@@ -133,6 +163,9 @@ export class KeeperAgent {
           }
           console.warn("Failed to extract JSON from keeper response");
           console.warn("Response content:", response);
+          totalParseTime += Date.now() - parseStart;
+          timings['llmTotal'] = totalLlmTime;
+          timings['parseJSON'] = totalParseTime;
           return {
             narrative: response,
             clueRevelations: { scenarioClues: [], npcClues: [], npcSecrets: [] },
@@ -141,6 +174,7 @@ export class KeeperAgent {
         }
 
         parsedResponse = JSON.parse(jsonText);
+        totalParseTime += Date.now() - parseStart;
         console.log(`✅ Successfully parsed keeper response on attempt ${attempt}`);
         break; // Success, exit retry loop
 
@@ -165,6 +199,8 @@ export class KeeperAgent {
           console.log("✓ Extracted narrative from incomplete JSON");
         }
 
+        timings['llmTotal'] = totalLlmTime;
+        timings['parseJSON'] = totalParseTime;
         return {
           narrative: fallbackNarrative,
           clueRevelations: { scenarioClues: [], npcClues: [], npcSecrets: [] },
@@ -172,11 +208,16 @@ export class KeeperAgent {
         };
       }
     }
+    timings['llmTotal'] = totalLlmTime;
+    timings['parseJSON'] = totalParseTime;
 
     // Update clue states in game state
+    stepStart = Date.now();
     const updatedGameState = this.updateClueStates(gameState, parsedResponse.clueRevelations, gameStateManager);
+    timings['updateClues'] = Date.now() - stepStart;
 
     // Update tension (if provided by LLM)
+    stepStart = Date.now();
     if (parsedResponse.tensionLevel && typeof parsedResponse.tensionLevel === 'number') {
       const oldTension = gameState.tension;
       gameStateManager.updateTension(parsedResponse.tensionLevel);
@@ -202,6 +243,25 @@ export class KeeperAgent {
     // Temporary state is now preserved until next real player input
     // Cleanup happens in entry node for real input only
     const finalGameState = updatedGameState;
+    timings['updateState'] = Date.now() - stepStart;
+    
+    // Print Keeper Agent internal timing breakdown
+    const totalDuration = Date.now() - totalStartTime;
+    const sortedTimings = Object.entries(timings).sort((a, b) => b[1] - a[1]);
+    const timingsSum = Object.values(timings).reduce((sum, time) => sum + time, 0);
+    
+    console.log("\n" + "-".repeat(50));
+    console.log("🎭 [Keeper Agent] 内部耗时分解:");
+    console.log("-".repeat(50));
+    sortedTimings.forEach(([step, time]) => {
+      const percentage = ((time / totalDuration) * 100).toFixed(1);
+      console.log(`  ${step.padEnd(25)} ${time.toString().padStart(6)}ms  ${percentage.padStart(5)}%`);
+    });
+    console.log("-".repeat(50));
+    console.log(`  统计总计: ${timingsSum}ms`);
+    console.log(`  实际总计: ${totalDuration}ms`);
+    console.log(`  未统计开销: ${(totalDuration - timingsSum)}ms`);
+    console.log("-".repeat(50) + "\n");
 
     return {
       narrative: parsedResponse.narrative || response,

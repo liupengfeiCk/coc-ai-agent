@@ -28,15 +28,17 @@ export class ModuleDocumentParser {
     if (!model) {
       const geminiApiKey = process.env.GOOGLE_API_KEY;
       const openaiApiKey = process.env.OPENAI_API_KEY;
-
+      const deepseekApiKey = process.env.DEEPSEEK_API_KEY;
+      
       if (geminiApiKey) {
-        this.llm = createChatModel(ModelProviderName.GOOGLE, ModelClass.SMALL);
+        // Use small model for document parsing (cost-effective for this task)
+        this.llm = createChatModel(ModelProviderName.GOOGLE, ModelClass.MEDIUM);
       } else if (openaiApiKey) {
-        this.llm = createChatModel(ModelProviderName.OPENAI, ModelClass.SMALL);
+        this.llm = createChatModel(ModelProviderName.OPENAI, ModelClass.MEDIUM);
+      } else if (deepseekApiKey) {
+        this.llm = createChatModel(ModelProviderName.DEEPSEEK, ModelClass.MEDIUM);
       } else {
-        throw new Error(
-          "No API key found. Please set either GOOGLE_API_KEY or OPENAI_API_KEY environment variable."
-        );
+        throw new Error("No API key found. Please set either GOOGLE_API_KEY or OPENAI_API_KEY environment variable.");
       }
     } else {
       this.llm = model;
@@ -178,11 +180,24 @@ File name: ${fileName}
 Return ONLY the JSON object, nothing else.`;
 
     let lastError: unknown;
+    
+    const promptChars = prompt.length;
+    console.log(`\n📝 [Module Document Parser] LLM请求统计:`);
+    console.log(`   File: ${fileName}`);
+    console.log(`   Prompt字符数: ${promptChars} chars`);
 
     for (let attempt = 1; attempt <= 3; attempt++) {
       try {
+        const llmStart = Date.now();
         const response = await this.llm.invoke(prompt);
+        const llmDuration = Date.now() - llmStart;
         const content = response.content as string;
+        
+        if (attempt === 1) {
+          console.log(`   Response字符数: ${content.length} chars`);
+          console.log(`   总字符数: ${promptChars + content.length} chars`);
+          console.log(`   LLM耗时: ${llmDuration}ms\n`);
+        }
 
         const jsonText =
           content.match(/```(?:json)?\s*([\s\S]*?)```/i)?.[1] ||

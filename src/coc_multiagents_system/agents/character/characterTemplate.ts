@@ -73,17 +73,26 @@ For each NPC in the current scene, analyze:
 
 2. **What type of response?** (responseType: one of the eight action types, or "none")
    
-   The responseType MUST be one of the following eight action types (same as character actions):
+   **CRITICAL: The responseType MUST be EXACTLY one of these eight action types:**
    
-   - **none**: NPC does not respond (unaware, uninterested, or unable)
-   - **exploration**: NPC investigates, searches, or explores (discovering clues, understanding environment, gathering information)
-   - **social**: NPC engages in social interaction (influencing NPCs, gathering intelligence, reaching consensus, dialogue)
-   - **stealth**: NPC acts without being detected (acting without being detected)
-   - **combat**: NPC initiates or responds with combat actions (causing damage, subduing or stopping opponents)
-   - **chase**: NPC extends or closes distance (extending or closing distance)
-   - **mental**: NPC shows psychological reaction (withstanding or resisting psychological shock)
-   - **environmental**: NPC confronts environment or physiological limits (confronting environment and physiological limits)
-   - **narrative**: NPC makes narrative actions 
+   - **"exploration"** - NPC investigates, searches, examines, or explores (discovering clues, understanding environment, gathering information)
+   - **"social"** - NPC engages in social interaction (dialogue, persuasion, deception, intimidation, influencing NPCs, gathering intelligence, reaching consensus)
+   - **"stealth"** - NPC acts covertly without being detected (hiding, concealing, sneaking, acting without being detected)
+   - **"combat"** - NPC initiates or responds with combat actions (attacking, defending, causing damage, subduing or stopping opponents)
+   - **"chase"** - NPC extends or closes distance (pursuing, fleeing, extending or closing distance)
+   - **"mental"** - NPC shows psychological reaction (fear, resolve, madness, withstanding or resisting psychological shock)
+   - **"environmental"** - NPC confronts environment or physiological limits (endurance, survival, confronting environment and physiological limits)
+   - **"narrative"** - NPC makes narrative actions (exposition, explanation, story advancement)
+   - **"none"** - NPC does not respond (unaware, uninterested, or unable)
+   
+   **DO NOT use any other values like "observation", "investigate", "talk", "hide", "attack", "run", "think", etc.**
+   **These eight types cover ALL possible NPC responses. Map any action to the closest matching type:**
+   - Observing/examining → "exploration"
+   - Talking/speaking → "social"
+   - Hiding/sneaking → "stealth"
+   - Attacking/fighting → "combat"
+   - Running/fleeing → "chase"
+   - Thinking/remembering → "mental" 
 
 3. **Response Description**: A brief description of what the NPC will do
 
@@ -92,6 +101,72 @@ For each NPC in the current scene, analyze:
    - Consider narrative flow and cause-effect relationships when assigning order
 
 5. **Target Character**: If the response is directed at a specific character (investigator or another NPC), specify the target name. If the response is general or not directed at anyone, set to null
+
+## Relationship and Attitude Management
+
+**CRITICAL: You MUST manage NPC relationships with the investigator based on their interactions.**
+
+### Understanding NPC First-Time Interaction Flags
+
+**Each NPC in the "Scene NPCs" data includes an isFirstTimeInteraction field:**
+- This field has been PRE-CALCULATED for you based on the NPC's relationships
+- isFirstTimeInteraction: true means this NPC has NO existing relationship with the investigator
+- isFirstTimeInteraction: false means this NPC already has a relationship with the investigator
+
+**YOU MUST use this field directly in your response - DO NOT recalculate it yourself.**
+
+### For First-Time Interactions (isFirstTimeInteraction: true)
+
+**When an NPC has isFirstTimeInteraction: true:**
+
+1. **Copy the value: Set isFirstInteraction to true** (same as the NPC's flag)
+2. **REQUIRED: Generate initialRelationship** based on:
+   - The NPC's personality, background, and goals
+   - The context of this first interaction
+   - The investigator's action and its impact on the NPC
+   
+   Format (JSON object):
+   {
+     "relationshipType": "ally|enemy|neutral|friend|rival|stranger",
+     "attitude": <number between -30 and +30>,
+     "description": "Brief description of the relationship"
+   }
+   
+   **Initial Attitude Guidelines:**
+   - Positive first impression: +10 to +30 (helpful, friendly, interested)
+   - Neutral first impression: -10 to +10 (indifferent, professional)
+   - Negative first impression: -30 to -10 (suspicious, hostile, annoyed)
+
+3. **Do NOT set attitudeChange** for first-time interactions (only use initialRelationship)
+
+### For Existing Relationships (isFirstTimeInteraction: false)
+
+**When an NPC has isFirstTimeInteraction: false:**
+
+1. **Copy the value: Set isFirstInteraction to false** (same as the NPC's flag, or omit it)
+2. **Do NOT generate initialRelationship**
+3. **ONLY set attitudeChange IF this is a targeted action** (action target matches this NPC)
+   
+   **Attitude Change Rules:**
+   - **Friendly/Helpful actions**: +1 to +5 (max +5 per interaction)
+   - **Hostile/Harmful actions**: -100 to 0 (based on severity)
+     - Minor offense: -5 to -20
+     - Serious offense: -30 to -60
+     - Severe offense: -70 to -100
+   - **Neutral actions**: 0 (no change)
+   
+   **Total Attitude Range:** -100 to +100
+
+4. **For NON-targeted actions**: Do NOT set attitudeChange (attitude only changes for targeted interactions)
+
+### Important Notes
+
+- **Always use the NPC's isFirstTimeInteraction field directly** - it has been pre-calculated for you
+- **isFirstTimeInteraction: true** = MUST provide initialRelationship
+- **isFirstTimeInteraction: false** = ONLY set attitudeChange for targeted actions
+- **First-time interaction**: NPC MUST respond (you are analyzing NPCs that passed the probability filter)
+- **Attitude = 0**: Represents complete neutrality (no emotional bias)
+- The player can always initiate targeted interactions (100% response rate for direct actions)
 
 ## Output Format (JSON only)
 
@@ -102,13 +177,65 @@ Return an array of NPC response analyses, one for each NPC in the current scene:
     {
       "npcName": "NPC name",
       "willRespond": true,
-      "responseType": "exploration|social|stealth|combat|chase|mental|environmental|narrative",
+      "responseType": "exploration|social|stealth|combat|chase|mental|environmental|narrative|none",
       "responseDescription": "Brief description of what the NPC will do",
       "executionOrder": 1,
-      "targetCharacter": "target character name (investigator or another NPC) if the response is directed at someone, or null if general"
+      "targetCharacter": "target character name (investigator or another NPC) if the response is directed at someone, or null if general",
+      
+      // ⚠️ CRITICAL: Copy the isFirstTimeInteraction value from the NPC data directly
+      "isFirstInteraction": true,  // Use the NPC's isFirstTimeInteraction field value
+      "initialRelationship": {  // REQUIRED when isFirstInteraction=true, omit when false
+        "relationshipType": "ally|enemy|neutral|friend|rival|stranger",
+        "attitude": -15,  // -30 to +30 for first-time interactions
+        "description": "Brief description of initial impression"
+      },
+      "attitudeChange": 3  // ONLY for existing relationships (isFirstInteraction=false) AND targeted actions (-100 to +5)
     }
   ]
 }
+
+**How to Use the isFirstTimeInteraction Field:**
+1. Look at each NPC's data in the "Scene NPCs" section
+2. Find the isFirstTimeInteraction field (pre-calculated for you)
+3. Copy this value directly to your response's isFirstInteraction field
+4. If true → provide initialRelationship object
+5. If false → only set attitudeChange for targeted actions
+
+**Example 1 - First-Time Interaction:**
+NPC data shows: "isFirstTimeInteraction": true
+JSON format:
+{
+  "npcName": "南希·夏洛特",
+  "willRespond": true,
+  "responseType": "social",
+  "responseDescription": "南希微笑着询问调查员需要什么花",
+  "executionOrder": 1,
+  "targetCharacter": "马克·莱利",
+  "isFirstInteraction": true,
+  "initialRelationship": {
+    "relationshipType": "stranger",
+    "attitude": 10,
+    "description": "花店老板对新顾客保持友好的职业态度"
+  }
+}
+
+**Example 2 - Existing Relationship:**
+NPC data shows: "isFirstTimeInteraction": false
+JSON format:
+{
+  "npcName": "南希·夏洛特",
+  "willRespond": true,
+  "responseType": "social",
+  "responseDescription": "南希热情地向老顾客推荐新到的玫瑰",
+  "executionOrder": 1,
+  "targetCharacter": "马克·莱利",
+  "isFirstInteraction": false,
+  "attitudeChange": 2
+}
+
+**CRITICAL REMINDER**: responseType MUST be one of these EXACT strings:
+- "exploration", "social", "stealth", "combat", "chase", "mental", "environmental", "narrative", or "none"
+- DO NOT use "observation", "investigate", "talk", "hide", "attack", "run", "think", or any other values
 
 ## Important Notes
 

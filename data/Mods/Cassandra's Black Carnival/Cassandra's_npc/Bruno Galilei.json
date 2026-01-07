@@ -1,20 +1,20 @@
 [
   {
-    "name": "Bruno Galilei",
-    "occupation": "Police detective (former private investigator)",
+    "name": "布鲁诺·伽利略",
+    "occupation": "警探(前私家侦探)",
     "age": 42,
     "gender": "male",
-    "appearance": "A tall, powerfully built man with Russian ancestry. He has silver-gray hair, very pale eyes, and a rugged, straightforward demeanor that reflects his physical strength and honest nature.",
-    "personality": "Sincere, upright, patient, and deeply driven by a sense of justice. Reliable and trustworthy, with a calm surface that hides strong inner determination and a willingness for self-sacrifice.",
-    "background": "Bruno once ran a private detective agency with friends, but it failed because he refused unethical or illegal commissions and even turned corrupt clients over to the authorities. After the agency collapsed, he continued working as a police detective. For over a year, he persistently investigated an unresolved murder case that his superiors ignored, unknowingly drawing the attention of dangerous forces in Cassandra.",
+    "appearance": "一个高大、体格强壮的俄罗斯裔男人。他有着银灰色的头发、非常苍白的眼睛,以及粗犷坦率的举止,反映了他的体力和诚实本性。",
+    "personality": "真诚、正直、耐心,被深刻的正义感驱动。可靠值得信赖,表面平静隐藏着强烈的内在决心和自我牺牲的意愿。",
+    "background": "布鲁诺曾与朋友经营私家侦探社,但因为他拒绝不道德或非法委托,甚至将腐败客户移交给当局而失败了。侦探社倒闭后,他继续担任警探。一年多来,他坚持调查一起上级忽视的未解决谋杀案,在不知不觉中引起了卡珊德拉危险势力的注意。",
     "goals": [
-      "Uncover the truth behind the unsolved 2002 Paradil Hotel murder case (the old case involving the unknown 19-year-old Black girl)",
-      "Investigate the 2003 Reindeer Bar murder case (the new case involving Jenny Florence/Lucifero)",
-      "Protect Cassandra and uphold justice regardless of personal cost"
+      "揭开2002年帕拉迪尔酒店未解决谋杀案背后的真相(涉及未知19岁黑人女孩的旧案)",
+      "调查2003年驯鹿酒吧谋杀案(涉及珍妮·弗洛伦斯/露西弗罗的新案)",
+      "保护卡珊德拉并维护正义,不惜个人代价"
     ],
     "secrets": [
-      "He suspects corruption within the local authorities but lacks proof",
-      "He received anonymous warnings telling him not to trust his superiors or the local priest"
+      "他怀疑当地当局内部存在腐败但缺乏证据",
+      "他收到匿名警告,告诉他不要信任他的上级或当地神父"
     ],
     "attributes": {
       "STR": 75,
@@ -48,112 +48,112 @@
     },
     "inventory": [
       {
-        "name": "Case evidence package (kept by Bruno)",
+        "name": "案件证据包(布鲁诺保管)",
         "properties": {
-          "clue": "物证由布鲁诺保管；会给调查员看。若调查员要求带走，布鲁诺会犹豫后允许调查员“保管一晚”，并强调次日早上必须归还。"
+          "clue": "物证由布鲁诺保管;会给调查员看。若调查员要求带走,布鲁诺会犹豫后允许调查员'保管一晚',并强调次日早上必须归还。"
         }
       },
       {
-        "name": "Victim's phone (from 2003 Reindeer Bar case)",
+        "name": "受害者手机(来自2003年驯鹿酒吧案件)",
         "quantity": 1,
         "properties": {
-          "clue": "Jenny Florence (Lucifero)'s phone from the 2003 Reindeer Bar murder case. Contains: 1) Unfinished dial number '8764239' (not a phone number format); 2) Reply to unknown source SMS: 'No way, you can't get another penny from me, you scoundrel' / 'Alright, we'll see'; 3) Browser stopped at a blog page about a hacker who hacked local TV station and published dangerous conspiracy theories about a leader being a cultist (this message was cleared by Martin and hard to find online or in newspapers)."
+          "clue": "珍妮·弗洛伦斯(露西弗罗)在2003年驯鹿酒吧谋杀案中的手机。包含:1)未完成拨号号码'8764239'(不是电话号码格式);2)回复未知来源短信:'不可能,你休想再从我这里拿到一分钱,你这个无赖'/'好吧,走着瞧';3)浏览器停在一个博客页面,内容关于黑客入侵当地电视台并发布关于领导人是邪教徒的危险阴谋论(此信息被马丁清除,很难在网上或报纸上找到)。"
         }
       },
       {
-        "name": "Note/paper slip from victim's pocket (2003 Reindeer Bar case)",
+        "name": "受害者口袋里的纸条/纸片(2003年驯鹿酒吧案件)",
         "quantity": 1,
         "properties": {
-          "clue": "Note from Jenny Florence (Lucifero)'s pocket listing various 'jobs': Tiger Kovind: deliver photos to little mouse, 1000 USD; Ghost Hand: transport goods to dock, 1500 USD; Tallinn Widow: threaten her husband disguised as terrorist, 5000 USD; Shore Master (Adolph): contact and threaten Red Stone Lady, raise price, 10000-20000 USD."
+          "clue": "来自珍妮·弗洛伦斯(露西弗罗)口袋的纸条,列出各种'工作':老虎科温德:将照片送给小老鼠,1000美元;鬼手:将货物运到码头,1500美元;塔林寡妇:伪装成恐怖分子威胁她丈夫,5000美元;岸主(阿道夫):联系并威胁红石女士,提高价格,10000-20000美元。"
         }
       },
       {
-        "name": "Folding knife (stuck in victim's back, 2003 Reindeer Bar case)",
+        "name": "折叠刀(插在受害者背上,2003年驯鹿酒吧案件)",
         "quantity": 1,
         "properties": {
-          "clue": "Crime scene evidence: folding knife stuck in Jenny Florence (Lucifero)'s back. This knife belonged to Philip Scaletta, who lost it during a fight at the Reindeer Bar earlier that day. Martin (Ghost Hand) picked it up and gave it to Lux to plant on the body to confuse the investigation."
+          "clue": "案发现场证据:插在珍妮·弗洛伦斯(露西弗罗)背上的折叠刀。这把刀属于菲利普·斯卡莱塔,他当天早些时候在驯鹿酒吧打架时丢失了它。马丁(鬼手)捡起它并交给勒克斯放在尸体上以混淆调查。"
         }
       },
       {
-        "name": "Case files and evidence from 2002 Paradil Hotel murder case",
+        "name": "2002年帕拉迪尔酒店谋杀案的案件文件和证据",
         "quantity": 1,
         "properties": {
-          "clue": "Files related to the old case: unknown 19-year-old Black girl found in cold storage at Paradil Hotel on December 22, 2002. Body was naked, encased in ice, no wounds, no identification, no relatives found. Case was shelved."
+          "clue": "与旧案相关的文件:2002年12月22日在帕拉迪尔酒店冷库发现的未知19岁黑人女孩。尸体赤裸,被冰封,没有伤口,没有身份证明,没有找到亲属。案件被搁置。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "He does not know Shandra Hernandez's true identity but trusts her deeply.",
+        "clueText": "他不知道珊德拉·埃尔南德斯的真实身份,但深深信任她。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Shandra Hernandez"
+          "珊德拉·埃尔南德斯"
         ]
       },
       {
-        "clueText": "An anonymous message warned him not to trust Mayor Padrich or Father Constantine.",
+        "clueText": "一条匿名消息警告他不要信任帕德里奇市长或康斯坦丁神父。",
         "category": "secret",
         "difficulty": "hard",
         "relatedTo": [
-          "Mayor Padrich",
-          "Father Constantine"
+          "帕德里奇市长",
+          "康斯坦丁神父"
         ]
       },
       {
-        "clueText": "He was about to expose crucial leads in the 2002 Paradil Hotel murder case before his death.",
+        "clueText": "他在死前即将揭露2002年帕拉迪尔酒店谋杀案的关键线索。",
         "category": "knowledge",
         "difficulty": "extreme",
         "relatedTo": [
-          "2002 Paradil Hotel murder",
-          "Unknown victim"
+          "2002年帕拉迪尔酒店谋杀案",
+          "未知受害者"
         ]
       },
       {
-        "clueText": "He received an anonymous SMS from Lucifero warning him not to trust his superiors, especially Patrizio, and that Constantine was not qualified to serve God and was in league with Patrizio.",
+        "clueText": "他收到了露西弗罗发来的匿名短信,警告他不要信任上级,尤其是帕特里齐奥,以及康斯坦丁不配侍奉上帝并与帕特里齐奥勾结。",
         "category": "secret",
         "difficulty": "hard",
         "relatedTo": [
-          "Jenny Florence (Lucifero)",
-          "Patrizio von Samsa",
-          "Constantine Frollo"
+          "珍妮·弗洛伦斯(露西弗罗)",
+          "帕特里齐奥·冯·萨姆萨",
+          "康斯坦丁·弗罗洛"
         ]
       },
       {
-        "clueText": "He was investigating both the 2002 Paradil Hotel murder case (unknown 19-year-old Black girl) and the 2003 Reindeer Bar murder case (Jenny Florence/Lucifero), believing they were connected.",
+        "clueText": "他同时调查2002年帕拉迪尔酒店谋杀案(未知19岁黑人女孩)和2003年驯鹿酒吧谋杀案(珍妮·弗洛伦斯/露西弗罗),认为它们有关联。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "2002 Paradil Hotel murder",
-          "2003 Reindeer Bar murder",
-          "Unknown victim",
-          "Jenny Florence"
+          "2002年帕拉迪尔酒店谋杀案",
+          "2003年驯鹿酒吧谋杀案",
+          "未知受害者",
+          "珍妮·弗洛伦斯"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Shandra Hernandez",
+        "targetName": "珊德拉·埃尔南德斯",
         "relationshipType": "friend",
         "attitude": 70,
-        "description": "A close confidant and emotional refuge for Bruno.",
-        "history": "Bruno often spent his free time at her shop, trusting her enough to confide his worries."
+        "description": "布鲁诺的亲密知己和情感避难所。",
+        "history": "布鲁诺经常在空闲时间去她的店里,信任她到足以倾诉他的担忧。"
       },
       {
-        "targetName": "Lux Lynch",
+        "targetName": "勒克斯·林奇",
         "relationshipType": "ally",
         "attitude": 60,
-        "description": "A trusted colleague within the police force.",
-        "history": "Lux Lynch respects Bruno and discreetly protects his investigation materials after his death."
+        "description": "警察部队内值得信赖的同事。",
+        "history": "勒克斯·林奇尊重布鲁诺,在他死后谨慎保护他的调查材料。"
       },
       {
-        "targetName": "Mayor Padrich",
+        "targetName": "帕德里奇市长",
         "relationshipType": "enemy",
         "attitude": -60,
-        "description": "An authority figure Bruno was warned against.",
-        "history": "Bruno believed Padrich was obstructing justice in the murder investigation."
+        "description": "布鲁诺被警告过的权威人物。",
+        "history": "布鲁诺认为帕德里奇在谋杀案调查中阻碍正义。"
       }
     ],
-    "notes": "Bruno Galilei takes the initiative in contacting the investigators, personally meeting them at the train station upon their arrival in Cassandra. He leads the investigators through the old streets of the town, introduces key locations, and drives them through Cassandra while explaining the town’s layout and atmosphere, acting as their initial guide and escort. During the journey, Bruno shares details of the case with the investigators but deliberately retains control over official resources. All physical evidence remains in Bruno’s custody; although he may hesitate, he can be persuaded to allow the investigators to examine and temporarily keep certain items for one night only, explicitly requiring that all evidence be returned to him the following morning. The investigation lacks full support from Bruno’s superiors, and he operates largely on personal authority rather than institutional backing. Despite these limitations, Bruno uses his position and initiative to push the investigation forward, arranging for suspects to be gathered at the Reindeer Bar for secondary questioning.Bruno ultimately dies under mysterious circumstances, his body found drained and marked by unnatural bite wounds, leaving behind an unfinished warning message on his phone."
+    "notes": "布鲁诺·伽利略主动联系调查员,在他们抵达卡珊德拉时亲自在火车站接他们。他带领调查员穿过镇上的旧街道,介绍关键地点,并开车带他们游览卡珊德拉,同时解释镇的布局和氛围,充当他们最初的向导和护送者。在旅途中,布鲁诺与调查员分享案件细节,但故意保留对官方资源的控制。所有物证都由布鲁诺保管;虽然他可能会犹豫,但可以说服他允许调查员检查并暂时保管某些物品一晚,明确要求所有证据必须在第二天早上归还给他。调查缺乏布鲁诺上级的全力支持,他主要依靠个人权威而非机构支持来运作。尽管有这些限制,布鲁诺利用他的职位和主动性推动调查,安排在驯鹿酒吧召集嫌疑人进行二次审讯。布鲁诺最终在神秘情况下死亡,他的尸体被发现时已被吸干并留有不自然的咬痕,他的手机上留下了一条未完成的警告信息。"
   }
 ]

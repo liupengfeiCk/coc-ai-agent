@@ -1,86 +1,86 @@
 [
     {
-      "name": "Harrison's Hardware Store",
-      "description": "A small local hardware store that appears ordinary on the surface, but secretly serves as an illegal arms dealer protected by the local mafia. It functions as a discreet supply point for weapons and equipment in Cassandra.",
+      "name": "哈里森的五金店",
+      "description": "一家表面上看起来很普通的小型本地五金店,但暗中充当受当地黑手党保护的非法军火商。它在卡桑德拉充当武器和装备的隐蔽供应点。",
       "snapshot": {
-        "name": "The Hardware Store",
-        "location": "A street-level hardware store in Cassandra",
-        "description": "The hardware store is run by a middle-aged man who appears shrewd and observant. The shop contains shelves of standard tools and supplies, while the upper display shelves hold small handmade inventions marked as not for sale. Harrison enjoys introducing these creations to curious customers and may offer discounts if conversation goes well. Beneath this friendly merchant exterior lies a covert weapons trade.",
+        "name": "五金店",
+        "location": "卡桑德拉的一家街头五金店",
+        "description": "五金店由一位看起来精明且善于观察的中年男子经营。店内货架上摆满了标准工具和用品,而上层展示架上放着标有非卖品的小型手工发明。哈里森喜欢向好奇的顾客介绍这些作品,如果谈话顺利可能会提供折扣。在这个友好商人的外表下隐藏着秘密的武器交易。",
         "characters": [
           {
-            "name": "Harrison",
-            "role": "Shop owner / Illegal arms dealer",
-            "status": "Alive",
-            "location": "Behind the counter of the hardware store",
-            "notes": "A middle-aged man who often squints while speaking, giving him a sly appearance. Publicly a hardware store owner, secretly sells firearms and is under local mafia protection."
+            "name": "哈里森",
+            "role": "店主 / 非法军火商",
+            "status": "存活",
+            "location": "五金店柜台后",
+            "notes": "一位说话时经常眯眼的中年男子,给人狡猾的印象。表面上是五金店老板,暗中出售枪支,受当地黑手党保护。"
           }
         ],
         "clues": [
           {
-            "clueText": "Harrison reacts to a specific coded phrase about hammering a nail.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Hardware store counter",
-            "discoveryMethod": "Conversation",
-            "reveals": ["Harrison is involved in an illegal trade"]
+            "clueText": "哈里森对关于敲钉子的特定暗号有反应。",
+            "category": "目击",
+            "difficulty": "普通",
+            "location": "五金店柜台",
+            "discoveryMethod": "对话",
+            "reveals": ["哈里森参与非法交易"]
           },
           {
-            "clueText": "Harrison possesses a hidden inventory of firearms not displayed openly.",
-            "category": "physical",
-            "difficulty": "hard",
-            "location": "Back area of the store",
-            "discoveryMethod": "Persuade or Intimidate",
-            "reveals": ["The hardware store is a front for weapons trafficking"]
+            "clueText": "哈里森拥有未公开展示的隐藏枪支库存。",
+            "category": "物理",
+            "difficulty": "困难",
+            "location": "店铺后区",
+            "discoveryMethod": "说服或威胁",
+            "reveals": ["五金店是武器贩运的掩护"]
           },
           {
-            "clueText": "Harrison mentions that his protection comes from the local mafia rather than being a member himself.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Hardware store",
-            "discoveryMethod": "Conversation",
-            "reveals": ["Connection between the hardware store and organized crime"]
+            "clueText": "哈里森提到他的保护来自当地黑手党,而不是自己是成员。",
+            "category": "目击",
+            "difficulty": "普通",
+            "location": "五金店",
+            "discoveryMethod": "对话",
+            "reveals": ["五金店与有组织犯罪之间的联系"]
           }
         ],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Normal indoor lighting with slightly dim corners due to cluttered shelves.",
+            "type": "照明",
+            "description": "正常的室内照明,由于货架杂乱,角落略显昏暗。",
             "mechanicalEffect": ""
           },
           {
-            "type": "sound",
-            "description": "Quiet, with occasional metallic clinks from tools and shelves.",
+            "type": "声音",
+            "description": "安静,偶尔有工具和货架发出的金属叮当声。",
             "mechanicalEffect": ""
           }
         ],
         "events": [
-          "Use of the coded phrase to access illegal goods",
-          "Harrison showcases non-sale inventions",
-          "Negotiation over weapon prices"
+          "使用暗号访问非法商品",
+          "哈里森展示非卖品发明",
+          "武器价格谈判"
         ],
         "exits": [
           {
-            "direction": "Front Door",
-            "destination": "Cassandra streets",
-            "description": "The main entrance to the hardware store"
+            "direction": "前门",
+            "destination": "卡桑德拉街道",
+            "description": "五金店的主入口"
           }
         ],
-        "keeperNotes": "Harrison should appear cautious but not openly hostile. If investigators know the correct code phrase, he treats them as potential clients rather than threats. Weapon availability can strongly affect later encounters.",
+        "keeperNotes": "哈里森应该显得谨慎但不公开敌对。如果调查员知道正确的暗号,他会把他们当作潜在客户而不是威胁。武器可用性会强烈影响后续遭遇。",
         "permanentChanges": [
-          "Once the code phrase is used, investigators gain access to Harrison’s illegal inventory"
+          "一旦使用暗号,调查员就可以访问哈里森的非法库存"
         ]
       },
-      "tags": ["hardware store", "illegal arms", "mafia connection", "black market"],
+      "tags": ["五金店", "非法武器", "黑手党联系", "黑市"],
       "connections": [
         {
-          "scenarioName": "Church Underground Casino",
-          "relationshipType": "concurrent",
-          "description": "Both locations are indirectly protected and influenced by the local mafia."
+          "scenarioName": "教堂地下赌场",
+          "relationshipType": "并发",
+          "description": "这两个地点都间接受到当地黑手党的保护和影响。"
         },
         {
-          "scenarioName": "Train Station (The Dock)",
-          "relationshipType": "alternate",
-          "description": "The hardware store provides local weapons, while the train station handles external black-market logistics."
+          "scenarioName": "火车站(码头)",
+          "relationshipType": "替代",
+          "description": "五金店提供本地武器,而火车站处理外部黑市物流。"
         }
       ]
     }

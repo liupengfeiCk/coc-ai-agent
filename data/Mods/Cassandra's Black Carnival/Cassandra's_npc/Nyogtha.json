@@ -1,16 +1,16 @@
 [
     {
-      "name": "Nyogtha",
-      "occupation": "Great Old One / Subterranean Cosmic Entity",
-      "appearance": "An immense, amorphous mass of cold, gelatinous substance, riddled with countless minute fissures. Its body constantly seeps and writhes, as if the earth itself has been torn open and given malignant life. Any creature near it suffers innumerable tiny wounds as its substance shifts and presses against reality.",
-      "background": "Nyogtha is an ancient subterranean cosmic entity, classified among the Great Old Ones or beings of comparable magnitude. It does not fully exist within the material world, manifesting only through powerful rituals or dimensional breaches. Wherever Nyogtha appears, the ground collapses inward, forming a gateway to a lightless abyss beneath the earth.",
+      "name": "奈约格萨",
+      "occupation": "旧日支配者 / 地底宇宙实体",
+      "appearance": "一团巨大、无定形的冰冷胶质物质,遍布无数微小裂隙。它的身体不断渗漏蠕动,仿佛大地本身被撕开并获得了恶意生命。任何接近它的生物都会因其物质的移动和挤压而遭受无数微小伤口。",
+      "background": "奈约格萨是一个古老的地底宇宙实体,被归类为旧日支配者或具有相当量级的存在。它并不完全存在于物质世界,只能通过强大的仪式或维度裂缝显现。奈约格萨出现的地方,地面会向内坍塌,形成通往地下无光深渊的门户。",
       "goals": [
-        "Drag living beings into the subterranean abyss",
-        "Expand its influence beneath the earth"
+        "将活人拖入地底深渊",
+        "扩大其在地下的影响力"
       ],
       "secrets": [
-        "Nyogtha cannot be destroyed; when reduced to zero HP it is banished from the material world",
-        "Its alien substance negates conventional concepts of injury and damage"
+        "奈约格萨无法被摧毁;当生命值降至零时,它会被放逐出物质世界",
+        "它的异界物质使传统的伤害概念无效"
       ],
       "attributes": {
         "STR": 425,
@@ -37,25 +37,25 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "Nyogtha's substance renders the first 10 points of damage it would take each round completely ineffective.",
+          "clueText": "奈约格萨的物质使其每回合受到的前10点伤害完全无效。",
           "category": "knowledge",
           "difficulty": "hard",
-          "relatedTo": ["Occult Lore", "Great Old Ones"]
+          "relatedTo": ["神秘学", "旧日支配者"]
         },
         {
-          "clueText": "When Nyogtha is reduced to zero HP, it is not slain but banished from the material world.",
+          "clueText": "当奈约格萨生命值降至零时,它不会被杀死,而是被放逐出物质世界。",
           "category": "knowledge",
           "difficulty": "hard",
-          "relatedTo": ["Banishment Rituals"]
+          "relatedTo": ["放逐仪式"]
         },
         {
-          "clueText": "Any hostile manifestation by Nyogtha automatically inflicts damage on all enemies within 10 yards.",
+          "clueText": "奈约格萨的任何敌意显现都会自动对10码内的所有敌人造成伤害。",
           "category": "observation",
           "difficulty": "regular",
-          "relatedTo": ["Combat Encounters"]
+          "relatedTo": ["战斗遭遇"]
         }
       ],
       "relationships": [],
-      "notes": "Damage Bonus: Not applicable. Nyogtha’s composition makes damage bonus irrelevant.\n\nCombat: If Nyogtha intends to cause harm, all enemies within 10 yards automatically suffer 1D10 damage per round from countless tiny wounds. Nyogtha may also seize a victim and drag them into the subterranean abyss unless repelled or banished by appropriate magic. Nyogtha attacks once per round.\n\nArmor: Each round, the first 10 points of damage inflicted by any means are ignored. When reduced to 0 HP, Nyogtha is banished from the material world rather than destroyed.\n\nSpells: All Call and Contact spells; Create Gate.\n\nSanity Loss: Seeing Nyogtha causes a SAN loss of 1D6/1D20.\n\nNyogtha’s attributes exceed normal Call of Cthulhu limits and represent a cosmic-scale entity rather than a conventional opponent."
+      "notes": "伤害加值:不适用。奈约格萨的构成使伤害加值无关紧要。\n\n战斗:如果奈约格萨意图造成伤害,10码内的所有敌人每回合自动受到1D10点伤害,来自无数微小伤口。奈约格萨还可以抓住受害者并将其拖入地底深渊,除非被适当的魔法击退或放逐。奈约格萨每回合攻击一次。\n\n护甲:每回合,任何方式造成的前10点伤害都会被忽略。当生命值降至0时,奈约格萨被放逐出物质世界而非被摧毁。\n\n法术:所有召唤和接触法术;创造门扉。\n\n理智损失:看到奈约格萨造成1D6/1D20点理智损失。\n\n奈约格萨的属性超出了正常《克苏鲁的呼唤》的限制,代表宇宙级实体而非常规对手。"
     }
   ]

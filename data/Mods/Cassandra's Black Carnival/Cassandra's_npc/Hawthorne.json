@@ -1,15 +1,15 @@
 [
   {
-    "name": "Hawthorne",
-    "occupation": "Forensic Pathologist",
+    "name": "霍桑",
+    "occupation": "法医病理学家",
     "age": 30,
     "gender": "male",
-    "appearance": "An unassuming man of average build with a plain, practical appearance; dresses modestly and often looks slightly tired.",
-    "personality": "Frugal to the point of stinginess, cautious and pragmatic, but deeply loyal to his friends once trust is established.",
-    "background": "Hawthorne is a forensic pathologist who previously worked with the police officer Bruno. Through Bruno, he became close friends with Reid, Lily, Bigbear, and Lyn. In 2003, he traveled to Cassandra with the group during Christmas, intending to accompany a friend before a wedding and enjoy a short holiday, only to be drawn into the town’s unsettling events.",
+    "appearance": "一位不起眼的中等身材男性,外表朴素实用;穿着朴素,经常看起来略显疲惫。",
+    "personality": "节俭到吝啬的程度,谨慎务实,但一旦建立信任就对朋友深深忠诚。",
+    "background": "霍桑是一位法医病理学家,曾与警官布鲁诺共事。通过布鲁诺,他与里德、莉莉、大熊和琳成为亲密朋友。2003年,他在圣诞节期间与团队一起前往卡桑德拉,打算在婚礼前陪伴朋友并享受短暂假期,却被卷入小镇的不安事件中。",
     "goals": [
-      "Support and protect his friends during the investigation",
-      "Use his forensic knowledge to uncover the truth behind the incidents in Cassandra"
+      "在调查期间支持和保护朋友",
+      "利用法医知识揭露卡桑德拉事件背后的真相"
     ],
     "secrets": [],
     "attributes": {
@@ -47,48 +47,48 @@
       {
         "name": "N/A",
         "properties": {
-          "note": "资料将“Reid / Hawthorne(宏森) / Lily / Lyn / Bigbear”等作为同一朋友圈整体描述；宏森为法医且抠门，但未给出可枚举的随身物品/线索物。"
+          "note": "资料将'里德/霍桑(宏森)/莉莉/琳/大熊'等作为同一朋友圈整体描述;宏森为法医且抠门,但未给出可枚举的随身物品/线索物。"
         }
       }
     ],
     "clues": [],
     "relationships": [
       {
-        "targetName": "Bruno Galilei",
+        "targetName": "布鲁诺·伽利略",
         "relationshipType": "friend",
         "attitude": 70,
-        "description": "Former colleague and the person who introduced Hawthorne to the rest of the group.",
-        "history": "They worked together in the past on police-related cases, building mutual trust."
+        "description": "前同事,将霍桑介绍给团队其他成员的人。",
+        "history": "他们过去在警察相关案件上合作,建立了相互信任。"
       },
       {
-        "targetName": "Reid",
+        "targetName": "里德",
         "relationshipType": "friend",
         "attitude": 60,
-        "description": "A close friend met through Bruno.",
-        "history": "Their friendship was strengthened after an accidental injury incident during earlier investigations."
+        "description": "通过布鲁诺认识的亲密朋友。",
+        "history": "他们的友谊在早期调查期间的意外伤害事件后加深。"
       },
       {
-        "targetName": "Lily",
+        "targetName": "莉莉",
         "relationshipType": "friend",
         "attitude": 55,
-        "description": "A detective who admires Bruno and later became friends with Hawthorne.",
-        "history": "They grew closer after surviving dangerous situations together."
+        "description": "一位钦佩布鲁诺并后来与霍桑成为朋友的侦探。",
+        "history": "他们在一起度过危险情况后关系更加密切。"
       },
       {
-        "targetName": "Bigbear",
+        "targetName": "大熊",
         "relationshipType": "friend",
         "attitude": 50,
-        "description": "A physically imposing but good-natured companion.",
-        "history": "Part of the same friend group brought together by Bruno."
+        "description": "一位身材魁梧但性格和善的同伴。",
+        "history": "布鲁诺聚在一起的同一朋友圈的一部分。"
       },
       {
-        "targetName": "Lyn",
+        "targetName": "琳",
         "relationshipType": "friend",
         "attitude": 55,
-        "description": "A tough, hot-tempered but reliable soldier.",
-        "history": "Bonded through shared danger and loyalty within the group."
+        "description": "一位坚强、脾气暴躁但可靠的士兵。",
+        "history": "通过团队内的共同危险和忠诚建立纽带。"
       }
     ],
-    "notes": "Although outwardly stingy, Hawthorne will not hesitate to help his friends when it truly matters."
+    "notes": "虽然表面上吝啬,但霍桑在真正重要的时候不会犹豫帮助朋友。"
   }
 ]

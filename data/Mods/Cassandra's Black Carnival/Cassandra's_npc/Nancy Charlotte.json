@@ -1,24 +1,24 @@
 [
     {
-      "name": "Nancy Charlotte",
-      "occupation": "Florist / Flower Shop Assistant",
+      "name": "南希·夏洛特",
+      "occupation": "花店店员/花店助理",
       "age": 22,
       "gender": "female",
-      "appearance": "A sweet and delicate young woman with a doll-like face and long golden curly hair reaching her hips. When seen by investigators, she is wearing a red woolen coat. While tending flowers, her focused and gentle demeanor gives her an almost angelic impression.",
-      "personality": "Pure-hearted, kind, gentle, and emotionally vulnerable. Despite her traumatic upbringing, she remains sincere, trusting, and compassionate. She is easily hurt but capable of deep attachment and loyalty.",
-      "background": "Nancy was born from a brief romance between parents of different nationalities during a vacation in Turkey. After her parents divorced when she was five, she was taken to France by her mother. Her mother later married a wealthy man who sexually harassed Nancy in secret; when Nancy told her mother, she was told to endure it for the sake of comfort. Eventually, Nancy was sent to a boarding school, where she met Simon Laplace, who became her first true friend. Her mother later joined the Black Goat cult and attempted to sacrifice Nancy. This led to a tragic train accident in France, followed by a violent confrontation in which Nancy’s mother was killed by Anatole, Simon’s alternate personality. Nancy was then taken to America by Simon and has since lived under constant threat from cult remnants.",
+      "appearance": "一个甜美娇小的年轻女人,有着娃娃般的脸和及臀的金色长卷发。当调查员见到她时,她穿着红色羊毛外套。照料花朵时,她专注而温柔的举止给人一种近乎天使般的印象。",
+      "personality": "心地纯洁、善良、温柔且情感脆弱。尽管有创伤性的成长经历,她仍然真诚、信任和富有同情心。她容易受伤,但有能力深深依恋和忠诚。",
+      "background": "南希出生于父母在土耳其度假期间不同国籍的短暂恋情。五岁时父母离婚后,她被母亲带到法国。她母亲后来嫁给了一个秘密性骚扰南希的富人;当南希告诉她母亲时,她被告知为了舒适要忍受。最终,南希被送到寄宿学校,在那里她遇到了西蒙·拉普拉斯,他成为她第一个真正的朋友。她母亲后来加入了黑山羊密教并试图献祭南希。这导致了法国的一场悲剧性火车事故,随后是一场暴力对抗,南希的母亲被西蒙的另一个人格阿纳托尔杀死。南希随后被西蒙带到美国,从那以后一直生活在邪教残余势力的持续威胁之下。",
       "goals": [
-        "To live a peaceful and safe life free from persecution",
-        "To stay with and trust Simon, her protector and closest companion"
+        "过上和平安全、免受迫害的生活",
+        "与西蒙在一起并信任他,他是她的保护者和最亲密的伙伴"
       ],
     "secrets": [
-      "Her mother was a member of the Black Goat cult and attempted to sacrifice her",
-      "Her survival is tied to a violent past involving murder and falsified identities",
-      "She was bitten by a cold spider near the winery and is infected - she needs surgery to remove it, but cannot go to the hospital or she will be secretly eliminated",
-      "She has gambling debts to Kovind (Tiger) and was forced to take compromising photos as collateral",
-      "She paid her debt to Lucifero (Jenny Florence) who came to collect the money, but some photos are still missing",
-      "She has a tattoo on her arm that she tries to hide",
-      "If she dies from the spider infection, Simon will collapse and disappear, leaving only Anatole"
+      "她母亲是黑山羊密教成员并试图献祭她",
+      "她的生存与涉及谋杀和伪造身份的暴力过去有关",
+      "她在酿酒厂附近被寒冷蜘蛛咬伤并被感染——她需要手术取出它,但不能去医院,否则她会被秘密消灭",
+      "她欠科温德(老虎)赌债,被迫拍摄妥协性照片作为抵押",
+      "她向来收钱的露西弗罗(珍妮·弗洛伦斯)还清了债务,但一些照片仍然失踪",
+      "她手臂上有一个她试图隐藏的纹身",
+      "如果她死于蜘蛛感染,西蒙会崩溃消失,只剩下阿纳托尔"
     ],
       "attributes": {
         "STR": 35,
@@ -47,72 +47,72 @@
       },
     "inventory": [
       {
-        "name": "Red wool coat",
+        "name": "红色羊毛外套",
         "properties": {
-          "note": "Worn when investigators first meet her."
+          "note": "调查员第一次见到她时穿着。"
         }
       },
       {
-        "name": "Bandage on wrist",
+        "name": "手腕上的绷带",
         "properties": {
-          "clue": "Covers a spider bite from a cold spider near the winery. The infection is progressing and needs surgical removal."
+          "clue": "覆盖在酿酒厂附近被寒冷蜘蛛咬的伤口。感染正在进展,需要手术切除。"
         }
       },
       {
-        "name": "Tattoo (partially visible)",
+        "name": "纹身(部分可见)",
         "properties": {
-          "note": "A tattoo on her arm that she tries to hide. The exact meaning is flexible for the Keeper."
+          "note": "她手臂上试图隐藏的纹身。确切含义由守密人灵活决定。"
         }
       },
       {
-        "name": "Flower shop tools",
+        "name": "花店工具",
         "properties": {
-          "note": "Used for her work at the flower shop."
+          "note": "用于她在花店的工作。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "Her mother joined the Black Goat cult and attempted to use her as a sacrifice.",
+        "clueText": "她母亲加入了黑山羊密教并试图将她用作祭品。",
         "category": "secret",
         "difficulty": "hard",
-        "relatedTo": ["Black Goat Cult", "Train Incident in France"]
+        "relatedTo": ["黑山羊密教", "法国火车事件"]
       },
       {
-        "clueText": "She was protected and taken to America by Simon after a series of violent events in France.",
+        "clueText": "在法国发生一系列暴力事件后,她被西蒙保护并带到美国。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["Simon Laplace"]
+        "relatedTo": ["西蒙·拉普拉斯"]
       },
       {
-        "clueText": "She was bitten by a cold spider near the winery and is infected. She needs surgery to remove the spider, but cannot go to the hospital or she will be eliminated.",
+        "clueText": "她在酿酒厂附近被寒冷蜘蛛咬伤并被感染。她需要手术取出蜘蛛,但不能去医院,否则她会被消灭。",
         "category": "secret",
         "difficulty": "hard",
-        "relatedTo": ["Cold spider", "Spider infection", "Winery", "William"]
+        "relatedTo": ["寒冷蜘蛛", "蜘蛛感染", "酿酒厂", "威廉"]
       },
       {
-        "clueText": "She has gambling debts to Kovind and was forced to take compromising photos. She paid Lucifero (Jenny Florence) to collect the debt, but some photos are still missing.",
+        "clueText": "她欠科温德赌债,被迫拍摄妥协性照片。她付钱给露西弗罗(珍妮·弗洛伦斯)来收债,但一些照片仍然失踪。",
         "category": "secret",
         "difficulty": "hard",
-        "relatedTo": ["Kovind", "Gambling", "Jenny Florence (Lucifero)"]
+        "relatedTo": ["科温德", "赌博", "珍妮·弗洛伦斯(露西弗罗)"]
       }
     ],
       "relationships": [
         {
-          "targetName": "Simon Laplace",
+          "targetName": "西蒙·拉普拉斯",
           "relationshipType": "friend",
           "attitude": 90,
-          "description": "Her closest companion and protector, whom she deeply trusts.",
-          "history": "They met while Nancy was in a French boarding school; Simon saved her from cult persecution and brought her to America."
+          "description": "她最亲密的伙伴和保护者,她深深信任他。",
+          "history": "他们在南希在法国寄宿学校时相识;西蒙将她从邪教迫害中救出并带她到美国。"
         },
         {
-          "targetName": "Black Goat Cult",
+          "targetName": "黑山羊密教",
           "relationshipType": "enemy",
           "attitude": -90,
-          "description": "A cult that targeted her for sacrifice.",
-          "history": "Her mother was indoctrinated into the cult and attempted to offer Nancy as a living sacrifice."
+          "description": "一个将她作为祭品目标的邪教。",
+          "history": "她母亲被灌输进邪教,并试图将南希作为活祭品献祭。"
         }
       ],
-      "notes": "Nancy is emotionally fragile but remains a symbol of innocence within the story. Her survival is a key emotional anchor for Simon and a recurring target for cult forces."
+      "notes": "南希情感脆弱,但仍然是故事中纯真的象征。她的生存是西蒙的关键情感支柱,也是邪教势力反复针对的目标。"
     }
   ]

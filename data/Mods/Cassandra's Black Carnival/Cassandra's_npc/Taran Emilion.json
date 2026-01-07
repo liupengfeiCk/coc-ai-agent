@@ -1,21 +1,21 @@
 [
     {
-      "name": "Taran Emilion",
-      "occupation": "Bar owner",
+      "name": "塔兰·埃米利翁",
+      "occupation": "酒吧老板",
       "age": 34,
       "gender": "male",
-      "appearance": "A well-groomed man with a professional, approachable look typical of an experienced bartender; appears attentive and accustomed to dealing with customers from all walks of life.",
-      "personality": "Sociable, observant, discreet, and emotionally perceptive; a good listener who knows how to keep conversations flowing without revealing too much himself.",
-      "background": "Taran Emilion works as a bartender and bar owner alongside his partner Lutz. Through daily interactions with patrons, he has developed strong people-reading skills and a habit of quietly collecting information. His work has made him familiar with local rumors, personal dramas, and subtle changes in the town's atmosphere. Taran is primarily responsible for bartending and service work, operating the bar under Ben Cleo's protection.",
+      "appearance": "一位打扮精致的男性,具有专业、平易近人的外表,典型的经验丰富的调酒师;看起来细心,习惯于与各行各业的顾客打交道。",
+      "personality": "善于交际、观察力强、谨慎,情感敏锐;一位好听众,知道如何保持对话流畅而不透露太多关于自己的信息。",
+      "background": "塔兰·埃米利翁与伙伴卢茨一起担任调酒师和酒吧老板。通过与顾客的日常互动,他发展出强大的观人技能和悄悄收集信息的习惯。他的工作让他熟悉当地谣言、个人戏剧和小镇氛围的微妙变化。塔兰主要负责调酒和服务工作,在本·克利奥的保护下经营酒吧。",
       "goals": [
-        "Maintain smooth operation of the bar",
-        "Avoid becoming entangled in dangerous affairs"
+        "维持酒吧的顺利运营",
+        "避免卷入危险事务"
       ],
       "secrets": [
-      "The Reindeer Bar surveillance system was installed by Ben Cleo's people, not by the brothers",
-      "There are surveillance blind spots that only Ben and his people know about",
-      "The surveillance system was broken by Martin (Ghost Hand), not by Ben",
-      "He witnessed the incident at the Reindeer Bar on December 22, 2003"
+      "驯鹿酒吧的监控系统是由本·克利奥的人安装的,不是兄弟们",
+      "有只有本和他的人知道的监控盲点",
+      "监控系统是被马丁(幽灵之手)破坏的,不是本",
+      "他目睹了2003年12月22日驯鹿酒吧的事件"
     ],
       "attributes": {
         "STR": 50,
@@ -47,41 +47,40 @@
         "Accounting": 40
       },
       "inventory": [
-        "Bartending tools",
-        "Cash register",
-        "Bar ledger"
+        "调酒工具",
+        "收银机",
+        "酒吧账本"
       ],
       "clues": [
       {
-        "clueText": "The Reindeer Bar surveillance system was broken by Martin (Ghost Hand), not by Ben Cleo. The system has blind spots known only to Ben and his people.",
+        "clueText": "驯鹿酒吧的监控系统是被马丁(幽灵之手)破坏的,不是本·克利奥。系统有只有本和他的人知道的盲点。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["Reindeer Bar", "Surveillance", "Martin Gin", "Ben Cleo"]
+        "relatedTo": ["驯鹿酒吧", "监控", "马丁·金", "本·克利奥"]
       },
       {
-        "clueText": "He witnessed Simon (Anatole) having an argument with the victim (Lucifero) at the bar on the day of the murder.",
+        "clueText": "他目睹西蒙(阿纳托尔)在谋杀当天在酒吧与受害者(路西法罗)发生争执。",
         "category": "observation",
         "difficulty": "regular",
-        "relatedTo": ["Simon Laplace", "Jenny Florence (Lucifero)", "2003 Reindeer Bar murder"]
+        "relatedTo": ["西蒙·拉普拉斯", "珍妮·弗洛伦斯(路西法罗)", "2003年驯鹿酒吧谋杀案"]
       }
     ],
       "relationships": [
         {
-          "targetName": "Lutz Emilion",
+          "targetName": "卢茨·埃米利翁",
           "relationshipType": "partner",
           "attitude": 70,
-          "description": "Business partner and co-owner of the bar.",
-          "history": "They work together to operate the Reindeer Bar."
+          "description": "商业伙伴和酒吧共同所有者。",
+          "history": "他们一起经营驯鹿酒吧。"
         },
         {
-          "targetName": "Ben Cleo",
+          "targetName": "本·克利奥",
           "relationshipType": "employer",
           "attitude": 50,
-          "description": "The bar operates under Ben Cleo's protection.",
-          "history": "The bar is protected by the local mafia boss."
+          "description": "酒吧在本·克利奥的保护下运营。",
+          "history": "酒吧受到当地黑帮老大的保护。"
         }
       ],
-      "notes": "As a bartender, Taran is a reliable source of social information and local gossip, though he rarely volunteers sensitive details without prompting. He primarily works behind the bar counter and in the main hall, responsible for bartending and service work."
+      "notes": "作为调酒师,塔兰是社交信息和当地八卦的可靠来源,但他很少主动提供敏感细节。他主要在吧台后面和大厅工作,负责调酒和服务工作。"
     }
   ]
-

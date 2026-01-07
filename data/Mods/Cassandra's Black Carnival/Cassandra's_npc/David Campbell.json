@@ -1,17 +1,17 @@
 [
   {
-    "name": "David Campbell",
-    "occupation": "Wealthy Investor / Cult Financier",
-    "appearance": "A tall, handsome man whose appearance is strikingly youthful for his age, with a polished and aristocratic demeanor.",
-    "personality": "Pragmatic, opportunistic, and ruthless when necessary; values results and survival over morality.",
-    "background": "David Campbell arrived in Cassandra alongside Isaiah Arbar six years ago as a wealthy investor. His wife, like Isaiah’s, was a member of the Black Goat Cult. Though initially terrified upon discovering the truth, David’s stance changed after participating in the cult’s rituals and gaining supernatural benefits. He and Isaiah exploited the cult’s power for profit, selling access to the Dark Mother’s ‘milk’. In 2002, David was also transformed during a ritual and disappeared, officially recorded as missing.",
+    "name": "大卫·坎贝尔",
+    "occupation": "富有的投资者/邪教资助者",
+    "appearance": "一个高大英俊的男人,外表看起来比实际年龄年轻得惊人,举止优雅贵族化。",
+    "personality": "务实、机会主义,必要时冷酷无情;重视结果和生存胜过道德。",
+    "background": "六年前,大卫·坎贝尔与以赛亚·阿巴尔一起作为富有的投资者来到卡珊德拉。他的妻子和以赛亚的妻子一样,都是黑山羊密教的成员。尽管最初在发现真相时感到恐惧,但大卫在参加邪教仪式并获得超自然好处后改变了立场。他和以赛亚利用邪教的力量牟利,出售接触黑暗之母'奶水'的机会。2002年,大卫也在仪式中被转化并失踪,官方记录为失踪。",
     "goals": [
-      "Maintain power and survival through occult transformation",
-      "Exploit supernatural resources for wealth"
+      "通过神秘转化维持权力和生存",
+      "利用超自然资源获取财富"
     ],
     "secrets": [
-      "He knowingly assisted in human sacrifices",
-      "He was transformed into a monster during a failed or completed ritual"
+      "他明知故犯地协助人类祭祀",
+      "他在失败或完成的仪式中被转化为怪物"
     ],
     "attributes": {
       "STR": 68,
@@ -31,39 +31,39 @@
     },
     "clues": [
       {
-        "clueText": "David Campbell and Isaiah Arbar traveled across Europe and America to avoid authorities while continuing cult sacrifices.",
+        "clueText": "大卫·坎贝尔和以赛亚·阿巴尔在欧洲和美洲旅行以逃避当局,同时继续邪教祭祀。",
         "category": "knowledge",
         "difficulty": "hard",
         "relatedTo": [
-          "Isaiah Arbar",
-          "Black Goat Cult"
+          "以赛亚·阿巴尔",
+          "黑山羊密教"
         ]
       },
       {
-        "clueText": "Young women were considered the best sacrifices for their rituals.",
+        "clueText": "年轻女性被认为是他们仪式的最佳祭品。",
         "category": "secret",
         "difficulty": "extreme",
         "relatedTo": [
-          "Shub-Niggurath",
-          "Black Goat Cult"
+          "莎布·尼古拉丝",
+          "黑山羊密教"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Isaiah Arbar",
+        "targetName": "以赛亚·阿巴尔",
         "relationshipType": "ally",
         "attitude": 70,
-        "description": "Long-term business partner and fellow cultist.",
-        "history": "United by marriage ties to the cult and mutual greed, they jointly pursued forbidden power."
+        "description": "长期商业伙伴和邪教同伴。",
+        "history": "通过与邪教的婚姻关系和共同的贪婪联合起来,他们共同追求禁忌力量。"
       }
     ],
-    "notes": "Like Isaiah, David is officially missing and presumed dead, but his true fate is far worse.",
+    "notes": "像以赛亚一样,大卫官方失踪并被推定死亡,但他的真正命运要糟糕得多。",
     "inventory": [
       {
-        "name": "N/A",
+        "name": "无",
         "properties": {
-          "note": "资料以“Isaiah Arbar & David Campbell（富商）”整体背景为主（黑山羊密教/莎布相关）；未给出大卫的具体随身物品清单。"
+          "note": "资料以'Isaiah Arbar & David Campbell(富商)'整体背景为主(黑山羊密教/莎布相关);未给出大卫的具体随身物品清单。"
         }
       }
     ]

@@ -1,26 +1,26 @@
 [
     {
-      "name": "Shandra Hernandez",
-      "occupation": "Hotel Housekeeper / Temporary Staff",
+      "name": "珊德拉·埃尔南德斯",
+      "occupation": "酒店女佣 / 临时员工",
       "age": 26,
       "gender": "female",
-      "appearance": "A young Latina woman with tired eyes and neatly tied dark hair. Dresses plainly in practical work clothes; often appears nervous and sleep-deprived.",
-      "personality": "Anxious, cautious, and soft-spoken. Easily intimidated but fundamentally compassionate. Tends to avoid conflict and authority figures.",
-      "background": "Shandra Hernandez is actually an agent of the 'Nine Angels' organization, a secret group that works to prevent Mythos-related disasters from becoming public knowledge. She came to Cassandra to stop a cult conspiracy. After a fire, she took on the identity of 'Susan,' a nurse at Star Hospital, replacing the real Susan (who was actually Red Stone Lady in disguise). Shandra was a close friend and confidant of Bruno Galilei, who often visited her shop to confide his worries. She knows about the anonymous warning Bruno received about not trusting Patrizio or Constantine.",
-    "goals": [
-      "Stop the cult conspiracy in Cassandra",
-      "Help investigators uncover the truth about the murder cases",
-      "Protect her identity as a Nine Angels agent",
-      "Honor Bruno's memory by continuing his investigation"
-    ],
-    "secrets": [
-      "She is an agent of the 'Nine Angels' organization, not a hotel worker",
-      "She is currently posing as 'Susan,' a nurse at Star Hospital, after the real Susan (Red Stone Lady) left",
-      "She was a close friend of Bruno Galilei and knows about the anonymous warning he received",
-      "She knows Bruno received an SMS warning him not to trust Patrizio or Constantine",
-      "She has knowledge of Mythos-related events and cult activities",
-      "She may cooperate with investigators if they mention 'Mythos' or 'alien entities'"
-    ],
+      "appearance": "一位年轻的拉丁裔女性,眼神疲惫,深色头发整齐束起。穿着朴素的实用工作服;经常显得紧张和睡眠不足。",
+      "personality": "焦虑、谨慎、温和。容易被吓倒,但本质上富有同情心。倾向于避免冲突和权威人物。",
+      "background": "珊德拉·埃尔南德斯实际上是'九天使'组织的特工,这是一个致力于防止神话相关灾难公之于众的秘密组织。她来到卡桑德拉是为了阻止邪教阴谋。火灾后,她冒充星辰医院的护士'苏珊',取代了真正的苏珊(实际上是红石女士的伪装)。珊德拉是布鲁诺·伽利略的亲密朋友和知己,布鲁诺经常去她的店里倾诉烦恼。她知道布鲁诺收到的匿名警告,提醒他不要信任帕特里齐奥或康斯坦丁。",
+      "goals": [
+        "阻止卡桑德拉的邪教阴谋",
+        "帮助调查员揭露谋杀案的真相",
+        "保护作为九天使特工的身份",
+        "通过继续布鲁诺的调查来纪念他"
+      ],
+      "secrets": [
+        "她是'九天使'组织的特工,不是酒店工作人员",
+        "她目前冒充星辰医院的护士'苏珊',在真正的苏珊(红石女士)离开后",
+        "她是布鲁诺·伽利略的亲密朋友,知道他收到的匿名警告",
+        "她知道布鲁诺收到短信警告他不要信任帕特里齐奥或康斯坦丁",
+        "她了解神话相关事件和邪教活动",
+        "如果调查员提到'神话'或'异界实体',她可能会合作"
+      ],
       "attributes": {
         "STR": 45,
         "CON": 55,
@@ -47,39 +47,39 @@
         "Psychology": 35
       },
       "inventory": [
-        "Hotel master key (limited access)",
-        "Cleaning supplies",
-        "Personal notebook"
+        "酒店万能钥匙(有限访问权限)",
+        "清洁用品",
+        "个人笔记本"
       ],
-    "clues": [
-      {
-        "clueText": "She knows Bruno received an anonymous SMS warning him not to trust his superiors, especially Patrizio, and that Constantine was not qualified to serve God and was in league with Patrizio.",
-        "category": "secret",
-        "difficulty": "hard",
-        "relatedTo": ["Bruno Galilei", "Patrizio von Samsa", "Constantine Frollo"]
-      },
-      {
-        "clueText": "She is an agent of the 'Nine Angels' organization and has knowledge of Mythos-related events, though she won't reveal this easily.",
-        "category": "secret",
-        "difficulty": "extreme",
-        "relatedTo": ["Nine Angels", "Mythos"]
-      },
-      {
-        "clueText": "She was a close confidant of Bruno and knows about his investigation into both the 2002 and 2003 murder cases.",
-        "category": "knowledge",
-        "difficulty": "regular",
-        "relatedTo": ["Bruno Galilei", "2002 Paradil Hotel murder", "2003 Reindeer Bar murder"]
-      }
-    ],
-      "relationships": [
+      "clues": [
         {
-          "targetName": "Paradier Hotel Management",
-          "relationshipType": "employer",
-          "attitude": -30,
-          "description": "Employers who intimidate her into silence.",
-          "history": "Threatened with termination if she asks questions."
+          "clueText": "她知道布鲁诺收到匿名短信,警告他不要信任上级,尤其是帕特里齐奥,并且康斯坦丁不配侍奉上帝,与帕特里齐奥勾结。",
+          "category": "secret",
+          "difficulty": "hard",
+          "relatedTo": ["布鲁诺·伽利略", "帕特里齐奥·冯·萨姆萨", "康斯坦丁·弗罗洛"]
+        },
+        {
+          "clueText": "她是'九天使'组织的特工,了解神话相关事件,但不会轻易透露。",
+          "category": "secret",
+          "difficulty": "extreme",
+          "relatedTo": ["九天使", "神话"]
+        },
+        {
+          "clueText": "她是布鲁诺的亲密知己,了解他对2002年和2003年谋杀案的调查。",
+          "category": "knowledge",
+          "difficulty": "regular",
+          "relatedTo": ["布鲁诺·伽利略", "2002年帕拉迪尔酒店谋杀案", "2003年驯鹿酒吧谋杀案"]
         }
       ],
-      "notes": "Shandra may cooperate with investigators if they earn her trust and offer protection."
+      "relationships": [
+        {
+          "targetName": "帕拉迪尔酒店管理层",
+          "relationshipType": "employer",
+          "attitude": -30,
+          "description": "恐吓她保持沉默的雇主。",
+          "history": "如果她问问题就威胁解雇她。"
+        }
+      ],
+      "notes": "如果调查员赢得她的信任并提供保护,珊德拉可能会合作。"
     }
   ]

@@ -1,95 +1,95 @@
 [
-    {
-      "name": "Avenue of Stars",
-      "description": "A major thoroughfare running through the central spine of Cassandra. Avenue of Stars connects multiple residential, commercial, and institutional locations, making it one of the most frequently traveled streets in the city.",
-      "snapshot": {
-        "name": "Avenue of Stars",
-        "location": "Central Cassandra, north–south main road",
-        "description": "A wide urban street cutting through Cassandra from north to south. Buildings cluster tightly along both sides of the road, including shops, residences, and public institutions. Pedestrians, vehicles, and occasional patrols pass through regularly, giving the avenue a sense of constant motion. Despite its normal appearance, the street often feels watched, as if unseen eyes track those who linger too long.",
-        "characters": [],
-        "clues": [],
-        "conditions": [
-          {
-            "type": "lighting",
-            "description": "Streetlights and storefront signs illuminate the avenue at night, leaving pockets of shadow between buildings.",
-            "mechanicalEffect": ""
-          },
-          {
-            "type": "sound",
-            "description": "Footsteps, distant traffic, murmured conversations, and the occasional passing vehicle.",
-            "mechanicalEffect": ""
-          }
-        ],
-        "events": [],
-        "exits": [
-          {
-            "direction": "East",
-            "destination": "Star Hospital",
-            "description": "A modern but poorly managed hospital complex marked with a red cross.",
-            "condition": ""
-          },
-          {
-            "direction": "East",
-            "destination": "Adolph's House",
-            "description": "A private residence located close to the avenue, accessible via a short side street.",
-            "condition": ""
-          },
-          {
-            "direction": "West",
-            "destination": "Clock Shop",
-            "description": "A small, old-fashioned clock and watch shop tucked among other storefronts.",
-            "condition": ""
-          },
-          {
-            "direction": "West",
-            "destination": "Flower Shop",
-            "description": "A modest flower shop with a constantly changing selection of fresh and dried plants.",
-            "condition": ""
-          },
-          {
-            "direction": "South",
-            "destination": "New Crescent Street A (South)",
-            "description": "A continuation of the city road network leading into Crescent Street A (southern section).",
-            "condition": ""
-          },
-          {
-            "direction": "North",
-            "destination": "New Crescent Street A (North)",
-            "description": "The northern continuation of the road, linking Avenue of Stars to Crescent Street A (northern section).",
-            "condition": ""
-          },
-          {
-            "direction": "South",
-            "destination": "Cassandra Train Station",
-            "description": "The main railway station of Cassandra, reachable by following the avenue further south.",
-            "condition": ""
-          }
-        ],
-        "keeperNotes": "Avenue of Stars works best as a connective tissue between major investigation locations. It is ideal for tailing suspects, staging chance encounters, or giving investigators the sense that the city itself is reacting to their movements.",
-        "permanentChanges": []
-      },
-      "tags": ["urban", "main street", "transit", "public space"],
-      "connections": [
+  {
+    "name": "星辰大道",
+    "description": "贯穿卡森德拉中心脊柱的主要通道。星辰大道连接多个住宅、商业和机构场所,使其成为城市中最常往来的街道之一。",
+    "snapshot": {
+      "name": "星辰大道",
+      "location": "卡森德拉中心,南北向主干道",
+      "description": "一条从北到南贯穿卡森德拉的宽阔城市街道。建筑物紧密聚集在道路两侧,包括商店、住宅和公共机构。行人、车辆和偶尔的巡逻队经常通过,给这条大道带来持续运动的感觉。尽管外表正常,这条街道常常让人感到被监视,仿佛有看不见的眼睛追踪那些逗留太久的人。",
+      "characters": [],
+      "clues": [],
+      "conditions": [
         {
-          "scenarioName": "Star Hospital",
-          "relationshipType": "leads_to",
-          "description": "The hospital is directly accessible from Avenue of Stars."
+          "type": "光照",
+          "description": "夜晚街灯和店面招牌照亮大道,在建筑物之间留下阴影区域。",
+          "mechanicalEffect": ""
         },
         {
-          "scenarioName": "Clock Shop",
-          "relationshipType": "leads_to",
-          "description": "Investigators can reach the clock shop by following storefronts along the avenue."
-        },
-        {
-          "scenarioName": "Flower Shop",
-          "relationshipType": "leads_to",
-          "description": "The flower shop sits along the avenue and is easily noticed by passersby."
-        },
-        {
-          "scenarioName": "Train Station",
-          "relationshipType": "leads_to",
-          "description": "Continuing south along Avenue of Stars eventually leads to the train station."
+          "type": "声音",
+          "description": "脚步声、远处的交通声、低语交谈和偶尔经过的车辆。",
+          "mechanicalEffect": ""
         }
-      ]
-    }
-  ]
+      ],
+      "events": [],
+      "exits": [
+        {
+          "direction": "东",
+          "destination": "星辰医院",
+          "description": "一座现代但管理不善的医院建筑群,标有红十字。",
+          "condition": ""
+        },
+        {
+          "direction": "东",
+          "destination": "阿道夫的家",
+          "description": "位于大道附近的私人住宅,通过短支路可达。",
+          "condition": ""
+        },
+        {
+          "direction": "西",
+          "destination": "钟表店",
+          "description": "一家小型老式钟表店,藏在其他店面之间。",
+          "condition": ""
+        },
+        {
+          "direction": "西",
+          "destination": "花店",
+          "description": "一家朴素的花店,有不断变化的鲜花和干花选择。",
+          "condition": ""
+        },
+        {
+          "direction": "南",
+          "destination": "新月街A大道(南)",
+          "description": "城市道路网络的延续,通向新月街A大道(南段)。",
+          "condition": ""
+        },
+        {
+          "direction": "北",
+          "destination": "新月街A大道(北)",
+          "description": "道路的北部延续,将星辰大道与新月街A大道(北段)连接起来。",
+          "condition": ""
+        },
+        {
+          "direction": "南",
+          "destination": "卡森德拉火车站",
+          "description": "卡森德拉的主要火车站,沿大道继续向南可达。",
+          "condition": ""
+        }
+      ],
+      "keeperNotes": "星辰大道最适合作为主要调查地点之间的连接组织。它非常适合跟踪嫌疑人、安排偶遇,或让调查员感觉到城市本身正在对他们的行动做出反应。",
+      "permanentChanges": []
+    },
+    "tags": ["城市", "主街", "交通", "公共空间"],
+    "connections": [
+      {
+        "scenarioName": "星辰医院",
+        "relationshipType": "通向",
+        "description": "医院可从星辰大道直接到达。"
+      },
+      {
+        "scenarioName": "钟表店",
+        "relationshipType": "通向",
+        "description": "调查员可以沿着大道的店面找到钟表店。"
+      },
+      {
+        "scenarioName": "花店",
+        "relationshipType": "通向",
+        "description": "花店位于大道沿线,路人很容易注意到。"
+      },
+      {
+        "scenarioName": "火车站",
+        "relationshipType": "通向",
+        "description": "沿星辰大道继续向南最终会到达火车站。"
+      }
+    ]
+  }
+]

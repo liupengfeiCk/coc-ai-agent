@@ -1,12 +1,12 @@
 [
   {
-    "name": "Atlach-Nacha, the Spider God",
-    "occupation": "Great Old One / Outer God",
-    "appearance": "A colossal, otherworldly spider entity with innumerable long legs and a massive abdomen, constantly weaving immense cosmic webs that span between worlds.",
-    "background": "Atlach-Nacha is an ancient spider god dwelling in the Dreamlands, endlessly weaving a titanic web intended to connect its realm to the waking world. Through cults, spider-creatures, and hidden sanctuaries, its influence seeps into human reality.",
+    "name": "阿特拉克-纳查,蜘蛛神",
+    "occupation": "旧日支配者 / 外神",
+    "appearance": "一个庞大的、超凡的蜘蛛实体,有无数长腿和巨大腹部,不断编织连接世界之间的巨大宇宙蛛网。",
+    "background": "阿特拉克-纳查是栖息在梦境的古老蜘蛛神,无休止地编织旨在连接其领域与清醒世界的巨大蛛网。通过邪教、蜘蛛生物和隐藏圣所,它的影响力渗入人类现实。",
     "goals": [
-      "Complete the great web linking the Dreamlands and the waking world",
-      "Expand its influence through cultists, spider-creatures, and corrupted humans"
+      "完成连接梦境和清醒世界的巨大蛛网",
+      "通过邪教徒、蜘蛛生物和被腐化的人类扩大其影响力"
     ],
     "attributes": {
       "STR": 150,
@@ -25,12 +25,12 @@
       "Fighting": 60,
       "Web Projection": 80
     },
-    "notes": "Average Damage Bonus: +2D6.\nCombat Behavior: Atlach-Nacha attacks by kicking with its many legs or slamming enemies with its massive abdomen. Attacks per round: 1.\nCombat – Bite: The bite pierces any normal armor and injects a paralytic toxin. The target must succeed at an Extreme CON roll to resist paralysis for 1D10 rounds, then make a second CON roll. If both rolls succeed, the toxin is resisted; if both fail, the target is paralyzed.\nCombat Maneuver – Web Projection: Targets are wrapped in strong, sticky webs. Escaping requires an opposed STR test against STR 150.\nArmor: 12-point chitin and fur. When reduced to 0 HP, Atlach-Nacha escapes through complex web-tunnels to a secret lair to recover.\nSpells: All Contact (Call/Contact) spells.\nSkills Detail: Fighting 60% (30/12), damage bonus or bite; Web Projection 80% (40/16).\nSanity Loss: Seeing Atlach-Nacha causes 1/1D10 SAN loss.",
+    "notes": "平均伤害加值:+2D6。\n战斗行为:阿特拉克-纳查通过用其众多腿踢或用巨大腹部猛击敌人来攻击。每回合攻击:1次。\n战斗 – 撕咬:撕咬可穿透任何普通护甲并注入麻痹毒素。目标必须在极难体质检定中成功以抵抗1D10回合的麻痹,然后进行第二次体质检定。如果两次检定都成功,则抵抗毒素;如果两次都失败,目标被麻痹。\n战斗技巧 – 蛛网投射:目标被包裹在强韧、粘性的蛛网中。逃脱需要与力量150进行对抗力量测试。\n护甲:12点甲壳和毛发。当生命值降至0时,阿特拉克-纳查通过复杂的蛛网隧道逃到秘密巢穴恢复。\n法术:所有接触(召唤/接触)法术。\n技能详情:战斗60%(30/12),伤害加值或撕咬;蛛网投射80%(40/16)。\n理智损失:看到阿特拉克-纳查造成1/1D10点理智损失。",
     "inventory": [
       {
         "name": "N/A",
         "properties": {
-          "note": "Mythos entity; document section focuses on stats/combat/spells rather than loot/inventory."
+          "note": "神话实体;文档部分侧重于属性/战斗/法术而非战利品/物品栏。"
         }
       }
     ]

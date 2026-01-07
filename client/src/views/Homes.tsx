@@ -16,22 +16,22 @@ const Homes: React.FC<HomeProps> = ({ onCreate, onStartGame, onContinueGame }) =
     <div className="home">
       <div className="hero">
         <div>
-          <p className="eyebrow">Call of Cthulhu · Multi-Agent</p>
-          <h1>CoC AI Keeper</h1>
+          <p className="eyebrow">克苏鲁的呼唤 · 多智能体系统</p>
+          <h1>CoC AI 守秘人</h1>
           <p className="lede">
-            Manage investigators and let orchestrator, memory, action, and keeper agents run your scenarios.
+            管理调查员,让编排者、记忆、行动和守秘人智能体运行你的冒险模组。
           </p>
         </div>
 
         <div className="home-actions">
           <button className="primary" onClick={handleStartGame}>
-            🎮 New Game
+            🎮 新游戏
           </button>
           <button className="secondary" onClick={onContinueGame}>
-            📂 Continue Game
+            📂 继续游戏
           </button>
           <button onClick={onCreate}>
-            Create Character
+            创建角色
           </button>
         </div>
       </div>

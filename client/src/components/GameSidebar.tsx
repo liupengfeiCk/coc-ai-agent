@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect, useRef } from 'react';
+import { getSkillNameCn } from '../utils/skillTranslation';
 
 interface GameSidebarProps {
   sessionId: string;
@@ -144,13 +145,13 @@ export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api
           className={`sidebar-tab ${activeTab === 'status' ? 'active' : ''}`}
           onClick={() => setActiveTab('status')}
         >
-          Character Status
+          角色状态
         </button>
         <button
           className={`sidebar-tab ${activeTab === 'clues' ? 'active' : ''}`}
           onClick={() => setActiveTab('clues')}
         >
-          Discovered Clues
+          发现的线索
         </button>
       </div>
 
@@ -165,28 +166,28 @@ export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api
             ) : gameState ? (
               <>
                 <div className="status-section">
-                  <h3>Basic Attributes</h3>
+                  <h3>基础属性</h3>
                   <div className="status-grid">
                     <div className="status-item">
-                      <span className="status-label">HP:</span>
+                      <span className="status-label">生命:</span>
                       <span className="status-value">
                         {gameState.playerCharacter.status.hp}/{gameState.playerCharacter.status.maxHp}
                       </span>
                     </div>
                     <div className="status-item">
-                      <span className="status-label">MP:</span>
+                      <span className="status-label">魔法:</span>
                       <span className="status-value">
                         {gameState.playerCharacter.status.mp || 0}/{gameState.playerCharacter.status.mp || 0}
                       </span>
                     </div>
                     <div className="status-item">
-                      <span className="status-label">SAN:</span>
+                      <span className="status-label">理智:</span>
                       <span className="status-value">
                         {gameState.playerCharacter.status.sanity}/{gameState.playerCharacter.status.maxSanity}
                       </span>
                     </div>
                     <div className="status-item">
-                      <span className="status-label">LUCK:</span>
+                      <span className="status-label">幸运:</span>
                       <span className="status-value">{gameState.playerCharacter.status.luck}</span>
                     </div>
                   </div>
@@ -213,7 +214,7 @@ export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api
                 </div>
 
                 <div className="status-section">
-                  <h3>Status Effects</h3>
+                  <h3>状态效果</h3>
                   <div className="status-effects">
                     {gameState.playerCharacter.status.conditions.length > 0 ? (
                       <ul style={{ margin: 0, paddingLeft: '20px' }}>
@@ -222,13 +223,13 @@ export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api
                         ))}
                       </ul>
                     ) : (
-                      <p className="empty-state">No status effects</p>
+                      <p className="empty-state">无状态效果</p>
                     )}
                   </div>
                 </div>
 
                 <div className="status-section">
-                  <h3>Skills</h3>
+                  <h3>技能</h3>
                   <div className="skills-grid">
                     {gameState.playerCharacter.skills && Object.keys(gameState.playerCharacter.skills).length > 0 ? (
                       Object.entries(gameState.playerCharacter.skills)
@@ -240,19 +241,19 @@ export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api
                               key={skillName}
                               className={`skill-item ${isOccupationalSkill ? 'occupational' : ''}`}
                             >
-                              <span className="skill-name">{skillName}</span>
+                              <span className="skill-name">{getSkillNameCn(skillName)}</span>
                               <span className="skill-value">{skillValue}</span>
                             </div>
                           );
                         })
                     ) : (
-                      <p className="empty-state">No skills</p>
+                      <p className="empty-state">无技能数据</p>
                     )}
                   </div>
                 </div>
               </>
             ) : (
-              <p className="empty-state">No data</p>
+              <p className="empty-state">无数据</p>
             )}
           </div>
         )}
@@ -260,12 +261,12 @@ export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api
         {activeTab === 'clues' && (
           <div className="tab-panel clues-panel">
             {loading ? (
-              <p className="empty-state">Loading...</p>
+              <p className="empty-state">加载中...</p>
             ) : error ? (
-              <p className="empty-state" style={{ color: '#c41e3a' }}>Load failed: {error}</p>
+              <p className="empty-state" style={{ color: '#c41e3a' }}>加载失败: {error}</p>
             ) : gameState ? (
               <div className="clues-section">
-                <h3>Important Clues</h3>
+                <h3>重要线索</h3>
                 <div className="clues-list">
                   {gameState.discoveredClues.length > 0 ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -289,27 +290,27 @@ export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api
                                 fontWeight: 'normal',
                               }}
                             >
-                              ({clue.type === 'scenario' ? 'Scenario Clue' : clue.type === 'npc' ? 'NPC Clue' : 'Secret'})
+                              ({clue.type === 'scenario' ? '场景线索' : clue.type === 'npc' ? 'NPC线索' : '秘密'})
                             </span>
                           </div>
                           <div style={{ fontSize: '0.9rem', color: '#333', marginBottom: '5px' }}>
                             {clue.text}
                           </div>
                           <div style={{ fontSize: '0.75rem', color: '#999' }}>
-                            Discovered by: {clue.discoveredBy}
-                            {clue.method && ` | Method: ${clue.method}`}
-                            {clue.difficulty && ` | Difficulty: ${clue.difficulty}`}
+                            发现者: {clue.discoveredBy}
+                            {clue.method && ` | 方式: ${clue.method}`}
+                            {clue.difficulty && ` | 难度: ${clue.difficulty}`}
                           </div>
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <p className="empty-state">No clues</p>
+                    <p className="empty-state">暂无线索</p>
                   )}
                 </div>
               </div>
             ) : (
-              <p className="empty-state">No data</p>
+              <p className="empty-state">无数据</p>
             )}
           </div>
         )}

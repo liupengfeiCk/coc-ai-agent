@@ -1,17 +1,17 @@
 [
     {
-      "name": "Isaiah Arbar",
-      "occupation": "Wealthy Investor / Cult Financier",
-      "appearance": "A middle-aged man who appears unnaturally youthful, fit, and well-groomed, with an aura of affluence and confidence that borders on the unsettling.",
-      "personality": "Calculating, ambitious, morally corrupt, and increasingly detached from normal human ethics after prolonged exposure to occult practices.",
-      "background": "Isaiah Arbar arrived in Cassandra six years ago with fellow businessman David Campbell to invest and conduct business. Both men were drawn into the influence of their wives, who were members of the transatlantic cult known as the Black Goat Cult. Initially horrified by the cult’s rituals, Isaiah’s perspective changed after participating in a blasphemous ceremony and consuming the ‘milk’ of the Dark Mother, which granted him youth, strength, and beauty. Together with David, he profited enormously by commodifying this source. In 2002, during a ritual, Isaiah was transformed into a monstrous being known as a Gof’n-Hupadgo of Shub-Niggurath and disappeared from public view.",
+      "name": "以赛亚·阿巴尔",
+      "occupation": "富有的投资者/邪教资助者",
+      "appearance": "一个看起来不自然年轻、健壮且打扮精良的中年男人,散发着富裕和自信的气息,近乎令人不安。",
+      "personality": "精于算计、雄心勃勃、道德败坏,在长期接触神秘实践后越来越脱离正常人类伦理。",
+      "background": "六年前,以赛亚·阿巴尔与商人同伴大卫·坎贝尔一起来到卡珊德拉投资和开展业务。两人都被他们妻子的影响所吸引,她们是跨大西洋邪教组织黑山羊密教的成员。最初对邪教仪式感到恐惧,但在参加了一次亵渎仪式并饮用了黑暗之母的'奶水'后,以赛亚的观点发生了改变,这赋予了他青春、力量和美貌。他和大卫一起通过商品化这个来源获得了巨额利润。2002年,在一次仪式中,以赛亚被转化为一个被称为莎布·尼古拉丝的戈芬·胡帕德戈的怪物,并从公众视野中消失。",
       "goals": [
-        "Gain eternal vitality and transcend human limitations",
-        "Secure power and profit through occult means"
+        "获得永恒的活力并超越人类限制",
+        "通过神秘手段获得权力和利润"
       ],
       "secrets": [
-        "He participated in human sacrifice rituals dedicated to Shub-Niggurath",
-        "He was transformed into a monstrous entity during a ritual in 2002"
+        "他参与了献给莎布·尼古拉丝的人类祭祀仪式",
+        "他在2002年的仪式中被转化为怪物实体"
       ],
       "attributes": {
         "STR": 70,
@@ -31,27 +31,27 @@
       },
       "clues": [
         {
-          "clueText": "Isaiah Arbar and David Campbell invested in Cassandra and secretly financed cult activities tied to Shub-Niggurath.",
+          "clueText": "以赛亚·阿巴尔和大卫·坎贝尔在卡珊德拉投资并秘密资助与莎布·尼古拉丝相关的邪教活动。",
           "category": "knowledge",
           "difficulty": "hard",
-          "relatedTo": ["David Campbell", "Black Goat Cult", "Cassandra"]
+          "relatedTo": ["大卫·坎贝尔", "黑山羊密教", "卡珊德拉"]
         },
         {
-          "clueText": "Isaiah gained unnatural youth and strength after consuming the ‘milk’ of the Dark Mother.",
+          "clueText": "以赛亚在饮用黑暗之母的'奶水'后获得了不自然的青春和力量。",
           "category": "secret",
           "difficulty": "extreme",
-          "relatedTo": ["Shub-Niggurath"]
+          "relatedTo": ["莎布·尼古拉丝"]
         }
       ],
       "relationships": [
         {
-          "targetName": "David Campbell",
+          "targetName": "大卫·坎贝尔",
           "relationshipType": "ally",
           "attitude": 70,
-          "description": "Business partner and fellow cult collaborator.",
-          "history": "They traveled together across Europe and the United States, investing and conducting rituals while fleeing authorities."
+          "description": "商业伙伴和邪教合作者。",
+          "history": "他们一起在欧洲和美国旅行,在逃避当局的同时投资和进行仪式。"
         }
       ],
-      "notes": "Officially listed as missing since 2002; no longer fully human."
+      "notes": "自2002年以来被官方列为失踪;不再完全是人类。"
     }
 ]

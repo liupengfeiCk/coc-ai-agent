@@ -1,18 +1,18 @@
 [
     {
-      "name": "Vito",
-      "occupation": "Auxiliary Police Officer",
+      "name": "维托",
+      "occupation": "辅警",
       "age": 30,
       "gender": "male",
-      "appearance": "A sturdy man of Latin American descent, dressed in the plain uniform of an auxiliary police officer, with a friendly but somewhat clumsy demeanor.",
-      "personality": "Honest, good-natured, and simple-minded; well-meaning but not particularly sharp or suspicious.",
-      "background": "Vito is a local auxiliary police officer in Cassandra. He is known for being kind-hearted and dependable, though lacking in experience and investigative insight.",
+      "appearance": "一位拉丁美洲裔的健壮男性,身穿辅警的朴素制服,举止友好但有些笨拙。",
+      "personality": "诚实、善良、头脑简单;善意但不特别敏锐或多疑。",
+      "background": "维托是卡桑德拉的当地辅警。他以善良和可靠著称,但缺乏经验和调查洞察力。",
       "goals": [
-        "Do his job and assist the local police",
-        "Maintain peace and order in Cassandra"
+        "做好本职工作并协助当地警察",
+        "维持卡桑德拉的和平与秩序"
       ],
       "secrets": [
-        "Last year before Christmas, he met the unknown Black girl (victim of the 2002 Paradil Hotel murder case) who asked him if there were any cheap rooms for rent. He said no, and the next day she was murdered. He forgot about this after the case was shelved."
+        "去年圣诞节前,他遇到了无名黑人女孩(2002年帕拉迪尔酒店谋杀案的受害者),她问他是否有便宜的房间出租。他说没有,第二天她就被谋杀了。案件搁置后他忘记了这件事。"
       ],
       "attributes": {
         "STR": 60,
@@ -40,24 +40,24 @@
         "Firearms (Handgun)": 30
       },
       "inventory": [
-        "Auxiliary police badge",
-        "Service handgun",
-        "Notebook"
+        "辅警徽章",
+        "配枪",
+        "笔记本"
       ],
       "clues": [
       {
-        "clueText": "Last year before Christmas, he met the unknown Black girl (victim of the 2002 Paradil Hotel murder case) who asked him if there were any cheap rooms for rent. He said no, and the next day she was murdered.",
+        "clueText": "去年圣诞节前,他遇到了无名黑人女孩(2002年帕拉迪尔酒店谋杀案的受害者),她问他是否有便宜的房间出租。他说没有,第二天她就被谋杀了。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["2002 Paradil Hotel murder", "Unknown victim"]
+        "relatedTo": ["2002年帕拉迪尔酒店谋杀案", "无名受害者"]
       },
       {
-        "clueText": "His girlfriend Helen was the woman Philip tried to flirt with at the Reindeer Bar on the day of the 2003 murder case.",
+        "clueText": "他的女友海伦是2003年谋杀案当天菲利普在驯鹿酒吧试图搭讪的女人。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["Helen", "Philip Scaletta", "2003 Reindeer Bar murder"]
+        "relatedTo": ["海伦", "菲利普·斯卡莱塔", "2003年驯鹿酒吧谋杀案"]
       }
     ],
-    "notes": "Vito is a good-hearted but unsophisticated auxiliary officer. He met the victim of the 2002 murder case the day before she was killed, but forgot about this after the case was shelved. His girlfriend Helen was involved in the 2003 Reindeer Bar incident when Philip tried to flirt with her."
+    "notes": "维托是一位善良但不老练的辅警。他在2002年谋杀案受害者被杀前一天遇到了她,但案件搁置后忘记了这件事。他的女友海伦在2003年驯鹿酒吧事件中被菲利普试图搭讪。"
     }
   ]

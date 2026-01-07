@@ -26,12 +26,14 @@ export interface GraphState {
   turnId?: string;  // Current turn being processed
   isSimulatedQuery?: boolean;  // Track if input is simulated by Director Agent
   simulatedQueryCount?: number;  // Safety counter for continuous loop (max 5)
+  stepTimings?: Record<string, number>;  // Track execution time for each step (in ms)
 }
 
 export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?: RagManager) => {
   const orchestrator = new OrchestratorAgent();
   const actionAgent = new ActionAgent(scenarioLoader);
   const characterAgent = new CharacterAgent();
+  characterAgent.setDatabase(db); // Inject database for relationship persistence
   const keeperAgent = new KeeperAgent();
   const directorAgent = new DirectorAgent(scenarioLoader, db);
   const turnManager = new TurnManager(db);
@@ -53,16 +55,26 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
       simulatedQueryCount: {
         value: (left: number | undefined, right?: number | undefined) => right !== undefined ? right : left
       },
+      stepTimings: {
+        value: (left: Record<string, number> | undefined, right?: Record<string, number>) => {
+          if (right !== undefined) {
+            return { ...(left || {}), ...right };
+          }
+          return left || {};
+        }
+      },
     },
   });
 
   // Entry node: routes based on input type and handles cleanup
   graph.addNode("entry", async (state: GraphState) => {
+    const startTime = Date.now();
     const isSimulated = state.isSimulatedQuery ?? false;
 
     if (isSimulated) {
       console.log("🔄 [Entry] Simulated query detected - skipping orchestrator & memory");
-      return state;
+      const duration = Date.now() - startTime;
+      return { ...state, stepTimings: { entry: duration } };
     }
 
     // Real player input - clear temporary state from previous round
@@ -96,10 +108,14 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
 
     console.log("✅ [Entry] Temporary state cleared for new player turn");
 
+    const duration = Date.now() - startTime;
+    console.log(`⏱️  [Entry] 耗时: ${duration}ms`);
+
     return {
       ...state,
       gameState: updatedState,
-      simulatedQueryCount: 0  // Reset loop counter on real input
+      simulatedQueryCount: 0,  // Reset loop counter on real input
+      stepTimings: { entry: duration }
     };
   });
 
@@ -126,12 +142,14 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
 
   // Orchestrator: analyze user input and write actionAnalysis into state
   graph.addNode("orchestrator", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("🎯 [Orchestrator Agent] 开始分析用户输入...");
     const gsm = new GameStateManager(state.gameState ?? initialGameState);
     const userInput = latestHumanMessage(state.messages);
     console.log(`🎯 [Orchestrator Agent] 用户输入: "${userInput.substring(0, 100)}${userInput.length > 100 ? '...' : ''}"`);
     const result = await orchestrator.processInput(userInput, gsm, db);
-    console.log("✅ [Orchestrator Agent] 分析完成");
+    const duration = Date.now() - startTime;
+    console.log(`✅ [Orchestrator Agent] 分析完成 (耗时: ${duration}ms)`);
     
     // Log detailed action analysis
     const actionAnalysis = gsm.getGameState().temporaryInfo.currentActionAnalysis;
@@ -158,24 +176,27 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
       }
     }
     
-    return { ...state, gameState: gsm.getGameState() as GameState };
+    return { ...state, gameState: gsm.getGameState() as GameState, stepTimings: { orchestrator: duration } };
   });
 
   // Memory: enrich with rules + RAG slices, log agent content
   graph.addNode("memory", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("🧠 [Memory Agent] 开始丰富上下文信息...");
     const gameState = state.gameState ?? initialGameState;
     const actionAnalysis =
       gameState.temporaryInfo.currentActionAnalysis as ActionAnalysis | null;
     const characterInput = latestHumanMessage(state.messages);
     const enriched = await enrichMemoryContext(gameState, actionAnalysis, rag, db, characterInput);
-    console.log("✅ [Memory Agent] 上下文丰富完成");
+    const duration = Date.now() - startTime;
+    console.log(`✅ [Memory Agent] 上下文丰富完成 (耗时: ${duration}ms)`);
 
-    return { ...state, gameState: enriched };
+    return { ...state, gameState: enriched, stepTimings: { memory: duration } };
   });
 
   // Action: execute action agent using current game state
   graph.addNode("action", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("⚡ [Action Agent] 开始执行动作...");
     const gameState = state.gameState ?? initialGameState;
     const runtime = {}; // ActionAgent expects runtime but only passes through generateText; keep empty placeholder
@@ -240,7 +261,8 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
       updated = stateManager.getGameState() as GameState;
     }
     
-    console.log("✅ [Action Agent] 动作执行完成");
+    const duration = Date.now() - startTime;
+    console.log(`✅ [Action Agent] 动作执行完成 (耗时: ${duration}ms)`);
     
     // Log all action results in detail
     const updatedState = updated as GameState;
@@ -303,11 +325,12 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
       }
     }
     
-    return { ...state, gameState: updated as GameState };
+    return { ...state, gameState: updated as GameState, stepTimings: { action: duration } };
   });
 
   // Character: analyze NPC responses to player actions or simulated queries
   graph.addNode("character", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("\n🎭 [Character Agent] 开始分析 NPC 响应...");
     const gameState = state.gameState ?? initialGameState;
     const runtime = {};
@@ -333,7 +356,8 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
       // Store NPC response analyses in state
       gsm.setNPCResponseAnalyses(npcResponseAnalyses);
       
-      console.log(`✅ [Character Agent] 分析了 ${npcResponseAnalyses.length} 个 NPC 响应`);
+      const duration = Date.now() - startTime;
+      console.log(`✅ [Character Agent] 分析了 ${npcResponseAnalyses.length} 个 NPC 响应 (耗时: ${duration}ms)`);
       
       // Check if any NPCs need to respond
       const hasRespondingNPCs = npcResponseAnalyses.some(
@@ -361,20 +385,22 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
         console.log(`\n📋 [Character Agent] 没有 NPC 需要执行动作，直接进入 Keeper`);
       }
       
-      return { ...state, gameState: updatedState };
+      return { ...state, gameState: updatedState, stepTimings: { character: duration } };
     } catch (error) {
-      console.error(`❌ [Character Agent] 分析 NPC 响应时出错:`, error);
+      const duration = Date.now() - startTime;
+      console.error(`❌ [Character Agent] 分析 NPC 响应时出错 (耗时: ${duration}ms):`, error);
       // Continue with empty analyses on error
       gsm.setNPCResponseAnalyses([]);
       const updatedState = gsm.getGameState() as GameState;
       updatedState.temporaryInfo.contextualData = updatedState.temporaryInfo.contextualData || {};
       updatedState.temporaryInfo.contextualData.hasRespondingNPCs = false;
-      return { ...state, gameState: updatedState };
+      return { ...state, gameState: updatedState, stepTimings: { character: duration } };
     }
   });
 
   // NPC Action: process NPC actions based on response analyses
   graph.addNode("npcAction", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("\n⚡ [NPC Action Agent] 开始处理 NPC 动作...");
     const gameState = state.gameState ?? initialGameState;
     const runtime = {};
@@ -382,18 +408,21 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
     let updated: GameState;
     try {
       updated = await actionAgent.processNPCActions(runtime, gameState);
-      console.log("✅ [NPC Action Agent] NPC 动作处理完成");
+      const duration = Date.now() - startTime;
+      console.log(`✅ [NPC Action Agent] NPC 动作处理完成 (耗时: ${duration}ms)`);
+      return { ...state, gameState: updated as GameState, stepTimings: { npcAction: duration } };
     } catch (error) {
-      console.error(`❌ [NPC Action Agent] 处理 NPC 动作时出错:`, error);
+      const duration = Date.now() - startTime;
+      console.error(`❌ [NPC Action Agent] 处理 NPC 动作时出错 (耗时: ${duration}ms):`, error);
       // Continue with original state on error
       updated = gameState;
+      return { ...state, gameState: updated as GameState, stepTimings: { npcAction: duration } };
     }
-    
-    return { ...state, gameState: updated as GameState };
   });
 
   // Director: handle scene change requests from action agent
   graph.addNode("director", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("\n🎬 [Director Agent] 开始处理场景转换请求...");
     const gsm = new GameStateManager(state.gameState ?? initialGameState);
     const gameStateBefore = gsm.getGameState();
@@ -466,16 +495,21 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
       }
     }
     
-    return { ...state, gameState: gsm.getGameState() as GameState };
+    const duration = Date.now() - startTime;
+    console.log(`⏱️  [Director Agent] 总耗时: ${duration}ms`);
+    
+    return { ...state, gameState: gsm.getGameState() as GameState, stepTimings: { director: duration } };
   });
 
   // Keeper: produce narrative and update clues
   graph.addNode("keeper", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("🎭 [Keeper Agent] 开始生成叙事和线索揭示...");
     const gsm = new GameStateManager(state.gameState ?? initialGameState);
     const userInput = latestHumanMessage(state.messages);
     const result = await keeperAgent.generateNarrative(userInput, gsm);
-    console.log(`✅ [Keeper Agent] 叙事生成完成 (${result.narrative.length} 字符)`);
+    const duration = Date.now() - startTime;
+    console.log(`✅ [Keeper Agent] 叙事生成完成 (${result.narrative.length} 字符, 耗时: ${duration}ms)`);
     
     // Complete turn with keeper narrative if turnId exists
     if (state.turnId) {
@@ -497,6 +531,21 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
     const keeperMessage = new AIMessage(result.narrative);
     const updatedMessages = [...state.messages, keeperMessage];
     
+    // Print timing summary
+    const timings = { ...(state.stepTimings || {}), keeper: duration };
+    const totalTime = Object.values(timings).reduce((sum, time) => sum + time, 0);
+    console.log("\n" + "=".repeat(50));
+    console.log("📊 [Performance Summary] 各步骤耗时统计:");
+    console.log("=".repeat(50));
+    const sortedTimings = Object.entries(timings).sort((a, b) => b[1] - a[1]);
+    sortedTimings.forEach(([step, time]) => {
+      const percentage = ((time / totalTime) * 100).toFixed(1);
+      console.log(`  ${step.padEnd(15)} ${time.toString().padStart(6)}ms  ${percentage.padStart(5)}%`);
+    });
+    console.log("=".repeat(50));
+    console.log(`  总计: ${totalTime}ms`);
+    console.log("=".repeat(50) + "\n");
+    
     console.log("📤 [Keeper Agent] 叙事已添加到消息流，准备返回给客户端");
     console.log("🔄 [Graph Flow] 所有 Agent 处理完成，Graph 流程结束");
     
@@ -504,6 +553,7 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
       ...state,
       messages: updatedMessages,
       gameState: result.updatedGameState,
+      stepTimings: timings
     };
   });
 
@@ -554,6 +604,7 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
   const directorAgent = new DirectorAgent(scenarioLoader, db);
   const turnManager = new TurnManager(db);
   const characterAgent = new CharacterAgent();
+  characterAgent.setDatabase(db); // Inject database for relationship persistence
   const actionAgent = new ActionAgent(scenarioLoader);
   const keeperAgent = new KeeperAgent();
 
@@ -574,11 +625,20 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
       simulatedQueryCount: {
         value: (left: number | undefined, right?: number | undefined) => right !== undefined ? right : left
       },
+      stepTimings: {
+        value: (left: Record<string, number> | undefined, right?: Record<string, number>) => {
+          if (right !== undefined) {
+            return { ...(left || {}), ...right };
+          }
+          return left || {};
+        }
+      },
     },
   });
 
   // Entry node for listener graph: check progression and trigger if needed
   listenerGraph.addNode("listener", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("\n👂 [Listener Graph] Checking story progression...");
 
     const gsm = new GameStateManager(state.gameState ?? initialGameState);
@@ -600,8 +660,10 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
       };
     }
 
+    const duration = Date.now() - startTime;
+
     if (shouldTrigger && simulatedQuery) {
-      console.log(`✅ [Listener Graph] Triggered - Query: "${simulatedQuery}"`);
+      console.log(`✅ [Listener Graph] Triggered - Query: "${simulatedQuery}" (耗时: ${duration}ms)`);
 
       const simulatedMessage = new HumanMessage(simulatedQuery);
 
@@ -621,7 +683,8 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
         isSimulatedQuery: true,
         simulatedQueryCount: 0, // Start from 0 for listener graph
         gameState: currentGameState,
-        turnId: newTurnId
+        turnId: newTurnId,
+        stepTimings: { listener: duration }
       };
 
       console.log(`🔍 [Listener Node] Returning state with isSimulatedQuery=${returnState.isSimulatedQuery}, turnId=${returnState.turnId}`);
@@ -629,11 +692,12 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
 
       return returnState;
     } else {
-      console.log("⏸️  [Listener Graph] No trigger - ending");
+      console.log(`⏸️  [Listener Graph] No trigger - ending (耗时: ${duration}ms)`);
       const returnState = {
         ...state,
         isSimulatedQuery: false,
-        simulatedQueryCount: 0
+        simulatedQueryCount: 0,
+        stepTimings: { listener: duration }
       };
       console.log(`🔍 [Listener Node] Returning state with isSimulatedQuery=${returnState.isSimulatedQuery} (no trigger)`);
       return returnState;
@@ -667,6 +731,7 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
 
   // Entry node for simulate query: enrich state with conversation history if needed
   listenerGraph.addNode("entry", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("🔄 [Listener Graph Entry] Simulated query - enriching state with conversation history");
     const gameState = state.gameState ?? initialGameState;
     
@@ -680,7 +745,10 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
       latestHumanMessage(state.messages) // Use simulated query as character input
     );
     
-    return { ...state, gameState: enriched };
+    const duration = Date.now() - startTime;
+    console.log(`✅ [Listener Graph Entry] 上下文丰富完成 (耗时: ${duration}ms)`);
+    
+    return { ...state, gameState: enriched, stepTimings: { entry: duration } };
   });
 
   listenerGraph.addConditionalEdges(
@@ -693,6 +761,7 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
 
   // Character node
   listenerGraph.addNode("character", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("👥 [Character Agent] 开始分析 NPC 响应 (Simulated Query)...");
     const gameState = state.gameState ?? initialGameState;
     const runtime = {};
@@ -713,7 +782,10 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
     updatedState.temporaryInfo.contextualData = updatedState.temporaryInfo.contextualData || {};
     updatedState.temporaryInfo.contextualData.hasRespondingNPCs = hasRespondingNPCs;
 
-    return { ...state, gameState: updatedState };
+    const duration = Date.now() - startTime;
+    console.log(`✅ [Character Agent] 分析了 ${npcResponseAnalyses.length} 个 NPC 响应 (耗时: ${duration}ms)`);
+
+    return { ...state, gameState: updatedState, stepTimings: { character: duration } };
   });
 
   listenerGraph.addConditionalEdges(
@@ -731,6 +803,7 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
 
   // NPC Action node
   listenerGraph.addNode("npcAction", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("🤖 [NPC Action Agent] 开始执行 NPC 响应...");
     const gameState = state.gameState ?? initialGameState;
     const runtime = {};
@@ -738,19 +811,22 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
     let updated: GameState;
     try {
       updated = await actionAgent.processNPCActions(runtime, gameState);
-      console.log("✅ [NPC Action Agent] NPC 动作处理完成");
+      const duration = Date.now() - startTime;
+      console.log(`✅ [NPC Action Agent] NPC 动作处理完成 (耗时: ${duration}ms)`);
+      return { ...state, gameState: updated as GameState, stepTimings: { npcAction: duration } };
     } catch (error) {
-      console.error(`❌ [NPC Action Agent] 处理 NPC 动作时出错:`, error);
+      const duration = Date.now() - startTime;
+      console.error(`❌ [NPC Action Agent] 处理 NPC 动作时出错 (耗时: ${duration}ms):`, error);
       updated = gameState;
+      return { ...state, gameState: updated as GameState, stepTimings: { npcAction: duration } };
     }
-
-    return { ...state, gameState: updated as GameState };
   });
 
   listenerGraph.addEdge("npcAction" as any, "director" as any);
 
   // Director node
   listenerGraph.addNode("director", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("\n🎬 [Director Agent] 处理场景转换请求和生成叙事方向...");
     const gsm = new GameStateManager(state.gameState ?? initialGameState);
     const gameStateBefore = gsm.getGameState();
@@ -792,18 +868,23 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
       }
     }
     
-    return { ...state, gameState: gsm.getGameState() as GameState };
+    const duration = Date.now() - startTime;
+    console.log(`✅ [Director Agent] 处理完成 (耗时: ${duration}ms)`);
+    
+    return { ...state, gameState: gsm.getGameState() as GameState, stepTimings: { director: duration } };
   });
 
   listenerGraph.addEdge("director" as any, "keeper" as any);
 
   // Keeper node
   listenerGraph.addNode("keeper", async (state: GraphState) => {
+    const startTime = Date.now();
     console.log("🎭 [Keeper Agent] 开始生成叙事和线索揭示...");
     const gsm = new GameStateManager(state.gameState ?? initialGameState);
     const userInput = latestHumanMessage(state.messages);
     const result = await keeperAgent.generateNarrative(userInput, gsm);
-    console.log(`✅ [Keeper Agent] 叙事生成完成 (${result.narrative.length} 字符)`);
+    const duration = Date.now() - startTime;
+    console.log(`✅ [Keeper Agent] 叙事生成完成 (${result.narrative.length} 字符, 耗时: ${duration}ms)`);
     
     if (state.turnId) {
       try {
@@ -821,10 +902,26 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
     const keeperMessage = new AIMessage(result.narrative);
     const updatedMessages = [...state.messages, keeperMessage];
     
+    // Print timing summary
+    const timings = { ...(state.stepTimings || {}), keeper: duration };
+    const totalTime = Object.values(timings).reduce((sum, time) => sum + time, 0);
+    console.log("\n" + "=".repeat(50));
+    console.log("📊 [Listener Graph Performance] 各步骤耗时统计:");
+    console.log("=".repeat(50));
+    const sortedTimings = Object.entries(timings).sort((a, b) => b[1] - a[1]);
+    sortedTimings.forEach(([step, time]) => {
+      const percentage = ((time / totalTime) * 100).toFixed(1);
+      console.log(`  ${step.padEnd(15)} ${time.toString().padStart(6)}ms  ${percentage.padStart(5)}%`);
+    });
+    console.log("=".repeat(50));
+    console.log(`  总计: ${totalTime}ms`);
+    console.log("=".repeat(50) + "\n");
+    
     return {
       ...state,
       messages: updatedMessages,
       gameState: result.updatedGameState,
+      stepTimings: timings
     };
   });
 

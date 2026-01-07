@@ -1,16 +1,16 @@
 [
     {
-      "name": "Isabela Smith",
-      "occupation": "Head Nurse",
-      "appearance": "A young woman with a professional and neat appearance, usually dressed in a nurse’s uniform, giving off a calm and trustworthy impression.",
-      "personality": "Responsible, patient, diligent, and caring. She takes her duties seriously and shows strong emotional commitment to those she cares about.",
-      "background": "Isabela Smith is a young head nurse at the local hospital. She is known among her colleagues for being conscientious and patient. She is engaged to a man from a well-off family who works as a diplomat. Many hospital staff privately speculate that she will eventually leave her job to marry and move to a big city. On the night of December 26, she abruptly resigned and left Cassandra overnight, taking her fiancé with her after he suddenly suffered a mental breakdown.",
+      "name": "伊莎贝拉·史密斯",
+      "occupation": "护士长",
+      "appearance": "一个年轻女性,外表专业整洁,通常穿着护士制服,给人平静可信赖的印象。",
+      "personality": "负责任、耐心、勤奋且关怀。她认真对待自己的职责,对她关心的人表现出强烈的情感投入。",
+      "background": "伊莎贝拉·史密斯是当地医院的年轻护士长。她在同事中以认真负责和耐心而闻名。她与一个来自富裕家庭的外交官订婚。许多医院员工私下猜测她最终会辞职结婚并搬到大城市。在12月26日晚上,她突然辞职并连夜离开卡珊德拉,在她的未婚夫突然精神崩溃后带他离开。",
       "goals": [
-        "Protect and take care of her mentally unstable fiancé",
-        "Leave Cassandra and start a safer, more stable life elsewhere"
+        "保护并照顾精神不稳定的未婚夫",
+        "离开卡珊德拉,在其他地方开始更安全、更稳定的生活"
       ],
       "secrets": [
-        "After the night of December 26, the Isabela seen by investigators is actually an impostor disguised by Mrs. Barklyite"
+        "12月26日晚之后,调查员看到的伊莎贝拉实际上是巴克莱特夫人伪装的冒名顶替者"
       ],
       "attributes": {
         "STR": 45,
@@ -30,34 +30,34 @@
       },
       "clues": [
         {
-          "clueText": "Isabela resigned and left Cassandra on the night of December 26, urgently taking her fiancé with her after he became mentally unstable.",
+          "clueText": "伊莎贝拉在12月26日晚辞职并离开卡珊德拉,在她的未婚夫精神不稳定后紧急带他离开。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Cassandra Hospital", "Isabela Smith's Fiancé"]
+          "relatedTo": ["卡珊德拉医院", "伊莎贝拉·史密斯的未婚夫"]
         },
         {
-          "clueText": "Any Isabela encountered by investigators after December 26 is actually Mrs. Barklyite in disguise.",
+          "clueText": "调查员在12月26日后遇到的任何伊莎贝拉实际上是伪装的巴克莱特夫人。",
           "category": "secret",
           "difficulty": "hard",
-          "relatedTo": ["Mrs. Barklyite"]
+          "relatedTo": ["巴克莱特夫人"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Mrs. Barklyite",
+          "targetName": "巴克莱特夫人",
           "relationshipType": "enemy",
           "attitude": -40,
-          "description": "An unknown but dangerous figure who impersonates Isabela after her departure.",
-          "history": "Mrs. Barklyite disguises herself as Isabela after December 26, misleading investigators."
+          "description": "一个未知但危险的人物,在她离开后冒充伊莎贝拉。",
+          "history": "巴克莱特夫人在12月26日后伪装成伊莎贝拉,误导调查员。"
         },
         {
-          "targetName": "Unnamed Fiancé",
+          "targetName": "未命名的未婚夫",
           "relationshipType": "family",
           "attitude": 80,
-          "description": "Her fiancé from a wealthy family, who suddenly became mentally unstable.",
-          "history": "Their engagement was stable until his sudden mental collapse, prompting Isabela to flee Cassandra with him."
+          "description": "她来自富裕家庭的未婚夫,突然精神不稳定。",
+          "history": "他们的订婚一直很稳定,直到他突然精神崩溃,促使伊莎贝拉带他逃离卡珊德拉。"
         }
       ],
-      "notes": "Isabela is no longer physically present in Cassandra after December 26; her apparent presence afterward is a deliberate deception."
+      "notes": "伊莎贝拉在12月26日后不再实际存在于卡珊德拉;之后她的明显存在是故意的欺骗。"
     }
   ]

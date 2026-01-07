@@ -1,30 +1,78 @@
-[
-    {
-      "name": "Moon Mirror Guardian, Mother of a Thousand Young in the Mountains (Avatar of Shub-Niggurath)",
-      "occupation": "Outer God Avatar / Guardian Entity",
-      "appearance": "A vast, grotesque being with a semi-translucent, gelatinous body crowned by a massive beak filled with countless teeth. Within its form, swallowed sacrifices can be seen slowly transforming. Its presence is monstrous and alien, radiating fertility and corruption.",
-      "background": "The Moon Mirror Guardian is an avatar of Shub-Niggurath, worshipped by cultists as the Mother of a Thousand Young in the Mountains. It can only be summoned through the Moon Mirror during a full moon. Cultists offer living sacrifices to it, which are devoured whole and transformed within its body into servants blessed by Shub-Niggurath, destined to dwell eternally in subterranean nests.",
-      "goals": [
-        "Consume living sacrifices offered by its cult",
-        "Create and nurture new servants of Shub-Niggurath"
-      ],
-      "attributes": {
-        "STR": 275,
-        "CON": 675,
-        "DEX": 80,
-        "POW": 350,
-        "SIZ": 485,
-        "INT": 105
+{
+  "name": "月镜守护者，山中千子之母（莎布·尼古拉丝的化身）",
+  "description": "这是外神莎布·尼古拉丝在人间的化身之一，以月镜守护者的形态出现。她守护着连接梦境与现实的月之镜面，同时也是无数异形生命的母亲。她的存在本身就是对理性和秩序的亵渎。",
+  "personality": "超越人类理解的存在，既母性又残酷，既生育又毁灭。她对凡人的态度就像人类对待微生物一样漠然，但偶尔会展现出令人不安的"慈爱"。",
+  "background": "作为"千子之母"莎布·尼古拉丝的化身，她在这片山区已经存在了数个世纪。月镜是她力量的焦点，通过它她能够在现实与梦境之间穿梭，并孕育出各种异形的子嗣。嘉年华的存在与她有着千丝万缕的联系。",
+  "appearance": "常态下显现为一个笼罩在月光般雾气中的巨大女性轮廓，高达数米。当她显露真身时，是一团不断蠕动、生长的暗绿色血肉，无数触手、口器和未成形的生物从其中涌出。周围总是弥漫着浓郁的腐朽与新生的混合气息。",
+  "skills": [
+    "神话知识（无限）",
+    "生物操控",
+    "梦境控制",
+    "次元穿梭",
+    "生命创造",
+    "心灵侵蚀"
+  ],
+  "attributes": {
+    "STR": 200,
+    "CON": 300,
+    "SIZ": 250,
+    "DEX": 80,
+    "APP": 1,
+    "INT": 100,
+    "POW": 150,
+    "EDU": "不适用"
+  },
+  "combat": {
+    "HP": 275,
+    "damage_bonus": "+5D6",
+    "build": 6,
+    "move": 12,
+    "attacks": [
+      {
+        "name": "触手鞭击",
+        "hit_rate": "80%",
+        "damage": "2D6+伤害加值",
+        "special": "命中后可能发生擒抱"
       },
-      "status": {
-        "hp": 115,
-        "maxHp": 115,
-        "mp": 70
+      {
+        "name": "吞噬",
+        "hit_rate": "自动（对被擒抱目标）",
+        "damage": "6D6",
+        "special": "每轮持续伤害"
       },
-      "skills": {
-        "Fighting": 90,
-        "Crush": 75
-      },
-      "notes": "Combat Behavior: The Moon Mirror Guardian attacks enemies with its massive, tooth-filled beak or crushes them beneath its enormous bulk. Attacks per round: 1.\nCombat – Beak: 90%, damage 1D10 or may swallow the target whole.\nCombat – Crush: 75%, damage 1D6 plus damage bonus.\nArmor: None; however, damage from any weapon is reduced to a maximum of 1 point per hit (piercing weapons deal 2 points). Fire, electricity, and spells deal normal damage. The avatar regenerates 1D10 HP each round.\nSpells: Any spells related to Outer Gods; additionally, spells associated with nature or the natural environment (or as determined by the Keeper).\nSanity Loss: Seeing the Moon Mirror Guardian causes 1D10/1D100 SAN loss.\nSpecial Conditions: It can only be summoned via the Moon Mirror during a full moon. Swallowed victims slowly transform inside its body into servants of Shub-Niggurath."
-    }
-  ]
+      {
+        "name": "子嗣召唤",
+        "hit_rate": "自动",
+        "damage": "无直接伤害",
+        "special": "召唤1D3个戈芬或其他子嗣生物"
+      }
+    ],
+    "armor": "物理攻击减半（向下取整），再生10HP/轮"
+  },
+  "special_abilities": [
+    "不朽之躯：即使被摧毁，也会在1D100天后在月镜附近重生",
+    "月镜之力：可以通过月镜传送、监视和操控梦境",
+    "生命母体：能够孕育和创造各种异形生物",
+    "理性崩坏：目睹其真身需进行SAN检定（1D10/1D100）",
+    "神话知识：与她接触过的人会永久获得+1D20神话知识，但同时永久失去等量SAN值",
+    "时空扭曲：她所在的区域，时间和空间的规则会变得模糊不定"
+  ],
+  "relationships": {
+    "allies": ["所有莎布·尼古拉丝的子嗣", "戈芬族群", "某些嘉年华核心成员"],
+    "enemies": ["试图封印月镜的古老守护者", "理解其威胁的调查员"],
+    "neutral": ["不了解真相的凡人"]
+  },
+  "goals": "维护月镜的运转，持续在人间繁衍子嗣，最终实现某个古老的预言或仪式。",
+  "secrets": "她是黑嘉年华真正的幕后主宰之一。月镜不仅是通往梦境的门户，更是某个更宏大计划的关键部分。她正在等待一个特定的时刻，届时她将完全降临到这个世界。",
+  "encounter_notes": "遭遇月镜守护者几乎是致命的。调查员应该尽量避免直接对抗，而是寻找封印或逃离的方法。即使是间接接触（如通过月镜看到她的影像）也需要进行SAN检定（1D6/1D20）。",
+  "weaknesses": [
+    "月镜的破坏可能暂时削弱她的力量",
+    "某些古老的封印咒文可能限制她的活动",
+    "她对某些特定的圣物或符号有本能的厌恶"
+  ],
+  "sanity_loss": {
+    "seeing_in_veil": "1D6/1D20（见到雾气形态）",
+    "seeing_true_form": "1D10/1D100（见到真身）",
+    "contact": "+1D20神话知识/-1D20 SAN（深度接触）"
+  }
+}

@@ -1,11 +1,11 @@
 [
   {
-    "name": "Bo He",
-    "occupation": "Unknown",
+    "name": "薄荷",
+    "occupation": "未知",
     "age": 30,
-    "appearance": "No detailed physical description is recorded; appears to be an ordinary individual who does not stand out in a crowd.",
-    "personality": "Little is known about Bo He’s personality; appears neutral and uninvolved compared to the main cast.",
-    "background": "Bo He is listed among the cameo or non-primary NPCs connected to the Cassandra incident. Such characters are noted as not directly participating in the investigators’ main investigation and serve mainly as background figures within the setting.",
+    "appearance": "没有详细的外貌描述记录;似乎是一个在人群中不显眼的普通人。",
+    "personality": "对薄荷的个性知之甚少;与主要角色相比显得中立且不参与。",
+    "background": "薄荷被列在与卡珊德拉事件相关的客串或非主要NPC中。这些角色被注明不直接参与调查员的主要调查,主要作为背景人物存在于设定中。",
     "goals": [],
     "secrets": [],
     "attributes": {
@@ -30,14 +30,14 @@
     "skills": {},
     "inventory": [
       {
-        "name": "N/A",
+        "name": "无",
         "properties": {
-          "note": "The source material only mentions: once investigated Ben Cleo's family past and became mentally disturbed, currently recuperating in a sanatorium; no personal items/interactive evidence described."
+          "note": "源材料仅提到:曾调查本·克莱奥家族的过去并精神错乱,目前在疗养院休养;没有描述个人物品/互动证据。"
         }
       }
     ],
     "clues": [],
     "relationships": [],
-    "notes": "Bo He is categorized as a cameo/non-major NPC and is not expected to engage directly with the investigators’ core storyline."
+    "notes": "薄荷被归类为客串/非主要NPC,预计不会直接参与调查员的核心故事线。"
   }
 ]

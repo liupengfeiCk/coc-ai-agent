@@ -1,82 +1,82 @@
 [
     {
-      "name": "Two-Story Wooden Cabin",
-      "description": "A secluded two-story wooden cabin located on Crescent Street B, used as a former safe house by a hacker. The location is tied to multiple secret cyber pursuits and later becomes indirectly linked to a suspicious death scene nearby.",
+      "name": "两层木屋",
+      "description": "位于新月街B的一座僻静的两层木屋,曾被一名黑客用作安全屋。这个地点与多个秘密网络追踪有关,后来间接与附近的可疑死亡现场联系起来。",
       "snapshot": {
-        "name": "Two-Story Wooden Cabin",
-        "location": "Crescent Street B, Cassandra",
-        "description": "The cabin appears unremarkable from the outside, blending in with the quiet residential surroundings. Internally, it once functioned as a hacker's safe house, chosen specifically to avoid surveillance systems. Evidence suggests hurried data destruction and prior illegal digital activities connected to underground networks.",
+        "name": "两层木屋",
+        "location": "卡桑德拉,新月街B",
+        "description": "小屋从外面看起来不起眼,融入安静的住宅环境。内部,它曾经作为黑客的安全屋,特意选择以避开监控系统。证据表明匆忙的数据销毁和与地下网络相关的先前非法数字活动。",
         "characters": [],
         "clues": [
           {
-            "clueText": "Traces indicating the cabin was deliberately chosen to avoid surveillance systems, making it an ideal safe house.",
-            "category": "knowledge",
-            "difficulty": "regular",
-            "location": "General interior of the cabin",
-            "discoveryMethod": "Computer Use or Intelligence roll",
+            "clueText": "迹象表明小屋被刻意选择以避开监控系统,使其成为理想的安全屋。",
+            "category": "知识",
+            "difficulty": "普通",
+            "location": "小屋的整体内部",
+            "discoveryMethod": "计算机使用或智力检定",
             "reveals": [
-              "The occupant was highly aware of and actively avoiding digital monitoring."
+              "居住者高度意识到并主动避开数字监控。"
             ]
           },
           {
-            "clueText": "Evidence that a computer once used here had been completely destroyed and removed.",
-            "category": "physical",
-            "difficulty": "hard",
-            "location": "Former workstation area inside the cabin",
-            "discoveryMethod": "Spot Hidden",
+            "clueText": "证据表明这里曾使用的一台计算机已被完全摧毁和移除。",
+            "category": "物理",
+            "difficulty": "困难",
+            "location": "小屋内的前工作站区域",
+            "discoveryMethod": "侦查",
             "reveals": [
-              "A hacker attempted to erase all traces of their activities.",
-              "Someone later recovered or tampered with the destroyed device."
+              "黑客试图抹去其活动的所有痕迹。",
+              "有人后来恢复或篡改了被摧毁的设备。"
             ]
           },
           {
-            "clueText": "Network activity traced to this cabin abruptly ceased here.",
-            "category": "observation",
-            "difficulty": "regular",
-            "location": "Cabin as a whole",
-            "discoveryMethod": "Computer Use",
+            "clueText": "追踪到这个小屋的网络活动在此突然停止。",
+            "category": "观察",
+            "difficulty": "普通",
+            "location": "整个小屋",
+            "discoveryMethod": "计算机使用",
             "reveals": [
-              "This was the endpoint of a cyber pursuit involving multiple hackers."
+              "这是涉及多名黑客的网络追踪的终点。"
             ]
           }
         ],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Dim interior lighting, with no modern security systems or active electronics.",
+            "type": "照明",
+            "description": "昏暗的室内照明,没有现代安全系统或活跃的电子设备。",
             "mechanicalEffect": ""
           }
         ],
         "events": [
-          "The hacker known as Lucifero (THE SECOND CASE VICTIM, 21-year-old, killed December 22, 2003) traced a rival hacker's signal to this cabin before her death",
-          "A destroyed computer was recovered and partially restored elsewhere",
-          "The cabin later became contextually linked to Bruno's death nearby—Bruno was investigating both the first case (2002) and second case (2003) when he died"
+          "名为路西菲罗的黑客(第二起案件受害者,21岁,2003年12月22日被杀)在她死前追踪到对手黑客的信号到这个小屋",
+          "一台被摧毁的计算机被恢复并在其他地方部分修复",
+          "小屋后来在情境上与附近布鲁诺的死亡联系起来——布鲁诺在他死时正在调查第一起案件(2002年)和第二起案件(2003年)"
         ],
         "exits": [
           {
-            "direction": "Front Door",
-            "destination": "Crescent Street B",
-            "description": "The main entrance facing the street.",
+            "direction": "前门",
+            "destination": "新月街B",
+            "description": "面向街道的主入口。",
             "condition": ""
           }
         ],
-        "keeperNotes": "This location is primarily a background investigative site connected to THE SECOND CASE VICTIM (Lucifero, 21-year-old, December 22, 2003). Lucifero was investigating hackers before her death at Reindeer Bar. This cabin was her safe house. Bruno's body was found nearby in his car—he was investigating BOTH cases: the FIRST CASE (19-year-old, frozen in ice, December 22, 2002) and the SECOND CASE (Lucifero, gunshot/stab, December 22, 2003). Emphasize its role as a deliberate blind spot in the town's surveillance network and its importance in the cyber conflict between NPCs.",
+        "keeperNotes": "这个地点主要是与第二起案件受害者(路西菲罗,21岁,2003年12月22日)相关的背景调查地点。路西菲罗在驯鹿酒吧死前正在调查黑客。这个小屋是她的安全屋。布鲁诺的尸体在他的车里附近被发现——他正在调查两起案件:第一起案件(19岁,冻在冰中,2002年12月22日)和第二起案件(路西菲罗,枪击/刺伤,2003年12月22日)。强调它作为镇上监控网络中刻意盲点的作用,以及它在NPC之间网络冲突中的重要性。",
         "permanentChanges": [
-          "The cabin is no longer actively used as a safe house.",
-          "Its role as a former hacker hideout can be discovered permanently."
+          "小屋不再被积极用作安全屋。",
+          "它作为前黑客藏身处的角色可以被永久发现。"
         ]
       },
-      "tags": ["safe house", "hacker", "surveillance blind spot", "investigation"],
+      "tags": ["安全屋", "黑客", "监控盲点", "调查"],
       "connections": [
         {
-          "scenarioName": "Bruno's Car",
-          "relationshipType": "leads_to",
-          "description": "Bruno's body is found in his car parked in front of this cabin, linking the location to his death."
+          "scenarioName": "布鲁诺的车",
+          "relationshipType": "导向",
+          "description": "布鲁诺的尸体在停在这个小屋前的车里被发现,将地点与他的死亡联系起来。"
         },
         {
-          "scenarioName": "Reindeer Bar",
-          "relationshipType": "alternate",
-          "description": "Information recovered from this cabin indirectly leads to events at the Reindeer Bar."
+          "scenarioName": "驯鹿酒吧",
+          "relationshipType": "替代",
+          "description": "从这个小屋恢复的信息间接导致驯鹿酒吧的事件。"
         }
       ]
     }

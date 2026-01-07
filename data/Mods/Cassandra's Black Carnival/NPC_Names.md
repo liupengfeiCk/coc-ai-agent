@@ -1,6 +1,6 @@
-# NPC Names - Cassandra's Black Carnival
+# NPC 名单 - 卡森德拉的黑色嘉年华
 
-## Character List
+## 角色列表
 
 - Abel William (亚伯·威廉)
 - Adolph Carl (阿道夫·卡尔)
@@ -61,6 +61,6 @@
 - Vito (维托)
 - Wind (风先生)
 
-## Total Count
+## 总数统计
 
-**Total NPCs: 57**
+**NPC总数: 57**

@@ -1,104 +1,104 @@
 {
-    "map_name": "Cursenday",
-    "spatial_logic": "The town is centered around the intersection of Main Road (East-West) and North/South Street (North-South).",
+    "map_name": "卡森德拉",
+    "spatial_logic": "小镇以主干道(东西向)与南北街(南北向)交叉口为中心。",
     "road_network": [
       {
-        "road_name": "Avenue of Stars",
-        "orientation": "North-South (Northern Sector)",
-        "connected_to": ["Main Road"],
+        "road_name": "星辰大道",
+        "orientation": "南北向(北部区域)",
+        "connected_to": ["主干道"],
         "locations_along_road": [
-          "Incineration Plant (Northern terminus)",
-          "Star Hospital"
+          "焚化厂(北端终点)",
+          "星辰医院"
         ]
       },
       {
-        "road_name": "Main Road / Old Street",
-        "orientation": "East-West (Primary Axis)",
-        "connected_to": ["Avenue of Stars", "North Street Cur", "Pomegranate Lane", "Sunset Boulevard"],
+        "road_name": "主干道 / 旧街",
+        "orientation": "东西向(主轴)",
+        "connected_to": ["星辰大道", "卡森新北街", "石榴巷", "日暮大道"],
         "locations_along_road": [
-          "Train Station (Western terminus)",
-          "Train Station Square",
-          "Cursenday Inner Street",
-          "Clock Shop",
-          "Shandra's Cabin",
-          "Distillery",
-          "Helen's Restaurant (Central Intersection)",
-          "Cemetery",
-          "Lumber Mill (Eastern terminus)"
+          "火车站(西端终点)",
+          "火车站广场",
+          "卡森德拉内街",
+          "钟表店",
+          "珊德拉的小屋",
+          "酒厂",
+          "海伦餐厅(中心路口)",
+          "墓地",
+          "伐木场(东端终点)"
         ]
       },
       {
-        "road_name": "North Street Cur",
-        "orientation": "North-South (Central-North)",
-        "connected_to": ["Main Road", "South Street Cur"],
+        "road_name": "卡森新北街",
+        "orientation": "南北向(中北部)",
+        "connected_to": ["主干道", "卡森新南街"],
         "locations_along_road": [
-          "Flower Shop (Cursenday Flower)",
-          "Astrologer's Shop",
-          "Helen's Restaurant"
+          "花店(卡森德拉之花)",
+          "占星师小铺",
+          "海伦餐厅"
         ]
       },
       {
-        "road_name": "South Street Cur",
-        "orientation": "North-South (Central-South)",
-        "connected_to": ["North Street Cur", "Crescent Street A"],
+        "road_name": "卡森新南街",
+        "orientation": "南北向(中南部)",
+        "connected_to": ["卡森新北街", "新月街A大道"],
         "locations_along_road": [
-          "Hardware Store",
-          "Church",
-          "Reindeer Pub"
+          "五金店",
+          "教堂",
+          "驯鹿酒吧"
         ]
       },
       {
-        "road_name": "Crescent Street System",
-        "orientation": "Southeast Grid",
+        "road_name": "新月街系统",
+        "orientation": "东南网格",
         "sub_sections": [
           {
-            "segment": "Crescent Street A",
-            "connected_to": ["South Street Cur", "Pomegranate Lane", "Crescent Street B", "Crescent Street C"],
-            "locations": ["Paladir Hotel", "Police Station"]
+            "segment": "新月街A大道",
+            "connected_to": ["卡森新南街", "石榴巷", "新月街B大道", "新月街C大道"],
+            "locations": ["帕拉迪尔酒店", "警察局"]
           },
           {
-            "segment": "Crescent Street B",
-            "connected_to": ["Crescent Street A"],
-            "locations": ["Two-Story Wooden House", "Sewer Entrance", "Marcel's House"]
+            "segment": "新月街B大道",
+            "connected_to": ["新月街A大道"],
+            "locations": ["二层木屋", "下水道入口", "马塞尔的家"]
           },
           {
-            "segment": "Crescent Street C",
-            "connected_to": ["Crescent Street A"],
-            "locations": ["Philip's House"]
+            "segment": "新月街C大道",
+            "connected_to": ["新月街A大道"],
+            "locations": ["菲利普的家"]
           }
         ]
       },
       {
-        "road_name": "Pomegranate Lane",
-        "orientation": "Diagonal / Connecting",
-        "connected_to": ["Main Road", "Crescent Street A"],
+        "road_name": "石榴巷",
+        "orientation": "斜向 / 连接道",
+        "connected_to": ["主干道", "新月街A大道"],
         "locations_along_road": [
-          "Adolph's House"
+          "阿道夫的家"
         ]
       },
       {
-        "road_name": "Sunset Boulevard",
-        "orientation": "Northeast Extension",
-        "connected_to": ["Main Road"],
+        "road_name": "日暮大道",
+        "orientation": "东北延伸",
+        "connected_to": ["主干道"],
         "locations_along_road": [
-          "Cemetery (Mid-way)",
-          "Lumber Mill",
-          "Deep Forest"
+          "墓地(中途)",
+          "伐木场",
+          "深林"
         ]
       }
     ],
     "hidden_connectivity": [
       {
-        "entry_point": "Train Station Platform",
-        "leads_to": "Mafia Headquarters (The Wharf)"
+        "entry_point": "火车站月台",
+        "leads_to": "黑手党总部(码头)"
       },
       {
-        "entry_point": "Church Basement",
-        "leads_to": "Underground Casino"
+        "entry_point": "教堂地下室",
+        "leads_to": "地下赌场"
       },
       {
-        "entry_point": "Sewer (Crescent Street B)",
-        "leads_to": "Lucifero's Operation Platform"
+        "entry_point": "下水道(新月街B大道)",
+        "leads_to": "卢奇菲罗的操作平台"
       }
     ]
   }

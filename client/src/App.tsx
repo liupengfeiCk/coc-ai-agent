@@ -5,95 +5,95 @@ import { GameSidebar } from "./components/GameSidebar";
 import { CharacterSelector } from "./components/CharacterSelector";
 import { ModSelector } from "./components/ModSelector";
 
-type SkillEntry = { name: string; base: string; category: string };
+type SkillEntry = { name: string; nameCn: string; base: string; category: string };
 type AppPage = "home" | "sheet" | "game" | "character-select" | "mod-select" | "module-intro";
 
 const SKILLS: SkillEntry[] = [
   // Interpersonal & Social Skills
-  { name: "Charm", base: "15%", category: "Social" },
-  { name: "Fast Talk", base: "5%", category: "Social" },
-  { name: "Intimidate", base: "15%", category: "Social" },
-  { name: "Persuade", base: "10%", category: "Social" },
-  { name: "Psychology", base: "10%", category: "Social" },
+  { name: "Charm", nameCn: "魅惑", base: "15%", category: "Social" },
+  { name: "Fast Talk", nameCn: "话术", base: "5%", category: "Social" },
+  { name: "Intimidate", nameCn: "恐吓", base: "15%", category: "Social" },
+  { name: "Persuade", nameCn: "说服", base: "10%", category: "Social" },
+  { name: "Psychology", nameCn: "心理学", base: "10%", category: "Social" },
 
   // Knowledge & Academic Skills
-  { name: "Accounting", base: "5%", category: "Knowledge" },
-  { name: "Anthropology", base: "1%", category: "Knowledge" },
-  { name: "Archaeology", base: "1%", category: "Knowledge" },
-  { name: "Art and Craft", base: "5%", category: "Knowledge" },
-  { name: "History", base: "5%", category: "Knowledge" },
-  { name: "Law", base: "5%", category: "Knowledge" },
-  { name: "Library Use", base: "20%", category: "Knowledge" },
-  { name: "Occult", base: "5%", category: "Knowledge" },
-  { name: "Science (Biology)", base: "1%", category: "Knowledge" },
-  { name: "Science (Chemistry)", base: "1%", category: "Knowledge" },
-  { name: "Science (Physics)", base: "1%", category: "Knowledge" },
+  { name: "Accounting", nameCn: "会计学", base: "5%", category: "Knowledge" },
+  { name: "Anthropology", nameCn: "人类学", base: "1%", category: "Knowledge" },
+  { name: "Archaeology", nameCn: "考古学", base: "1%", category: "Knowledge" },
+  { name: "Art and Craft", nameCn: "艺术与工艺", base: "5%", category: "Knowledge" },
+  { name: "History", nameCn: "历史", base: "5%", category: "Knowledge" },
+  { name: "Law", nameCn: "法律", base: "5%", category: "Knowledge" },
+  { name: "Library Use", nameCn: "图书馆使用", base: "20%", category: "Knowledge" },
+  { name: "Occult", nameCn: "神秘学", base: "5%", category: "Knowledge" },
+  { name: "Science (Biology)", nameCn: "科学(生物学)", base: "1%", category: "Knowledge" },
+  { name: "Science (Chemistry)", nameCn: "科学(化学)", base: "1%", category: "Knowledge" },
+  { name: "Science (Physics)", nameCn: "科学(物理学)", base: "1%", category: "Knowledge" },
 
   // Perception & Investigation Skills
-  { name: "Listen", base: "20%", category: "Investigation" },
-  { name: "Spot Hidden", base: "25%", category: "Investigation" },
-  { name: "Track", base: "10%", category: "Investigation" },
+  { name: "Listen", nameCn: "聆听", base: "20%", category: "Investigation" },
+  { name: "Spot Hidden", nameCn: "侦查", base: "25%", category: "Investigation" },
+  { name: "Track", nameCn: "追踪", base: "10%", category: "Investigation" },
 
   // Physical & Movement Skills
-  { name: "Climb", base: "20%", category: "Physical" },
-  { name: "Dodge", base: "0%", category: "Physical" },
-  { name: "Jump", base: "20%", category: "Physical" },
-  { name: "Swim", base: "20%", category: "Physical" },
-  { name: "Throw", base: "20%", category: "Physical" },
+  { name: "Climb", nameCn: "攀爬", base: "20%", category: "Physical" },
+  { name: "Dodge", nameCn: "闪避", base: "0%", category: "Physical" },
+  { name: "Jump", nameCn: "跳跃", base: "20%", category: "Physical" },
+  { name: "Swim", nameCn: "游泳", base: "20%", category: "Physical" },
+  { name: "Throw", nameCn: "投掷", base: "20%", category: "Physical" },
 
   // Stealth & Deception Skills
-  { name: "Disguise", base: "5%", category: "Stealth" },
-  { name: "Sleight of Hand", base: "10%", category: "Stealth" },
-  { name: "Stealth", base: "20%", category: "Stealth" },
+  { name: "Disguise", nameCn: "乔装", base: "5%", category: "Stealth" },
+  { name: "Sleight of Hand", nameCn: "妙手", base: "10%", category: "Stealth" },
+  { name: "Stealth", nameCn: "潜行", base: "20%", category: "Stealth" },
 
   // Mechanical & Technical Skills
-  { name: "Electrical Repair", base: "10%", category: "Technical" },
-  { name: "Mechanical Repair", base: "10%", category: "Technical" },
-  { name: "Operate Heavy Machinery", base: "1%", category: "Technical" },
-  { name: "Pilot (Aircraft)", base: "1%", category: "Technical" },
-  { name: "Pilot (Boat)", base: "1%", category: "Technical" },
-  { name: "Drive Auto", base: "20%", category: "Technical" },
+  { name: "Electrical Repair", nameCn: "电气维修", base: "10%", category: "Technical" },
+  { name: "Mechanical Repair", nameCn: "机械维修", base: "10%", category: "Technical" },
+  { name: "Operate Heavy Machinery", nameCn: "操作重型机械", base: "1%", category: "Technical" },
+  { name: "Pilot (Aircraft)", nameCn: "驾驶(飞机)", base: "1%", category: "Technical" },
+  { name: "Pilot (Boat)", nameCn: "驾驶(船只)", base: "1%", category: "Technical" },
+  { name: "Drive Auto", nameCn: "驾驶(汽车)", base: "20%", category: "Technical" },
 
   // Medical & Survival Skills
-  { name: "First Aid", base: "30%", category: "Medical" },
-  { name: "Medicine", base: "1%", category: "Medical" },
-  { name: "Natural World", base: "10%", category: "Medical" },
-  { name: "Survival (Arctic)", base: "10%", category: "Medical" },
-  { name: "Survival (Desert)", base: "10%", category: "Medical" },
-  { name: "Survival (Forest)", base: "10%", category: "Medical" },
+  { name: "First Aid", nameCn: "急救", base: "30%", category: "Medical" },
+  { name: "Medicine", nameCn: "医学", base: "1%", category: "Medical" },
+  { name: "Natural World", nameCn: "自然学", base: "10%", category: "Medical" },
+  { name: "Survival (Arctic)", nameCn: "生存(极地)", base: "10%", category: "Medical" },
+  { name: "Survival (Desert)", nameCn: "生存(沙漠)", base: "10%", category: "Medical" },
+  { name: "Survival (Forest)", nameCn: "生存(森林)", base: "10%", category: "Medical" },
 
   // Combat Skills - Fighting
-  { name: "Fighting (Brawl)", base: "25%", category: "Combat" },
-  { name: "Fighting (Sword)", base: "20%", category: "Combat" },
-  { name: "Fighting (Axe)", base: "15%", category: "Combat" },
-  { name: "Fighting (Whip)", base: "5%", category: "Combat" },
+  { name: "Fighting (Brawl)", nameCn: "斗殴", base: "25%", category: "Combat" },
+  { name: "Fighting (Sword)", nameCn: "格斗(剑)", base: "20%", category: "Combat" },
+  { name: "Fighting (Axe)", nameCn: "格斗(斧)", base: "15%", category: "Combat" },
+  { name: "Fighting (Whip)", nameCn: "格斗(鞭)", base: "5%", category: "Combat" },
 
   // Combat Skills - Firearms
-  { name: "Firearms (Handgun)", base: "20%", category: "Combat" },
-  { name: "Firearms (Rifle/Shotgun)", base: "25%", category: "Combat" },
-  { name: "Firearms (Submachine Gun)", base: "15%", category: "Combat" },
-  { name: "Firearms (Bow)", base: "15%", category: "Combat" },
+  { name: "Firearms (Handgun)", nameCn: "射击(手枪)", base: "20%", category: "Combat" },
+  { name: "Firearms (Rifle/Shotgun)", nameCn: "射击(步枪/霰弹枪)", base: "25%", category: "Combat" },
+  { name: "Firearms (Submachine Gun)", nameCn: "射击(冲锋枪)", base: "15%", category: "Combat" },
+  { name: "Firearms (Bow)", nameCn: "射击(弓)", base: "15%", category: "Combat" },
 
   // Criminal & Subterfuge Skills
-  { name: "Locksmith", base: "1%", category: "Criminal" },
-  { name: "Criminology", base: "1%", category: "Criminal" },
-  { name: "Forgery", base: "1%", category: "Criminal" },
+  { name: "Locksmith", nameCn: "锁匠", base: "1%", category: "Criminal" },
+  { name: "Criminology", nameCn: "犯罪学", base: "1%", category: "Criminal" },
+  { name: "Forgery", nameCn: "伪造", base: "1%", category: "Criminal" },
 
   // Communication & Language Skills
-  { name: "Language (Own)", base: "0%", category: "Language" },
-  { name: "Language (Other)", base: "1%", category: "Language" },
+  { name: "Language (Own)", nameCn: "母语", base: "0%", category: "Language" },
+  { name: "Language (Other)", nameCn: "其他语言", base: "1%", category: "Language" },
 
   // Financial & Status Skill
-  { name: "Credit Rating", base: "0%", category: "Status" },
+  { name: "Credit Rating", nameCn: "信用评级", base: "0%", category: "Status" },
 
   // Cthulhu Mythos
-  { name: "Cthulhu Mythos", base: "0%", category: "Mythos" },
+  { name: "Cthulhu Mythos", nameCn: "克苏鲁神话", base: "0%", category: "Mythos" },
 
   // Additional Common Skills
-  { name: "Appraise", base: "5%", category: "Knowledge" },
-  { name: "Navigate", base: "10%", category: "Technical" },
-  { name: "Psychoanalysis", base: "1%", category: "Medical" },
-  { name: "Ride", base: "5%", category: "Physical" },
+  { name: "Appraise", nameCn: "估价", base: "5%", category: "Knowledge" },
+  { name: "Navigate", nameCn: "领航", base: "10%", category: "Technical" },
+  { name: "Psychoanalysis", nameCn: "精神分析", base: "1%", category: "Medical" },
+  { name: "Ride", nameCn: "骑术", base: "5%", category: "Physical" },
 ];
 
 const App: React.FC = () => {
@@ -498,6 +498,7 @@ const App: React.FC = () => {
   const skillsState = useMemo(() => {
     return SKILLS.map((skill) => ({
       name: skill.name,
+      nameCn: skill.nameCn,
       base: skill.base,
       category: skill.category,
       occupationalValue: form[`skill_occ_${skill.name}`] || "",
@@ -636,7 +637,7 @@ const App: React.FC = () => {
 
   const sheet = (
     <div className="sheet">
-      <h1>Call of Cthulhu Investigator Sheet</h1>
+      <h1>克苏鲁的呼唤 - 调查员卡</h1>
       <form onSubmit={handleCreateCharacter}>
         <div style={{ textAlign: "right", marginBottom: "6px" }}>
           <button
@@ -652,22 +653,22 @@ const App: React.FC = () => {
             }}
             style={{ background: "#eee" }}
           >
-            {isCreatingFromGameFlow ? "← Back to Character Selection" : "← Return to Home"}
+            {isCreatingFromGameFlow ? "← 返回角色选择" : "← 返回主页"}
           </button>
         </div>
-        <div className="section-title">Identity</div>
+        <div className="section-title">身份信息</div>
         <table>
           <tbody>
             <tr>
-              <th>Era</th>
+              <th>时代</th>
               <td>
-                <input name="era" placeholder="1920s Investigator" value={form.era || ""} onChange={(e) => onChange("era", e.target.value)} />
+                <input name="era" placeholder="1920年代调查员" value={form.era || ""} onChange={(e) => onChange("era", e.target.value)} />
               </td>
-              <th>Name</th>
+              <th>姓名</th>
               <td>
-                <input name="name" placeholder="Name" value={form.name || ""} onChange={(e) => onChange("name", e.target.value)} />
+                <input name="name" placeholder="姓名" value={form.name || ""} onChange={(e) => onChange("name", e.target.value)} />
               </td>
-              <th>Occupation</th>
+              <th>职业</th>
               <td>
                 <select
                   name="occupation"
@@ -682,7 +683,7 @@ const App: React.FC = () => {
                   }}
                   style={{ width: "100%", padding: "4px" }}
                 >
-                  <option value="">Select occupation...</option>
+                  <option value="">选择职业...</option>
                   {occupations.map((occ) => (
                     <option key={occ.id} value={occ.name_zh}>
                       {occ.name_zh} ({occ.name_en})
@@ -692,21 +693,21 @@ const App: React.FC = () => {
               </td>
             </tr>
             <tr>
-              <th>Age</th>
+              <th>年龄</th>
               <td>
                 <input name="age" type="number" min="1" placeholder="32" value={form.age || ""} onChange={(e) => onChange("age", e.target.value)} />
               </td>
-              <th>Gender</th>
+              <th>性别</th>
               <td>
                 <input name="gender" placeholder="男 / 女" value={form.gender || ""} onChange={(e) => onChange("gender", e.target.value)} />
               </td>
-              <th>Residence</th>
+              <th>居住地</th>
               <td>
                 <input name="residence" placeholder="纽约" value={form.residence || ""} onChange={(e) => onChange("residence", e.target.value)} />
               </td>
             </tr>
             <tr>
-              <th>Birthplace</th>
+              <th>出生地</th>
               <td colSpan={5}>
                 <input name="birthplace" placeholder="波士顿" value={form.birthplace || ""} onChange={(e) => onChange("birthplace", e.target.value)} />
               </td>
@@ -714,7 +715,7 @@ const App: React.FC = () => {
           </tbody>
         </table>
 
-        <div className="section-title">Attributes</div>
+        <div className="section-title">属性值</div>
         <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "8px" }}>
           <button
             type="button"
@@ -722,37 +723,37 @@ const App: React.FC = () => {
             onClick={handleRandomizeAttributes}
             style={{ background: "#8b7355", color: "#f5f1e8" }}
           >
-            🎲 Randomize Attributes
+            🎲 随机生成属性
           </button>
         </div>
         <table>
           <tbody>
             <tr>
               {[
-                { key: "STR", label: "Strength" },
-                { key: "CON", label: "Constitution" },
-                { key: "DEX", label: "Dexterity" },
-                { key: "APP", label: "Appearance" },
-                { key: "POW", label: "Power" },
-                { key: "SIZ", label: "Size" },
-                { key: "INT", label: "Intelligence" },
-                { key: "EDU", label: "Education" },
-                { key: "LCK", label: "Luck" }
+                { key: "STR", label: "力量" },
+                { key: "CON", label: "体质" },
+                { key: "DEX", label: "敏捷" },
+                { key: "APP", label: "外貌" },
+                { key: "POW", label: "意志" },
+                { key: "SIZ", label: "体型" },
+                { key: "INT", label: "智力" },
+                { key: "EDU", label: "教育" },
+                { key: "LCK", label: "幸运" }
               ].map((attr) => (
                 <th key={attr.key}>{attr.label}</th>
               ))}
             </tr>
             <tr>
               {[
-                { key: "STR", label: "Strength" },
-                { key: "CON", label: "Constitution" },
-                { key: "DEX", label: "Dexterity" },
-                { key: "APP", label: "Appearance" },
-                { key: "POW", label: "Power" },
-                { key: "SIZ", label: "Size" },
-                { key: "INT", label: "Intelligence" },
-                { key: "EDU", label: "Education" },
-                { key: "LCK", label: "Luck" }
+                { key: "STR", label: "力量" },
+                { key: "CON", label: "体质" },
+                { key: "DEX", label: "敏捷" },
+                { key: "APP", label: "外貌" },
+                { key: "POW", label: "意志" },
+                { key: "SIZ", label: "体型" },
+                { key: "INT", label: "智力" },
+                { key: "EDU", label: "教育" },
+                { key: "LCK", label: "幸运" }
               ].map((attr) => (
                 <td key={attr.key}>
                   <input
@@ -773,37 +774,37 @@ const App: React.FC = () => {
         <table>
           <tbody>
             <tr>
-              <th>HP</th>
+              <th>生命值</th>
               <td>
                 <input name="HP" type="number" min="1" placeholder="10" value={form.HP || ""} onChange={(e) => onChange("HP", e.target.value)} />
               </td>
-              <th>Sanity</th>
+              <th>理智值</th>
               <td>
                 <input name="SAN" type="number" min="0" placeholder="60" value={form.SAN || ""} onChange={(e) => onChange("SAN", e.target.value)} />
               </td>
-              <th>MP</th>
+              <th>魔法值</th>
               <td>
                 <input name="MP" type="number" min="0" placeholder="10" value={form.MP || ""} onChange={(e) => onChange("MP", e.target.value)} />
               </td>
-              <th>Luck</th>
+              <th>幸运值</th>
               <td>
                 <input name="LUCK" type="number" min="0" placeholder="50" value={form.LUCK || ""} onChange={(e) => onChange("LUCK", e.target.value)} />
               </td>
             </tr>
             <tr>
-              <th>Move</th>
+              <th>移动力</th>
               <td>
                 <input name="MOV" type="number" min="1" placeholder="8" value={form.MOV || ""} onChange={(e) => onChange("MOV", e.target.value)} />
               </td>
-              <th>Build</th>
+              <th>体格</th>
               <td>
                 <input name="BUILD" placeholder="0" value={form.BUILD || ""} onChange={(e) => onChange("BUILD", e.target.value)} />
               </td>
-              <th>DB</th>
+              <th>伤害加深</th>
               <td>
                 <input name="DB" placeholder="+0" value={form.DB || ""} onChange={(e) => onChange("DB", e.target.value)} />
               </td>
-              <th>Armor</th>
+              <th>护甲</th>
               <td colSpan={3}>
                 <input name="ARMOR" placeholder="-" value={form.ARMOR || ""} onChange={(e) => onChange("ARMOR", e.target.value)} />
               </td>
@@ -811,7 +812,7 @@ const App: React.FC = () => {
           </tbody>
         </table>
 
-        <div className="section-title">Skills</div>
+        <div className="section-title">技能</div>
 
         {/* Skill Points Display */}
         <div style={{
@@ -893,7 +894,7 @@ const App: React.FC = () => {
             borderRadius: "4px"
           }}>
             <strong style={{ color: "#8b7355" }}>
-              {selectedOccupation.name_zh} ({selectedOccupation.name_en}) Recommended Skills:
+              {selectedOccupation.name_zh} ({selectedOccupation.name_en}) 推荐技能:
             </strong>
             <div style={{ marginTop: "8px", display: "flex", flexWrap: "wrap", gap: "8px" }}>
               {selectedOccupation.suggested_skills.map((skill: string, index: number) => (
@@ -917,9 +918,9 @@ const App: React.FC = () => {
           {/* Left Column */}
           <div>
             {[
-              { key: "social-knowledge", label: "Social & Knowledge Skills", categories: ["Social", "Knowledge", "Language"] },
-              { key: "investigation", label: "Investigation & Criminal Skills", categories: ["Investigation", "Criminal"] },
-              { key: "combat", label: "Combat Skills", categories: ["Combat"] }
+              { key: "social-knowledge", label: "社交与知识技能", categories: ["Social", "Knowledge", "Language"] },
+              { key: "investigation", label: "调查与犯罪技能", categories: ["Investigation", "Criminal"] },
+              { key: "combat", label: "战斗技能", categories: ["Combat"] }
             ].map((group) => {
               const groupSkills = skillsState.filter((s) => group.categories.includes(s.category));
               if (groupSkills.length === 0) return null;
@@ -930,10 +931,10 @@ const App: React.FC = () => {
                   <table className="skills-table">
                     <thead>
                       <tr>
-                        <th style={{ textAlign: 'left' }}>Skill Name</th>
-                        <th style={{ width: '80px' }}>Occupational</th>
-                        <th style={{ width: '80px' }}>Interest</th>
-                        <th style={{ width: '80px' }}>Total</th>
+                        <th style={{ textAlign: 'left' }}>技能名称</th>
+                        <th style={{ width: '80px' }}>职业加点</th>
+                        <th style={{ width: '80px' }}>兴趣加点</th>
+                        <th style={{ width: '80px' }}>总计</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -952,7 +953,7 @@ const App: React.FC = () => {
                             }}
                           >
                             <td className="skill-name-cell">
-                              <span>{skill.name}</span>
+                              <span>{skill.nameCn}</span>
                               <span className="skill-base" style={{ marginLeft: '8px', color: '#999' }}>({skill.base})</span>
                             </td>
                             <td className="skill-value-cell">
@@ -993,9 +994,9 @@ const App: React.FC = () => {
           {/* Right Column */}
           <div>
             {[
-              { key: "physical", label: "Physical & Stealth Skills", categories: ["Physical", "Stealth"] },
-              { key: "technical-medical", label: "Technical & Medical Skills", categories: ["Technical", "Medical"] },
-              { key: "special", label: "Special Skills", categories: ["Status", "Mythos"] }
+              { key: "physical", label: "体能与潜行技能", categories: ["Physical", "Stealth"] },
+              { key: "technical-medical", label: "技术与医疗技能", categories: ["Technical", "Medical"] },
+              { key: "special", label: "特殊技能", categories: ["Status", "Mythos"] }
             ].map((group) => {
               const groupSkills = skillsState.filter((s) => group.categories.includes(s.category));
               if (groupSkills.length === 0) return null;
@@ -1006,10 +1007,10 @@ const App: React.FC = () => {
                   <table className="skills-table">
                     <thead>
                       <tr>
-                        <th style={{ textAlign: 'left' }}>Skill Name</th>
-                        <th style={{ width: '80px' }}>Occupational</th>
-                        <th style={{ width: '80px' }}>Interest</th>
-                        <th style={{ width: '80px' }}>Total</th>
+                        <th style={{ textAlign: 'left' }}>技能名称</th>
+                        <th style={{ width: '80px' }}>职业加点</th>
+                        <th style={{ width: '80px' }}>兴趣加点</th>
+                        <th style={{ width: '80px' }}>总计</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -1028,7 +1029,7 @@ const App: React.FC = () => {
                             }}
                           >
                             <td className="skill-name-cell">
-                              <span>{skill.name}</span>
+                              <span>{skill.nameCn}</span>
                               <span className="skill-base" style={{ marginLeft: '8px', color: '#999' }}>({skill.base})</span>
                             </td>
                             <td className="skill-value-cell">
@@ -1067,16 +1068,16 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <div className="section-title">Weapons</div>
+        <div className="section-title">武器</div>
         <table>
           <tbody>
             <tr>
-              <th>Weapon</th>
-              <th>Skill</th>
-              <th>Damage</th>
-              <th>Range</th>
-              <th>Attk/Rd</th>
-              <th>Ammo</th>
+              <th>武器名称</th>
+              <th>技能</th>
+              <th>伤害</th>
+              <th>射程</th>
+              <th>攻击次数</th>
+              <th>弹药</th>
             </tr>
             {weapons.map((w, i) => (
               <tr className="weapon-row" key={i}>
@@ -1133,18 +1134,18 @@ const App: React.FC = () => {
           </tbody>
         </table>
 
-        <div className="section-title">Portrait & Notes</div>
+        <div className="section-title">形象与笔记</div>
         <div className="notes-grid">
           <table>
             <tbody>
               <tr>
-                <th>Appearance</th>
+                <th>外貌描述</th>
               </tr>
               <tr>
                 <td>
                   <textarea
                     name="appearance"
-                    placeholder="Describe appearance, attire, scars, mannerisms..."
+                    placeholder="描述外貌、着装、伤疤、举止..."
                     value={form.appearance || ""}
                     onChange={(e) => onChange("appearance", e.target.value)}
                   />
@@ -1155,13 +1156,13 @@ const App: React.FC = () => {
           <table>
             <tbody>
               <tr>
-                <th>Traits / Ideology</th>
+                <th>特质/信念</th>
               </tr>
               <tr>
                 <td>
                   <textarea
                     name="ideology"
-                    placeholder="Beliefs, politics, religion, personality quirks..."
+                    placeholder="信仰、政治观点、宗教、性格特点..."
                     value={form.ideology || ""}
                     onChange={(e) => onChange("ideology", e.target.value)}
                   />
@@ -1172,13 +1173,13 @@ const App: React.FC = () => {
           <table>
             <tbody>
               <tr>
-                <th>Significant People</th>
+                <th>重要之人</th>
               </tr>
               <tr>
                 <td>
                   <textarea
                     name="people"
-                    placeholder="Important people, mentors, family, contacts..."
+                    placeholder="重要人物、导师、家人、联系人..."
                     value={form.people || ""}
                     onChange={(e) => onChange("people", e.target.value)}
                   />
@@ -1189,13 +1190,13 @@ const App: React.FC = () => {
           <table>
             <tbody>
               <tr>
-                <th>Gear & Assets</th>
+                <th>装备与资产</th>
               </tr>
               <tr>
                 <td>
                   <textarea
                     name="gear"
-                    placeholder="Equipment, items, assets, funds..."
+                    placeholder="装备、物品、资产、资金..."
                     value={form.gear || ""}
                     onChange={(e) => onChange("gear", e.target.value)}
                   />
@@ -1205,14 +1206,14 @@ const App: React.FC = () => {
           </table>
         </div>
 
-        <div className="section-title">Background Story</div>
+        <div className="section-title">背景故事</div>
         <table>
           <tbody>
             <tr>
               <td>
                 <textarea
                   name="backstory"
-                  placeholder="Background story, cases, motivations, fears, secrets..."
+                  placeholder="背景故事、经历、动机、恐惧、秘密..."
                   value={form.backstory || ""}
                   onChange={(e) => onChange("backstory", e.target.value)}
                 />
@@ -1243,11 +1244,11 @@ const App: React.FC = () => {
               onClick={() => setSaveMessage(null)}
               style={{ background: "#8b7355", borderColor: "#8b7355", color: "#f5f1e8" }}
             >
-              Clear Message
+              清除消息
             </button>
           )}
           <button className="pill-btn" type="submit" disabled={saving}>
-            {saving ? "Creating..." : "🎲 Create Character"}
+            {saving ? "创建中..." : "🎲 创建角色"}
           </button>
         </div>
       </form>
@@ -1829,7 +1830,7 @@ const App: React.FC = () => {
     return (
       <div className="game-container">
         <div className="game-header">
-          <h1>Call of Cthulhu - Game Session</h1>
+          <h1>克苏鲁的呼唤 - 游戏会话</h1>
           <button className="back-button" onClick={handleBackToHome}>
             ← 返回首页
           </button>

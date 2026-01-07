@@ -1,18 +1,18 @@
 [
     {
-      "name": "Daughter of Atlach-Nacha (Spider Goddess)",
-      "occupation": "Mythos Entity / Servant of the Spider God",
+      "name": "阿特拉克-纳查之女(蜘蛛女神)",
+      "occupation": "神话实体 / 蜘蛛神仆从",
       "age": 0,
-      "appearance": "A terrifying spider-goddess hybrid with a vaguely humanoid female outline and monstrous arachnid features. Her body is covered with chitin and coarse hair, her eyes are predatory and inhuman, and her fanged mouth drips with paralytic venom. Her presence is overwhelmingly alien and predatory.",
-      "personality": "Cruel, instinct-driven, and utterly devoted to the Spider God. She shows no empathy toward humans and treats prey as livestock, acting with ritualistic patience and divine entitlement.",
-      "background": "The Daughters of Atlach-Nacha are transformed beings, possibly once human females, elevated into sacred servants of the Spider God. They act as favored predators and executioners, feeding upon paralyzed victims and spreading the god’s influence through terror and consumption.",
+      "appearance": "一个可怕的蜘蛛女神混血,有模糊的类人女性轮廓和怪物般的蜘蛛特征。她的身体覆盖着甲壳和粗毛,眼睛充满掠食性和非人性,长着尖牙的嘴滴着麻痹毒液。她的存在具有压倒性的异类和掠食性。",
+      "personality": "残忍、本能驱动、完全奉献于蜘蛛神。她对人类不显示同情,将猎物视为牲畜,以仪式般的耐心和神圣权利行事。",
+      "background": "阿特拉克-纳查之女是被转化的存在,可能曾是人类女性,被提升为蜘蛛神的神圣仆从。她们充当受宠的掠食者和刽子手,捕食瘫痪的受害者并通过恐怖和吞噬传播神的影响力。",
       "goals": [
-        "Serve Atlach-Nacha with absolute devotion",
-        "Hunt, paralyze, and consume chosen victims"
+        "以绝对奉献侍奉阿特拉克-纳查",
+        "猎杀、麻痹并吞噬被选中的受害者"
       ],
       "secrets": [
-        "Some may have once been human before their transformation",
-        "Victims can survive if rescued before their INT is reduced to zero"
+        "有些可能在转变前曾是人类",
+        "如果在智力降至零之前获救,受害者可以存活"
       ],
       "attributes": {
         "STR": 113,
@@ -39,34 +39,34 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "The Daughter of Atlach-Nacha uses a paralytic venom and then feeds on the victim’s brain through the eye sockets.",
+          "clueText": "阿特拉克-纳查之女使用麻痹毒液,然后通过眼窝捕食受害者的大脑。",
           "category": "knowledge",
           "difficulty": "hard",
-          "relatedTo": ["Atlach-Nacha"]
+          "relatedTo": ["阿特拉克-纳查"]
         },
         {
-          "clueText": "If victims are rescued before their INT reaches zero, they may survive but suffer permanent blindness and loss of APP.",
+          "clueText": "如果受害者在智力降至零之前获救,他们可能存活但遭受永久失明和外貌损失。",
           "category": "secret",
           "difficulty": "extreme",
-          "relatedTo": ["Daughter of Atlach-Nacha"]
+          "relatedTo": ["阿特拉克-纳查之女"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Atlach-Nacha",
+          "targetName": "阿特拉克-纳查",
           "relationshipType": "family",
           "attitude": 100,
-          "description": "Divine progenitor and object of absolute worship.",
-          "history": "The Daughters exist solely to enact the will and hunger of the Spider God."
+          "description": "神圣始祖和绝对崇拜对象。",
+          "history": "女儿们的存在仅为执行蜘蛛神的意志和饥渴。"
         },
         {
-          "targetName": "Spider-Humans",
+          "targetName": "蜘蛛人",
           "relationshipType": "ally",
           "attitude": 70,
-          "description": "Lesser servants created through parasitic transformation.",
-          "history": "Spider-humans act as hunters and attendants within the Spider God’s domain."
+          "description": "通过寄生转变创造的次级仆从。",
+          "history": "蜘蛛人在蜘蛛神领域内充当猎人和侍从。"
         }
       ],
-      "notes": "Combat Statistics & Horror Details (Supplemental):\n\nDamage Bonus:\nAverage damage bonus: +2D6.\n\nCombat Style:\nEach Daughter of Atlach-Nacha attacks once per round, always using a single venomous bite. Her venom is a paralytic toxin with POT 20. If the toxin’s POT exceeds the victim’s CON, the victim is immediately paralyzed for 1D6 hours.\n\nAttacks:\n• Bite – 75%: Deals 1D10 damage plus venom. Upon paralysis, feeding begins immediately. While feeding, the victim loses 1 INT per round (see Feeding Horror below).\n\nFeeding Horror:\nAfter paralyzing a victim, the Daughter consumes the flesh of the victim’s head and ultimately drains the brain through the emptied eye sockets. Each minute of feeding reduces the victim’s INT by 1. When INT reaches 0, the victim dies as their brain is completely consumed.\n\nIf the feeding is interrupted before INT reaches 0, the victim survives but suffers permanent consequences: irreversible blindness (eyes destroyed), permanent loss of all INT already lost, and a permanent loss of 2D4 APP.\n\nArmor:\n5-point hardened shell.\n\nSpells:\nAll Daughters of Atlach-Nacha know the spell “Contact/Call Atlach-Nacha.” Individuals with INT higher than 15 may additionally know 1D3 other spells.\n\nSkills:\n• Stealth 35%.\n\nSanity Loss:\n• First sight of a Daughter of Atlach-Nacha: 1 / 1D8 SAN.\n• Witnessing a human shedding their skin and transforming into a Daughter of Atlach-Nacha: additional 1 / 1D8 SAN.\n\nKeeper Notes:\nThese entities represent extreme body horror and predation. Their feeding process is slow, ritualistic, and terrifying, allowing opportunities for rescue at great cost. Use their appearance sparingly to maximize psychological impact."
+      "notes": "战斗统计与恐怖细节(补充):\n\n伤害加值:\n平均伤害加值:+2D6。\n\n战斗风格:\n每位阿特拉克-纳查之女每回合攻击一次,总是使用单次毒液撕咬。她的毒液是POT 20的麻痹毒素。如果毒素POT超过受害者的体质,受害者立即瘫痪1D6小时。\n\n攻击:\n• 撕咬 – 75%:造成1D10伤害加毒液。瘫痪后,立即开始进食。进食时,受害者每回合失去1智力(见下文进食恐怖)。\n\n进食恐怖:\n瘫痪受害者后,女儿吞食受害者头部的肉体,最终通过空洞的眼窝吸干大脑。每分钟进食使受害者智力减少1点。当智力降至0时,受害者死亡,大脑被完全吞噬。\n\n如果进食在智力降至0之前被打断,受害者存活但遭受永久后果:不可逆失明(眼睛被摧毁)、已失去智力的永久损失,以及2D4点外貌的永久损失。\n\n护甲:\n5点硬化外壳。\n\n法术:\n所有阿特拉克-纳查之女都知道'接触/召唤阿特拉克-纳查'法术。智力高于15的个体可能额外知道1D3个其他法术。\n\n技能:\n• 潜行35%。\n\n理智损失:\n• 首次看到阿特拉克-纳查之女:1/1D8理智。\n• 目睹人类蜕皮并转变为阿特拉克-纳查之女:额外1/1D8理智。\n\n守秘人提示:\n这些实体代表极端的身体恐怖和掠食。它们的进食过程缓慢、仪式化且令人恐惧,允许以巨大代价进行救援。谨慎使用其出场以最大化心理影响。"
   }
   ]

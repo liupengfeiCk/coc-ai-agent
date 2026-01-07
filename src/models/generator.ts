@@ -4,6 +4,7 @@
  */
 
 import { ChatOpenAI } from "@langchain/openai";
+import { ChatDeepSeek } from "@langchain/deepseek";
 import { ChatAnthropic } from "@langchain/anthropic";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { models } from "./configuration.js";
@@ -111,6 +112,14 @@ export function createChatModel(
         maxOutputTokens: settings.maxOutputTokens,
         apiKey: process.env.GOOGLE_API_KEY,
       });
+    
+    case ModelProviderName.DEEPSEEK:
+      return new ChatDeepSeek({
+        modelName: settings.name,
+        temperature: settings.temperature,
+        maxTokens: settings.maxOutputTokens,
+        apiKey: process.env.DEEPSEEK_API_KEY,
+      });
 
     default:
       throw new Error(`Unsupported provider: ${provider}`);
@@ -142,17 +151,22 @@ export async function generateText(options: GenerationOptions): Promise<string> 
   // Prepare messages
   const messages = [];
   
+  // Calculate total input characters
+  let totalInputChars = 0;
+  
   if (customSystemPrompt) {
     messages.push({
       role: "system",
       content: customSystemPrompt,
     });
+    totalInputChars += customSystemPrompt.length;
   }
 
   messages.push({
     role: "user",
     content: context,
   });
+  totalInputChars += context.length;
 
   // Generate with retries
   let lastError: Error | null = null;
@@ -169,7 +183,10 @@ export async function generateText(options: GenerationOptions): Promise<string> 
         throw new Error("Empty response from model");
       }
 
-      console.log(`✅ Generated text successfully (${response.content.length} characters)`);
+      const outputChars = response.content.length;
+      console.log(`✅ Generated text successfully`);
+      console.log(`📊 Token Stats: Input=${totalInputChars} chars, Output=${outputChars} chars, Total=${totalInputChars + outputChars} chars`);
+      
       return response.content;
 
     } catch (error) {

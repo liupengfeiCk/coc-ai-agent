@@ -1,184 +1,184 @@
 [
     {
-      "name": "Shandra's Cabin",
-      "description": "A secluded and modest cabin belonging to Shandra, located away from the busier parts of Cassandra. The cabin serves as a private refuge where confidential conversations can take place, and it becomes an important narrative location following Bruno's death.",
+      "name": "珊德拉的小屋",
+      "description": "属于珊德拉的僻静简朴小屋,远离卡桑德拉较繁忙的地区。小屋作为可以进行机密对话的私人避难所,在布鲁诺死后成为一个重要的叙事地点。",
       "snapshots": [
         {
-          "name": "Shandra's Cabin",
-          "location": "Outskirts of Cassandra",
-          "timeRestriction": "day2 evening (before)",
-          "description": "The cabin is quiet and sparsely furnished, with a sense of isolation that makes it suitable for private discussions. The atmosphere is tense and heavy with unspoken fear. Inside, Shandra recounts events surrounding Bruno, clearly shaken and emotionally strained.",
+          "name": "珊德拉的小屋",
+          "location": "卡桑德拉郊区",
+          "timeRestriction": "第二天晚上(之前)",
+          "description": "小屋安静且家具稀少,有一种适合私下讨论的孤立感。气氛紧张,充满了未说出口的恐惧。在里面,珊德拉讲述围绕布鲁诺的事件,明显被震撼和情感紧张。",
         "characters": [
           {
-            "name": "Shandra Hernandez",
-            "role": "Witness / confidant",
-            "status": "alive",
-            "location": "Inside the cabin",
-            "notes": "A reserved woman who trusted Bruno deeply. Shandra is visibly pale and distressed when speaking about him and insists on secrecy."
+            "name": "珊德拉·埃尔南德斯",
+            "role": "目击者 / 知己",
+            "status": "存活",
+            "location": "小屋内",
+            "notes": "一个保守的女人,深深信任布鲁诺。珊德拉在谈论他时明显苍白且痛苦,并坚持保密。"
           }
         ],
         "clues": [
           {
-            "clueText": "Shandra reveals that Bruno received an anonymous text message warning him not to trust his superiors, especially Padrich, and stating that Constantine Frollo was unfit to serve God. The message specifically mentioned Bruno's investigation into BOTH murder cases.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Conversation with Shandra inside the cabin",
-            "discoveryMethod": "Talk / Charm",
+            "clueText": "珊德拉透露布鲁诺收到一条匿名短信,警告他不要信任上级,特别是帕德里奇,并称康斯坦丁·弗罗洛不适合侍奉上帝。该消息特别提到了布鲁诺对两起谋杀案的调查。",
+            "category": "目击",
+            "difficulty": "普通",
+            "location": "小屋内与珊德拉的对话",
+            "discoveryMethod": "交谈 / 魅力",
             "reveals": [
-              "Bruno was investigating BOTH cases: the FIRST CASE (December 22, 2002, 19-year-old girl frozen in ice at Paradil Grand Hotel) and the SECOND CASE (December 22, 2003, 21-year-old Lucifero killed at Reindeer Bar)",
-              "Bruno believed the two cases were connected despite being exactly one year apart",
-              "Padrich and Constantine may be involved in a conspiracy to suppress both cases"
+              "布鲁诺正在调查两起案件:第一起案件(2002年12月22日,19岁女孩在帕拉迪尔大酒店冻在冰中)和第二起案件(2003年12月22日,21岁的路西菲罗在驯鹿酒吧被杀)",
+              "布鲁诺认为这两起案件有联系,尽管正好相隔一年",
+              "帕德里奇和康斯坦丁可能参与了压制两起案件的阴谋"
             ]
           },
           {
-            "clueText": "Shandra confirms the message sender knew details about Bruno's investigation into BOTH murder cases that were not public knowledge, including the suppressed first case from 2002.",
-            "category": "knowledge",
-            "difficulty": "automatic",
-            "location": "Conversation with Shandra",
+            "clueText": "珊德拉确认消息发送者知道布鲁诺对两起谋杀案调查的细节,这些细节不为公众所知,包括2002年被压制的第一起案件。",
+            "category": "知识",
+            "difficulty": "自动",
+            "location": "与珊德拉的对话",
             "discoveryMethod": "",
             "reveals": [
-              "The anonymous sender had insider information about both cases",
-              "The first case (2002) was deliberately suppressed and not widely known",
-              "Someone with inside knowledge was helping Bruno investigate both cases"
+              "匿名发送者拥有关于两起案件的内部信息",
+              "第一起案件(2002年)被刻意压制且不为广泛所知",
+              "有内部知识的人在帮助布鲁诺调查两起案件"
             ]
           },
           {
-            "clueText": "Shandra admits she did not tell the local police about the message, fearing they could not be trusted. She mentions Bruno was particularly focused on the first case from 2002, which had been officially closed.",
-            "category": "witness",
-            "difficulty": "automatic",
-            "location": "Conversation with Shandra",
+            "clueText": "珊德拉承认她没有告诉当地警察关于这条消息,担心他们不能被信任。她提到布鲁诺特别关注2002年的第一起案件,该案件已被正式结案。",
+            "category": "目击",
+            "difficulty": "自动",
+            "location": "与珊德拉的对话",
             "discoveryMethod": "",
             "reveals": [
-              "Local authorities may be compromised",
-              "The first case (2002) was officially closed despite Bruno's efforts",
-              "Bruno's determination to solve both cases may have led to his death"
+              "地方当局可能被妥协",
+              "第一起案件(2002年)尽管布鲁诺努力仍被正式结案",
+              "布鲁诺解决两起案件的决心可能导致了他的死亡"
             ]
           },
           {
-            "clueText": "Shandra reveals Bruno mentioned the two cases were connected—both involved young Black girls killed exactly one year apart, but with completely different methods (frozen in ice vs gunshot/stab).",
-            "category": "witness",
-            "difficulty": "hard",
-            "location": "Conversation with Shandra",
-            "discoveryMethod": "Persuade or Psychology",
+            "clueText": "珊德拉透露布鲁诺提到这两起案件有联系——都涉及年轻的黑人女孩,正好相隔一年被杀,但方法完全不同(冻在冰中 vs 枪击/刺伤)。",
+            "category": "目击",
+            "difficulty": "困难",
+            "location": "与珊德拉的对话",
+            "discoveryMethod": "说服或心理学",
             "reveals": [
-              "Bruno believed the same killer was responsible for both cases",
-              "The methods were different but the pattern was the same",
-              "The first case victim (19-year-old) and second case victim (21-year-old Lucifero) were both Black girls"
+              "布鲁诺认为同一个杀手对两起案件负责",
+              "方法不同但模式相同",
+              "第一起案件受害者(19岁)和第二起案件受害者(21岁的路西菲罗)都是黑人女孩"
             ]
           }
         ],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Dim indoor lighting, mostly from a single lamp.",
+            "type": "照明",
+            "description": "昏暗的室内照明,主要来自一盏灯。",
             "mechanicalEffect": ""
           },
           {
-            "type": "other",
-            "description": "An atmosphere of secrecy and paranoia.",
-            "mechanicalEffect": "Keeper may apply a situational penalty to social rolls if investigators push too aggressively."
+            "type": "其他",
+            "description": "保密和偏执的氛围。",
+            "mechanicalEffect": "如果调查员过于激进地施压,守秘人可能施加情境惩罚于社交检定。"
           }
         ],
         "events": [
-          "Shandra recounts Bruno's final days and the anonymous warning message about both murder cases",
-          "Shandra reveals Bruno was investigating TWO SEPARATE CASES: the first from December 22, 2002 (19-year-old girl, frozen in ice) and the second from December 22, 2003 (21-year-old Lucifero, gunshot/stab)",
-          "Shandra entrusts the investigators with information she refused to give the police, including details about both cases",
-          "When investigators leave: Constantine may appear at the door. Investigators must make a successful POW check to avoid showing panic. If Constantine suspects Shandra told investigators something about him based on their expressions, he will decide to eliminate Shandra"
+          "珊德拉讲述布鲁诺最后的日子和关于两起谋杀案的匿名警告消息",
+          "珊德拉透露布鲁诺正在调查两起独立案件:第一起来自2002年12月22日(19岁女孩,冻在冰中)和第二起来自2003年12月22日(21岁的路西菲罗,枪击/刺伤)",
+          "珊德拉将她拒绝给警察的信息托付给调查员,包括关于两起案件的细节",
+          "当调查员离开时:康斯坦丁可能出现在门口。调查员必须成功进行POW检定以避免表现出恐慌。如果康斯坦丁根据他们的表情怀疑珊德拉告诉调查员关于他的事情,他将决定消灭珊德拉"
         ],
         "exits": [
           {
-            "direction": "Front door",
-            "destination": "Cassandra outskirts",
-            "description": "A simple wooden door leading outside the cabin.",
+            "direction": "前门",
+            "destination": "卡桑德拉郊区",
+            "description": "一扇通向小屋外的简单木门。",
             "condition": ""
           }
         ],
-          "keeperNotes": "Shandra is cautious and will not reveal everything at once. CRITICALLY: She knows about BOTH MURDER CASES. The FIRST CASE (December 22, 2002) involved a 19-year-old Black girl found frozen in ice in the Paradil Grand Hotel freezer. The SECOND CASE (December 22, 2003) involved 21-year-old Aberforth Locefern (Lucifero) killed by gunshot and knife at Reindeer Bar. Bruno believed they were connected despite different methods. If investigators mention Mythos or inhuman forces, she may become more cooperative but will still withhold details about the Nine Angels.",
+          "keeperNotes": "珊德拉很谨慎,不会一次透露所有内容。关键:她知道两起谋杀案。第一起案件(2002年12月22日)涉及一名19岁的黑人女孩在帕拉迪尔大酒店冷冻室冻在冰中被发现。第二起案件(2003年12月22日)涉及21岁的阿伯福斯·洛斯费恩(路西菲罗)在驯鹿酒吧被枪击和刀刺杀。布鲁诺认为尽管方法不同,它们有联系。如果调查员提到神话或非人类力量,她可能会更合作,但仍会保留关于九天使的细节。",
           "permanentChanges": []
         },
         {
-          "name": "Shandra's Cabin (After Fire)",
-          "location": "Outskirts of Cassandra",
-          "timeRestriction": "day2 night (after)",
-        "description": "The cabin has been completely destroyed by fire. Only charred ruins remain, with smoke still rising from the debris. Firefighters have arrived and are searching through the wreckage. In the ruins, they have discovered a charred female body. The fire occurred regardless of whether investigators encountered Constantine or not. Shandra's fate is unknown, but the discovery of the body suggests she may have been killed.",
+          "name": "珊德拉的小屋(火灾后)",
+          "location": "卡桑德拉郊区",
+          "timeRestriction": "第二天夜晚(之后)",
+        "description": "小屋已被大火完全摧毁。只剩下烧焦的废墟,烟雾仍从残骸中升起。消防员已经到达并正在搜查废墟。在废墟中,他们发现了一具烧焦的女性尸体。无论调查员是否遇到康斯坦丁,火灾都发生了。珊德拉的命运未知,但尸体的发现表明她可能已被杀害。",
         "characters": [
           {
-            "name": "Firefighters",
-            "role": "Emergency responders",
-            "status": "alive",
-            "location": "At the fire scene",
-            "notes": "Searching through the ruins and have found a charred female body"
+            "name": "消防员",
+            "role": "紧急响应人员",
+            "status": "存活",
+            "location": "火灾现场",
+            "notes": "正在搜查废墟,已发现一具烧焦的女性尸体"
           }
         ],
         "clues": [
           {
-            "clueText": "A charred female body has been found in the ruins of Shandra's cabin.",
-            "category": "physical",
-            "difficulty": "automatic",
-            "location": "Fire scene",
+            "clueText": "在珊德拉小屋的废墟中发现了一具烧焦的女性尸体。",
+            "category": "物理",
+            "difficulty": "自动",
+            "location": "火灾现场",
             "discoveryMethod": "",
             "reveals": [
-              "Shandra may have been killed",
-              "The fire was likely intentional, not accidental",
-              "This may be connected to Constantine's visit or the information Shandra shared"
+              "珊德拉可能已被杀害",
+              "火灾可能是故意的,而非意外",
+              "这可能与康斯坦丁的访问或珊德拉分享的信息有关"
             ]
           },
           {
-            "clueText": "The fire occurred after night on day 2, regardless of whether investigators encountered Constantine when leaving the cabin.",
-            "category": "observation",
-            "difficulty": "automatic",
-            "location": "Fire scene",
+            "clueText": "火灾发生在第二天夜晚之后,无论调查员离开小屋时是否遇到康斯坦丁。",
+            "category": "观察",
+            "difficulty": "自动",
+            "location": "火灾现场",
             "discoveryMethod": "",
             "reveals": [
-              "The timing suggests this was a deliberate act",
-              "Constantine or his associates may be responsible",
-              "Shandra's knowledge about Bruno and the murder cases made her a target"
+              "时间表明这是蓄意行为",
+              "康斯坦丁或其同伙可能负责",
+              "珊德拉关于布鲁诺和谋杀案的知识使她成为目标"
             ]
           }
         ],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Smoke and fire damage create poor visibility. Emergency lighting from fire trucks.",
-            "mechanicalEffect": "Spot Hidden checks may be more difficult"
+            "type": "照明",
+            "description": "烟雾和火灾损坏造成能见度差。消防车的应急照明。",
+            "mechanicalEffect": "侦查检定可能更困难"
           },
           {
-            "type": "smell",
-            "description": "Strong smell of smoke, burned wood, and charred remains.",
+            "type": "气味",
+            "description": "浓烈的烟雾、烧焦的木头和烧焦的遗体气味。",
             "mechanicalEffect": ""
           }
         ],
         "events": [
-          "Investigators discover the cabin has been burned down",
-          "Firefighters have found a charred female body in the ruins",
-          "The fire occurred after night on day 2, regardless of previous encounters"
+          "调查员发现小屋被烧毁",
+          "消防员在废墟中发现了一具烧焦的女性尸体",
+          "火灾发生在第二天夜晚之后,无论之前的遭遇如何"
         ],
         "exits": [
           {
-            "direction": "Road",
-            "destination": "Cassandra outskirts",
-            "description": "The path leading away from the burned cabin site.",
+            "direction": "道路",
+            "destination": "卡桑德拉郊区",
+            "description": "通向远离烧毁小屋现场的路径。",
             "condition": ""
           }
         ],
-          "keeperNotes": "This snapshot represents the aftermath of the fire that destroys Shandra's cabin. The fire happens regardless of whether investigators encountered Constantine or not. The charred body suggests Shandra was killed, but this could also be a ruse. The timing (after night on day 2) connects this to Constantine's potential visit and Shandra's knowledge about Bruno's investigation into both murder cases.",
+          "keeperNotes": "这个快照代表摧毁珊德拉小屋的火灾的后果。无论调查员是否遇到康斯坦丁,火灾都会发生。烧焦的尸体表明珊德拉被杀,但这也可能是个诡计。时间(第二天夜晚之后)将此与康斯坦丁的潜在访问和珊德拉关于布鲁诺对两起谋杀案调查的知识联系起来。",
           "permanentChanges": [
-            "Shandra's cabin is destroyed",
-            "Shandra's status is unknown—she may be dead or in hiding"
+            "珊德拉的小屋被摧毁",
+            "珊德拉的状况未知——她可能死了或在躲藏"
           ]
         }
       ],
-      "tags": ["witness testimony", "secrecy", "conspiracy hint", "safe location"],
+      "tags": ["目击证词", "保密", "阴谋提示", "安全地点"],
       "connections": [
         {
-          "scenarioName": "Police Office",
-          "relationshipType": "alternate",
-          "description": "Sandra deliberately avoids reporting information to the police, offering an alternate source of truth."
+          "scenarioName": "警察局",
+          "relationshipType": "替代",
+          "description": "桑德拉刻意避免向警察报告信息,提供了另一个真相来源。"
         },
         {
-          "scenarioName": "Church",
-          "relationshipType": "leads_to",
-          "description": "The warning message implicates Constantine Frollo, connecting the cabin revelations to the church storyline."
+          "scenarioName": "教堂",
+          "relationshipType": "导向",
+          "description": "警告消息牵连康斯坦丁·弗罗洛,将小屋的揭露与教堂故事线联系起来。"
         }
       ]
     }

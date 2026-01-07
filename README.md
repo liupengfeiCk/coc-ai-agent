@@ -470,6 +470,38 @@ MEDIUM_GOOGLE_MODEL=gemini-1.5-pro
 # Optional
 DATABASE_PATH=./data/coc_game.db
 PORT=3000
+
+# Game Configuration
+ENABLE_AUTO_PROGRESSION=false  # Enable automatic story progression (default: false)
+```
+
+### Game Configuration Options
+
+#### Auto Story Progression
+
+**`ENABLE_AUTO_PROGRESSION`** (default: `false`)
+
+Controls whether the Director Agent automatically advances the story when:
+- Player has taken X turns in current scene (X depends on tension level: 1-4 turns)
+- Player has been idle for 3+ minutes
+
+**When enabled (`true`):**
+- ✅ Director Agent analyzes player intent and generates simulated queries
+- ✅ Story naturally progresses to prevent getting stuck
+- ✅ Useful for testing or assisted gameplay
+
+**When disabled (`false`):**
+- 🔒 Story only progresses based on explicit player actions
+- 🎮 Full player control over pacing
+- 📊 Metrics still logged (turns, idle time, tension)
+
+**Example:**
+```bash
+# Default: Player has full control
+ENABLE_AUTO_PROGRESSION=false
+
+# Enable auto-progression for faster gameplay
+ENABLE_AUTO_PROGRESSION=true
 ```
 
 ### Model Selection Strategy

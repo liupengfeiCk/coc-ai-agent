@@ -1,18 +1,18 @@
 [
     {
-      "name": "Peter William",
-      "occupation": "Distillery owner",
+      "name": "彼得·威廉",
+      "occupation": "酒厂老板",
       "age": 51,
       "gender": "male",
-      "appearance": "An older man in his later years, usually seen as a sturdy factory owner typical of a provincial industrialist.",
-      "personality": "Hardworking, traditional, and business-oriented, with a strong sense of responsibility toward his family business.",
-      "background": "Peter William operated a distillery in Cassandra, which appeared to be quite large and primarily produced vodka. In 2002, he suddenly fell ill and died in the hospital, leaving the distillery to his son.",
+      "appearance": "一位晚年老人,通常被视为典型的地方工业家式的硬朗工厂主。",
+      "personality": "勤劳、传统、重视商业,对家族企业有强烈的责任感。",
+      "background": "彼得·威廉在卡桑德拉经营酒厂,规模看起来相当大,主要生产伏特加。2002年,他突然患病并在医院去世,将酒厂留给了儿子。",
       "goals": [
-        "Maintain the family distillery",
-        "Secure his family's livelihood"
+        "维持家族酒厂",
+        "保障家人生计"
       ],
       "secrets": [
-        "His death may be connected to Patrizio von Samsa’s human experiments"
+        "他的死亡可能与帕特里齐奥·冯·萨姆萨的人体实验有关"
       ],
       "attributes": {
         "STR": 55,
@@ -41,27 +41,27 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "Peter William died suddenly in 2002 after falling ill.",
+          "clueText": "彼得·威廉在2002年患病后突然去世。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["William Distillery"]
+          "relatedTo": ["威廉酒厂"]
         },
         {
-          "clueText": "His death may have links to human experimentation conducted by Patrizio von Samsa.",
+          "clueText": "他的死亡可能与帕特里齐奥·冯·萨姆萨进行的人体实验有关。",
           "category": "secret",
           "difficulty": "hard",
-          "relatedTo": ["Patrizio von Samsa"]
+          "relatedTo": ["帕特里齐奥·冯·萨姆萨"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Abel William",
+          "targetName": "阿贝尔·威廉",
           "relationshipType": "family",
           "attitude": 70,
-          "description": "Father and son",
-          "history": "Peter founded and ran the distillery before passing it on to Abel."
+          "description": "父子关系",
+          "history": "彼得创建并经营酒厂,然后传给阿贝尔。"
         }
       ],
-      "notes": "Peter William is already deceased before the investigators’ arrival."
+      "notes": "彼得·威廉在调查员到达之前已经去世。"
     }
 ]

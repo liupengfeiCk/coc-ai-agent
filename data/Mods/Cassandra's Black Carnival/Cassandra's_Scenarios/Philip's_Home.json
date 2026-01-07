@@ -1,87 +1,87 @@
 [
     {
-      "name": "Philip's Home",
-      "description": "A modest, cramped private residence belonging to Philip Scaletta, filled with stolen goods and personal mementos. The space reflects a life of poverty, paranoia, and petty crime, with cluttered storage and little concern for hospitality or order.",
+      "name": "菲利普的家",
+      "description": "属于菲利普·斯卡莱塔的简朴、狭窄的私人住所,充满了被盗物品和个人纪念品。这个空间反映了贫困、偏执和小偷小摸的生活,杂乱的储物和对待客或秩序的很少关注。",
       "snapshot": {
-        "name": "Philip's Home",
-        "location": "A small, inconspicuous residence in Cassandra, serving as Philip Scaletta's personal living space",
-        "description": "Philip's home is cluttered with numerous stolen items—his so-called 'trophies'—carelessly stacked or hidden throughout the room. Despite the mess, certain items are kept with care, including a treasured old family photograph. The atmosphere is tense and defensive, suggesting Philip's constant fear of being exposed or robbed himself.",
+        "name": "菲利普的家",
+        "location": "卡桑德拉的一处小型、不起眼的住所,作为菲利普·斯卡莱塔的个人生活空间",
+        "description": "菲利普的家里堆满了许多被盗物品——他所谓的'战利品'——被随意堆放或藏在房间各处。尽管一片凌乱,某些物品被精心保管,包括一张珍贵的旧家庭照片。气氛紧张且防御性强,暗示着菲利普一直担心被揭露或自己被抢劫。",
         "characters": [
           {
-            "name": "Philip Scaletta",
-            "role": "Witness / Suspect",
-            "status": "Alive",
-            "location": "Inside his home",
-            "notes": "A small-time thief who values money and survival above all else. He witnessed THE SECOND MURDER CASE (December 22, 2003) at Reindeer Bar where 21-year-old Lucifero was killed. He is extremely reluctant to cooperate unless bribed or promised protection from trouble."
+            "name": "菲利普·斯卡莱塔",
+            "role": "目击者 / 嫌疑人",
+            "status": "存活",
+            "location": "家中",
+            "notes": "一个小偷,把金钱和生存看得比什么都重要。他目睹了第二起谋杀案(2003年12月22日)在驯鹿酒吧,21岁的路西菲罗在那里被杀。除非被贿赂或承诺免于麻烦,否则他极不愿意合作。"
           }
         ],
         "clues": [
           {
-            "clueText": "The house is filled with various stolen goods and personal 'trophies' collected by Philip over time.",
-            "category": "observation",
-            "difficulty": "automatic",
-            "location": "Throughout the residence",
+            "clueText": "房子里充满了菲利普多年来收集的各种被盗物品和个人'战利品'。",
+            "category": "观察",
+            "difficulty": "自动",
+            "location": "整个住所",
             "discoveryMethod": "",
-            "reveals": ["Philip's habitual theft and obsession with keeping his stolen gains"]
+            "reveals": ["菲利普习惯性的盗窃和对保留被盗物品的痴迷"]
           },
           {
-            "clueText": "An old family photograph showing Philip with his parents, carefully preserved.",
-            "category": "physical",
-            "difficulty": "regular",
-            "location": "Hidden among Philip's personal belongings",
-            "discoveryMethod": "Search",
-            "reveals": ["Philip once had a happy family life and still harbors emotional attachment to his past"]
+            "clueText": "一张显示菲利普与父母在一起的旧家庭照片,被精心保存。",
+            "category": "物理",
+            "difficulty": "普通",
+            "location": "藏在菲利普的个人物品中",
+            "discoveryMethod": "搜索",
+            "reveals": ["菲利普曾经有一个幸福的家庭生活,仍然对过去怀有情感依恋"]
           },
           {
-            "clueText": "Philip stole the wallet from THE SECOND CASE VICTIM (21-year-old Lucifero) at Reindeer Bar on December 22, 2003. The wallet contained the victim's ID and a note about the 'Thousand-Dimensional System'.",
-            "category": "witness",
-            "difficulty": "hard",
-            "location": "Conversation with Philip or search of his belongings",
-            "discoveryMethod": "Intimidate, Persuade, or Search",
+            "clueText": "菲利普在2003年12月22日在驯鹿酒吧从第二起案件受害者(21岁的路西菲罗)那里偷了钱包。钱包里有受害者的身份证和一张关于'千维系统'的纸条。",
+            "category": "目击",
+            "difficulty": "困难",
+            "location": "与菲利普的对话或搜索他的物品",
+            "discoveryMethod": "威胁、说服或搜索",
             "reveals": [
-              "Philip was present at the SECOND CASE murder scene",
-              "The victim's identity: Aberforth Locefern (Lucifero), 21 years old",
-              "This is the SECOND CASE, distinct from the FIRST CASE (19-year-old, December 22, 2002)"
+              "菲利普在第二起案件谋杀现场",
+              "受害者的身份:阿伯福斯·洛斯费恩(路西菲罗),21岁",
+              "这是第二起案件,与第一起案件(19岁,2002年12月22日)不同"
             ]
           }
         ],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Dim indoor lighting with poorly lit corners",
+            "type": "照明",
+            "description": "昏暗的室内照明,角落光线不佳",
             "mechanicalEffect": ""
           },
           {
-            "type": "other",
-            "description": "Cluttered and cramped interior space",
-            "mechanicalEffect": "May impose situational penalties on movement or stealth if a chase or struggle occurs indoors"
+            "type": "其他",
+            "description": "杂乱且狭窄的室内空间",
+            "mechanicalEffect": "如果在室内发生追逐或搏斗,可能对移动或潜行施加情境惩罚"
           }
         ],
         "events": [
-          "Investigators may confront Philip about his stolen property and involvement in THE SECOND CASE",
-          "Philip may refuse cooperation unless offered money or assistance",
-          "Philip reveals information about the SECOND CASE victim (Lucifero) if properly pressured"
+          "调查员可能质问菲利普关于他被盗的财产和参与第二起案件的情况",
+          "除非得到金钱或帮助,菲利普可能拒绝合作",
+          "如果施加适当压力,菲利普会透露关于第二起案件受害者(路西菲罗)的信息"
         ],
         "exits": [
           {
-            "direction": "Front door",
-            "destination": "Cassandra streets",
-            "description": "A simple, frequently used exit",
+            "direction": "前门",
+            "destination": "卡桑德拉街道",
+            "description": "一个简单、经常使用的出口",
             "condition": ""
           }
         ],
-        "keeperNotes": "Philip is highly protective of his belongings and will react defensively if investigators search his home without permission. CRITICALLY: Philip was a witness to THE SECOND MURDER CASE (December 22, 2003, 21-year-old Lucifero killed at Reindeer Bar). He stole the victim's wallet and lost his folding knife at the scene. This is DISTINCT from the FIRST CASE (December 22, 2002, 19-year-old girl frozen in ice at Paradil Grand Hotel). Emphasize his greed, fear, and resentment of authority. He may reveal information only when adequately bribed or pressured.",
+        "keeperNotes": "菲利普高度保护他的财物,如果调查员未经许可搜查他的家,他会有防御性反应。关键:菲利普是第二起谋杀案(2003年12月22日,21岁的路西菲罗在驯鹿酒吧被杀)的目击者。他偷了受害者的钱包,并在现场丢失了折叠刀。这与第一起案件(2002年12月22日,19岁女孩在帕拉迪尔大酒店冻在冰中)不同。强调他的贪婪、恐惧和对权威的怨恨。只有在得到充分贿赂或施压时,他才可能透露信息。",
         "permanentChanges": [
-          "Stolen items may be confiscated or removed by investigators",
-          "Philip's attitude toward the investigators may permanently worsen or improve depending on their actions"
+          "被盗物品可能被调查员没收或移除",
+          "菲利普对调查员的态度可能根据他们的行为永久恶化或改善"
         ]
       },
-      "tags": ["private residence", "criminal", "cluttered", "NPC home"],
+      "tags": ["私人住所", "犯罪", "杂乱", "NPC家"],
       "connections": [
         {
-          "scenarioName": "Reindeer Bar",
-          "relationshipType": "leads_to",
-          "description": "Philip's involvement in THE SECOND MURDER CASE (December 22, 2003) at the Reindeer Bar—where 21-year-old Lucifero was killed—and his lost knife connect his home to the events at the bar. This is distinct from the FIRST CASE (December 22, 2002) at Paradil Grand Hotel."
+          "scenarioName": "驯鹿酒吧",
+          "relationshipType": "导向",
+          "description": "菲利普参与驯鹿酒吧的第二起谋杀案(2003年12月22日)——21岁的路西菲罗在那里被杀——以及他丢失的刀将他的家与酒吧的事件联系起来。这与帕拉迪尔大酒店的第一起案件(2002年12月22日)不同。"
         }
       ]
     }

@@ -303,11 +303,13 @@ textarea {
 }
 
 .skill-name-cell {
-  width: 70%;
+  width: auto;
 }
 
 .skill-value-cell {
-  width: 30%;
+  width: 80px;
+  min-width: 80px;
+  text-align: center;
 }
 
 .skill-label {

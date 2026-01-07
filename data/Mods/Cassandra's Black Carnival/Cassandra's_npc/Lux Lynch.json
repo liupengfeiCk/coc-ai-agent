@@ -1,24 +1,24 @@
 [
     {
-      "name": "Lux Lynch",
-      "occupation": "Police Officer (corrupt)",
+      "name": "勒克斯·林奇",
+      "occupation": "警察(腐败)",
       "age": 32,
       "gender": "male",
-      "appearance": "An ordinary-looking man who blends easily into the background; usually dressed as a plainclothes police officer, giving off a cautious and somewhat nervous demeanor.",
-      "personality": "Pragmatic, fearful, morally compromised, and deeply conflicted. Once idealistic, now cynical and submissive to authority, with traces of a guilty conscience.",
-      "background": "Lux Lynch was once a passionate and idealistic young man. In his youth, he and his classmates exposed corporate fraud involving falsified accounts and the use of child labor overseas. The whistleblowing ruined their careers and nearly landed them in legal trouble. Disillusioned, Lux returned to his hometown, became a police officer, and survived by ingratiating himself with his superiors. He gradually became a corrupt cop, taking bribes to handle minor illegal matters. Although he avoids committing truly heinous crimes, he is now trapped by fear and dependence. His superior, Patrizio von Samsa, has begun displaying increasingly strange and inhuman behavior, terrifying Lux but leaving him too compromised to defect.",
+      "appearance": "一个外表普通的男人,容易融入背景;通常穿着便衣警察的服装,给人谨慎且有些紧张的感觉。",
+      "personality": "务实、恐惧、道德沦丧且深陷冲突。曾经理想主义,现在愤世嫉俗并屈服于权威,还带有内疚的良心痕迹。",
+      "background": "勒克斯·林奇曾经是一个充满激情和理想主义的年轻人。年轻时,他和同学们揭露了涉及伪造账目和使用海外童工的企业欺诈。举报行为毁了他们的职业生涯,几乎让他们陷入法律麻烦。幻想破灭后,勒克斯回到家乡,成为一名警察,通过讨好上级生存。他逐渐成为一名腐败警察,收受贿赂处理一些小的非法事务。虽然他避免犯下真正令人发指的罪行,但现在被恐惧和依赖所困。他的上级帕特里齐奥·冯·萨姆萨开始表现出越来越奇怪和非人类的行为,让勒克斯感到恐惧,但他太受妥协而无法叛变。",
       "goals": [
-        "Protect himself from exposure and retaliation",
-        "Maintain his position and personal safety within the police force"
+        "保护自己免受揭露和报复",
+        "在警察队伍中维持职位和人身安全"
       ],
       "secrets": [
-        "He has accepted bribes and maintains records of people whose 'small problems' he has helped cover up",
-        "He was ordered by higher authorities to release Martin Gin (Ghost Hand), indirectly allowing Jenny Florence's murderer to escape",
-        "He was the 'acquaintance' Adolph met at the Reindeer Bar on the day of the murder (2003.12.22), though Adolph doesn't know why Lux was there",
-        "He planted the folding knife (which belonged to Philip) on Lucifero's body on Martin's orders to confuse the investigation",
-        "He transported Lucifero's body to Star Hospital and later to the crematorium under orders",
-        "He knows Martin (Ghost Hand) works for the government/Patrizio but doesn't know his true identity",
-        "He is terrified of Patrizio's inhuman powers and cannot betray him"
+        "他接受贿赂并保存了他帮助掩盖'小问题'的人的记录",
+        "他受上级命令释放了马丁·金(鬼手),间接让珍妮·弗洛伦斯的凶手逃脱",
+        "他是阿道夫在谋杀案当天(2003.12.22)在驯鹿酒吧遇到的'熟人',尽管阿道夫不知道勒克斯为什么在那里",
+        "他按马丁的命令将折叠刀(属于菲利普)放在露西弗罗的尸体上以混淆调查",
+        "他按命令将露西弗罗的尸体运送到星星医院,后来运到火葬场",
+        "他知道马丁(鬼手)为政府/帕特里齐奥工作,但不知道他的真实身份",
+        "他对帕特里齐奥的非人类力量感到恐惧,无法背叛他"
       ],
       "attributes": {
         "STR": 55,
@@ -49,54 +49,54 @@
       },
       "inventory": [
         {
-          "name": "Police badge and identification",
+          "name": "警徽和身份证明",
           "properties": {
-            "note": "Official police credentials."
+            "note": "官方警察证件。"
           }
         },
         {
-          "name": "Notebook recording illicit favors",
+          "name": "记录非法人情的笔记本",
           "properties": {
-            "clue": "A small notebook documenting people whose 'small problems' he has helped cover up. This is both leverage against others and evidence that could be used against him."
+            "clue": "一个小笔记本,记录了他帮助掩盖'小问题'的人。这既是对他人的筹码,也是可以用来对付他的证据。"
           }
         },
         {
-          "name": "Service handgun",
+          "name": "配枪",
           "properties": {
-            "note": "Standard police-issued firearm."
+            "note": "标准警察配发的枪械。"
           }
         }
       ],
       "clues": [
         {
-          "clueText": "Patrizio von Samsa possesses strange powers and is involved in activities that do not appear entirely human.",
+          "clueText": "帕特里齐奥·冯·萨姆萨拥有奇怪的力量,参与的活动似乎不完全是人类的。",
           "category": "observation",
           "difficulty": "hard",
-          "relatedTo": ["Patrizio von Samsa"]
+          "relatedTo": ["帕特里齐奥·冯·萨姆萨"]
         },
         {
-          "clueText": "Martin Gin was deliberately released from custody under official orders despite being highly suspicious.",
+          "clueText": "马丁·金尽管非常可疑,但在官方命令下被故意释放。",
           "category": "secret",
           "difficulty": "extreme",
-          "relatedTo": ["Martin Gin", "Reindeer Bar"]
+          "relatedTo": ["马丁·金", "驯鹿酒吧"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Patrizio von Samsa",
+          "targetName": "帕特里齐奥·冯·萨姆萨",
           "relationshipType": "employer",
           "attitude": -40,
-          "description": "Lux’s superior and the source of his fear and corruption.",
-          "history": "Lux secured his promotion by aligning himself closely with Patrizio, who later drew him into increasingly dangerous and unnatural affairs."
+          "description": "勒克斯的上级,他恐惧和腐败的来源。",
+          "history": "勒克斯通过与帕特里齐奥密切结盟获得晋升,后者后来将他卷入越来越危险和不自然的事务。"
         },
         {
-          "targetName": "Jenny Florence (berforth Locefern)",
+          "targetName": "珍妮·弗洛伦斯(阿伯福斯·洛斯芬)",
           "relationshipType": "enemy",
           "attitude": -20,
-          "description": "A hacker whose death weighs on Lux’s conscience.",
-          "history": "Lux was indirectly involved in the chain of events that led to her murder by releasing her killer under orders."
+          "description": "一个黑客,她的死让勒克斯的良心感到沉重。",
+          "history": "勒克斯按命令释放了她的凶手,间接参与了导致她被谋杀的事件链。"
         }
       ],
-      "notes": "Lux is aware that Simon/Anatole can easily uncover evidence of his corruption, making him highly susceptible to coercion. He lives in constant fear of betrayal and exposure."
+      "notes": "勒克斯知道西蒙/阿纳托尔可以轻易揭露他腐败的证据,使他非常容易被胁迫。他生活在对背叛和曝光的持续恐惧中。"
     }
   ]

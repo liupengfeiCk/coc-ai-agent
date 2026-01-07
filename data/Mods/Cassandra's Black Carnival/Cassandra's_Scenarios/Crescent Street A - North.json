@@ -1,95 +1,95 @@
 [
-    {
-      "name": "Crescent Street A - North",
-      "description": "The northern section of Crescent Street A is a transitional urban corridor in Cassandra, linking major avenues with older residential blocks. It hosts several important locations tied directly to recent incidents and personal histories, including THE FIRST MURDER CASE site.",
-      "snapshot": {
-        "name": "Crescent Street A - North",
-        "location": "Northern section of Crescent Street A, Cassandra",
-        "description": "Crescent Street A (North) is a relatively quiet street marked by aging buildings and limited foot traffic. While it appears unremarkable at first glance, several locations along this street are closely connected to past deaths and ongoing investigations. The Paradil Grand Hotel here is the site of THE FIRST MURDER CASE (December 22, 2002—19-year-old girl frozen in ice), exactly one year before THE SECOND CASE at Reindeer Bar. The atmosphere is subdued, with an underlying sense that the street has seen more than it reveals.",
-        "characters": [],
-        "clues": [
-          {
-            "clueText": "The Paradil Grand Hotel on this street is the site of THE FIRST MURDER CASE (December 22, 2002), where a 19-year-old Black girl was found frozen in ice in the hotel kitchen basement freezer.",
-            "category": "knowledge",
-            "difficulty": "regular",
-            "location": "Paradil Grand Hotel",
-            "discoveryMethod": "Investigation or Library Use",
-            "reveals": [
-              "This is the FIRST CASE, exactly one year before the SECOND CASE",
-              "Different victim (19 vs 21 years old)",
-              "Different location (hotel freezer vs bar restroom)",
-              "Different method (frozen in ice vs gunshot/stab)"
-            ]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "lighting",
-            "description": "Streetlights are sparse and uneven, leaving long stretches of the street in dim light at night.",
-            "mechanicalEffect": ""
-          },
-          {
-            "type": "sound",
-            "description": "Occasional passing vehicles and distant city noise, otherwise unusually quiet.",
-            "mechanicalEffect": ""
-          }
-        ],
-        "events": [
-          "Investigators may discover the connection between THE FIRST CASE (2002) and THE SECOND CASE (2003)",
-          "The street connects two investigation-heavy locations: the hotel (FIRST CASE) and Marcel's House"
-        ],
-        "exits": [
-          {
-            "direction": "South",
-            "destination": "Crescent Street A - South",
-            "description": "The street continues south into a busier and more active section of Crescent Street A.",
-            "condition": ""
-          },
-          {
-            "direction": "West",
-            "destination": "Avenue of Stars",
-            "description": "A connecting road leads back toward Avenue of Stars, the city's main thoroughfare.",
-            "condition": ""
-          },
-          {
-            "direction": "Along the street",
-            "destination": "Paradile Hotel",
-            "description": "A mid-sized hotel on Crescent Street A-N, site of THE FIRST MURDER CASE (December 22, 2002): a 19-year-old Black girl found frozen in ice in the hotel kitchen basement freezer—exactly one year before the second case at Reindeer Bar.",
-            "condition": ""
-          },
-          {
-            "direction": "Along the street",
-            "destination": "Marcel's House",
-            "description": "A private residence belonging to Marcel, a former employee connected to recent events.",
-            "condition": ""
-          }
-        ],
-        "keeperNotes": "This street connects two investigation-heavy locations: Paradile Hotel (site of THE FIRST MURDER CASE, December 22, 2002—19-year-old girl frozen in ice) and Marcel's House. The hotel is where the FIRST CASE occurred exactly one year before the SECOND CASE at Reindeer Bar (December 22, 2003—21-year-old Lucifero killed by gunshot/stab). Emphasize that these are TWO SEPARATE CASES with TWO DIFFERENT BODIES, exactly one year apart. It works well as a pressure corridor—investigators may move repeatedly between these sites while feeling observed or followed.",
-        "permanentChanges": []
-      },
-      "tags": [
-        "urban",
-        "street",
-        "residential",
-        "investigation hub",
-        "quiet"
-      ],
-      "connections": [
+  {
+    "name": "新月街A大道 - 北段",
+    "description": "新月街A大道的北段是卡森德拉的过渡性城市走廊,连接主要大道和较旧的住宅区。它拥有几个与近期事件和个人历史直接相关的重要地点,包括第一起谋杀案现场。",
+    "snapshot": {
+      "name": "新月街A大道 - 北段",
+      "location": "新月街A大道北段,卡森德拉",
+      "description": "新月街A大道(北段)是一条相对安静的街道,以老旧建筑和有限的行人流量为特征。虽然乍一看似乎不起眼,但这条街上的几个地点与过去的死亡和正在进行的调查密切相关。这里的帕拉迪尔酒店是第一起谋杀案的现场(2002年12月22日——19岁女孩冻结在冰中),正好是驯鹿酒吧第二起案件发生前一年。气氛沉闷,隐含着这条街所见比它所揭示的更多的感觉。",
+      "characters": [],
+      "clues": [
         {
-          "scenarioName": "Paradile Hotel",
-          "relationshipType": "leads_to",
-          "description": "The hotel is located directly on Crescent Street A (North) and is the site of THE FIRST MURDER CASE."
-        },
-        {
-          "scenarioName": "Marcel's House",
-          "relationshipType": "leads_to",
-          "description": "Marcel's residence is situated along Crescent Street A (North)."
-        },
-        {
-          "scenarioName": "Avenue of Stars",
-          "relationshipType": "leads_to",
-          "description": "A major route connecting this street to the city center."
+          "clueText": "这条街上的帕拉迪尔酒店是第一起谋杀案的现场(2002年12月22日),一名19岁黑人女孩在酒店厨房地下室的冷藏柜中被冻结在冰中。",
+          "category": "知识",
+          "difficulty": "常规",
+          "location": "帕拉迪尔酒店",
+          "discoveryMethod": "调查或图书馆使用",
+          "reveals": [
+            "这是第一起案件,正好在第二起案件前一年",
+            "不同的受害者(19岁 vs 21岁)",
+            "不同的地点(酒店冷藏柜 vs 酒吧洗手间)",
+            "不同的方法(冻结在冰中 vs 枪击/刺伤)"
+          ]
         }
-      ]
-    }
-  ]
+      ],
+      "conditions": [
+        {
+          "type": "光照",
+          "description": "街灯稀疏且不均匀,夜晚使街道大段处于昏暗光线中。",
+          "mechanicalEffect": ""
+        },
+        {
+          "type": "声音",
+          "description": "偶尔经过的车辆和远处的城市噪音,否则异常安静。",
+          "mechanicalEffect": ""
+        }
+      ],
+      "events": [
+        "调查员可能发现第一起案件(2002)和第二起案件(2003)之间的联系",
+        "这条街连接两个调查密集的地点:酒店(第一起案件)和马塞尔的家"
+      ],
+      "exits": [
+        {
+          "direction": "南",
+          "destination": "新月街A大道 - 南段",
+          "description": "街道继续向南进入新月街A大道更繁忙、更活跃的部分。",
+          "condition": ""
+        },
+        {
+          "direction": "西",
+          "destination": "星辰大道",
+          "description": "一条连接道路返回星辰大道,城市的主要通道。",
+          "condition": ""
+        },
+        {
+          "direction": "沿街",
+          "destination": "帕拉迪尔酒店",
+          "description": "新月街A大道北段的一家中型酒店,第一起谋杀案现场(2002年12月22日):一名19岁黑人女孩在酒店厨房地下室的冷藏柜中被冻结在冰中——正好在驯鹿酒吧第二起案件前一年。",
+          "condition": ""
+        },
+        {
+          "direction": "沿街",
+          "destination": "马塞尔的家",
+          "description": "属于马塞尔的私人住宅,前雇员,与近期事件有关。",
+          "condition": ""
+        }
+      ],
+      "keeperNotes": "这条街连接两个调查密集的地点:帕拉迪尔酒店(第一起谋杀案现场,2002年12月22日——19岁女孩冻结在冰中)和马塞尔的家。酒店是第一起案件发生的地方,正好在驯鹿酒吧第二起案件(2003年12月22日——21岁卢奇菲罗被枪击/刺伤)前一年。强调这是两起独立案件,有两具不同的尸体,相隔整整一年。它作为压力走廊效果很好——调查员可能在这些地点之间反复移动,同时感到被观察或跟踪。",
+      "permanentChanges": []
+    },
+    "tags": [
+      "城市",
+      "街道",
+      "住宅",
+      "调查枢纽",
+      "安静"
+    ],
+    "connections": [
+      {
+        "scenarioName": "帕拉迪尔酒店",
+        "relationshipType": "通向",
+        "description": "酒店直接位于新月街A大道(北段)上,是第一起谋杀案的现场。"
+      },
+      {
+        "scenarioName": "马塞尔的家",
+        "relationshipType": "通向",
+        "description": "马塞尔的住所位于新月街A大道(北段)沿线。"
+      },
+      {
+        "scenarioName": "星辰大道",
+        "relationshipType": "通向",
+        "description": "连接这条街到市中心的主要路线。"
+      }
+    ]
+  }
+]

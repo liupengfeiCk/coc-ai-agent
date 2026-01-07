@@ -1,25 +1,25 @@
 [
     {
-      "name": "Philip Scaletta",
-      "occupation": "Mafia Enforcer / Criminal Fixer",
+      "name": "菲利普·斯卡莱塔",
+      "occupation": "黑帮打手 / 犯罪中间人",
       "age": 38,
       "gender": "male",
-      "appearance": "A sharply dressed Italian-American man with slicked-back dark hair, a thin mustache, and cold, watchful eyes. Usually wears tailored suits and leather gloves, even in inappropriate weather.",
-      "personality": "Calm, calculating, and ruthlessly pragmatic. Speaks politely but carries an undercurrent of menace. Loyal to his organization, distrustful of outsiders.",
-      "background": "Philip Scaletta is a mid-level operative connected to organized crime activities linked to Cassandra. He handles intimidation, debt collection, and discreet eliminations when subtlety fails. While not a leader, he is deeply trusted by higher-ranking figures due to his efficiency and silence.",
+      "appearance": "一位穿着考究的意大利裔美国男性,梳着油头,留着细胡子,眼神冷酷警惕。通常穿着定制西装和皮手套,即使在不合适的天气下也是如此。",
+      "personality": "冷静、精于算计、冷酷务实。说话礼貌但带有威胁暗流。忠于组织,不信任外人。",
+      "background": "菲利普·斯卡莱塔是一名与卡桑德拉相关的有组织犯罪活动的中层人员。他处理恐吓、收债,以及在隐蔽手段失败时进行谨慎清除。虽然不是领导者,但由于效率高和守口如瓶而深受高层信任。",
       "goals": [
-        "Maintain his standing within the criminal organization",
-        "Eliminate threats that could expose his employers"
+        "维持在犯罪组织中的地位",
+        "清除可能暴露雇主的威胁"
       ],
       "secrets": [
-        "He has personally disposed of multiple bodies connected to ritual-related crimes",
-        "He suspects the organization is involved with something inhuman, but chooses not to ask questions",
-        "He stole Lucifero's wallet at the Reindeer Bar on the day of the murder (2003.12.22)",
-        "He lost his folding knife during a fight at the Reindeer Bar, and this knife was later found stuck in Lucifero's back",
-        "He is left-handed but tries to hide this fact",
-        "He is a habitual thief with a compulsion for stealing",
-        "The woman he tried to flirt with at the bar was Helen, who is not actually with her fiancé",
-        "He was THE FIRST PERSON to publicly discover and report the victim's body. He noticed Marcel returning from the restroom looking nervous and suspicious, suspected Marcel might be hiding something or involved in drug dealing. Concerned about what had just happened (the victim seeking help), he went to check the restroom and discovered the body, then shouted - which caught Marcel before he could escape"
+        "他亲手处理过多具与仪式相关犯罪的尸体",
+        "他怀疑组织涉及非人之物,但选择不问问题",
+        "他在谋杀当天(2003.12.22)在驯鹿酒吧偷了路西法罗的钱包",
+        "他在驯鹿酒吧打架时丢失了折叠刀,这把刀后来被发现插在路西法罗背上",
+        "他是左撇子但试图隐藏这一事实",
+        "他是习惯性小偷,有偷窃强迫症",
+        "他在酒吧试图搭讪的女人是海伦,她实际上并没有和未婚夫在一起",
+        "他是第一个公开发现并报告受害者尸体的人。他注意到马塞尔从洗手间回来时神色紧张可疑,怀疑马塞尔可能在隐藏什么或涉及毒品交易。出于对刚才发生的事情(受害者求助)的担忧,他去检查洗手间并发现了尸体,然后大喊——这让马塞尔在逃跑前被抓住"
       ],
       "attributes": {
         "STR": 65,
@@ -50,77 +50,77 @@
       },
       "inventory": [
         {
-          "name": "Concealed handgun",
+          "name": "隐藏手枪",
           "properties": {
-            "note": "Carried for protection."
+            "note": "携带用于保护。"
           }
         },
         {
-          "name": "Folding knife (lost at Reindeer Bar)",
+          "name": "折叠刀(在驯鹿酒吧丢失)",
           "properties": {
-            "clue": "Philip lost this folding knife during a fight at Reindeer Bar on the day of the murder (2003.12.22) when he tried to flirt with a woman who turned out to have a boyfriend. This knife was later found stuck in Lucifero's back. Martin (Ghost Hand) picked it up and gave it to Lux to plant on the body to confuse the investigation."
+            "clue": "菲利普在谋杀当天(2003.12.22)在驯鹿酒吧打架时丢失了这把折叠刀,当时他试图搭讪一个女人,结果发现她有男朋友。这把刀后来被发现插在路西法罗背上。马丁(幽灵之手)捡起它并交给勒克斯植入尸体上以混淆调查。"
           }
         },
         {
-          "name": "Leather gloves",
+          "name": "皮手套",
           "properties": {
-            "note": "Worn even in inappropriate weather."
+            "note": "即使在不合适的天气下也佩戴。"
           }
         },
         {
-          "name": "Cigarettes",
+          "name": "香烟",
           "properties": {
-            "note": "Personal item."
+            "note": "个人物品。"
           }
         },
         {
-          "name": "Cash roll",
+          "name": "现金卷",
           "properties": {
-            "note": "Money from various activities."
+            "note": "来自各种活动的钱。"
           }
         },
         {
-          "name": "Stolen wallet from Lucifero",
+          "name": "从路西法罗偷的钱包",
           "properties": {
-            "clue": "Philip stole Lucifero's wallet when she left her seat. It contained a thick wad of cash and a note listing various 'jobs' (including one involving Adolph). He did not report this theft and kept the money."
+            "clue": "菲利普在路西法罗离开座位时偷了她的钱包。里面有厚厚一沓现金和一张列有各种'工作'的纸条(包括一个涉及阿道夫的)。他没有报告这次盗窃并留下了钱。"
           }
         },
         {
-          "name": "Old family photo",
+          "name": "旧家庭照片",
           "properties": {
-            "note": "The only surviving photo of Philip with his parents."
+            "note": "菲利普和父母唯一幸存的照片。"
           }
         }
       ],
       "clues": [
         {
-          "clueText": "Several disappearances in Cassandra were covered up through bribery and intimidation.",
+          "clueText": "卡桑德拉的几起失踪案通过贿赂和恐吓被掩盖。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Cassandra", "Local Mafia"]
+          "relatedTo": ["卡桑德拉", "当地黑帮"]
         },
         {
-          "clueText": "Certain victims were handed over alive to unknown parties rather than killed.",
+          "clueText": "某些受害者被活着交给未知方,而非被杀。",
           "category": "secret",
           "difficulty": "hard",
-          "relatedTo": ["Cult Activities"]
+          "relatedTo": ["邪教活动"]
         },
         {
-          "clueText": "Philip was THE FIRST PERSON to publicly discover and report the victim's body at the Reindeer Bar. He noticed Marcel returning from the restroom looking nervous and suspicious, suspected Marcel might be hiding something or involved in drug dealing. Concerned about what had just happened (the victim seeking help), he went to check the restroom and discovered the body, then shouted - which caught Marcel before he could escape. However, Marcel had actually discovered the body first but was too afraid to report it.",
+          "clueText": "菲利普是在驯鹿酒吧第一个公开发现并报告受害者尸体的人。他注意到马塞尔从洗手间回来时神色紧张可疑,怀疑马塞尔可能在隐藏什么或涉及毒品交易。出于对刚才发生的事情(受害者求助)的担忧,他去检查洗手间并发现了尸体,然后大喊——这让马塞尔在逃跑前被抓住。然而,马塞尔实际上是第一个发现尸体但太害怕而没有报告的人。",
           "category": "witness",
           "difficulty": "regular",
-          "relatedTo": ["2003 Reindeer Bar murder", "Marcel Gwynplaine"]
+          "relatedTo": ["2003年驯鹿酒吧谋杀案", "马塞尔·格温普莱恩"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Patrizio von Samsa",
+          "targetName": "帕特里齐奥·冯·萨姆萨",
           "relationshipType": "ally",
           "attitude": 40,
-          "description": "Occasional collaborator on criminal logistics.",
-          "history": "Worked together on smuggling and intimidation jobs."
+          "description": "犯罪物流上的偶尔合作者。",
+          "history": "在走私和恐吓工作上合作过。"
         }
       ],
-      "notes": "Philip avoids prolonged exposure to crime scenes involving abnormal creatures. His SAN loss history suggests prior encounters with the unnatural. CRITICALLY: He was THE FIRST PERSON to publicly discover and report the victim's body at the Reindeer Bar on December 22, 2003. He noticed Marcel returning from the restroom looking nervous and suspicious, suspected Marcel might be hiding something or involved in drug dealing. Concerned about what had just happened (the victim seeking help), he went to check the restroom and discovered the body, then shouted - which caught Marcel before he could escape. However, Marcel had actually discovered the body first but was too afraid to report it, making Philip the first person to publicly discover and report the body."
+      "notes": "菲利普避免长时间暴露在涉及异常生物的犯罪现场。他的理智损失历史表明之前遭遇过非自然事物。关键:他是在2003年12月22日驯鹿酒吧第一个公开发现并报告受害者尸体的人。他注意到马塞尔从洗手间回来时神色紧张可疑,怀疑马塞尔可能在隐藏什么或涉及毒品交易。出于对刚才发生的事情(受害者求助)的担忧,他去检查洗手间并发现了尸体,然后大喊——这让马塞尔在逃跑前被抓住。然而,马塞尔实际上是第一个发现尸体但太害怕而没有报告的人,使菲利普成为第一个公开发现并报告尸体的人。"
     }
   ]

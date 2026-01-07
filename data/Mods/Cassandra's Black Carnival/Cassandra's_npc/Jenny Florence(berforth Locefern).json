@@ -1,29 +1,29 @@
 [
     {
-      "name": "Jenny Florence (alias: berforth Locefern)",
-      "occupation": "Hacker",
+      "name": "珍妮·弗洛伦斯(化名:伯福斯·洛塞芬)",
+      "occupation": "黑客",
       "age": 24,
       "gender": "female",
-      "appearance": "A young Black woman with a sexy, charming figure and attractive facial features; carries herself with confidence.",
-      "personality": "Highly intelligent, confident to the point of arrogance, cautious, independent, and driven by a strong personal moral code.",
-      "background": "Jenny Florence was a gifted hacker who grew up in a poor Black family. She first encountered computers at school and quickly became fascinated with programming. Despite excellent grades, she dropped out of high school after her mother fell seriously ill, lost her job, and died, forcing Jenny to support her family. She worked near MIT, learning whenever she could, and later forged a new identity to start over in California. Under the alias berforth Locefern, she became involved in underground hacking activities and was ultimately murdered in the Reindeer Bar incident.",
+      "appearance": "一位年轻的黑人女性,身材性感迷人,面容姣好;举止自信。",
+      "personality": "高度聪明,自信到傲慢的程度,谨慎,独立,由强烈的个人道德准则驱动。",
+      "background": "珍妮·弗洛伦斯是一位有天赋的黑客,在贫困的黑人家庭中长大。她在学校第一次接触电脑并迅速对编程着迷。尽管成绩优异,但母亲重病、失业并去世后,她高中辍学以养家。她在麻省理工附近工作,尽可能学习,后来伪造新身份在加州重新开始。以伯福斯·洛塞芬的化名,她参与地下黑客活动,最终在驯鹿酒吧事件中被谋杀。",
       "goals": [
-        "Uncover and preserve the truth behind the Reindeer Bar murder case (2003)",
-        "Gather evidence on Martin Gin (Ghost Hand) to assist Bruno in solving the cold case from 2002",
-        "Help Bruno solve the 2002 Paradil Hotel murder case by revealing the truth about the killer"
+        "揭露并保存驯鹿酒吧谋杀案(2003)背后的真相",
+        "收集马丁·金(幽灵之手)的证据,协助布鲁诺解决2002年悬案",
+        "通过揭露凶手真相帮助布鲁诺解决2002年帕拉迪尔酒店谋杀案"
       ],
       "secrets": [
-        "Her real name is Jenny Florence; berforth Locefern is a fabricated identity",
-        "She knew that Martin Gin (Ghost Hand) was the murderer in the 2002 Paradil Hotel murder case (the old case involving the unknown 19-year-old Black girl)",
-        "She witnessed Martin (Ghost Hand) committing the murder at Paradil Hotel in 2002 while trying to hack into the hotel's central system",
-        "She did not see Ghost Hand's face during the network confrontation, so she didn't know the hacker and the murderer were the same person",
-        "She planned to anonymously reveal the truth about the 2002 case to Bruno on Christmas, moved by his persistence in investigating the case",
-        "She approached Martin (Ghost Hand) to gather more information about him to help Bruno solve the case",
-        "She intercepted the package containing Borrachero that Lux picked up from the dock, which led to her death",
-        "She conducted business through Adolph as an intermediary with Red Stone Lady",
-        "She called herself 'Hell Messenger' (地狱使者) in her business dealings",
-        "Her hotel records for December 22 were deliberately erased",
-        "She used the alias 'Hell Messenger' to send Borrachero extract (Devil's Breath) and payment to Colombia for Martin"
+        "她的真名是珍妮·弗洛伦斯;伯福斯·洛塞芬是虚构身份",
+        "她知道马丁·金(幽灵之手)是2002年帕拉迪尔酒店谋杀案(涉及无名19岁黑人女孩的旧案)的凶手",
+        "2002年她在试图黑入酒店中央系统时目睹了马丁(幽灵之手)在帕拉迪尔酒店犯下谋杀",
+        "她在网络对抗中没有看到幽灵之手的脸,所以不知道黑客和凶手是同一个人",
+        "她计划在圣诞节匿名向布鲁诺揭露2002年案件的真相,被他坚持调查案件所感动",
+        "她接近马丁(幽灵之手)收集关于他的更多信息以帮助布鲁诺破案",
+        "她拦截了勒克斯从码头取回的含有曼陀罗的包裹,这导致了她的死亡",
+        "她通过阿道夫作为中间人与红石女士进行交易",
+        "她在商业交易中自称'地狱使者'",
+        "她12月22日的酒店记录被故意删除",
+        "她使用'地狱使者'化名为马丁寄送曼陀罗提取物(魔鬼呼吸)和付款到哥伦比亚"
       ],
       "attributes": {
         "STR": 40,
@@ -54,84 +54,84 @@
       },
       "inventory": [
         {
-          "name": "Smartphone",
+          "name": "智能手机",
           "properties": {
-            "clue": "Contains: 1) Unfinished dial number '8764239' (not a phone number format); 2) Reply to unknown source SMS: 'No way, you can't get another penny from me, you scoundrel' / 'Alright, we'll see'; 3) Browser stopped at a blog page about a hacker who hacked local TV station and published dangerous conspiracy theories about a leader being a cultist (this message was cleared by Martin and hard to find online or in newspapers)."
+            "clue": "包含:1)未完成的拨号号码'8764239'(不是电话号码格式);2)回复未知来源短信:'不可能,你休想从我这再拿到一分钱,你这个无赖'/'好吧,我们走着瞧';3)浏览器停在一个博客页面,关于黑客入侵当地电视台并发布关于领导是邪教徒的危险阴谋论(此消息被马丁清除,很难在线或报纸上找到)。"
           }
         },
         {
-          "name": "Wallet",
+          "name": "钱包",
           "properties": {
-            "clue": "Contains: 1) A note listing various 'jobs' (Tiger Kovind: deliver photos to little mouse, 1000 USD; Ghost Hand: transport goods to dock, 1500 USD; Tallinn Widow: threaten her husband disguised as terrorist, 5000 USD; Shore Master: contact and threaten Red Stone Lady, raise price, 10000-20000 USD); 2) ID card showing 'Aberforth Locefern', age 21, address: Pomegranate Lane 441-F (all fake information); 3) Coded password 'XX3776' for Qianwei System test ID."
+            "clue": "包含:1)列出各种'工作'的纸条(老虎科温德:将照片送给小老鼠,1000美元;幽灵之手:将货物运到码头,1500美元;塔林寡妇:伪装成恐怖分子威胁她的丈夫,5000美元;海岸大师:联系并威胁红石女士,提高价格,10000-20000美元);2)显示'阿伯福斯·洛塞芬'的身份证,21岁,地址:石榴巷441-F(所有虚假信息);3)千卫系统测试ID的编码密码'XX3776'。"
           }
         },
         {
-          "name": "Folding knife (stuck in her back)",
+          "name": "折叠刀(插在她背上)",
           "properties": {
-            "clue": "Crime scene evidence: folding knife stuck in victim's back. This knife belonged to Philip Scaletta, who lost it during a fight in the bar earlier that day."
+            "clue": "犯罪现场证据:插在受害者背上的折叠刀。这把刀属于菲利普·斯卡莱塔,他当天早些时候在酒吧打架时丢失了它。"
           }
         },
         {
-          "name": "Expensive blue coat",
+          "name": "昂贵的蓝色外套",
           "properties": {
-            "note": "Wearing a deep blue expensive brand-name coat at the time of death."
+            "note": "死亡时穿着深蓝色昂贵品牌外套。"
           }
         },
         {
-          "name": "Blanket",
+          "name": "毯子",
           "properties": {
-            "note": "Wrapped herself in a blanket when escaping from the cold storage, then went to Reindeer Bar seeking help."
+            "note": "从冷藏室逃脱时用毯子裹着自己,然后去驯鹿酒吧寻求帮助。"
           }
         }
       ],
       "clues": [
         {
-          "clueText": "She knew that Martin Gin (Ghost Hand) was the murderer in the 2002 Paradil Hotel murder case (the old case involving the unknown 19-year-old Black girl found in the cold storage).",
+          "clueText": "她知道马丁·金(幽灵之手)是2002年帕拉迪尔酒店谋杀案(在冷藏室发现的无名19岁黑人女孩的旧案)的凶手。",
           "category": "secret",
           "difficulty": "hard",
-          "relatedTo": ["Martin Gin", "2002 Paradil Hotel murder", "Unknown victim"]
+          "relatedTo": ["马丁·金", "2002年帕拉迪尔酒店谋杀案", "无名受害者"]
         },
         {
-          "clueText": "She witnessed Martin (Ghost Hand) committing the 2002 murder while trying to hack into Paradil Hotel's central system, but did not see his face and didn't realize the hacker and murderer were the same person.",
+          "clueText": "她在试图黑入帕拉迪尔酒店中央系统时目睹了马丁(幽灵之手)犯下2002年谋杀,但没有看到他的脸,不知道黑客和凶手是同一个人。",
           "category": "secret",
           "difficulty": "extreme",
-          "relatedTo": ["Martin Gin", "2002 Paradil Hotel murder", "Hacking"]
+          "relatedTo": ["马丁·金", "2002年帕拉迪尔酒店谋杀案", "黑客"]
         },
         {
-          "clueText": "Her alias 'Aberforth Locefern' and all associated documents (ID, address at Pomegranate Lane 441-F) were completely fabricated and do not correspond to any real records.",
+          "clueText": "她的化名'阿伯福斯·洛塞芬'和所有相关文件(身份证、石榴巷441-F地址)完全是虚构的,不对应任何真实记录。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["berforth Locefern", "False identity"]
+          "relatedTo": ["伯福斯·洛塞芬", "虚假身份"]
         },
         {
-          "clueText": "She was killed in 2003 at Reindeer Bar because Martin discovered she had intercepted the Borrachero package and mistakenly identified her as the hacker who stole Patrizio's secrets.",
+          "clueText": "她在2003年被马丁在驯鹿酒吧杀害,因为马丁发现她拦截了曼陀罗包裹,并误认为她是窃取帕特里齐奥秘密的黑客。",
           "category": "secret",
           "difficulty": "hard",
-          "relatedTo": ["Martin Gin", "Reindeer Bar murder (2003)", "Patrizio von Samsa"]
+          "relatedTo": ["马丁·金", "2003年驯鹿酒吧谋杀案", "帕特里齐奥·冯·萨姆萨"]
         },
         {
-          "clueText": "She had set up an automatic SMS to send to Bruno revealing the truth about the 2002 case, and arranged to meet Bruno, but was killed before the meeting.",
+          "clueText": "她设置了自动短信向布鲁诺揭露2002年案件的真相,并安排与布鲁诺见面,但在见面前被杀害。",
           "category": "secret",
           "difficulty": "regular",
-          "relatedTo": ["Bruno Galilei", "2002 Paradil Hotel murder"]
+          "relatedTo": ["布鲁诺·伽利略", "2002年帕拉迪尔酒店谋杀案"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Bruno Galilei",
+          "targetName": "布鲁诺·伽利略",
           "relationshipType": "ally",
           "attitude": 60,
-          "description": "She admired Bruno's persistence in investigating the murder of an overlooked victim.",
-          "history": "Moved by Bruno's dedication, she planned to anonymously provide him with crucial evidence during Christmas."
+          "description": "她钦佩布鲁诺坚持调查被忽视受害者谋杀案的精神。",
+          "history": "被布鲁诺的奉献所感动,她计划在圣诞节匿名向他提供关键证据。"
         },
         {
-          "targetName": "Martin Gin (Ghost Hand)",
+          "targetName": "马丁·金(幽灵之手)",
           "relationshipType": "enemy",
           "attitude": -80,
-          "description": "A rival hacker and the murderer she secretly investigated.",
-          "history": "They crossed paths during a hacking intrusion, after which Jenny witnessed him committing murder."
+          "description": "她秘密调查的对手黑客和凶手。",
+          "history": "他们在黑客入侵期间相遇,之后珍妮目睹他犯下谋杀。"
         }
       ],
-      "notes": "Victim of the 2003 Reindeer Bar murder case. Age 21, Black female. Killed by .357 caliber bullet to the heart, with a folding knife stuck in her back. Her hotel records for December 22 were deliberately erased. She escaped from a cold storage at Paradil Hotel, wrapped herself in a blanket, and went to Reindeer Bar seeking help, but was killed in the restroom. She knew the identity of the 2002 murder case killer (Martin Gin/Ghost Hand) and planned to reveal it to Bruno. Her identity as berforth Locefern was known only to a select few trusted contacts. She was shot and killed before finalizing her deal involving intercepted pharmaceutical materials (Borrachero/Devil's Breath)."
+      "notes": "2003年驯鹿酒吧谋杀案的受害者。21岁,黑人女性。被.357口径子弹击中心脏致死,背上插着折叠刀。她12月22日的酒店记录被故意删除。她从帕拉迪尔酒店的冷藏室逃脱,用毯子裹着自己去驯鹿酒吧寻求帮助,但在洗手间被杀害。她知道2002年谋杀案凶手(马丁·金/幽灵之手)的身份并计划向布鲁诺揭露。她作为伯福斯·洛塞芬的身份只有少数受信任的联系人知道。她在完成涉及拦截药物材料(曼陀罗/魔鬼呼吸)的交易前被枪杀。"
     }
   ]

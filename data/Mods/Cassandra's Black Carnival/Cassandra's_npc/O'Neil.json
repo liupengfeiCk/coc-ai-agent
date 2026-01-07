@@ -1,15 +1,15 @@
 [
     {
-      "name": "O'Neil",
-      "occupation": "Former street thug (reformed)",
+      "name": "奥尼尔",
+      "occupation": "前街头混混(已改过自新)",
       "age": 50,
       "gender": "male",
-      "appearance": "A middle-aged Black man with a sturdy build and a rough, street-hardened look softened by calmer manners after reform.",
-      "personality": "Loyal to friends, pragmatic, cautious, and avoids unnecessary trouble. Though once impulsive, he now prefers stability and staying out of dangerous affairs.",
-      "background": "O'Neil, also known as Oleao, is a reformed former street thug. He is a close friend of Wind and their circle. He planned to travel to Cassandra together with Wind but was forced to cancel due to an unexpected police case involving his friend Bruno.",
+      "appearance": "一位中年黑人男性,体格健壮,外表粗犷,带有街头磨砺的气息,但改过自新后举止更加平和。",
+      "personality": "对朋友忠诚,务实谨慎,避免不必要的麻烦。虽然曾经冲动,但现在更倾向于稳定生活,远离危险事务。",
+      "background": "奥尼尔,也被称为奥利奥,是一位改过自新的前街头混混。他是温德及其圈子的好友。他原计划与温德一起前往卡桑德拉,但因朋友布鲁诺卷入意外警察案件而被迫取消行程。",
       "goals": [
-        "Stay out of criminal trouble",
-        "Protect and support his friends from a distance"
+        "远离犯罪麻烦",
+        "从远处保护和支持朋友"
       ],
       "secrets": [],
       "attributes": {
@@ -41,28 +41,28 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "O'Neil was supposed to travel to Cassandra with Wind but was delayed due to a police case.",
+          "clueText": "奥尼尔原计划与温德一起前往卡桑德拉,但因警察案件而延误。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Wind"]
+          "relatedTo": ["温德"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Wind",
+          "targetName": "温德",
           "relationshipType": "friend",
           "attitude": 70,
-          "description": "Close and trusted friend",
-          "history": "They share a past connection from the streets and mutual trust after O'Neil reformed."
+          "description": "亲密可信的朋友",
+          "history": "他们在街头时期就有联系,奥尼尔改过自新后彼此保持信任。"
         },
         {
-          "targetName": "Bruno",
+          "targetName": "布鲁诺",
           "relationshipType": "friend",
           "attitude": 60,
-          "description": "Police officer friend (not the Cassandra Bruno)",
-          "history": "Bruno and O'Neil share a long-standing friendship that occasionally pulls O'Neil back into police-related matters."
+          "description": "警察朋友(不是卡桑德拉的布鲁诺)",
+          "history": "布鲁诺和奥尼尔有长期友谊,偶尔会把奥尼尔卷入警察相关事务。"
         }
       ],
-      "notes": "O'Neil does not appear directly in Cassandra during the investigation but remains a significant off-screen connection tying Wind to the outside world."
+      "notes": "奥尼尔不会直接出现在卡桑德拉的调查中,但作为温德与外界的重要幕后联系。"
     }
   ]

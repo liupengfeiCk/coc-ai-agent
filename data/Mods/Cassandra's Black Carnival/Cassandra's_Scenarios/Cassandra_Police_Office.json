@@ -1,84 +1,84 @@
 [
-    {
-      "name": "Cassandra Police Office",
-      "description": "The local police office of Cassandra, a small-town law enforcement building that includes reception areas, interrogation rooms, a forensic workspace, and internal archives. While modest in size, it serves as the town’s central hub for official records, investigations, and post-incident processing.",
-      "snapshot": {
-        "name": "Cassandra Police Office",
-        "location": "Cassandra town center",
-        "description": "The police office consists of a public-facing front area, several offices, a small forensic studio used for basic autopsy and evidence examination, and an internal archive room storing case files, reports, and historical records. The atmosphere is restrained and bureaucratic, with a sense that not all past incidents have been thoroughly resolved.",
-        "characters": [
-          {
-            "name": "Vito",
-            "role": "auxiliary police officer",
-            "status": "alive",
-            "location": "Main office area",
-            "notes": "A good-natured auxiliary officer in his thirties with Latin American heritage. Helpful but not particularly sharp, he follows protocol and defers to superiors."
-          }
-        ],
-        "clues": [
-          {
-            "clueText": "Police records documenting TWO SEPARATE MURDER CASES: The FIRST CASE (December 22, 2002) at Paradil Grand Hotel—a 19-year-old Black girl found frozen in ice in the hotel kitchen basement freezer. The SECOND CASE (December 22, 2003) at Reindeer Bar—a 21-year-old Black girl (Aberforth Locefern) killed by gunshot and knife in the restroom. Exactly one year apart.",
-            "category": "document",
-            "difficulty": "regular",
-            "location": "Archive room",
-            "discoveryMethod": "Library Use or Credit Rating",
-            "reveals": [
-              "Two separate murder cases, exactly one year apart",
-              "Different victims (19 vs 21 years old)",
-              "Different locations (hotel freezer vs bar restroom)",
-              "Different methods (frozen in ice vs gunshot/stab)",
-              "Bruno attempted to investigate both cases"
-            ]
-          },
-          {
-            "clueText": "Forensic notes for the SECOND CASE indicate the body showed anomalies: gunshot wound (.357 caliber) to the heart and a folding knife in the back. The FIRST CASE notes (if accessible) describe a body completely frozen in ice, completely naked, found in a freezer—completely different circumstances.",
-            "category": "document",
-            "difficulty": "hard",
-            "location": "Forensic studio",
-            "discoveryMethod": "Forensics or Medicine",
-            "reveals": [
-              "Evidence suggesting unnatural or abnormal causes",
-              "Two distinct murder methods suggest possible connection but different execution",
-              "The first case was quickly shelved, the second case is under active investigation"
-            ]
-          },
-          {
-            "clueText": "Bruno's case files show he was investigating BOTH cases, recognizing they might be connected despite being exactly one year apart and using different methods.",
-            "category": "document",
-            "difficulty": "regular",
-            "location": "Bruno's office or case files",
-            "discoveryMethod": "Search or Library Use",
-            "reveals": [
-              "Bruno believed the two cases were related",
-              "The first case was denied official investigation status",
-              "Bruno's determination to solve both cases may have led to his death"
-            ]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "lighting",
-            "description": "Harsh fluorescent lighting in offices and forensic areas.",
-            "mechanicalEffect": "Extended research here may cause minor fatigue at Keeper’s discretion"
-          }
-        ],
-        "events": [
-          "Officers moving files between offices and the archive",
-          "Routine evidence handling in the forensic studio"
-        ],
-        "exits": [
-          {
-            "direction": "Front entrance",
-            "destination": "Cassandra streets",
-            "description": "Public entrance used by civilians and officers"
-          }
-        ],
-        "keeperNotes": "The police office contains records for BOTH MURDER CASES. CRITICALLY DISTINCT: FIRST CASE (December 22, 2002)—19-year-old Black girl, frozen in ice in hotel freezer. SECOND CASE (December 22, 2003)—21-year-old Black girl (Lucifero), gunshot and knife in bar restroom. Exactly one year apart, TWO DIFFERENT BODIES, different methods. Bruno investigated both and believed they were connected. The police office should feel procedural and restrained. Access to sensitive files may require persuasion, authority, or favors. The forensic studio is limited in capability and may overlook non-human explanations. Emphasize the distinction between the two cases when investigators access records.",
-        "permanentChanges": [
-          "Sensitive files removed or flagged after investigator interference"
-        ]
-      },
-      "tags": ["police", "forensics", "archives", "law enforcement", "investigation"],
-      "connections": []
-    }
-  ]
+  {
+    "name": "卡森德拉警察局",
+    "description": "卡森德拉的地方警察局,一座小镇执法建筑,包括接待区、审讯室、法医工作室和内部档案室。虽然规模不大,但它是镇上官方记录、调查和事后处理的中心枢纽。",
+    "snapshot": {
+      "name": "卡森德拉警察局",
+      "location": "卡森德拉镇中心",
+      "description": "警察局包括面向公众的前台区域、几间办公室、一个用于基本尸检和证据检查的小型法医工作室,以及存储案件档案、报告和历史记录的内部档案室。气氛克制而官僚,有一种并非所有过去事件都得到彻底解决的感觉。",
+      "characters": [
+        {
+          "name": "维托",
+          "role": "辅警",
+          "status": "存活",
+          "location": "主办公区",
+          "notes": "一位三十多岁、具有拉丁美洲血统的好心辅警。乐于助人但不是特别敏锐,他遵循程序并服从上级。"
+        }
+      ],
+      "clues": [
+        {
+          "clueText": "警方记录记录了两起独立的谋杀案:第一起案件(2002年12月22日)在帕拉迪尔酒店——一名19岁黑人女孩在酒店厨房地下室的冷藏柜中被冻结在冰中。第二起案件(2003年12月22日)在驯鹿酒吧——一名21岁黑人女孩(阿伯福斯·洛斯芬)在洗手间被枪击和刀刺杀害。相隔整整一年。",
+          "category": "文件",
+          "difficulty": "常规",
+          "location": "档案室",
+          "discoveryMethod": "图书馆使用或信用等级",
+          "reveals": [
+            "两起独立的谋杀案,相隔整整一年",
+            "不同的受害者(19岁 vs 21岁)",
+            "不同的地点(酒店冷藏柜 vs 酒吧洗手间)",
+            "不同的方法(冻结在冰中 vs 枪击/刺伤)",
+            "布鲁诺试图调查这两起案件"
+          ]
+        },
+        {
+          "clueText": "第二起案件的法医笔记显示尸体有异常:心脏有枪伤(.357口径)和背部有折叠刀。第一起案件的笔记(如果可获取)描述了一具完全冻结在冰中的尸体,完全赤裸,在冷藏柜中发现——完全不同的情况。",
+          "category": "文件",
+          "difficulty": "困难",
+          "location": "法医工作室",
+          "discoveryMethod": "法医学或医学",
+          "reveals": [
+            "表明不自然或异常原因的证据",
+            "两种不同的谋杀方法表明可能的联系但不同的执行",
+            "第一起案件很快被搁置,第二起案件正在积极调查中"
+          ]
+        },
+        {
+          "clueText": "布鲁诺的案件档案显示他正在调查两起案件,认识到尽管相隔整整一年且使用不同方法,它们可能是相关的。",
+          "category": "文件",
+          "difficulty": "常规",
+          "location": "布鲁诺的办公室或案件档案",
+          "discoveryMethod": "搜索或图书馆使用",
+          "reveals": [
+            "布鲁诺相信这两起案件是相关的",
+            "第一起案件被拒绝正式调查地位",
+            "布鲁诺解决这两起案件的决心可能导致了他的死亡"
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "光照",
+          "description": "办公室和法医区域的刺眼荧光灯。",
+          "mechanicalEffect": "在此长时间研究可能会在守秘人酌情下造成轻微疲劳"
+        }
+      ],
+      "events": [
+        "警官在办公室和档案室之间移动档案",
+        "法医工作室的常规证据处理"
+      ],
+      "exits": [
+        {
+          "direction": "前门",
+          "destination": "卡森德拉街道",
+          "description": "平民和警官使用的公共入口"
+        }
+      ],
+      "keeperNotes": "警察局包含两起谋杀案的记录。关键区别:第一起案件(2002年12月22日)——19岁黑人女孩,在酒店冷藏柜中被冻结在冰中。第二起案件(2003年12月22日)——21岁黑人女孩(卢奇菲罗),在酒吧洗手间被枪击和刀刺。相隔整整一年,两具不同的尸体,不同的方法。布鲁诺调查了两起案件并相信它们是相关的。警察局应该感觉程序化和克制。访问敏感档案可能需要说服、权威或人情。法医工作室能力有限,可能忽略非人类的解释。当调查员访问记录时,强调两起案件之间的区别。",
+      "permanentChanges": [
+        "调查员干预后,敏感档案被移除或标记"
+      ]
+    },
+    "tags": ["警察", "法医", "档案", "执法", "调查"],
+    "connections": []
+  }
+]

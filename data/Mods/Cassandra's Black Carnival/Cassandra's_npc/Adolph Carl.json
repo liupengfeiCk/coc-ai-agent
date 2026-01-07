@@ -1,29 +1,29 @@
 [
   {
-    "name": "Adolph Carl",
-    "occupation": "Information broker / upper-class intermediary",
+    "name": "阿道夫·卡尔",
+    "occupation": "信息掮客/上流社会中间人",
     "age": 35,
     "gender": "male",
-    "appearance": "A tall, slender man with a pale complexion and an unhealthy yet dangerous aura. He is meticulous about his appearance, always dressed in elegant, well-tailored formal wear. He keeps expensive incense and has refined taste in perfumes.",
-    "personality": "Calm, elegant, manipulative, highly self-controlled. Enjoys being in control, skilled at concealing emotions and lying when necessary. Cynical toward high society yet obsessed with being accepted by it. Opportunistic and untrustworthy.",
-    "background": "Born into a once-wealthy family descended from minor nobility. Studied economics and electronics in university, believing in the future of information industries. His parents were ruined by an Egyptian businessman (an avatar of Nyarlathotep), whose organization seized their assets. Adolph was sent to the United States before completing his studies; his parents later committed suicide in France. While his family was collapsing, he secretly witnessed Anatole murder Nancy's mother in his family home in France (1988). After the rise of the internet, he used his computer skills and gathered secrets to infiltrate elite circles again. In 2002, he came to Cassandra following some leads and obtained the Qianwei System from the basement of the missing businessmen's villa. He stayed in Cassandra to control this powerful surveillance system.",
+    "appearance": "一个高瘦的男人,肤色苍白,散发着不健康但危险的气息。他对外表一丝不苟,总是穿着优雅、剪裁精良的正装。他使用昂贵的熏香,对香水有精致的品味。",
+    "personality": "冷静、优雅、善于操纵,高度自控。享受掌控感,善于隐藏情绪,必要时能熟练撒谎。对上流社会持讽刺态度,却痴迷于被其接纳。机会主义且不可信任。",
+    "background": "出生于一个曾经富裕的小贵族家族。在大学学习经济学和电子学,相信信息产业的未来。他的父母被一个埃及商人(奈亚拉托提普的化身)毁灭,其组织夺走了他们的资产。阿道夫在完成学业前被送往美国;他的父母后来在法国自杀。当他的家族崩溃时,他在法国的家中秘密目睹了阿纳托尔谋杀南希的母亲(1988年)。互联网兴起后,他利用计算机技能收集秘密重新渗透精英圈子。2002年,他追踪一些线索来到卡珊德拉,从失踪商人别墅的地下室获得了千维系统。他留在卡珊德拉以控制这个强大的监控系统。",
     "goals": [
-      "Return permanently to high society",
-      "Take back everything that was taken from his family",
-      "Take revenge on those who destroyed his family",
-      "Maintain control through information"
+      "永久重返上流社会",
+      "夺回从家族夺走的一切",
+      "向摧毁家族的人复仇",
+      "通过信息维持控制"
     ],
     "secrets": [
-      "He secretly witnessed Anatole murder Nancy's mother in his family home in France (1988)",
-      "He possesses and controls the Qianwei System, obtained from the missing businessmen's villa in 2002",
-      "He survives among elites by blackmail and sensitive information",
-      "He knows the deceased (Lucifero) was a contact person he had met recently",
-      "He knows the deceased (Lucifero) had a note in her pocket listing 'good deeds' done by Adolph and others",
-      "He knows Red Stone Lady (Mrs. Barklyite) works under the alias 'Susan' as a nurse at Star Hospital (though unaware that after Dec 26, 'Susan' is actually Shandra)",
-      "He knows the secrets of the hardware store and the code phrase for buying guns",
-      "He sent Anatole a note arranging a meeting at the Reindeer Bar, but Lucifero's murder and Lux's appearance prevented the meeting",
-      "He does not know about Simon/Anatole's dual personality",
-      "He has been monitoring Anatole/Simon's activities since recognizing him in Cassandra"
+      "他在法国的家中秘密目睹了阿纳托尔谋杀南希的母亲(1988年)",
+      "他拥有并控制千维系统,2002年从失踪商人别墅获得",
+      "他通过勒索和敏感信息在精英中生存",
+      "他知道死者(露西弗罗)是他最近见过的联系人",
+      "他知道死者(露西弗罗)口袋里有一张纸条,列出阿道夫和其他人做的'好事'",
+      "他知道红石女士(巴克莱特夫人)在星星医院以护士'苏珊'的化名工作(尽管不知道12月26日后,'苏珊'实际上是珊德拉)",
+      "他知道五金店的秘密和买枪的暗语",
+      "他给阿纳托尔发了一张纸条安排在驯鹿酒吧见面,但露西弗罗的谋杀和勒克斯的出现阻止了会面",
+      "他不知道西蒙/阿纳托尔的双重人格",
+      "自从在卡珊德拉认出阿纳托尔/西蒙后,他一直在监视其活动"
     ],
     "attributes": {
       "STR": 45,
@@ -55,89 +55,89 @@
     },
     "inventory": [
       {
-        "name": "Fine formal suits (wardrobe)",
+        "name": "精致正装(衣柜)",
         "properties": {
-          "note": "Keeps many well-preserved, tailored formal outfits."
+          "note": "保存许多保养良好、剪裁精良的正装。"
         }
       },
       {
-        "name": "Expensive incense (in wardrobe)",
+        "name": "昂贵的熏香(衣柜中)",
         "properties": {
-          "note": "Always stores pricey incense; skilled with perfume pairings."
+          "note": "总是储存昂贵的熏香;精通香水搭配。"
         }
       },
       {
-        "name": "Qianwei System (the real one, stolen/obtained)",
+        "name": "千维系统(真品,偷取/获得)",
         "properties": {
-          "clue": "The real Qianwei System was built by Anatole and was taken away by Adolph from the missing businessmen's villa basement in 2002."
+          "clue": "真正的千维系统由阿纳托尔建造,2002年被阿道夫从失踪商人别墅地下室拿走。"
         }
       },
       {
-        "name": "Heavy walking cane",
+        "name": "沉重的手杖",
         "properties": {
-          "note": "A heavy cane that can be used as a weapon. Adolph often carries it with him."
+          "note": "一根可以用作武器的沉重手杖。阿道夫经常随身携带。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "Knows extensive hidden information about influential figures in Cassandra.",
+        "clueText": "知道卡珊德拉有影响力人物的大量隐藏信息。",
         "category": "knowledge",
         "difficulty": "hard",
         "relatedTo": [
-          "Cassandra",
-          "Qianwei System"
+          "卡珊德拉",
+          "千维系统"
         ]
       },
       {
-        "clueText": "Witnessed Anatole murder Nancy's mother in his family home in France (1988).",
+        "clueText": "在法国的家中目睹了阿纳托尔谋杀南希的母亲(1988年)。",
         "category": "secret",
         "difficulty": "extreme",
         "relatedTo": [
-          "Anatole",
-          "Nancy Charlotte",
-          "France",
-          "1988 Paris train incident"
+          "阿纳托尔",
+          "南希·夏洛特",
+          "法国",
+          "1988年巴黎火车事件"
         ]
       },
       {
-        "clueText": "The deceased (Lucifero) was a contact person he knew, and she had a note listing Adolph's 'good deeds'.",
+        "clueText": "死者(露西弗罗)是他认识的联系人,她有一张列出阿道夫'好事'的纸条。",
         "category": "knowledge",
         "difficulty": "hard",
         "relatedTo": [
-          "Jenny Florence (Lucifero)",
-          "Reindeer Bar murder (2003)"
+          "珍妮·弗洛伦斯(露西弗罗)",
+          "驯鹿酒吧谋杀案(2003)"
         ]
       },
       {
-        "clueText": "Knows Red Stone Lady works as 'Susan' at Star Hospital, and knows the hardware store's secrets and gun-buying code.",
+        "clueText": "知道红石女士在星星医院以'苏珊'的身份工作,知道五金店的秘密和买枪暗语。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Mrs. Barklyite (Red Stone Lady)",
-          "Harrison Lockheed",
-          "Star Hospital"
+          "巴克莱特夫人(红石女士)",
+          "哈里森·洛克希德",
+          "星星医院"
         ]
       },
       {
-        "clueText": "The 'acquaintance' he met at the Reindeer Bar was Lux Lynch, though he doesn't know why Lux was there.",
+        "clueText": "他在驯鹿酒吧遇到的'熟人'是勒克斯·林奇,尽管他不知道勒克斯为什么在那里。",
         "category": "observation",
         "difficulty": "hard",
         "relatedTo": [
-          "Lux Lynch",
-          "Reindeer Bar murder (2003)"
+          "勒克斯·林奇",
+          "驯鹿酒吧谋杀案(2003)"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Anatole",
+        "targetName": "阿纳托尔",
         "relationshipType": "neutral",
         "attitude": -20,
-        "description": "Unaware that Adolph once witnessed his crime.",
-        "history": "Their paths crossed unknowingly during a murder in France."
+        "description": "不知道阿道夫曾目睹他的罪行。",
+        "history": "他们的道路在法国的一次谋杀中不知不觉地交叉。"
       }
     ],
-    "notes": "Adolph frequently manipulates investigators to gather information while revealing only what benefits him. He may betray allies at any moment if it secures his safety or advantage."
+    "notes": "阿道夫经常操纵调查员收集信息,同时只透露对他有利的内容。如果能确保他的安全或优势,他可能随时背叛盟友。"
   }
 ]

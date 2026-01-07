@@ -1,99 +1,99 @@
 [
     {
-      "name": "Mafia Headquarters",
-      "description": "A concealed Mafia headquarters hidden beneath Cassandra's train station platform, accessed through a disguised dock. This location serves as the operational center for the local Mafia and the base of power for its leader, Ben Cleo.",
+      "name": "黑手党总部",
+      "description": "隐藏在卡桑德拉火车站站台下方的黑手党总部,通过伪装的码头进入。这个地点是当地黑手党的行动中心和其领导人本·克利奥的权力基地。",
       "snapshot": {
-        "name": "Hidden Dock and Mafia Base",
-        "location": "Beneath the Cassandra Train Station Platform",
-        "description": "Behind the false façade of a quiet train platform lies a secret dock area leading into the Mafia headquarters. The space is utilitarian and guarded, designed for clandestine meetings and illegal operations. Investigators who reach this location are immediately at risk of confrontation but may also gain crucial leverage through negotiation.",
+        "name": "隐藏码头和黑手党基地",
+        "location": "卡桑德拉火车站站台下方",
+        "description": "在安静的火车站台的假外观后面,隐藏着一个秘密码头区域,通向黑手党总部。这个空间实用且有守卫,设计用于秘密会议和非法行动。到达这个地点的调查员立即面临对抗风险,但也可能通过谈判获得关键筹码。",
         "characters": [
           {
-            "name": "Ben Cleo",
-            "role": "Mafia Boss",
-            "status": "Alive",
-            "location": "Inside the Mafia headquarters",
-            "notes": "The leader of the local Mafia. Calm, pragmatic, and confident. He insists he is not responsible for EITHER murder case: not the FIRST CASE (19-year-old girl, frozen in ice, December 22, 2002) nor the SECOND CASE (21-year-old Lucifero, killed at Reindeer Bar, December 22, 2003). He is willing to negotiate with investigators under strict conditions."
+            "name": "本·克利奥",
+            "role": "黑手党老板",
+            "status": "存活",
+            "location": "黑手党总部内",
+            "notes": "当地黑手党的领导人。冷静、务实且自信。他坚称自己对两起谋杀案都不负责:不是第一起案件(19岁女孩,冻在冰中,2002年12月22日),也不是第二起案件(21岁的路西菲罗,在驯鹿酒吧被杀,2003年12月22日)。他愿意在严格条件下与调查员谈判。"
           }
         ],
         "clues": [
           {
-            "clueText": "The headquarters is directly connected to the train station platform via a hidden dock.",
-            "category": "environment",
-            "difficulty": "automatic",
-            "location": "Dock access within the headquarters",
+            "clueText": "总部通过隐藏码头直接连接到火车站站台。",
+            "category": "环境",
+            "difficulty": "自动",
+            "location": "总部内的码头入口",
             "discoveryMethod": "",
             "reveals": [
-              "The true purpose of the train station platform",
-              "The Mafia’s method of covert movement"
+              "火车站站台的真正目的",
+              "黑手党的秘密移动方法"
             ]
           },
           {
-            "clueText": "Ben Cleo claims that the real power behind Cassandra is a man named Padriche, and that Padriche's actions threaten Mafia interests. Ben mentions Padriche may be connected to BOTH murder cases—the first case from 2002 and the recent case from 2003.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Conversation with Ben Cleo",
-            "discoveryMethod": "Persuade or Credit Rating",
+            "clueText": "本·克利奥声称卡桑德拉背后的真正力量是一个名叫帕德里奇的人,帕德里奇的行为威胁到黑手党的利益。本提到帕德里奇可能与两起谋杀案都有关——2002年的第一起案件和2003年的最近案件。",
+            "category": "目击",
+            "difficulty": "普通",
+            "location": "与本·克利奥的对话",
+            "discoveryMethod": "说服或信用评级",
             "reveals": [
-              "Padriche as a major hidden antagonist",
-              "A deeper conspiracy within Cassandra",
-              "Possible connection between Padriche and both murder cases",
-              "The first case (2002) and second case (2003) may both be part of Padriche's larger plan"
+              "帕德里奇作为主要隐藏对手",
+              "卡桑德拉内部更深层的阴谋",
+              "帕德里奇与两起谋杀案的可能联系",
+              "第一起案件(2002年)和第二起案件(2003年)可能都是帕德里奇更大计划的一部分"
             ]
           },
           {
-            "clueText": "Ben Cleo confirms he knows about BOTH murder cases: the FIRST CASE (December 22, 2002, 19-year-old girl frozen in ice at Paradil Grand Hotel) and the SECOND CASE (December 22, 2003, 21-year-old Lucifero killed at Reindeer Bar). He denies involvement in either.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Conversation with Ben Cleo",
-            "discoveryMethod": "Talk or Intimidate",
+            "clueText": "本·克利奥确认他知道两起谋杀案:第一起案件(2002年12月22日,19岁女孩在帕拉迪尔大酒店冻在冰中)和第二起案件(2003年12月22日,21岁的路西菲罗在驯鹿酒吧被杀)。他否认参与其中任何一起。",
+            "category": "目击",
+            "difficulty": "普通",
+            "location": "与本·克利奥的对话",
+            "discoveryMethod": "交谈或威胁",
             "reveals": [
-              "Ben is aware of both cases despite the first being officially suppressed",
-              "The Mafia has information networks that extend beyond official records",
-              "Two separate cases, exactly one year apart, with different methods"
+              "本知道这两起案件,尽管第一起被官方压制了",
+              "黑手党拥有超越官方记录的信息网络",
+              "两起独立案件,正好相隔一年,方法不同"
             ]
           }
         ],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Dim artificial lighting, creating heavy shadows throughout the headquarters.",
+            "type": "照明",
+            "description": "昏暗的人工照明,在整个总部造成浓重阴影。",
             "mechanicalEffect": ""
           },
           {
-            "type": "sound",
-            "description": "Echoing water sounds from the dock mixed with low, tense voices.",
+            "type": "声音",
+            "description": "来自码头的回声水声混合着低沉、紧张的声音。",
             "mechanicalEffect": ""
           }
         ],
         "events": [
-          "Investigators are confronted by Mafia members upon arrival.",
-          "Negotiation between Ben Cleo and the investigators regarding secrecy and mutual interests."
+          "调查员到达时受到黑手党成员的对抗。",
+          "本·克利奥与调查员就保密和共同利益进行谈判。"
         ],
         "exits": [
           {
-            "direction": "Hidden dock passage",
-            "destination": "Train Station Platform",
-            "description": "A concealed route back to the platform above.",
-            "condition": "hidden"
+            "direction": "隐藏码头通道",
+            "destination": "火车站站台",
+            "description": "一条通向上方站台的隐蔽路线。",
+            "condition": "隐藏"
           }
         ],
-        "keeperNotes": "This scene should emphasize tension rather than immediate violence. Ben Cleo is dangerous but rational; he prefers negotiation if it protects his interests. CRITICALLY: Ben knows about BOTH MURDER CASES. The FIRST CASE (December 22, 2002) involved a 19-year-old Black girl found frozen in ice at Paradil Grand Hotel. The SECOND CASE (December 22, 2003) involved 21-year-old Aberforth Locefern (Lucifero) killed by gunshot and knife at Reindeer Bar. Ben denies involvement in either case but has information about both. If investigators betray his trust or reveal the secret of the platform, the Mafia will become a persistent hostile force.",
+        "keeperNotes": "这个场景应该强调紧张而非立即暴力。本·克利奥危险但理性;如果能保护他的利益,他更喜欢谈判。关键:本知道两起谋杀案。第一起案件(2002年12月22日)涉及一名19岁黑人女孩在帕拉迪尔大酒店冻在冰中。第二起案件(2003年12月22日)涉及21岁的阿伯福斯·洛斯费恩(路西菲罗)在驯鹿酒吧被枪击和刀刺杀。本否认参与任何一起案件,但对两起都有信息。如果调查员背叛他的信任或揭露站台的秘密,黑手党将成为持续的敌对力量。",
         "permanentChanges": [
-          "If investigators strike a deal with Ben Cleo, the Mafia may become a temporary ally.",
-          "If negotiations fail, the Mafia becomes openly hostile toward the investigators."
+          "如果调查员与本·克利奥达成交易,黑手党可能成为临时盟友。",
+          "如果谈判失败,黑手党将公开敌对调查员。"
         ]
       },
-      "tags": ["mafia", "hidden base", "dock", "organized crime", "negotiation"],
+      "tags": ["黑手党", "隐藏基地", "码头", "有组织犯罪", "谈判"],
       "connections": [
         {
-          "scenarioName": "Train Station Platform",
-          "relationshipType": "prerequisite",
-          "description": "The Mafia headquarters can only be accessed through the hidden dock beneath the train station platform."
+          "scenarioName": "火车站站台",
+          "relationshipType": "前置",
+          "description": "黑手党总部只能通过火车站站台下的隐藏码头进入。"
         },
         {
-          "scenarioName": "Padriche",
-          "relationshipType": "leads_to",
-          "description": "Information obtained here directs investigators toward Padriche as a key figure behind the events in Cassandra."
+          "scenarioName": "帕德里奇",
+          "relationshipType": "导向",
+          "description": "这里获得的信息将调查员引向帕德里奇,他是卡桑德拉事件背后的关键人物。"
         }
       ]
     }

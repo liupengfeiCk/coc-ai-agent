@@ -23,7 +23,8 @@ export enum ModelProviderName {
   GOOGLE = "google",
   GROQ = "groq",
   OLLAMA = "ollama",
-  OPENROUTER = "openrouter"
+  OPENROUTER = "openrouter",
+  DEEPSEEK = "deepseek"
 }
 
 /**

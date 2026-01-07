@@ -1,85 +1,78 @@
 [
-    {
-      "name": "Marks White",
-      "occupation": "Local businessman / fixer",
-      "age": 45,
-      "gender": "male",
-      "appearance": "A rather plain-looking middle-aged man with an unimpressive presence; his looks are forgettable, making him easy to overlook in a crowd.",
-      "personality": "Cautious, calculating, pragmatic, and emotionally restrained; prefers indirect methods and avoids unnecessary confrontation.",
-      "background": "Marks White is a clockmaker and owner of a clock shop in Cassandra. He is a Deep One hybrid who did not fully transform, living as an ugly old man with a flat forehead. Due to his Deep One heritage, he is well aware of what is happening in Cassandra, but he will neither help nor prevent it, nor participate in any of it. He only wants to make his clocks well in his lifetime. He was the first to notice the temporal anomalies in Cassandra and realized that a hybrid Hound of Tindalos has mixed into an old decorative oil painting hanging in his shop.",
-      "goals": [
-        "Protect his business interests",
-        "Remain uninvolved in open conflicts"
-      ],
-      "secrets": [
-      "He is a Deep One hybrid who did not fully transform, living as an ugly old man with a flat forehead",
-      "Due to his Deep One heritage, he is well aware of what is happening in Cassandra, but he will neither help nor prevent it",
-      "He was the first to notice the temporal anomalies in Cassandra",
-      "He realized that a hybrid Hound of Tindalos has mixed into an old decorative oil painting hanging in his shop",
-      "He made the church bell and claims his clocks will never be off by even a second during his lifetime",
-      "He can tell investigators about three men in black clothes heading toward the train station platform if asked"
+  {
+    "name": "马克斯·怀特",
+    "occupation": "自由记者",
+    "age": 26,
+    "gender": "male",
+    "description": "一位略显疲惫但充满热情的青年记者，总是带着相机和笔记本。他对超自然现象有着浓厚的兴趣，并且在调查黑嘉年华的秘密。",
+    "personality": "好奇心强，有些固执，但善良且正直。他相信真相的力量，愿意为了揭露黑暗而冒险。",
+    "background": "马克斯是一名自由记者，专门报道离奇事件。最近他收到了关于黑嘉年华的线索，决定深入调查这个神秘的地方。",
+    "appearance": "20多岁，中等身材，棕色头发，戴着眼镜。他的衣服略显凌乱，但总是背着一个装满采访工具的背包。",
+    "goals": [
+      "揭露黑嘉年华背后的真相",
+      "写出一篇轰动的报道"
     ],
-      "attributes": {
-        "STR": 50,
-        "CON": 55,
-        "DEX": 50,
-        "APP": 30,
-        "POW": 65,
-        "SIZ": 60,
-        "INT": 55,
-        "EDU": 65
-      },
-      "status": {
-        "hp": 12,
-        "maxHp": 12,
-        "sanity": 50,
-        "maxSanity": 99,
-        "luck": 50,
-        "mp": 13,
-        "conditions": []
-      },
-      "skills": {
-        "Credit Rating": 40,
-        "Fast Talk": 50,
-        "Psychology": 55,
-        "Accounting": 60,
-        "Library Use": 40
-      },
+    "secrets": [
+      "他曾在一次采访中目睹了超自然现象，这成为了他调查黑嘉年华的动力"
+    ],
+    "attributes": {
+      "STR": 50,
+      "CON": 55,
+      "SIZ": 60,
+      "DEX": 60,
+      "APP": 55,
+      "INT": 70,
+      "POW": 60,
+      "EDU": 65
+    },
+    "status": {
+      "hp": 11,
+      "maxHp": 11,
+      "sanity": 60,
+      "maxSanity": 60,
+      "luck": 55,
+      "mp": 12,
+      "conditions": []
+    },
+    "skills": {
+      "Art/Craft (Photography)": 60,
+      "Fast Talk": 55,
+      "Library Use": 50,
+      "Persuade": 55,
+      "Psychology": 45,
+      "Spot Hidden": 50
+    },
     "inventory": [
       {
-        "name": "Handmade clocks and watches",
+        "name": "相机",
         "properties": {
-          "note": "All clocks are handmade by White himself, with his name engraved on them. He claims they will never be off by even a second during his lifetime."
+          "description": "专业级相机，用于记录证据"
         }
       },
       {
-        "name": "Old decorative oil painting",
+        "name": "笔记本",
         "properties": {
-          "clue": "Contains a hybrid Hound of Tindalos mixed into the abstract painting. White was the first to notice this."
+          "description": "记录采访内容和线索"
         }
       }
     ],
-      "clues": [
+    "clues": [],
+    "relationships": [
       {
-        "clueText": "He is a Deep One hybrid who is well aware of what is happening in Cassandra, but he will neither help nor prevent it.",
-        "category": "knowledge",
-        "difficulty": "hard",
-        "relatedTo": ["Deep One", "Cassandra"]
+        "targetName": "调查员",
+        "relationshipType": "ally",
+        "attitude": 70,
+        "description": "潜在合作者",
+        "history": "对同样调查超自然事件的人持友好态度。"
       },
       {
-        "clueText": "He was the first to notice the temporal anomalies in Cassandra and realized that a hybrid Hound of Tindalos has mixed into an old decorative oil painting in his shop.",
-        "category": "secret",
-        "difficulty": "extreme",
-        "relatedTo": ["Temporal anomalies", "Hound of Tindalos"]
-      },
-      {
-        "clueText": "He made the church bell and claims his clocks will never be off by even a second during his lifetime. If the church bell shows incorrect time, it indicates temporal anomalies.",
-        "category": "knowledge",
-        "difficulty": "regular",
-        "relatedTo": ["Church bell", "Temporal anomalies"]
+        "targetName": "嘉年华核心成员",
+        "relationshipType": "enemy",
+        "attitude": -60,
+        "description": "调查目标",
+        "history": "试图揭露他们掩盖的真相。"
       }
     ],
-      "relationships": [],
-      "notes": "Marks White is easy to underestimate; while lacking physical presence, his strength lies in information control and quiet influence."
-    }
-  ]
+    "notes": "马克斯可以作为调查员的信息来源和盟友，但他的固执可能让他陷入危险。"
+  }
+]

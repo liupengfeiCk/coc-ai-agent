@@ -1,98 +1,98 @@
 [
-    {
-      "name": "Bruno's Car",
-      "description": "A parked Buick automobile containing the mysteriously deceased Bruno. The vehicle is left unattended on Crescent Street B, becoming a grim and silent crime scene tied to multiple ongoing investigations in Cassandra.",
-      "snapshot": {
-        "name": "Bruno's Car (12.26)",
-        "location": "Crescent Street B, parked in front of a two-story wooden house",
-        "timeRestriction": "day2 morning",
-        "description": "A Buick car is parked quietly along Crescent Street B. Inside, Bruno's body is slumped in the driver's seat with the seatbelt still fastened. His corpse appears unnaturally desiccated, resembling a dried mummy rather than a recently deceased man. The scene is eerily still, with no signs of a conventional struggle or accident.",
-        "characters": [
-          {
-            "name": "Bruno Galilei",
-            "role": "Victim",
-            "status": "Dead",
-            "location": "Driver's seat of the car",
-            "notes": "Body severely dehydrated; cause and time of death cannot be determined by normal means. Neck bears two circular bite wounds approximately 1 cm in diameter."
-          }
-        ],
-        "clues": [
-          {
-            "clueText": "Bruno’s body shows extreme dehydration with no clear time of death",
-            "category": "physical",
-            "difficulty": "automatic",
-            "location": "Driver's seat",
-            "discoveryMethod": "",
-            "reveals": ["Death involved unnatural or non-human factors"]
-          },
-          {
-            "clueText": "Two circular bite marks on Bruno’s neck",
-            "category": "observation",
-            "difficulty": "regular",
-            "location": "Bruno’s neck",
-            "discoveryMethod": "Spot Hidden or Medicine",
-            "reveals": ["Bruno was attacked rather than dying of natural causes"]
-          },
-          {
-            "clueText": "Mobile phone in Bruno’s hand with an unfinished draft message containing only a name: 'Lucifero'",
-            "category": "document",
-            "difficulty": "automatic",
-            "location": "Bruno’s hand",
-            "discoveryMethod": "",
-            "reveals": ["Bruno was trying to identify or warn someone about Lucifero"]
-          },
-          {
-            "clueText": "Case files and physical evidence from the Reindeer Bar murder (THE SECOND CASE, December 22, 2003) placed on the front passenger seat. Also contains references to the FIRST CASE (December 22, 2002) at Paradil Grand Hotel.",
-            "category": "document",
-            "difficulty": "regular",
-            "location": "Front passenger seat",
-            "discoveryMethod": "Search",
-            "reveals": [
-              "Bruno was actively investigating BOTH cases before his death",
-              "Bruno believed the two cases were connected despite being exactly one year apart",
-              "The first case (19-year-old, frozen in ice) and second case (21-year-old, gunshot/stab) are distinct but related"
-            ]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "lighting",
-            "description": "Natural street lighting depending on time of day",
-            "mechanicalEffect": ""
-          }
-        ],
-        "events": [
-          "Investigators discover Bruno’s body inside the parked vehicle",
-          "Police personnel claim Bruno never returned to the station after leaving"
-        ],
-        "exits": [
-          {
-            "direction": "Street side",
-            "destination": "Crescent Street B",
-            "description": "Leads back onto the residential street",
-            "condition": ""
-          }
-        ],
-        "keeperNotes": "Bruno was investigating BOTH MURDER CASES: FIRST CASE (December 22, 2002)—19-year-old Black girl, frozen in ice at Paradil Grand Hotel. SECOND CASE (December 22, 2003)—21-year-old Black girl (Lucifero), gunshot and knife at Reindeer Bar. Exactly one year apart, TWO DIFFERENT BODIES, different methods. The unnatural state of Bruno's body should immediately unsettle investigators. Police NPCs will deny knowledge of Bruno returning to the station, increasing suspicion and isolation.",
-        "permanentChanges": []
-      },
-      "tags": ["crime scene", "vehicle", "unnatural death", "investigation"],
-      "connections": [
+  {
+    "name": "布鲁诺的车",
+    "description": "一辆停放的别克汽车,里面有神秘死亡的布鲁诺。车辆被遗弃在新月街B大道上,成为与卡森德拉多起正在进行的调查相关的阴森而沉默的犯罪现场。",
+    "snapshot": {
+      "name": "布鲁诺的车(12.26)",
+      "location": "新月街B大道,停在一座二层木屋前",
+      "timeRestriction": "第2天 早上",
+      "description": "一辆别克汽车安静地停在新月街B大道旁。车内,布鲁诺的尸体瘫坐在驾驶座上,安全带仍然系着。他的尸体呈现出不自然的干枯状态,更像是干尸而非刚死不久的人。现场诡异地静止,没有常规搏斗或事故的迹象。",
+      "characters": [
         {
-          "scenarioName": "Crescent Street B",
-          "relationshipType": "leads_to",
-          "description": "The car is parked directly on Crescent Street B"
-        },
-        {
-          "scenarioName": "Reindeer Bar",
-          "relationshipType": "prerequisite",
-          "description": "Evidence in the car ties Bruno’s death to the Reindeer Bar murder case"
-        },
-        {
-          "scenarioName": "Police Station",
-          "relationshipType": "alternate",
-          "description": "Police deny Bruno returned there, creating an inconsistency investigators can pursue"
+          "name": "布鲁诺·加利雷",
+          "role": "受害者",
+          "status": "死亡",
+          "location": "车的驾驶座",
+          "notes": "尸体严重脱水;无法通过正常手段确定死因和死亡时间。颈部有两个直径约1厘米的圆形咬痕。"
         }
-      ]
-    }
-  ]
+      ],
+      "clues": [
+        {
+          "clueText": "布鲁诺的尸体显示极度脱水,没有明确的死亡时间",
+          "category": "物理",
+          "difficulty": "自动",
+          "location": "驾驶座",
+          "discoveryMethod": "",
+          "reveals": ["死亡涉及不自然或非人类因素"]
+        },
+        {
+          "clueText": "布鲁诺颈部有两个圆形咬痕",
+          "category": "观察",
+          "difficulty": "常规",
+          "location": "布鲁诺的颈部",
+          "discoveryMethod": "侦查或医学",
+          "reveals": ["布鲁诺遭到袭击而非自然死亡"]
+        },
+        {
+          "clueText": "布鲁诺手中的手机有一条未完成的草稿信息,只包含一个名字:'卢奇菲罗'",
+          "category": "文件",
+          "difficulty": "自动",
+          "location": "布鲁诺的手中",
+          "discoveryMethod": "",
+          "reveals": ["布鲁诺试图识别或警告某人关于卢奇菲罗"]
+        },
+        {
+          "clueText": "来自驯鹿酒吧谋杀案(第二起案件,2003年12月22日)的案件档案和物理证据放在前排乘客座位上。还包含对第一起案件(2002年12月22日)在帕拉迪尔酒店的引用。",
+          "category": "文件",
+          "difficulty": "常规",
+          "location": "前排乘客座位",
+          "discoveryMethod": "搜索",
+          "reveals": [
+            "布鲁诺在死前正在积极调查两起案件",
+            "布鲁诺相信尽管相隔整整一年,这两起案件是相关联的",
+            "第一起案件(19岁,冻结在冰中)和第二起案件(21岁,枪击/刺伤)是不同但相关的"
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "光照",
+          "description": "取决于时间的自然街道照明",
+          "mechanicalEffect": ""
+        }
+      ],
+      "events": [
+        "调查员在停放的车辆内发现布鲁诺的尸体",
+        "警察人员声称布鲁诺离开后从未返回警局"
+      ],
+      "exits": [
+        {
+          "direction": "街边",
+          "destination": "新月街B大道",
+          "description": "返回住宅街道",
+          "condition": ""
+        }
+      ],
+      "keeperNotes": "布鲁诺正在调查两起谋杀案:第一起案件(2002年12月22日)——19岁黑人女孩,在帕拉迪尔酒店被冻结在冰中。第二起案件(2003年12月22日)——21岁黑人女孩(卢奇菲罗),在驯鹿酒吧被枪击和刀刺。相隔整整一年,两具不同的尸体,不同的方法。布鲁诺尸体的不自然状态应该立即让调查员感到不安。警察NPC会否认布鲁诺返回警局的知识,增加怀疑和孤立感。",
+      "permanentChanges": []
+    },
+    "tags": ["犯罪现场", "车辆", "不自然死亡", "调查"],
+    "connections": [
+      {
+        "scenarioName": "新月街B大道",
+        "relationshipType": "通向",
+        "description": "车直接停在新月街B大道上"
+      },
+      {
+        "scenarioName": "驯鹿酒吧",
+        "relationshipType": "前置条件",
+        "description": "车中的证据将布鲁诺的死与驯鹿酒吧谋杀案联系起来"
+      },
+      {
+        "scenarioName": "警察局",
+        "relationshipType": "备选",
+        "description": "警察否认布鲁诺回到那里,造成调查员可以追查的矛盾"
+      }
+    ]
+  }
+]

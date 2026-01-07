@@ -123,17 +123,17 @@ export function CharacterSelector({
     <div className="character-selector-overlay">
       <div className="character-selector-modal">
         <div className="modal-header">
-          <h2>Select Investigator</h2>
+          <h2>选择调查员</h2>
           <button className="close-button" onClick={onCancel}>×</button>
         </div>
 
         <div className="modal-content">
           {(loading || importing) && (
             <div className="loading-state">
-              <p>{importing ? (importMessage || "Processing...") : "Loading characters..."}</p>
+              <p>{importing ? (importMessage || "处理中...") : "加载角色列表中..."}</p>
               {importing && (
                 <div style={{ marginTop: "10px", fontSize: "0.9rem", color: "#666" }}>
-                  Please wait, this may take a few seconds...
+                  请稍候,这可能需要几秒钟...
                 </div>
               )}
             </div>
@@ -142,15 +142,15 @@ export function CharacterSelector({
           {error && !importing && (
             <div className="error-state">
               <p style={{ color: '#dc3545' }}>{error}</p>
-              <button onClick={loadCharacters}>Retry</button>
+              <button onClick={loadCharacters}>重试</button>
             </div>
           )}
 
           {!loading && !error && characters.length === 0 && (
             <div className="empty-state">
-              <p>No characters created yet</p>
+              <p>暂无角色</p>
               <button className="primary" onClick={onCreateNew}>
-                Create First Investigator
+                创建第一个调查员
               </button>
             </div>
           )}
@@ -171,18 +171,18 @@ export function CharacterSelector({
                       <div className="character-card-header">
                         <h3>{char.name}</h3>
                         <span className="character-occupation">
-                          {char.occupation || 'Unknown Occupation'}
+                          {char.occupation || '未知职业'}
                         </span>
                       </div>
                       
                       <div className="character-card-body">
-                        {char.age && <p>Age: {char.age}</p>}
+                        {char.age && <p>年龄: {char.age}</p>}
                         
                         {status && (
                           <div className="character-status">
-                            <span>HP: {status.hp || '?'}</span>
-                            <span>SAN: {status.sanity || '?'}</span>
-                            <span>MP: {status.mp || '?'}</span>
+                            <span>生命: {status.hp || '?'}</span>
+                            <span>理智: {status.sanity || '?'}</span>
+                            <span>魔法: {status.mp || '?'}</span>
                           </div>
                         )}
                         
@@ -207,20 +207,20 @@ export function CharacterSelector({
 
               <div className="modal-actions">
                 <button onClick={onCreateNew} className="secondary">
-                  Create New Character
+                  创建新角色
                 </button>
                 <button 
                   onClick={onCancel} 
                   className="tertiary"
                 >
-                  Done
+                  完成
                 </button>
                 <button 
                   onClick={handleConfirm} 
                   className="primary"
                   disabled={!selectedId || importing}
                 >
-                  {importing ? "Importing data..." : "Start Game with This Character"}
+                  {importing ? "导入数据中..." : "使用此角色开始游戏"}
                 </button>
               </div>
             </>

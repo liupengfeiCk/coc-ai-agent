@@ -1,67 +1,67 @@
 [
-    {
-      "name": "Abandoned Logging Camp",
-      "description": "An abandoned logging camp located at the end of Sunset Boulevard, bordering a dense and ominous forest. The site is rusted, unused, and clearly never fully operational, suggesting it served purposes beyond legitimate logging.",
-      "snapshot": {
-        "name": "Abandoned Logging Camp",
-        "location": "End of Sunset Boulevard, at the edge of a dense forest",
-        "description": "The logging camp is completely deserted. Most machinery is heavily rusted, and several machines appear never to have been truly used. A small work shed contains a fireplace with burned ashes. Within the ashes, investigators can faintly make out a piece of paper bearing a strange symbol identical to one found in Padrich’s blueprints. A narrow, overgrown road leads from the camp into the forest, which is thick, dark, and extremely easy to become lost in.",
-        "characters": [],
-        "clues": [
-          {
-            "clueText": "A partially burned piece of paper bearing a symbol associated with a dark fertility deity, matching a symbol found in Padrich’s blueprints.",
-            "category": "physical",
-            "difficulty": "automatic",
-            "location": "Fireplace ashes inside the work shed",
-            "discoveryMethod": "Visual inspection; Cthulhu Mythos skill to identify",
-            "reveals": [
-              "The involvement of a cult worshipping a dark god associated with harvest and fertility",
-              "A connection between the logging camp and Padrich’s research or plans"
-            ]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "environment",
-            "description": "The surrounding forest is extremely dense and dark; entering it recklessly risks becoming hopelessly lost.",
-            "mechanicalEffect": "Navigation or survival rolls may be required; failure may result in investigators becoming lost"
-          }
-        ],
-        "events": [],
-        "exits": [
-          {
-            "direction": "South",
-            "destination": "Sunset Boulevard",
-            "description": "The road back toward Cassandra town and the cemetery"
-          },
-          {
-            "direction": "North",
-            "destination": "Deep Forest",
-            "description": "A narrow, abandoned path leading into the forest",
-            "condition": "dangerous"
-          }
-        ],
-        "keeperNotes": "The logging camp was never a normal industrial site; it likely served as a front or staging area for cult-related activities. The forest beyond the camp should feel threatening and overwhelming, discouraging casual exploration.",
-        "permanentChanges": []
-      },
-      "tags": [
-        "abandoned",
-        "cult",
-        "forest",
-        "ritual-site",
-        "mythos"
-      ],
-      "connections": [
+  {
+    "name": "废弃伐木营",
+    "description": "位于日暮大道尽头的废弃伐木营,与茂密而不祥的森林接壤。现场锈迹斑斑,闲置未用,显然从未完全投入运营,暗示它的用途超出了合法伐木的范围。",
+    "snapshot": {
+      "name": "废弃伐木营",
+      "location": "日暮大道尽头,茂密森林边缘",
+      "description": "伐木营完全荒废。大多数机械都严重生锈,有几台机器似乎从未真正使用过。一个小工棚里有一个壁炉,里面有烧过的灰烬。在灰烬中,调查员可以隐约辨认出一张纸片,上面有一个奇怪的符号,与帕德里奇蓝图中发现的符号完全相同。一条狭窄、杂草丛生的道路从营地通向森林,森林茂密、黑暗,极易迷路。",
+      "characters": [],
+      "clues": [
         {
-          "scenarioName": "Cassandra Cemetery",
-          "relationshipType": "prerequisite",
-          "description": "Investigators pass the cemetery on the way to the logging camp, and clues there may foreshadow what is found here"
+          "clueText": "一张部分烧毁的纸片,上面有与黑暗丰收神祇相关的符号,与帕德里奇蓝图中的符号相匹配。",
+          "category": "物理",
+          "difficulty": "自动",
+          "location": "工棚内壁炉的灰烬中",
+          "discoveryMethod": "目视检查;需要克苏鲁神话技能来识别",
+          "reveals": [
+            "涉及崇拜与收获和丰饶相关的黑暗神祇的邪教",
+            "伐木营与帕德里奇的研究或计划之间的联系"
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "环境",
+          "description": "周围的森林极其茂密黑暗;贸然进入有可能彻底迷路。",
+          "mechanicalEffect": "可能需要导航或生存检定;失败可能导致调查员迷路"
+        }
+      ],
+      "events": [],
+      "exits": [
+        {
+          "direction": "南",
+          "destination": "日暮大道",
+          "description": "返回卡森德拉小镇和墓地的道路"
         },
         {
-          "scenarioName": "Deep Forest",
-          "relationshipType": "leads_to",
-          "description": "A hidden path from the logging camp leads deeper into the forest where a transformed abomination lurks"
+          "direction": "北",
+          "destination": "深林",
+          "description": "一条通往森林深处的狭窄废弃小径",
+          "condition": "危险"
         }
-      ]
-    }
-  ]
+      ],
+      "keeperNotes": "伐木营从来不是一个正常的工业场所;它很可能是邪教相关活动的幌子或集结地。营地之外的森林应该让人感到威胁和压倒性,阻止随意探索。",
+      "permanentChanges": []
+    },
+    "tags": [
+      "废弃",
+      "邪教",
+      "森林",
+      "仪式场所",
+      "神话"
+    ],
+    "connections": [
+      {
+        "scenarioName": "卡森德拉墓地",
+        "relationshipType": "前置条件",
+        "description": "调查员在前往伐木营的路上会经过墓地,那里的线索可能预示着这里会发现什么"
+      },
+      {
+        "scenarioName": "深林",
+        "relationshipType": "通向",
+        "description": "从伐木营有一条隐藏小径通向森林深处,那里潜伏着变异的怪物"
+      }
+    ]
+  }
+]

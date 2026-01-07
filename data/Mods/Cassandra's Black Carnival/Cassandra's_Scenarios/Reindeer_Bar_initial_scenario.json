@@ -1,324 +1,324 @@
 [
   {
-    "name": "Reindeer Bar",
-    "description": "A well-known bar in the town of Cassandra and the location of THE SECOND MURDER CASE on December 22, 2003—exactly one year after the first murder at Paradil Grand Hotel. The bar has two floors: an open hall on the ground floor and surrounding private booths on the second floor. It is under the protection of local organized crime, and its surveillance system contains blind spots known only to a few insiders.",
+    "name": "驯鹿酒吧",
+    "description": "卡珊德拉镇上知名的酒吧,也是2003年12月22日第二起谋杀案的发生地点——恰好是帕拉迪尔大酒店第一起谋杀案一周年。酒吧有两层:一楼是开放式大厅,二楼是周围环绕的包间。酒吧受到当地黑帮组织的保护,其监控系统存在只有少数内部人士知晓的盲区。",
       "snapshots": [
         {
-          "name": "Reindeer Bar (Post-Incident)",
-          "location": "A two-story bar in the town of Cassandra",
+          "name": "驯鹿酒吧(案发后)",
+          "location": "卡珊德拉镇的一座两层酒吧",
           "timeRestriction": "day1 evening",
-          "description": "The crime scene has already been cleaned, and the owners are preparing to reopen the bar. Despite this, the atmosphere remains tense and oppressive. This is THE SECOND MURDER CASE, occurring exactly one year after the first case at Paradil Grand Hotel. The victim was Aberforth Locefern (also known as Jenny Florence), a 21-year-old Black girl who was shot (.357 caliber) and stabbed with a folding knife in the restroom. Several suspects have been brought back here by the police for a second round of questioning.",
+          "description": "案发现场已经被清理,业主们正准备重新开业。尽管如此,气氛仍然紧张压抑。这是第二起谋杀案,发生在帕拉迪尔大酒店第一起案件的整整一年后。受害者是阿伯福斯·洛斯芬(又名珍妮·弗洛伦斯),一名21岁的黑人女孩,在洗手间被.357口径枪击并被折叠刀刺伤。几名嫌疑人被警察带回此处进行第二轮审讯。",
       "characters": [
         {
-          "name": "Taran Emilion",
-          "role": "Bar owner",
+          "name": "塔兰·艾米利恩",
+          "role": "酒吧老板",
           "status": "alive",
-          "location": "Behind the bar counter and main hall",
-          "notes": "Responsible for bartending and part of the service work; operates under Ben Cleo's protection."
+          "location": "吧台后方和主厅",
+          "notes": "负责调酒和部分服务工作;在本·克莱奥的保护下经营。"
         },
         {
-          "name": "Lutz Emilion",
-          "role": "Bar owner / staff",
+          "name": "卢茨·艾米利恩",
+          "role": "酒吧老板/员工",
           "status": "alive",
-          "location": "Main hall",
-          "notes": "Handles cleaning, charging customers, and delivering drinks."
+          "location": "主厅",
+          "notes": "负责清洁、收费和送酒。"
         },
         {
-          "name": "Ben Cleo",
-          "role": "Suspect",
+          "name": "本·克莱奥",
+          "role": "嫌疑人",
           "status": "alive",
-          "location": "Seated at a round table in the hall",
-          "notes": "A mafia boss and one of the bar's real owners; visibly displeased about being implicated in THE SECOND CASE. He denies involvement in EITHER case."
+          "location": "大厅的圆桌旁",
+          "notes": "黑手党老大,酒吧的真正老板之一;对于被卷入第二起案件明显感到不悦。他否认参与任何一起案件。"
         },
         {
-          "name": "Adolph Carl",
-          "role": "Suspect",
+          "name": "阿道夫·卡尔",
+          "role": "嫌疑人",
           "status": "alive",
-          "location": "Main hall",
-          "notes": "Brought in by Bruno for a second interrogation regarding THE SECOND CASE."
+          "location": "主厅",
+          "notes": "被布鲁诺带来进行第二轮审讯,涉及第二起案件。"
         },
         {
-          "name": "Marcel Gwynplaine",
-          "role": "Witness / Suspect",
+          "name": "马赛尔·格温普兰",
+          "role": "目击者/嫌疑人",
           "status": "alive",
-          "location": "Main hall",
-          "notes": "Witnessed THE SECOND CASE—was THE FIRST PERSON to discover the body of 21-year-old Lucifero in the restroom. When he went to use the restroom, he noticed the women's restroom door was open, saw blood flowing out, pushed the door open and found the victim's body. However, he was afraid of being implicated and pretended not to see anything, trying to leave quietly before Philip discovered the body and shouted. An important figure connected to the case."
+          "location": "主厅",
+          "notes": "目击了第二起案件——他是第一个在洗手间发现21岁露西弗罗尸体的人。当他去洗手间时,注意到女洗手间门开着,看到血流出来,推门进去发现了受害者的尸体。但他害怕被牵连,假装什么都没看到,试图悄悄离开,然后菲利普发现了尸体并大喊。他是与案件相关的重要人物。"
         },
         {
-          "name": "Simon Laplace",
-          "role": "Suspect / witness",
+          "name": "西蒙·拉普拉斯",
+          "role": "嫌疑人/目击者",
           "status": "alive",
-          "location": "Main hall",
-          "notes": "Appears as Simon, but may conceal another personality known as Anatole. Present during THE SECOND CASE."
+          "location": "主厅",
+          "notes": "以西蒙的身份出现,但可能隐藏着另一个名为阿纳托尔的人格。在第二起案件发生时在场。"
         },
         {
-          "name": "Philip Scaletta",
-          "role": "Witness",
+          "name": "菲利普·斯卡莱塔",
+          "role": "目击者",
           "status": "alive",
-          "location": "Leaning against a wall decorated with reindeer antlers",
-          "notes": "Witnessed THE SECOND CASE and was THE FIRST PERSON to publicly discover and report the body. He noticed Marcel returning from the restroom looking nervous and suspicious, suspected Marcel might be hiding something or involved in drug dealing. Concerned about what had just happened (the victim seeking help), he went to check the restroom and discovered the body, then shouted—which caught Marcel before he could escape. However, Marcel had actually discovered the body first but was too afraid to report it. A habitual thief who secretly took THE SECOND CASE VICTIM's (21-year-old Lucifero) wallet."
+          "location": "靠在装饰有鹿角的墙边",
+          "notes": "目击了第二起案件,是第一个公开发现并报告尸体的人。他注意到马赛尔从洗手间回来时表情紧张可疑,怀疑马赛尔可能在隐瞒什么或涉及毒品交易。出于对刚刚发生的事情(受害者求助)的担忧,他去检查洗手间并发现了尸体,然后大喊——这在马赛尔逃跑前抓住了他。然而,马赛尔实际上是第一个发现尸体的人,但太害怕而不敢报告。他是一个惯偷,偷偷拿走了第二起案件受害者(21岁露西弗罗)的钱包。"
         },
         {
-          "name": "Lux Lynch",
-          "role": "Police officer",
+          "name": "勒克斯·林奇",
+          "role": "警察",
           "status": "alive",
-          "location": "Main hall",
-          "notes": "Bruno's colleague, assisting with crowd control and interrogations for THE SECOND CASE."
+          "location": "主厅",
+          "notes": "布鲁诺的同事,协助维持秩序并对第二起案件进行审讯。"
         }
       ],
       "clues": [
         {
-          "clueText": "The bar's two-level layout suggests complex movement patterns during THE SECOND MURDER CASE (December 22, 2003).",
+          "clueText": "酒吧的两层布局暗示着第二起谋杀案(2003年12月22日)期间复杂的移动模式。",
           "category": "environment",
           "difficulty": "automatic",
-          "location": "Entire bar",
+          "location": "整个酒吧",
           "reveals": [
-            "The SECOND CASE murder occurred in a public but structurally complex space",
-            "This is DISTINCT from the FIRST CASE (December 22, 2002) which occurred in a hotel freezer"
+            "第二起案件的谋杀发生在一个公共但结构复杂的空间",
+            "这与第一起案件(2002年12月22日)发生在酒店冷库中是完全不同的"
           ]
         },
         {
-          "clueText": "The surveillance system contains blind spots and shows signs of tampering.",
+          "clueText": "监控系统存在盲区,并显示出被篡改的迹象。",
           "category": "environment",
           "difficulty": "regular",
-          "location": "Surveillance and monitoring areas",
-          "discoveryMethod": "Spot Hidden or Electronics",
-          "reveals": ["The killer may have exploited camera blind spots"]
+          "location": "监控和监视区域",
+          "discoveryMethod": "侦查或电子学",
+          "reveals": ["凶手可能利用了摄像头盲区"]
         },
         {
-          "clueText": "Philip secretly took THE SECOND CASE VICTIM's (21-year-old Lucifero, December 22, 2003) wallet on the day of the crime. The wallet contained the victim's ID showing her name as Aberforth Locefern, age 21.",
+          "clueText": "菲利普在案发当天偷偷拿走了第二起案件受害者(21岁露西弗罗,2003年12月22日)的钱包。钱包里有受害者的身份证,显示她的名字是阿伯福斯·洛斯芬,21岁。",
           "category": "witness",
           "difficulty": "hard",
-          "location": "Philip's person or during conversation",
-          "discoveryMethod": "Persuade or Psychology",
+          "location": "菲利普身上或对话中",
+          "discoveryMethod": "说服或心理学",
           "reveals": [
-            "The SECOND CASE victim's identity: Aberforth Locefern (Lucifero), 21 years old",
-            "This is DISTINCT from the FIRST CASE victim (19-year-old, December 22, 2002)",
-            "Two separate cases with different victims"
+            "第二起案件受害者身份:阿伯福斯·洛斯芬(露西弗罗),21岁",
+            "这与第一起案件的受害者(19岁,2002年12月22日)完全不同",
+            "两起分别的案件,不同的受害者"
           ]
         },
         {
-          "clueText": "Marcel was THE FIRST PERSON to discover THE SECOND CASE VICTIM's body (21-year-old Lucifero) in the restroom. When he went to use the restroom, he noticed the women's restroom door was open, saw blood flowing out, pushed the door open and found the victim's body. He saw her alive and talking on the phone just before finding her dead. However, he was afraid of being implicated and pretended not to see anything, trying to leave quietly before Philip discovered the body and shouted.",
+          "clueText": "马赛尔是第一个在洗手间发现第二起案件受害者尸体(21岁露西弗罗)的人。当他去洗手间时,注意到女洗手间门开着,看到血流出来,推门进去发现了受害者的尸体。他看到她在找到她死亡前还活着并在打电话。但他害怕被牵连,假装什么都没看到,试图悄悄离开,然后菲利普发现了尸体并大喊。",
           "category": "witness",
           "difficulty": "regular",
-          "location": "Conversation with Marcel",
-          "discoveryMethod": "Talk or Persuade",
+          "location": "与马赛尔的对话",
+          "discoveryMethod": "交谈或说服",
           "reveals": [
-            "Marcel was THE FIRST PERSON to discover the body at the SECOND CASE murder scene",
-            "Marcel was too afraid to report the discovery",
-            "The victim was alive shortly before death",
-            "This is the SECOND CASE, distinct from the FIRST CASE (19-year-old, December 22, 2002)"
+            "马赛尔是第一个在第二起案件谋杀现场发现尸体的人",
+            "马赛尔太害怕而不敢报告发现",
+            "受害者在死前不久还活着",
+            "这是第二起案件,与第一起案件(19岁,2002年12月22日)不同"
           ]
         },
         {
-          "clueText": "Philip was THE FIRST PERSON to publicly discover and report THE SECOND CASE VICTIM's body. He noticed Marcel returning from the restroom looking nervous and suspicious, suspected Marcel might be hiding something or involved in drug dealing. Concerned about what had just happened (the victim seeking help), he went to check the restroom and discovered the body, then shouted—which caught Marcel before he could escape.",
+          "clueText": "菲利普是第一个公开发现并报告第二起案件受害者尸体的人。他注意到马赛尔从洗手间回来时表情紧张可疑,怀疑马赛尔可能在隐瞒什么或涉及毒品交易。出于对刚刚发生的事情(受害者求助)的担忧,他去检查洗手间并发现了尸体,然后大喊——这在马赛尔逃跑前抓住了他。",
           "category": "witness",
           "difficulty": "regular",
-          "location": "Conversation with Philip",
-          "discoveryMethod": "Talk or Persuade",
+          "location": "与菲利普的对话",
+          "discoveryMethod": "交谈或说服",
           "reveals": [
-            "Philip was the first person to publicly discover and report the body",
-            "Marcel had actually discovered the body first but was too afraid to report it",
-            "The sequence of discovery: Marcel first (private), then Philip (public report)"
+            "菲利普是第一个公开发现并报告尸体的人",
+            "马赛尔实际上是第一个发现尸体的人,但太害怕而不敢报告",
+            "发现顺序:马赛尔第一(私下),然后菲利普(公开报告)"
           ]
         },
         {
-          "clueText": "The victim was killed by a .357 caliber gunshot to the heart and stabbed with a folding knife—completely different from THE FIRST CASE (19-year-old girl frozen in ice, December 22, 2002).",
+          "clueText": "受害者被.357口径子弹射中心脏并被折叠刀刺伤致死——与第一起案件(19岁女孩被冻在冰中,2002年12月22日)完全不同。",
           "category": "physical",
           "difficulty": "automatic",
-          "location": "Crime scene (if accessible) or case files",
-          "discoveryMethod": "Forensics or Medicine",
+          "location": "案发现场(如可进入)或案件档案",
+          "discoveryMethod": "法医学或医学",
           "reveals": [
-            "Two distinct murder methods",
-            "The FIRST CASE used freezing in ice, the SECOND CASE used gunshot/stab",
-            "Two separate cases, exactly one year apart"
+            "两种截然不同的谋杀方式",
+            "第一起案件使用冰冻,第二起案件使用枪击/刺伤",
+            "两起分别的案件,恰好相隔一年"
           ]
         },
         {
-          "clueText": "All major suspects were compelled by Bruno to return to the bar for a second interrogation regarding THE SECOND CASE.",
+          "clueText": "所有主要嫌疑人都被布鲁诺强制带回酒吧进行第二轮审讯,涉及第二起案件。",
           "category": "observation",
           "difficulty": "automatic",
-          "location": "Main hall",
+          "location": "主厅",
           "reveals": [
-            "The SECOND CASE is far from resolved and remains highly suspicious",
-            "Bruno was actively investigating this case before his death"
+            "第二起案件远未解决,仍然高度可疑",
+            "布鲁诺在他死前一直在积极调查此案"
           ]
         },
         {
-          "clueText": "Bruno mentioned this is THE SECOND CASE, exactly one year after THE FIRST CASE at Paradil Grand Hotel (December 22, 2002).",
+          "clueText": "布鲁诺提到这是第二起案件,恰好是帕拉迪尔大酒店第一起案件(2002年12月22日)一年后。",
           "category": "knowledge",
           "difficulty": "regular",
-          "location": "Conversation with Bruno (if accessible) or case files",
-          "discoveryMethod": "Talk or Library Use",
+          "location": "与布鲁诺的对话(如可进入)或案件档案",
+          "discoveryMethod": "交谈或图书馆使用",
           "reveals": [
-            "Bruno believed the two cases were connected",
-            "Two separate cases: FIRST CASE (19-year-old, frozen in ice) and SECOND CASE (21-year-old, gunshot/stab)",
-            "Exactly one year apart"
+            "布鲁诺认为两起案件有关联",
+            "两起分别的案件:第一起案件(19岁,冻在冰中)和第二起案件(21岁,枪击/刺伤)",
+            "恰好相隔一年"
           ]
         }
       ],
       "conditions": [
         {
           "type": "lighting",
-          "description": "Dim interior lighting creates a private but oppressive atmosphere.",
-          "mechanicalEffect": "Some Spot Hidden checks may be more difficult"
+          "description": "昏暗的室内照明营造出私密但压抑的氛围。",
+          "mechanicalEffect": "某些侦查检定可能更困难"
         },
         {
           "type": "sound",
-          "description": "Low music and the clinking of glasses fill the background.",
+          "description": "低沉的音乐和玻璃碰撞声充斥在背景中。",
           "mechanicalEffect": ""
         }
       ],
       "events": [
-        "December 22, 2003: THE SECOND MURDER CASE occurs inside Reindeer Bar—exactly one year after the first case",
-        "The victim is Aberforth Locefern (Jenny Florence), a 21-year-old Black girl, killed by gunshot (.357 caliber) and stabbed with a folding knife",
-        "This is DISTINCT from the first case: different victim (21 vs 19 years old), different location (bar restroom vs hotel freezer), different method (gunshot/stab vs frozen in ice)",
-        "Body discovery sequence: Marcel Gwynplaine was THE FIRST PERSON to discover the body in the restroom (he saw blood flowing out, pushed the door open and found the victim), but he was afraid of being implicated and pretended not to see anything, trying to leave quietly. Philip Scaletta noticed Marcel's nervous expression, went to check the restroom, also discovered the body, and shouted—making Philip the first person to publicly discover and report the body",
-        "During questioning: Bruno steps outside to take a phone call. Investigators who notice this (Spot Hidden) and look outside may see a vision (drowning in deep sea, black viscous matter covering the town, material world melting in high temperature, or a huge black monster crawling across the sky—Keeper chooses one). SC 1/1d3",
-        "After leaving the bar: Investigators must make a Spot Hidden check when stepping out of the bar. Success: They notice someone seems to be following them, hiding behind a small house nearby. When investigators investigate, they find nothing there. Failure: Nothing is noticed. The Keeper may decide who the watcher is",
-        "After the incident, suspects are gathered here for further questioning",
-        "At night, certain individuals such as Vincent and Philip may still visit for drinks"
+        "2003年12月22日:第二起谋杀案发生在驯鹿酒吧内——恰好是第一起案件的一年后",
+        "受害者是阿伯福斯·洛斯芬(珍妮·弗洛伦斯),一名21岁的黑人女孩,被.357口径枪击并被折叠刀刺伤致死",
+        "这与第一起案件截然不同:不同的受害者(21岁 vs 19岁),不同的地点(酒吧洗手间 vs 酒店冷库),不同的方式(枪击/刺伤 vs 冻在冰中)",
+        "尸体发现顺序:马赛尔·格温普兰是第一个在洗手间发现尸体的人(他看到血流出来,推门进去发现了受害者),但他害怕被牵连,假装什么都没看到,试图悄悄离开。菲利普·斯卡莱塔注意到马赛尔紧张的表情,去检查洗手间,也发现了尸体,然后大喊——使菲利普成为第一个公开发现并报告尸体的人",
+        "审讯期间:布鲁诺走到外面接电话。注意到这一点的调查员(侦查)如果向外看,可能会看到一个幻象(溺水在深海中,黑色粘稠物质覆盖城镇,物质世界在高温中融化,或巨大的黑色怪物在天空爬行——守密人选择一个)。SC 1/1d3",
+        "离开酒吧后:调查员走出酒吧时必须进行侦查检定。成功:他们注意到似乎有人在跟踪他们,躲在附近的小房子后面。当调查员调查时,他们什么也没发现。失败:什么都没注意到。守密人可以决定观察者是谁",
+        "案发后,嫌疑人被聚集到这里进行进一步审讯",
+        "晚上,某些人如文森特和菲利普可能仍会来这里喝酒"
       ],
       "exits": [
         {
-          "direction": "Front entrance",
-          "destination": "Streets of Cassandra",
-          "description": "The main public entrance of the bar"
+          "direction": "前门入口",
+          "destination": "卡珊德拉街道",
+          "description": "酒吧的主要公共入口"
         },
         {
-          "direction": "Staircase",
-          "destination": "Second-floor booths",
-          "description": "Leads to the surrounding private booths on the upper floor"
+          "direction": "楼梯",
+          "destination": "二楼包间",
+          "description": "通向上层周围环绕的私人包间"
         }
       ],
-          "keeperNotes": "Reindeer Bar is the site of THE SECOND MURDER CASE (December 22, 2003), occurring exactly one year after the first case at Paradil Grand Hotel. CRITICALLY DISTINCT: The second victim is Aberforth Locefern (Jenny Florence), 21 years old, killed by gunshot (.357 caliber) and stabbed with a folding knife in the restroom. This is COMPLETELY DIFFERENT from the first case (19-year-old girl, frozen in ice in hotel freezer). Emphasize that these are TWO SEPARATE CASES with TWO DIFFERENT BODIES, exactly one year apart. IMPORTANT: Body discovery sequence—Marcel Gwynplaine was THE FIRST PERSON to discover the body (he saw blood flowing out, pushed the door open and found the victim), but he was afraid of being implicated and pretended not to see anything, trying to leave quietly. Philip Scaletta noticed Marcel's nervous expression, went to check the restroom, also discovered the body, and shouted—making Philip the first person to publicly discover and report the body. Multiple suspects, conflicting testimonies, and the surveillance blind spots allow the Keeper to apply pressure and escalate tension.",
+          "keeperNotes": "驯鹿酒吧是第二起谋杀案(2003年12月22日)的发生地,恰好是帕拉迪尔大酒店第一起案件的一年后。关键区别:第二名受害者是阿伯福斯·洛斯芬(珍妮·弗洛伦斯),21岁,在洗手间被.357口径枪击并被折叠刀刺伤致死。这与第一起案件(19岁女孩,在酒店冷库被冻在冰中)完全不同。强调这是两起分别的案件,有两具不同的尸体,恰好相隔一年。重要:尸体发现顺序——马赛尔·格温普兰是第一个发现尸体的人(他看到血流出来,推门进去发现了受害者),但他害怕被牵连,假装什么都没看到,试图悄悄离开。菲利普·斯卡莱塔注意到马赛尔紧张的表情,去检查洗手间,也发现了尸体,然后大喊——使菲利普成为第一个公开发现并报告尸体的人。多名嫌疑人、矛盾的证词以及监控盲区允许守密人施加压力并升级紧张局势。",
           "permanentChanges": [
-            "The bar's reputation in town is permanently affected by THE SECOND CASE murder"
+            "酒吧在镇上的声誉因第二起案件谋杀而永久受到影响"
           ]
         },
         {
-          "name": "Reindeer Bar (Reopened)",
-          "location": "A two-story bar in the town of Cassandra",
+          "name": "驯鹿酒吧(重新开业)",
+          "location": "卡珊德拉镇的一座两层酒吧",
           "timeRestriction": "day2 (after)",
-          "description": "The bar has been cleaned and reopened for business. The owners Taran and Lutz have cleaned the restroom where THE SECOND MURDER CASE occurred. The bar is operating normally again, though the memory of the murder still lingers. Regular patrons have returned, and the atmosphere is more relaxed than during the investigation, though some tension remains. Vincent Galenus and Philip Scaletta may visit the bar in the evening for drinks.",
+          "description": "酒吧已经清理干净并重新开业。业主塔兰和卢茨已经清理了发生第二起谋杀案的洗手间。酒吧恢复正常营业,尽管谋杀的记忆仍然挥之不去。常客们已经回来,气氛比调查期间更轻松,尽管仍有一些紧张感。文森特·加莱努斯和菲利普·斯卡莱塔可能会在晚上来酒吧喝酒。",
           "characters": [
             {
-              "name": "Taran Emilion",
-              "role": "Bar owner",
+              "name": "塔兰·艾米利恩",
+              "role": "酒吧老板",
               "status": "alive",
-              "location": "Behind the bar counter",
-              "notes": "Responsible for bartending. The restroom has been cleaned and the bar is back in operation."
+              "location": "吧台后方",
+              "notes": "负责调酒。洗手间已经清理干净,酒吧恢复营业。"
             },
             {
-              "name": "Lutz Emilion",
-              "role": "Bar owner / staff",
+              "name": "卢茨·艾米利恩",
+              "role": "酒吧老板/员工",
               "status": "alive",
-              "location": "Main hall",
-              "notes": "Handles cleaning, charging customers, and delivering drinks. Has cleaned the restroom where the murder occurred."
+              "location": "主厅",
+              "notes": "负责清洁、收费和送酒。已经清理了发生谋杀的洗手间。"
             },
             {
-              "name": "Vincent Galenus",
-              "role": "Hospital director",
+              "name": "文森特·加莱努斯",
+              "role": "医院院长",
               "status": "alive",
-              "location": "Main hall (evening)",
-              "notes": "May visit the bar in the evening for drinks. Investigators can meet him here or track him to this location. He possesses an ID card needed to access restricted areas in the hospital."
+              "location": "主厅(晚上)",
+              "notes": "可能在晚上来酒吧喝酒。调查员可以在这里遇到他或跟踪他到此位置。他拥有进入医院受限区域所需的身份证。"
             },
             {
-              "name": "Philip Scaletta",
-              "role": "Witness",
+              "name": "菲利普·斯卡莱塔",
+              "role": "目击者",
               "status": "alive",
-              "location": "Main hall (evening)",
-              "notes": "May visit the bar in the evening for drinks. A habitual thief who secretly took the victim's wallet during THE SECOND CASE."
+              "location": "主厅(晚上)",
+              "notes": "可能在晚上来酒吧喝酒。一个惯偷,在第二起案件期间偷偷拿走了受害者的钱包。"
             }
           ],
           "clues": [
             {
-              "clueText": "The restroom where THE SECOND MURDER CASE occurred has been cleaned and is now in normal use.",
+              "clueText": "发生第二起谋杀案的洗手间已经清理干净,现在正常使用。",
               "category": "observation",
               "difficulty": "automatic",
-              "location": "Restroom",
+              "location": "洗手间",
               "discoveryMethod": "",
               "reveals": [
-                "The crime scene evidence has been removed",
-                "The bar owners have attempted to return to normal operations",
-                "Physical evidence from the murder scene is no longer accessible here"
+                "案发现场的证据已被清除",
+                "酒吧业主已试图恢复正常营业",
+                "来自谋杀现场的物理证据不再能在这里获取"
               ]
             },
             {
-              "clueText": "Vincent Galenus may be found here in the evening. He possesses an ID card required to access restricted areas in the hospital (pharmaceutical storage room and laboratory).",
+              "clueText": "文森特·加莱努斯可能在晚上被发现在这里。他拥有进入医院受限区域(药品储藏室和实验室)所需的身份证。",
               "category": "witness",
               "difficulty": "regular",
-              "location": "Conversation with Vincent or observation",
-              "discoveryMethod": "Talk or Spot Hidden",
+              "location": "与文森特的对话或观察",
+              "discoveryMethod": "交谈或侦查",
               "reveals": [
-                "Vincent can be approached at the bar",
-                "His ID card may be stolen or borrowed to access hospital restricted areas",
-                "He is connected to the handling of THE SECOND CASE victim's body"
+                "文森特可以在酒吧接触",
+                "他的身份证可能被偷或借用以进入医院受限区域",
+                "他与处理第二起案件受害者尸体有关"
               ]
             },
             {
-              "clueText": "The bar has returned to normal operations, but the memory of THE SECOND MURDER CASE (December 22, 2003) still affects the atmosphere.",
+              "clueText": "酒吧已恢复正常营业,但第二起谋杀案(2003年12月22日)的记忆仍然影响着气氛。",
               "category": "observation",
               "difficulty": "automatic",
-              "location": "Main hall",
+              "location": "主厅",
               "discoveryMethod": "",
               "reveals": [
-                "The bar is trying to move past the incident",
-                "Some tension and unease remain among patrons",
-                "The SECOND CASE murder is still recent and unresolved"
+                "酒吧正试图走出事件阴影",
+                "顾客中仍有一些紧张和不安",
+                "第二起案件谋杀仍然是最近发生且未解决的"
               ]
             }
           ],
           "conditions": [
             {
               "type": "lighting",
-              "description": "Dim interior lighting creates a relaxed but slightly tense atmosphere.",
+              "description": "昏暗的室内照明营造出轻松但略带紧张的氛围。",
               "mechanicalEffect": ""
             },
             {
               "type": "sound",
-              "description": "Low music, conversation, and the clinking of glasses fill the background.",
+              "description": "低沉的音乐、对话和玻璃碰撞声充斥在背景中。",
               "mechanicalEffect": ""
             }
           ],
           "events": [
-            "The bar has been cleaned and reopened for normal business",
-            "Taran and Lutz have cleaned the restroom where THE SECOND MURDER CASE occurred",
-            "Vincent Galenus may visit the bar in the evening—investigators can meet him here or track him to this location",
-            "Philip Scaletta may also visit the bar in the evening for drinks",
-            "The bar operates normally, though the memory of the murder lingers"
+            "酒吧已经清理干净并重新开业进行正常营业",
+            "塔兰和卢茨已经清理了发生第二起谋杀案的洗手间",
+            "文森特·加莱努斯可能在晚上来酒吧——调查员可以在这里遇到他或跟踪他到此位置",
+            "菲利普·斯卡莱塔也可能在晚上来酒吧喝酒",
+            "酒吧正常营业,尽管谋杀的记忆挥之不去"
           ],
           "exits": [
             {
-              "direction": "Front entrance",
-              "destination": "Streets of Cassandra",
-              "description": "The main public entrance of the bar"
+              "direction": "前门入口",
+              "destination": "卡珊德拉街道",
+              "description": "酒吧的主要公共入口"
             },
             {
-              "direction": "Staircase",
-              "destination": "Second-floor booths",
-              "description": "Leads to the surrounding private booths on the upper floor"
+              "direction": "楼梯",
+              "destination": "二楼包间",
+              "description": "通向上层周围环绕的私人包间"
             }
           ],
-          "keeperNotes": "After day 2, the bar has returned to normal operations. The restroom has been cleaned, removing any remaining physical evidence from THE SECOND MURDER CASE. This snapshot represents the bar in its reopened state. Vincent and Philip may be encountered here in the evening, providing opportunities for investigation. The bar's atmosphere is more relaxed than during the initial investigation, but some underlying tension remains due to the recent murder.",
+          "keeperNotes": "第2天后,酒吧已恢复正常营业。洗手间已经清理,清除了第二起谋杀案的任何剩余物理证据。此快照代表酒吧重新开业的状态。文森特和菲利普可能在晚上在这里遇到,提供调查机会。酒吧的气氛比最初调查时更轻松,但由于最近的谋杀,仍有一些潜在的紧张感。",
           "permanentChanges": [
-            "The bar has reopened and is operating normally",
-            "The crime scene in the restroom has been cleaned",
-            "Physical evidence from the murder scene is no longer accessible at the bar"
+            "酒吧已重新开业并正常营业",
+            "洗手间的案发现场已被清理",
+            "来自谋杀现场的物理证据不再能在酒吧获取"
           ]
         }
       ],
-    "tags": ["bar", "crime_scene", "murder", "interrogation", "organized_crime"],
+    "tags": ["酒吧", "案发现场", "谋杀", "审讯", "有组织犯罪"],
     "connections": [
       {
-        "scenarioName": "Paradire Grand Hotel",
+        "scenarioName": "帕拉迪尔大酒店",
         "relationshipType": "leads_to",
-        "description": "After the interrogation, Bruno arranges lodging for the investigators at the hotel (site of THE FIRST CASE, December 22, 2002)."
+        "description": "审讯后,布鲁诺为调查员在酒店安排住宿(第一起案件的地点,2002年12月22日)。"
       },
       {
-        "scenarioName": "Church",
+        "scenarioName": "教堂",
         "relationshipType": "alternate",
-        "description": "Some suspects claim they were at the church during the time of THE SECOND CASE murder as an alibi."
+        "description": "一些嫌疑人声称在第二起案件谋杀发生时他们在教堂,作为不在场证明。"
       }
     ]
   }

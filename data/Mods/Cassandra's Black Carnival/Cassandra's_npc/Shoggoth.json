@@ -1,11 +1,11 @@
 [
     {
-      "name": "Shoggoth",
-      "occupation": "Servitor of the Elder Things",
+      "name": "修格斯",
+      "occupation": "古老者的仆役",
       "age": 1000000,
-      "appearance": "A massive, amorphous, black, gelatinous entity with a constantly shifting surface. It can spontaneously form tentacles, claws, pseudopods, or other crude appendages. Its bulk fills space like living tar, accompanied by an oily stench.",
-      "personality": "Alien, instinct-driven, and largely mindless. It follows ancient conditioning rather than conscious intent, showing no empathy or recognizable emotions.",
-      "background": "Shoggoths are ancient protoplasmic organisms engineered by the Elder Things as slave labor in a pre-human age. Over vast spans of time, some developed limited autonomy. They now lurk in deep underground ruins and forgotten places, remnants of a bygone cosmic civilization.",
+      "appearance": "一个巨大、无定形、黑色的胶质实体,表面不断变化。它可以自发形成触手、爪子、伪足或其他粗糙附肢。其庞大的身躯像活焦油一样占据空间,伴随着油腻的恶臭。",
+      "personality": "异类、本能驱动、基本无意识。它遵循古老的条件反射而非有意识意图,没有同理心或可识别的情感。",
+      "background": "修格斯是古老者在前人类时代制造的古老原生质生物,作为奴隶劳工。经过漫长岁月,一些发展出有限的自主性。它们现在潜伏在深层地下废墟和被遗忘的地方,是过去宇宙文明的残余。",
       "attributes": {
         "STR": 315,
         "CON": 210,
@@ -26,6 +26,6 @@
         "Fighting": 70,
         "Dodge": 8
       },
-      "notes": "Combat Method: In combat, the Shoggoth occupies an area of approximately 5 square yards. It can generate tentacles, claws, or any form of crude appendage to perform crushing attacks. Any victim struck may be engulfed. Attacks per round: 2. \n\nEngulf (Swallow): Each character engulfed by the Shoggoth is attacked independently. Every engulfed victim must succeed in an opposed STR check each round or be torn apart. If the Shoggoth attacks more than one target, its STR is divided evenly among all targets for these opposed checks. Investigators trapped inside the Shoggoth’s black mass must roll 1D100 each round; only on a roll equal to or under their own STR may they attempt an attack. Each round spent inside inflicts HP damage equal to the Shoggoth’s damage bonus, described as crushing, tearing, or rupturing. The Shoggoth may engulf any number of enemies as long as their combined SIZ does not exceed its own SIZ. \n\nArmor: None, but (1) fire and electrical attacks deal only half damage; (2) physical weapons such as firearms and knives inflict only 1 point of damage per successful hit; (3) the Shoggoth regenerates 2 HP per round. \n\nMagic: None by default, though exceptionally ancient Shoggoths may possess knowledge of spells and the ability to cast them. \n\nSanity Loss: 1D6/1D20 upon seeing a Shoggoth."
+      "notes": "战斗方法:战斗中,修格斯占据约5平方码的区域。它可以生成触手、爪子或任何形式的粗糙附肢来进行碾压攻击。任何被击中的受害者可能被吞噬。每回合攻击:2次。\n\n吞噬(吞咽):每个被修格斯吞噬的角色独立受到攻击。每个被吞噬的受害者每回合必须成功进行对抗力量检定,否则会被撕裂。如果修格斯攻击多个目标,其力量在所有目标的对抗检定中平均分配。被困在修格斯黑色物质内的调查员每回合必须投1D100;只有在投掷结果等于或低于自己的力量时,才能尝试攻击。在里面度过的每回合造成等于修格斯伤害加值的生命值伤害,描述为碾压、撕裂或破裂。修格斯可以吞噬任意数量的敌人,只要他们的总体型不超过其自身体型。\n\n护甲:无,但(1)火焰和电击攻击仅造成一半伤害;(2)枪械和刀具等物理武器每次成功命中仅造成1点伤害;(3)修格斯每回合再生2生命值。\n\n魔法:默认无,但异常古老的修格斯可能拥有法术知识和施法能力。\n\n理智损失:看到修格斯时1D6/1D20。"
     }
   ]

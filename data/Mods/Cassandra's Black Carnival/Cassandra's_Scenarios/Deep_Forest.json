@@ -1,18 +1,18 @@
 [
     {
-      "name": "Deep Forest",
-      "description": "A remote and dangerous part of the forest beyond the abandoned logging camp, where something inhuman now lurks, driven by endless hunger.",
+      "name": "森林深处",
+      "description": "废弃伐木营地之外森林的偏远危险区域,现在有某种非人类的东西潜伏在这里,被无尽的饥饿驱使着。",
       "snapshot": {
-        "name": "Deep Forest",
-        "location": "Deep within the forest beyond the abandoned logging camp",
-        "description": "Far from the logging camp, deep within the forest, something unnatural resides. The forest here is isolated and conceals a horrific presence, making it extremely dangerous for anyone who ventures too far from the path.",
+        "name": "森林深处",
+        "location": "废弃伐木营地之外的森林深处",
+        "description": "远离伐木营地,在森林深处,有某种不自然的存在。这里的森林与世隔绝,隐藏着可怕的存在,对于任何冒险远离道路的人来说都极其危险。",
         "characters": [
           {
             "name": "Gof'en-Hupadego-Shub-Nicholas",
-            "role": "Monster / Former human",
-            "status": "Alive",
-            "location": "Deep within the forest",
-            "notes": "Once a wealthy businessman, now transformed into an inhuman abomination, endlessly hungry."
+            "role": "怪物 / 前人类",
+            "status": "存活",
+            "location": "森林深处",
+            "notes": "曾经是一位富有的商人,现在变成了一个非人的憎恶之物,永远饥饿。"
           }
         ],
         "clues": [],
@@ -20,26 +20,26 @@
         "events": [],
         "exits": [
           {
-            "direction": "South",
-            "destination": "Abandoned Logging Camp",
-            "description": "The path leading back toward the abandoned logging camp"
+            "direction": "南",
+            "destination": "废弃伐木营地",
+            "description": "通向废弃伐木营地的路径"
           }
         ],
-        "keeperNotes": "This location represents a major point of danger and potential confrontation. The creature here should feel overwhelming and alien, emphasizing the consequences of forbidden rituals and transformations.",
+        "keeperNotes": "这个地点代表着重大的危险点和潜在的对抗。这里的生物应该给人压倒性和异类的感觉,强调禁忌仪式和转化的后果。",
         "permanentChanges": []
       },
       "tags": [
-        "forest",
-        "mythos",
-        "monster",
-        "final-threat",
-        "dangerous"
+        "森林",
+        "神话",
+        "怪物",
+        "最终威胁",
+        "危险"
       ],
       "connections": [
         {
-          "scenarioName": "Abandoned Logging Camp",
-          "relationshipType": "prerequisite",
-          "description": "The deep forest can be reached by following the abandoned path from the logging camp"
+          "scenarioName": "废弃伐木营地",
+          "relationshipType": "前置",
+          "description": "可以沿着伐木营地的废弃小径到达森林深处"
         }
       ]
     }

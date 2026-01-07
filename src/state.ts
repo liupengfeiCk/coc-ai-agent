@@ -40,6 +40,13 @@ export interface NPCResponseAnalysis {
   responseDescription: string;  // Description of what the NPC will do
   executionOrder: number;  // Execution order (1, 2, 3, 4...) - determines the sequence of NPC actions
   targetCharacter?: string | null;  // Target character if response is directed
+  isFirstInteraction?: boolean;  // Whether this is the first interaction with this NPC
+  initialRelationship?: {
+    relationshipType: "ally" | "enemy" | "neutral" | "friend" | "rival" | "stranger";
+    attitude: number;  // -30 to +30 for initial relationship
+    description: string;
+  };
+  attitudeChange?: number;  // -100 to +5, attitude change for this interaction
 }
 
 export interface SceneChangeRequest {

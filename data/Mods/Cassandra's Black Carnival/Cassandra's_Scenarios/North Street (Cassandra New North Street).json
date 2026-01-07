@@ -1,80 +1,80 @@
 [
     {
-      "name": "North Street (Cassandra New North Street)",
-      "description": "North Street is a moderately active mixed-use street in Cassandra, combining small businesses with residential elements. It serves as a transitional area between quieter residential streets and more socially active locations, making it a common path for investigators moving through town.",
+      "name": "北街(卡桑德拉新北街)",
+      "description": "北街是卡桑德拉的一条适度活跃的混合用途街道,结合了小型商业和住宅元素。它作为较安静的住宅街道和更具社交活力地点之间的过渡区域,是调查员穿过城镇的常见路径。",
       "snapshot": {
-        "name": "North Street",
-        "location": "Cassandra – New North Street",
-        "description": "North Street features several small but notable establishments clustered along the road. The street is neither crowded nor deserted; foot traffic varies by time of day. The presence of a flower shop, a popular small restaurant, and a rarely open astrologer’s hut gives the area a subtle sense of daily normalcy layered with quiet unease.",
+        "name": "北街",
+        "location": "卡桑德拉 - 新北街",
+        "description": "北街沿路聚集了几个小型但值得注意的商铺。街道既不拥挤也不荒凉;人流量随一天中的时间而变化。花店、受欢迎的小餐馆和很少开门的占星师小屋的存在,给该地区带来了一种日常正常生活的微妙感觉,夹杂着安静的不安。",
         "characters": [
           {
-            "name": "Nancy Charlotte",
-            "role": "Shop owner / witness",
-            "status": "alive",
-            "location": "Flower Shop",
-            "notes": "Nancy is usually found tending plants in the flower shop during business hours and is aware of visitors entering the area."
+            "name": "南希·夏洛特",
+            "role": "店主 / 目击者",
+            "status": "存活",
+            "location": "花店",
+            "notes": "南希通常在营业时间在花店照料植物,并注意到进入该区域的访客。"
           },
           {
-            "name": "Helen",
-            "role": "Restaurant owner / witness",
-            "status": "alive",
-            "location": "Helen’s Restaurant",
-            "notes": "Helen runs a small but well-known restaurant. She is attentive to customers and observant of unusual behavior on the street."
+            "name": "海伦",
+            "role": "餐厅老板 / 目击者",
+            "status": "存活",
+            "location": "海伦的餐厅",
+            "notes": "海伦经营一家小但知名的餐厅。她对顾客很关注,对街上不寻常的行为很敏锐。"
           }
         ],
         "clues": [],
         "conditions": [
           {
-            "type": "sound",
-            "description": "Low-level street noise mixed with occasional conversation from shops and diners.",
+            "type": "声音",
+            "description": "低水平的街道噪音混合着来自商店和餐馆的偶尔对话。",
             "mechanicalEffect": ""
           },
           {
-            "type": "smell",
-            "description": "A blend of fresh flowers and cooking aromas drifting through the street.",
+            "type": "气味",
+            "description": "鲜花和烹饪香气在街道上飘散的混合。",
             "mechanicalEffect": ""
           }
         ],
         "events": [],
         "exits": [
           {
-            "direction": "Flower Shop",
-            "destination": "Flower Shop (Simon Laplace’s workplace)",
-            "description": "A two-story building housing the flower shop on the ground floor and private rooms above.",
+            "direction": "花店",
+            "destination": "花店(西蒙·拉普拉斯的工作场所)",
+            "description": "一栋两层建筑,一楼是花店,楼上是私人房间。",
             "condition": ""
           },
           {
-            "direction": "Restaurant",
-            "destination": "Helen’s Restaurant",
-            "description": "A small but popular restaurant that often requires reservations during busy hours.",
+            "direction": "餐厅",
+            "destination": "海伦的餐厅",
+            "description": "一家小但受欢迎的餐厅,繁忙时段通常需要预订。",
             "condition": ""
           },
           {
-            "direction": "Side storefront",
-            "destination": "Astrologer’s Hut",
-            "description": "A small fortune-telling shop next to the flower shop; most of the time it appears closed.",
-            "condition": "often closed"
+            "direction": "侧面店面",
+            "destination": "占星师小屋",
+            "description": "花店旁边的一家小型算命店;大多数时候看起来是关闭的。",
+            "condition": "经常关闭"
           }
         ],
-        "keeperNotes": "North Street works best as a connective hub. Investigators can naturally encounter multiple NPCs here and choose which lead to pursue without overt pressure.",
+        "keeperNotes": "北街最适合作为连接枢纽。调查员可以自然地在这里遇到多个NPC,并选择追踪哪条线索,而不会有明显的压力。",
         "permanentChanges": []
       },
-      "tags": ["street", "commercial", "social hub", "investigation"],
+      "tags": ["街道", "商业", "社交中心", "调查"],
       "connections": [
         {
-          "scenarioName": "Flower Shop",
-          "relationshipType": "leads_to",
-          "description": "North Street provides direct access to the flower shop and its associated investigations."
+          "scenarioName": "花店",
+          "relationshipType": "导向",
+          "description": "北街提供通往花店及其相关调查的直接通道。"
         },
         {
-          "scenarioName": "Helen’s Restaurant",
-          "relationshipType": "leads_to",
-          "description": "Investigators can move from the street into Helen’s Restaurant for social encounters and information gathering."
+          "scenarioName": "海伦的餐厅",
+          "relationshipType": "导向",
+          "description": "调查员可以从街道进入海伦的餐厅进行社交接触和信息收集。"
         },
         {
-          "scenarioName": "Astrologer’s Hut",
-          "relationshipType": "leads_to",
-          "description": "The astrologer’s hut is a minor but atmospheric location branching off North Street."
+          "scenarioName": "占星师小屋",
+          "relationshipType": "导向",
+          "description": "占星师小屋是从北街分支出来的一个次要但有氛围的地点。"
         }
       ]
     }

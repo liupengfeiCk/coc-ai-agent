@@ -53,8 +53,20 @@ USAGE:
 
 DiceUsed field:
 - Record ONLY the dice you actually used from the pre-rolled dice
-- Format: "[dice_name]: [result] ([purpose] = [success/failure])"
-- Examples: "1d100: 67 (Brawl 50% = success)", "1d6: 4 (knife damage)", "1d100_opposed: 55 (opposed check)"
+- Each line MUST follow ONE of these exact formats:
+  * Skill check: "[dice_name]: [result] ([skill_name] [skill%] = [success/failure])"
+  * Damage roll: "[dice_name]: [result] + [modifier] ([modifier_name]) = [total] (damage to [target])"
+  * Simple roll: "[dice_name]: [result] ([purpose])"
+- Correct examples:
+  * "1d100: 52 (Fighting (Brawl) 71% = success)"
+  * "1d6: 2 + 0 (DB) = 2 (damage to 藤蔓)"
+  * "1d100_opposed: 86 (Dodge 0% = failure)"
+  * "1d3: 2 (藤蔓攻击) + 0 (DB) = 2 (damage to 马克·莱利)"
+- Wrong examples (DO NOT do this):
+  * "1d6: 2 (手术刀伤害) + 0 (DB) = 2 (藤蔓伤害)" ❌ Mixing multiple purposes
+  * "1d100_opposed: 86 (藤蔓反击 - Dodge 0% = failure)" ❌ Adding extra description
+- Keep each line focused on ONE dice roll result
+- Do NOT mix multiple actions or targets in one line
 - If no dice needed, use empty array: "diceUsed": []
 
 Include "scenarioUpdate" if the action permanently changes the environment. "scenarioUpdate" can include:
@@ -101,9 +113,12 @@ Example:
 
   "diceUsed": [
     // Array of dice you actually used (empty array if no dice needed)
-    // Format: "[dice_name]: [result] ([purpose/skill] [skill%] = [success/failure/N/A])"
+    // Each line MUST follow ONE of these formats:
+    // - Skill check: "[dice_name]: [result] ([skill_name] [skill%] = [success/failure])"
+    // - Damage roll: "[dice_name]: [result] + [modifier] ([modifier_name]) = [total] (damage to [target])"
+    // - Simple roll: "[dice_name]: [result] ([purpose])"
     "1d100: 67 (Fighting (Brawl) 50% = failure)",
-    "1d3: 2 + 1 (DB) = 3 (unarmed damage)"
+    "1d3: 2 + 1 (DB) = 3 (damage to enemy)"
   ],
 
   "stateUpdate": {
@@ -156,12 +171,23 @@ Example:
     // Single call - no tool loop needed with pre-rolled dice
     const context = this.buildContext(gameState, character, { isNPC, npcResponse, targetCharacter });
     const fullPrompt = systemPrompt + context + `\n\nCharacter action: ${actionDescription}`;
+    
+    const agentName = isNPC ? `Action Agent (NPC: ${character.name})` : 'Action Agent (Player)';
+    const promptChars = fullPrompt.length;
+    console.log(`\n📝 [${agentName}] LLM请求统计:`);
+    console.log(`   Prompt字符数: ${promptChars} chars`);
 
+    const llmStart = Date.now();
     const response = await generateText({
       runtime,
       context: fullPrompt,
       modelClass: ModelClass.SMALL,
     });
+    const llmDuration = Date.now() - llmStart;
+    
+    console.log(`   Response字符数: ${response.length} chars`);
+    console.log(`   总字符数: ${promptChars + response.length} chars`);
+    console.log(`   LLM耗时: ${llmDuration}ms\n`);
 
     // Parse JSON response
     let parsed;

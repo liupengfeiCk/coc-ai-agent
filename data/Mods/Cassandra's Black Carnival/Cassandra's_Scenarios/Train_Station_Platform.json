@@ -1,74 +1,74 @@
 [
     {
-      "name": "Train Station Platform",
-      "description": "A quiet, sparsely used train station platform in Cassandra. At first glance it appears abandoned and insignificant, but it conceals a major criminal secret beneath its mundane exterior.",
+      "name": "火车站站台",
+      "description": "卡桑德拉一个安静、很少使用的火车站站台。乍一看,它似乎被废弃且不起眼,但它在平凡的外表下隐藏着一个重大的犯罪秘密。",
       "snapshot": {
-        "name": "Platform",
-        "location": "Cassandra Train Station Platform",
-        "description": "The platform is largely empty, with only a single elderly man present. Trains arrive infrequently, and there is little activity. Despite its ordinary appearance, the platform is in fact a disguised access point to a hidden dock area connected to organized crime operations.",
+        "name": "站台",
+        "location": "卡桑德拉火车站站台",
+        "description": "站台基本上是空的,只有一个老年男子在场。火车很少到达,活动很少。尽管外表普通,站台实际上是一个伪装的接入点,通向与有组织犯罪行动相关的隐藏码头区域。",
         "characters": [
           {
-            "name": "Harlan",
-            "role": "Witness / Gatekeeper",
-            "status": "Alive",
-            "location": "On the train station platform",
-            "notes": "An elderly man who appears to be the only regular presence on the platform. He lies when questioned about seeing three people near the church and conceals knowledge of the platform’s true purpose."
+            "name": "哈兰",
+            "role": "目击者 / 守门人",
+            "status": "存活",
+            "location": "火车站站台上",
+            "notes": "一个老年男子,似乎是站台上唯一的常驻人员。当被询问在教堂附近看到的三个人时,他撒谎,并隐瞒对站台真正目的的了解。"
           }
         ],
         "clues": [
           {
-            "clueText": "Harlan claims he saw nothing when asked about the three people connected to the church.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Conversation on the platform",
-            "discoveryMethod": "Psychology or Insight during questioning",
-            "reveals": ["Harlan is lying and hiding information about the platform"]
+            "clueText": "哈兰声称当被问及与教堂相关的三个人时,他什么都没看到。",
+            "category": "目击",
+            "difficulty": "普通",
+            "location": "站台上的对话",
+            "discoveryMethod": "心理学或询问中的洞察",
+            "reveals": ["哈兰在撒谎,隐藏关于站台的信息"]
           },
           {
-            "clueText": "The platform is actually a disguised dock, accessible through Harlan’s work hut.",
-            "category": "environment",
-            "difficulty": "hard",
-            "location": "Harlan’s work hut near the platform",
-            "discoveryMethod": "Spot Hidden or careful exploration",
-            "reveals": ["A hidden dock leading to the Mafia headquarters", "The platform’s connection to organized crime"]
+            "clueText": "站台实际上是一个伪装的码头,可通过哈兰的工作小屋进入。",
+            "category": "环境",
+            "difficulty": "困难",
+            "location": "站台附近的哈兰工作小屋",
+            "discoveryMethod": "侦查或仔细探索",
+            "reveals": ["通向黑手党总部的隐藏码头", "站台与有组织犯罪的联系"]
           }
         ],
         "conditions": [
           {
-            "type": "sound",
-            "description": "Occasional distant train noises and otherwise oppressive silence.",
+            "type": "声音",
+            "description": "偶尔远处的火车噪音,其他时候令人压抑的寂静。",
             "mechanicalEffect": ""
           }
         ],
         "events": [
-          "Investigators question Harlan about recent suspicious individuals.",
-          "Discovery of the hidden access to the dock through the work hut."
+          "调查员询问哈兰关于最近可疑人物的情况。",
+          "通过工作小屋发现通向码头的隐藏通道。"
         ],
         "exits": [
           {
-            "direction": "Rail line",
-            "destination": "Outside Cassandra / Other towns",
-            "description": "The tracks leading away from Cassandra.",
+            "direction": "铁路线",
+            "destination": "卡桑德拉外 / 其他城镇",
+            "description": "通向卡桑德拉外的轨道。",
             "condition": ""
           },
           {
-            "direction": "Work hut",
-            "destination": "Hidden dock and Mafia headquarters",
-            "description": "A seemingly ordinary work hut that conceals a secret passage.",
-            "condition": "hidden"
+            "direction": "工作小屋",
+            "destination": "隐藏码头和黑手党总部",
+            "description": "一个看似普通的工作小屋,隐藏着秘密通道。",
+            "condition": "隐藏"
           }
         ],
-        "keeperNotes": "Harlan should initially appear harmless and unimportant. His lies are a key signal that the platform is more than it seems. The revelation that the platform is actually a dock can significantly escalate the investigation and introduce direct contact with the Mafia.",
+        "keeperNotes": "哈兰最初应该显得无害且不重要。他的谎言是站台不仅仅是表面那样的关键信号。揭示站台实际上是码头可以显著升级调查并引入与黑手党的直接接触。",
         "permanentChanges": [
-          "Once discovered, the secret of the platform being a dock cannot be concealed again."
+          "一旦被发现,站台是码头的秘密就无法再隐藏。"
         ]
       },
-      "tags": ["train station", "platform", "deception", "mafia", "hidden location"],
+      "tags": ["火车站", "站台", "欺骗", "黑手党", "隐藏地点"],
       "connections": [
         {
-          "scenarioName": "Mafia Headquarters",
-          "relationshipType": "leads_to",
-          "description": "The hidden dock beneath the platform provides direct access to the Mafia’s base of operations."
+          "scenarioName": "黑手党总部",
+          "relationshipType": "导向",
+          "description": "站台下的隐藏码头提供通往黑手党行动基地的直接通道。"
         }
       ]
     }

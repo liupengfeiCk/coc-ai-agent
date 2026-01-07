@@ -1,17 +1,17 @@
 [
     {
-      "name": "Jun",
-      "occupation": "University Professor (History and Literature)",
+      "name": "俊",
+      "occupation": "大学教授(历史与文学)",
       "age": 51,
-      "appearance": "A middle-aged academic with an unremarkable appearance, more bookish than athletic, often appearing absent-minded and physically unimposing.",
-      "personality": "Intellectually curious, gentle, absent-minded, deeply interested in strange lore, but impractical and directionless in everyday matters.",
-      "background": "Jun is a little-known university professor specializing in history and literature, with a strong fascination for strange phenomena and obscure stories. He is notoriously bad with directions. He asked Lyn to drive him and Wind around the outskirts of Cassandra to collect local folklore and material. During this trip, Jun disappeared near the incinerator. Lyn never left the car, and when she went searching after waiting too long, she only found Wind, who had suddenly gone insane. No one knows that Jun sacrificed himself in his final moments to ensure Wind could escape alive.",
+      "appearance": "一位中年学者,外表平凡,更像书生而非运动员,经常显得心不在焉且身体不强壮。",
+      "personality": "求知欲强、温和、心不在焉,对奇异传说深感兴趣,但在日常事务中不切实际且没有方向感。",
+      "background": "俊是一位不知名的大学教授,专攻历史和文学,对奇异现象和晦涩故事有强烈的迷恋。他的方向感出了名的差。他请琳开车带他和温德在卡桑德拉郊外收集当地民间传说和素材。在这次旅行中,俊在焚化炉附近失踪了。琳从未离开车,等待太久后去搜寻时,只找到了突然发疯的温德。没人知道俊在最后时刻牺牲自己以确保温德能活着逃脱。",
       "goals": [
-        "Research and document strange and uncanny phenomena",
-        "Protect his companions despite the danger"
+        "研究和记录奇异和离奇现象",
+        "尽管危险也要保护同伴"
       ],
       "secrets": [
-        "He gave his life to save Wind during the incident at the incinerator"
+        "他在焚化炉事件中献出生命以拯救温德"
       ],
       "attributes": {
         "STR": 30,
@@ -43,39 +43,39 @@
         "Fighting (Brawl)": 50
       },
       "inventory": [
-        "Notebook filled with research notes",
-        "Academic books on folklore and history"
+        "装满研究笔记的笔记本",
+        "关于民间传说和历史的学术书籍"
       ],
       "clues": [
         {
-          "clueText": "Jun disappeared near the incinerator while researching strange phenomena around Cassandra.",
+          "clueText": "俊在研究卡桑德拉周围的奇异现象时在焚化炉附近失踪。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Incinerator"]
+          "relatedTo": ["焚化炉"]
         },
         {
-          "clueText": "Jun sacrificed himself in his final moments to ensure Wind could escape alive.",
+          "clueText": "俊在最后时刻牺牲自己以确保温德能活着逃脱。",
           "category": "secret",
           "difficulty": "hard",
-          "relatedTo": ["Wind"]
+          "relatedTo": ["温德"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Lyn",
+          "targetName": "琳",
           "relationshipType": "friend",
           "attitude": 40,
-          "description": "Lyn acted as Jun’s driver during his field research.",
-          "history": "Jun relied on Lyn for transportation due to his poor sense of direction."
+          "description": "琳在俊的实地研究期间担任他的司机。",
+          "history": "由于方向感差,俊依赖琳的交通工具。"
         },
         {
-          "targetName": "Wind",
+          "targetName": "温德",
           "relationshipType": "ally",
           "attitude": 70,
-          "description": "Jun protected Wind during their final expedition.",
-          "history": "Jun gave his life to secure Wind’s survival."
+          "description": "俊在最后一次探险中保护温德。",
+          "history": "俊献出生命以确保温德的生存。"
         }
       ],
-      "notes": "Jun is presumed dead. His disappearance and sacrifice are key emotional and investigative elements tied to the incinerator incident."
+      "notes": "俊被认为已死亡。他的失踪和牺牲是与焚化炉事件相关的关键情感和调查元素。"
     }
   ]

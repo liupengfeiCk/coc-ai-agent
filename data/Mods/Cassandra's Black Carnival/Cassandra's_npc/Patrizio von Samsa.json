@@ -1,22 +1,22 @@
 [
     {
-      "name": "Patrizio von Samsa",
-      "occupation": "Former Psychiatrist / Politician",
+      "name": "帕特里齐奥·冯·萨姆萨",
+      "occupation": "前精神病医生 / 政客",
       "age": 55,
       "gender": "male",
-      "appearance": "A reclusive middle-aged to elderly man of German descent. He dresses conservatively and neatly, favoring dark, formal clothing. His demeanor is restrained and distant, giving the impression of a man who prefers solitude and control.",
-      "personality": "Cold, calculating, ambitious, and intellectually arrogant. Patrizio believes he understands human nature better than others and sees people primarily as subjects to be studied or controlled. He is patient, manipulative, and deeply convinced of his own righteousness.",
-      "background": "Patrizio von Samsa is a German immigrant whose grandfather was among the last nobility of the German Empire and fled to the United States after the November Revolution. Raised with the weight of a lost aristocratic identity, Patrizio received an elite education and became a psychiatrist. In late 1986, he participated in a six-month exchange program in Arkham, Massachusetts. There, he encountered a bizarre psychiatric case involving an Innsmouth native displaying dissociative states, inhuman strength, and unnatural intelligence. This experience fundamentally altered Patrizio’s worldview and set him on a path that eventually led him away from medicine and toward politics, using his psychological expertise to pursue power and influence in Cassandra.",
+      "appearance": "一位隐居的中老年德裔男性。穿着保守整洁,偏爱深色正装。举止克制疏离,给人一种喜欢独处和控制的印象。",
+      "personality": "冷酷、精于算计、野心勃勃且智力傲慢。帕特里齐奥认为自己比其他人更了解人性,主要将人视为被研究或控制的对象。他有耐心、善于操纵,并深信自己的正义性。",
+      "background": "帕特里齐奥·冯·萨姆萨是一位德国移民,其祖父是德意志帝国最后的贵族之一,在十一月革命后逃往美国。在失落的贵族身份重压下成长,帕特里齐奥接受了精英教育并成为精神病医生。1986年末,他参加了在马萨诸塞州阿卡姆的为期六个月的交流项目。在那里,他遇到了一个离奇的精神病例,涉及一位印斯茅斯本地人,表现出分裂状态、非人力量和不自然智力。这段经历从根本上改变了帕特里齐奥的世界观,使他最终离开医学转向政治,利用心理学专业知识在卡桑德拉追求权力和影响力。",
       "goals": [
-        "To gain political power and reshape society according to his understanding of human nature",
-        "To continue researching and exploiting abnormal psychological and inhuman phenomena"
+        "获得政治权力,按照自己对人性的理解重塑社会",
+        "继续研究和利用异常心理和非人现象"
       ],
       "secrets": [
-        "His interest in psychiatry was driven by a desire to control and experiment on others rather than to heal",
-        "His political ambitions are rooted in knowledge gained from unnatural encounters in Arkham",
-        "He employs Martin Gin (Ghost Hand) as a hacker and courier, and knows Ghost Hand is the murderer of both the 2002 and 2003 murder cases",
-        "He ordered the killing of Lucifero because she intercepted the Borrachero package and was mistakenly identified as the hacker who stole his secrets",
-        "He is preparing a ritual to awaken Cthulhu and other Great Old Ones, which will actually summon Ghatanothoa instead"
+        "他对精神病学的兴趣源于控制和实验他人的欲望,而非治愈",
+        "他的政治野心植根于在阿卡姆获得的非自然知识",
+        "他雇佣马丁·金(幽灵之手)作为黑客和信使,并知道幽灵之手是2002年和2003年两起谋杀案的凶手",
+        "他下令杀死路西法罗,因为她拦截了曼陀罗包裹并被误认为是窃取他秘密的黑客",
+        "他正在准备唤醒克苏鲁和其他旧日支配者的仪式,但实际上会召唤加塔诺托亚"
       ],
       "attributes": {
         "STR": 45,
@@ -45,45 +45,45 @@
         "Credit Rating": 70
       },
       "inventory": [
-        "Personal research notes",
-        "Political documents",
-        "Medication for stress and insomnia"
+        "个人研究笔记",
+        "政治文件",
+        "压力和失眠药物"
       ],
       "clues": [
         {
-          "clueText": "He once treated a patient from Innsmouth who exhibited multiple personalities and inhuman strength.",
+          "clueText": "他曾治疗过一位来自印斯茅斯的病人,该病人表现出多重人格和非人力量。",
           "category": "knowledge",
           "difficulty": "hard",
-          "relatedTo": ["Arkham", "Innsmouth"]
+          "relatedTo": ["阿卡姆", "印斯茅斯"]
         },
         {
-          "clueText": "His shift from psychiatry to politics was triggered by encounters with unnatural phenomena.",
+          "clueText": "他从精神病学转向政治是由于遭遇非自然现象。",
           "category": "secret",
           "difficulty": "extreme",
-          "relatedTo": ["Arkham Exchange Program"]
+          "relatedTo": ["阿卡姆交流项目"]
         },
         {
-          "clueText": "He employs Martin Gin (Ghost Hand) who is the murderer of both the 2002 Paradil Hotel murder case and the 2003 Reindeer Bar murder case.",
+          "clueText": "他雇佣马丁·金(幽灵之手),后者是2002年帕拉迪尔酒店谋杀案和2003年驯鹿酒吧谋杀案的凶手。",
           "category": "secret",
           "difficulty": "extreme",
-          "relatedTo": ["Martin Gin", "2002 Paradil Hotel murder", "2003 Reindeer Bar murder"]
+          "relatedTo": ["马丁·金", "2002年帕拉迪尔酒店谋杀案", "2003年驯鹿酒吧谋杀案"]
         },
         {
-          "clueText": "He ordered Lucifero's death because she intercepted the Borrachero package and was mistakenly identified as the hacker who stole his secrets.",
+          "clueText": "他下令杀死路西法罗,因为她拦截了曼陀罗包裹并被误认为是窃取他秘密的黑客。",
           "category": "secret",
           "difficulty": "extreme",
-          "relatedTo": ["Jenny Florence (Lucifero)", "2003 Reindeer Bar murder"]
+          "relatedTo": ["珍妮·弗洛伦斯(路西法罗)", "2003年驯鹿酒吧谋杀案"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Nancy Charlotte",
+          "targetName": "南希·夏洛特",
           "relationshipType": "enemy",
           "attitude": -80,
-          "description": "A potential subject and obstacle tied to cult activities he is aware of.",
-          "history": "Patrizio’s experiments and political schemes indirectly intersect with Nancy’s past involving cult rituals."
+          "description": "一个潜在的实验对象和与他所知邪教活动相关的障碍。",
+          "history": "帕特里齐奥的实验和政治阴谋间接与南希涉及邪教仪式的过去交织。"
         }
       ],
-      "notes": "Patrizio is a key antagonist whose knowledge of psychology and the Mythos allows him to manipulate both individuals and institutions while maintaining a respectable public image."
+      "notes": "帕特里齐奥是关键反派,他对心理学和神话知识的了解使他能够在保持体面公众形象的同时操纵个人和机构。"
     }
   ]

@@ -1,115 +1,76 @@
 [
-    {
-      "name": "Martin Gin (Cleo)",
-      "occupation": "Criminal courier and fixer (alias: Ghost Hand)",
-      "age": 35,
-      "gender": "male",
-      "appearance": "A cautious-looking man with an unremarkable face, deliberately dressing in plain, practical clothing to avoid attention. His movements are controlled and alert, giving the impression of someone used to watching exits and escape routes.",
-      "personality": "Calculating, opportunistic, and highly pragmatic. Martin is patient and careful, preferring indirect methods and aliases to direct confrontation. He is loyal only as long as cooperation benefits his own survival and profit.",
-      "background": "Martin Gin, also known as 'Ghost Hand,' is the third hacker in Cassandra and the murderer of both the 2002 Paradil Hotel murder case and the 2003 Reindeer Bar murder case. He deliberately attracted Patrizio von Samsa's attention and was employed by him under the alias 'Ghost Hand' to handle computer security. Acting as a courier and intermediary, Martin transported goods to the docks and handled sensitive deliveries. Through his work, he assisted Patrizio in seizing the missing businessmen's bank assets in Cassandra. Martin operates under false names and avoids revealing his true identity. He is actually Martin Cleo, son of Sanchez Cleo, and has a vendetta against Ben Cleo, believing Ben was responsible for his father's disappearance.",
-      "goals": [
-        "Complete assignments efficiently to secure payment and protection",
-        "Remain hidden and avoid becoming a disposable pawn"
-      ],
-      "secrets": [
-        "He operates under the alias 'Ghost Hand' and conceals his true identity",
-        "He knowingly assisted Patrizio in acquiring the missing businessmen's assets",
-        "He is the murderer of the 2002 Paradil Hotel murder case (the unknown 19-year-old Black girl found in cold storage)",
-        "He is the murderer of the 2003 Reindeer Bar murder case (Jenny Florence/Lucifero)",
-        "He killed Lucifero because he mistakenly identified her as the hacker who stole Patrizio's secrets, and because she intercepted the Borrachero package",
-        "He has a scar on his face that he deliberately inflicted to avoid being recognized by Ben Cleo",
-        "He can sense Cassandra calling to him, but doesn't realize this is Nyogtha's call to its chosen ones",
-        "He placed the hallucinogenic drug in Marcel's drink, suspecting Marcel saw him emerging from the sewer",
-        "He went into the sewer to find Lucifero's hideout and retrieve the intercepted Borrachero",
-        "He gave the folding knife (which belonged to Philip) to Lux to plant on Lucifero's body to confuse the investigation"
-      ],
-      "attributes": {
-        "STR": 55,
-        "CON": 60,
-        "DEX": 65,
-        "APP": 40,
-        "POW": 55,
-        "SIZ": 55,
-        "INT": 65,
-        "EDU": 55
+  {
+    "name": "马丁·金（克丽奥）",
+    "occupation": "表演者/守密者",
+    "age": 35,
+    "gender": "fluid",
+    "description": "一位神秘的双重身份者。白天是温文尔雅的绅士马丁·金，夜晚则化身为妖艳的舞者克丽奥。他/她在嘉年华中扮演着重要的角色，既是表演者，也是秘密的守护者。",
+    "personality": "作为马丁时优雅稳重，善于社交；作为克丽奥时热情奔放，神秘莫测。两个身份都极具魅力，但都隐藏着深沉的秘密。",
+    "background": "马丁·金是嘉年华的老员工，多年来一直在这里工作。他的双重身份是为了保护某个重要的秘密，同时也是他真实自我的表达。克丽奥这个身份让他能够接触到嘉年华中更深层的秘密。",
+    "appearance": "作为马丁：30多岁，身材修长，穿着考究的西装，黑色短发，深邃的眼睛。作为克丽奥：妖艳的红唇，浓密的睫毛，华丽的舞裙，长长的黑色卷发。",
+    "goals": [
+      "保护嘉年华的秘密",
+      "探索自己真实身份的意义"
+    ],
+    "secrets": [
+      "马丁/克丽奥知道嘉年华背后的神话真相",
+      "他/她可能拥有某种超自然的能力",
+      "双重身份不仅是伪装，更是某种仪式的一部分"
+    ],
+    "attributes": {
+      "STR": 55,
+      "CON": 60,
+      "SIZ": 65,
+      "DEX": 75,
+      "APP": 85,
+      "INT": 70,
+      "POW": 65,
+      "EDU": 60
+    },
+    "status": {
+      "hp": 12,
+      "maxHp": 12,
+      "sanity": 45,
+      "maxSanity": 65,
+      "luck": 60,
+      "mp": 13,
+      "conditions": []
+    },
+    "skills": {
+      "Art/Craft (Dance)": 80,
+      "Art/Craft (Acting)": 75,
+      "Charm": 80,
+      "Disguise": 85,
+      "Fast Talk": 65,
+      "Psychology": 60,
+      "Stealth": 55,
+      "Occult": 50
+    },
+    "inventory": [],
+    "clues": [
+      {
+        "clueText": "马丁/克丽奥的双重身份与嘉年华的核心仪式有关。",
+        "category": "observation",
+        "difficulty": "hard",
+        "relatedTo": ["黑嘉年华", "神话仪式"]
+      }
+    ],
+    "relationships": [
+      {
+        "targetName": "帕特里齐奥·冯·萨姆萨",
+        "relationshipType": "ally",
+        "attitude": 60,
+        "description": "嘉年华核心成员",
+        "history": "共同守护嘉年华的秘密多年。"
       },
-      "status": {
-        "hp": 11,
-        "maxHp": 11,
-        "sanity": 55,
-        "maxSanity": 55,
-        "luck": 60,
-        "mp": 11,
-        "conditions": []
-      },
-      "skills": {
-        "Stealth": 60,
-        "Drive Auto": 55,
-        "Fast Talk": 50,
-        "Spot Hidden": 45,
-        "Locksmith": 40
-      },
-      "inventory": [
-        {
-          "name": "False identification papers",
-          "properties": {
-            "note": "Conceals his true identity as Martin Cleo."
-          }
-        },
-        {
-          "name": "Unmarked mobile phone",
-          "properties": {
-            "note": "Used for secret communications."
-          }
-        },
-        {
-          "name": "Dock delivery documents",
-          "properties": {
-            "note": "Related to his work as Ghost Hand."
-          }
-        },
-        {
-          "name": ".357 caliber handgun (Desert Eagle)",
-          "properties": {
-            "clue": "Used to kill Lucifero in the 2003 Reindeer Bar murder case. Same caliber as Ben Cleo's gold-plated Desert Eagle, but Martin's is not the same gun."
-          }
-        }
-      ],
-      "clues": [
-        {
-          "clueText": "The individual known as 'Ghost Hand' was responsible for transporting goods to the docks for Patrizio.",
-          "category": "knowledge",
-          "difficulty": "regular",
-          "relatedTo": ["Patrizio von Samsa", "Docks"]
-        },
-        {
-          "clueText": "Ghost Hand assisted Patrizio in obtaining the missing businessmen's bank assets in Cassandra.",
-          "category": "secret",
-          "difficulty": "hard",
-          "relatedTo": ["Patrizio von Samsa", "Missing Businessmen"]
-        },
-        {
-          "clueText": "Ghost Hand (Martin Gin) is the murderer of both the 2002 Paradil Hotel murder case (unknown 19-year-old Black girl) and the 2003 Reindeer Bar murder case (Jenny Florence/Lucifero).",
-          "category": "secret",
-          "difficulty": "extreme",
-          "relatedTo": ["2002 Paradil Hotel murder", "2003 Reindeer Bar murder", "Unknown victim", "Jenny Florence"]
-        },
-        {
-          "clueText": "He killed Lucifero because he mistakenly thought she was the hacker who stole Patrizio's secrets, and because she intercepted the Borrachero package.",
-          "category": "secret",
-          "difficulty": "hard",
-          "relatedTo": ["Jenny Florence", "Reindeer Bar murder (2003)", "Patrizio von Samsa"]
-        }
-      ],
-      "relationships": [
-        {
-          "targetName": "Patrizio von Samsa",
-          "relationshipType": "employer",
-          "attitude": -20,
-          "description": "A dangerous employer whom Martin serves out of necessity rather than loyalty.",
-          "history": "Martin deliberately drew Patrizio’s attention and accepted work under the alias Ghost Hand to gain profit and protection."
-        }
-      ],
-      "notes": "Martin Gin (Ghost Hand) is the murderer of both murder cases: 1) 2002 Paradil Hotel case - killed the unknown 19-year-old Black girl found in cold storage; 2) 2003 Reindeer Bar case - killed Jenny Florence (Lucifero) with a .357 caliber bullet to the heart. He is actually Martin Cleo, son of Sanchez Cleo, and has a vendetta against Ben Cleo. He deliberately scarred his face to avoid recognition. He works for Patrizio as a hacker and courier. He is being called by Nyogtha and will eventually become one of its chosen ones. He is a shadowy logistical NPC who can reveal connections between criminal operations, financial manipulation, and Patrizio's larger schemes if pressured or exposed."
-    }
-  ]
+      {
+        "targetName": "调查员",
+        "relationshipType": "neutral",
+        "attitude": 30,
+        "description": "潜在威胁或盟友",
+        "history": "会根据调查员的行为决定态度。"
+      }
+    ],
+    "notes": "马丁·金和克丽奥是同一个人的两个面孔，玩家与他/她互动时需要注意当前是哪个身份。不同身份掌握的信息和态度可能有所不同。魅惑之舞可能需要POW对抗检定。"
+  }
+]

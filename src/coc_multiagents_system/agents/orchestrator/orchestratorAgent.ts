@@ -104,13 +104,23 @@ export class OrchestratorAgent {
       npcNames,
       previousNarrative
     });
+    
+    const promptChars = prompt.length;
+    console.log(`\n📝 [Orchestrator Agent] LLM请求统计:`);
+    console.log(`   Prompt字符数: ${promptChars} chars`);
 
     // Generate response using LLM
+    const llmStart = Date.now();
     const response = await generateText({
       runtime,
       context: prompt,
       modelClass: ModelClass.SMALL,
     });
+    const llmDuration = Date.now() - llmStart;
+    
+    console.log(`   Response字符数: ${response.length} chars`);
+    console.log(`   总字符数: ${promptChars + response.length} chars`);
+    console.log(`   LLM耗时: ${llmDuration}ms\n`);
 
     // Parse the response and store action analysis
     try {

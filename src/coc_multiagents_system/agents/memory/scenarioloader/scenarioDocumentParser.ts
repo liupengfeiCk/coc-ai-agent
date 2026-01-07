@@ -28,14 +28,15 @@ export class ScenarioDocumentParser {
     if (!model) {
       const geminiApiKey = process.env.GOOGLE_API_KEY;
       const openaiApiKey = process.env.OPENAI_API_KEY;
+      const deepseekApiKey = process.env.DEEPSEEK_API_KEY;
       
       if (geminiApiKey) {
-        // Use SMALL model for scenario extraction (cost optimization)
-        this.llm = createChatModel(ModelProviderName.GOOGLE, ModelClass.SMALL);
-        console.log("✓ Using small model for scenario parsing");
+        // Use small model for document parsing (cost-effective for this task)
+        this.llm = createChatModel(ModelProviderName.GOOGLE, ModelClass.MEDIUM);
       } else if (openaiApiKey) {
-        this.llm = createChatModel(ModelProviderName.OPENAI, ModelClass.SMALL);
-        console.log("✓ Using small model for scenario parsing");
+        this.llm = createChatModel(ModelProviderName.OPENAI, ModelClass.MEDIUM);
+      } else if (deepseekApiKey) {
+        this.llm = createChatModel(ModelProviderName.DEEPSEEK, ModelClass.MEDIUM);
       } else {
         throw new Error("No API key found. Please set either GOOGLE_API_KEY or OPENAI_API_KEY environment variable.");
       }
@@ -260,14 +261,27 @@ Return ONLY a JSON array of scenario objects. Even if there's only one scenario,
 Do not include any additional text, explanations, or markdown formatting.`;
 
     let lastError: unknown;
+    
+    const promptChars = prompt.length;
+    console.log(`\n📝 [Scenario Document Parser] LLM请求统计:`);
+    console.log(`   File: ${fileName}`);
+    console.log(`   Prompt字符数: ${promptChars} chars`);
 
     for (let attempt = 1; attempt <= 3; attempt++) {
       try {
+        const llmStart = Date.now();
         const response = await this.llm.invoke(prompt);
+        const llmDuration = Date.now() - llmStart;
         const content =
           typeof response.content === "string"
             ? response.content
             : JSON.stringify(response.content, null, 2);
+        
+        if (attempt === 1) {
+          console.log(`   Response字符数: ${content.length} chars`);
+          console.log(`   总字符数: ${promptChars + content.length} chars`);
+          console.log(`   LLM耗时: ${llmDuration}ms\n`);
+        }
 
         // Save raw LLM response to JSON file for debugging/auditing
         try {

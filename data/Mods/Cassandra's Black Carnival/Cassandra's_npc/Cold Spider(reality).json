@@ -1,18 +1,18 @@
 [
     {
-      "name": "Cold Spider(Reality)",
-      "occupation": "Mythos Creature",
+      "name": "寒冷蜘蛛(现实)",
+      "occupation": "神话生物",
       "age": 0,
-      "appearance": "A pale, chitinous spider with an unnaturally cold, lifeless body. In the real world it is roughly dog-sized, with black, glossy eyes and barbed legs capable of clinging to walls and ceilings.",
-      "personality": "Alien and predatory. Cold spiders act on instinct and the will of the Spider God, showing no empathy and little self-preservation beyond ensuring successful reproduction.",
-      "background": "Cold spiders originate from the Dreamlands and have crossed into the real world through vast webs woven by Atlach-Nacha. Their forms are weakened in reality, but they retain their most horrifying trait: infecting humans by implanting spider eggs, which may kill the host or transform them into spider-humans.",
+      "appearance": "一只苍白、甲壳状的蜘蛛,身体异常冰冷、没有生命。在现实世界中,它大约有狗那么大,有黑色、光亮的眼睛和能够附着在墙壁和天花板上的带刺腿。",
+      "personality": "异类和掠食性。寒冷蜘蛛根据本能和蜘蛛神的意志行事,不显示同情心,除了确保成功繁殖外几乎没有自我保护意识。",
+      "background": "寒冷蜘蛛起源于梦境,通过阿特拉克-纳查编织的巨大蛛网穿越到现实世界。它们的形态在现实中被削弱,但保留了最可怕的特征:通过植入蜘蛛卵感染人类,这可能杀死宿主或将其转变为蜘蛛人。",
       "goals": [
-        "Reproduce by infecting human hosts",
-        "Serve the will of Atlach-Nacha"
+        "通过感染人类宿主进行繁殖",
+        "侍奉阿特拉克-纳查的意志"
       ],
       "secrets": [
-        "Some infected hosts may survive and transform into spider-humans",
-        "Cold spiders are less powerful in the real world than in the Dreamlands"
+        "一些被感染的宿主可能幸存并转变为蜘蛛人",
+        "寒冷蜘蛛在现实世界中比在梦境中弱"
       ],
       "attributes": {
         "STR": 28,
@@ -41,27 +41,27 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "Cold spiders enter the real world through giant webs hidden in the church and nearby areas.",
+          "clueText": "寒冷蜘蛛通过隐藏在教堂及附近区域的巨大蛛网进入现实世界。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Church", "Atlach-Nacha"]
+          "relatedTo": ["教堂", "阿特拉克-纳查"]
         },
         {
-          "clueText": "Their bite can infect humans with spider eggs, leading to death or transformation.",
+          "clueText": "它们的撕咬可以用蜘蛛卵感染人类,导致死亡或转变。",
           "category": "observation",
           "difficulty": "hard",
-          "relatedTo": ["Spider-Humans"]
+          "relatedTo": ["蜘蛛人"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Atlach-Nacha",
+          "targetName": "阿特拉克-纳查",
           "relationshipType": "employer",
           "attitude": 100,
-          "description": "Cold spiders are servants and offspring of the Spider God.",
-          "history": "They act as extensions of Atlach-Nacha's will, spreading its influence between worlds."
+          "description": "寒冷蜘蛛是蜘蛛神的仆从和后代。",
+          "history": "它们作为阿特拉克-纳查意志的延伸,在世界之间传播其影响力。"
         }
       ],
-      "notes": "Cold Spider Overview, Infection & Treatment (applicable to Nancy’s bite):\n\nGeneral Traits & Behavior:\nCold spiders infect humans through biting, implanting spider eggs directly into the host’s body. Each cold spider can attack once per combat round. A successful bite deals 1D3 damage and carries a risk of infection; if the victim fails a Luck check, they immediately enter Infection Stage 0. Cold spiders possess minimal natural armor (1 point, chitinous shell). There is a 10% chance that an individual cold spider knows the spell “Call Atlach-Nacha.”\n\nInfection Consequences:\nMost infected victims die during the infection process. Those who survive may be ‘assimilated’ into half-human, half-spider creatures known as Spider-Humans.\n\nSanity Effects:\nSeeing a cold spider alone does not cause SAN loss. However, witnessing a cold spider tear through an infected host’s flesh and escape—spraying blood and black pus—causes a SAN loss of 1d3 / 1d6.\n\nInfection Progression (roll succeeds = no progression):\nStage 0 – Regular Luck: Mild prickling sensation, as if something crawled over exposed skin; small pink bruises appear.\nStage 1 – Regular CON: Pain; bitten area feels warm, wound turns bright red.\nStage 2 – Hard CON: Bite area swells slightly (about half an inch), bright red lump forms.\nStage 3 – Hard CON: Swelling grows to 2 inches; redness spreads, center darkens; extreme pain on contact. Victim loses 1 HP.\nStage 4 – Extreme CON: Swelling grows to 4 inches and hardens; black core expands to 1 inch; victim feels movement under the skin. Victim loses 1 HP and must make a SAN check (1 / 1d3).\nStage 5 – Extreme CON: A developing cold spider may burst from the hardened abscess, tearing flesh and spraying blood and black pus before escaping. Victim loses 1d3+1 HP and must make a SAN check (1d3 / 1d6). Victim may die or transform.\n\nTreatment:\nThe only treatment is to surgically cut open the cyst and remove the young spider. This can only be attempted when the infection is at stages 2–4 and requires a Medicine check with sharp tools.\n\nThe procedure is extremely painful. To succeed, one of the following methods must be used:\n1) Willpower Method: Patient makes a POW check while enduring pain, and the operator makes a Medicine check. Both must succeed.\n2) Restraint Method: Operator makes a combined Medicine + DEX check (both must succeed) to restrain the patient and perform the operation safely.\n3) Anesthesia Method: If anesthetics are available, the operator makes two Medicine checks (one for anesthesia, one for surgery). Both must succeed.\n\nOutcome:\n• Success: Infection stage resets to 0; patient suffers 1 HP damage.\n• Failure: The spider burrows deeper; the patient loses 1d3 HP.\n\nLimits & Keeper Guidance:\n• Each person may undergo this type of field surgery only once.\n• If the spider burrows deeper after a failed attempt, only major hospital surgery can remove it.\n• If not treated in time and the infection reaches Stage 5, the spider bursting out may cause even greater bodily harm at the Keeper’s discretion.\n• The Keeper may adjust damage at Stage 5 or show leniency if circumstances or narrative pacing require it."
+      "notes": "寒冷蜘蛛概述、感染与治疗(适用于南希的咬伤):\n\n一般特征与行为:\n寒冷蜘蛛通过撕咬感染人类,将蜘蛛卵直接植入宿主体内。每只寒冷蜘蛛每战斗回合可攻击一次。成功撕咬造成1D3伤害并带有感染风险;如果受害者幸运检定失败,立即进入感染阶段0。寒冷蜘蛛拥有最小的天然护甲(1点,甲壳)。单个寒冷蜘蛛有10%的几率知道'召唤阿特拉克-纳查'法术。\n\n感染后果:\n大多数被感染的受害者在感染过程中死亡。幸存者可能被'同化'为半人半蜘蛛的生物,称为蜘蛛人。\n\n理智效果:\n单独看到寒冷蜘蛛不会造成理智损失。然而,目睹寒冷蜘蛛撕开被感染宿主的肉体并逃出——喷溅鲜血和黑色脓液——造成1d3/1d6点理智损失。\n\n感染进展(检定成功=无进展):\n阶段0 – 普通幸运:轻微刺痛感觉,仿佛有东西爬过暴露的皮肤;出现小粉红色瘀伤。\n阶段1 – 普通体质:疼痛;被咬区域感到温暖,伤口变成鲜红色。\n阶段2 – 困难体质:咬伤区域轻微肿胀(约半英寸),形成鲜红色肿块。\n阶段3 – 困难体质:肿胀增长到2英寸;红肿扩散,中心变暗;接触时极度疼痛。受害者失去1生命值。\n阶段4 – 极难体质:肿胀增长到4英寸并变硬;黑色核心扩大到1英寸;受害者感到皮肤下有东西在移动。受害者失去1生命值并必须进行理智检定(1/1d3)。\n阶段5 – 极难体质:发育中的寒冷蜘蛛可能从硬化的脓肿中爆发,撕裂肉体并喷洒鲜血和黑色脓液后逃脱。受害者失去1d3+1生命值并必须进行理智检定(1d3/1d6)。受害者可能死亡或转变。\n\n治疗:\n唯一的治疗方法是手术切开囊肿并移除幼蛛。这只能在感染处于阶段2-4时尝试,需要使用锋利工具进行医学检定。\n\n手术极度痛苦。要成功,必须使用以下方法之一:\n1)意志力方法:患者在忍受疼痛时进行意志力检定,操作者进行医学检定。两者都必须成功。\n2)束缚方法:操作者进行医学+敏捷组合检定(两者都必须成功)以束缚患者并安全进行手术。\n3)麻醉方法:如果有麻醉剂,操作者进行两次医学检定(一次麻醉,一次手术)。两者都必须成功。\n\n结果:\n• 成功:感染阶段重置为0;患者遭受1生命值伤害。\n• 失败:蜘蛛钻得更深;患者失去1d3生命值。\n\n限制与守秘人指导:\n• 每个人只能接受这种类型的野战手术一次。\n• 如果蜘蛛在失败尝试后钻得更深,只有大型医院手术才能移除它。\n• 如果不及时治疗且感染达到阶段5,蜘蛛爆发可能根据守秘人的判断造成更大的身体伤害。\n• 守秘人可以根据情况或叙事节奏要求调整阶段5的伤害或表现出宽容。"
   }
   ]

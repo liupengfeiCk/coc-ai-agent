@@ -1,22 +1,22 @@
 [
     {
-      "name": "Vincent Galenus",
-      "occupation": "Hospital Director / Medical Doctor",
+      "name": "文森特·盖伦努斯",
+      "occupation": "医院院长 / 医生",
       "age": 41,
       "gender": "male",
-      "appearance": "A sickly-looking middle-aged man with trembling hands, pale complexion, and signs of chronic exhaustion. Often appears sleep-deprived and physically unwell.",
-      "personality": "Guilt-ridden, conflicted, withdrawn, and remorseful. Torn between his medical ethics and desperate devotion to his wife. Suffers from alcoholism and self-justification.",
-      "background": "Vincent Galenus is the director of the local hospital in Cassandra. Despite his profession, he is far wealthier than his position should allow. In 1999, wealthy patrons involved in occult sacrifices recruited him to analyze a mysterious substance known as 'milk' for potential mass production. Desperate to save his terminally ill wife, Vincent accepted their offer in exchange for money and experimental medicine. After the patrons disappeared in 2002, his wife died. Patrizio later coerced Vincent into assisting with human experimentation to create Cthulhu-related hybrids, promising to resurrect Vincent’s wife as a ghoul. Though wracked with regret, Vincent continued down this path, clinging to the belief that his wife’s revival was worth any cost.",
+      "appearance": "一位看起来病怏怏的中年男性,双手颤抖,面色苍白,显示出慢性疲劳的迹象。经常显得睡眠不足且身体不适。",
+      "personality": "充满内疚、矛盾、孤僻、懊悔。在医学伦理和对妻子的绝望奉献之间挣扎。患有酗酒症和自我合理化。",
+      "background": "文森特·盖伦努斯是卡桑德拉当地医院的院长。尽管从事医疗职业,但他的财富远超其职位应有的水平。1999年,涉及神秘献祭的富有赞助人招募他分析一种被称为'乳汁'的神秘物质以便大规模生产。为了拯救身患绝症的妻子,文森特接受了他们的提议以换取金钱和实验药物。2002年赞助人消失后,他的妻子去世了。帕特里齐奥后来胁迫文森特协助人体实验以创造克苏鲁相关混血,承诺将文森特的妻子复活为食尸鬼。尽管充满悔恨,文森特继续走上这条道路,坚信妻子的复活值得付出任何代价。",
       "goals": [
-        "Keep his resurrected wife in existence at any cost",
-        "Justify his actions and avoid total psychological collapse"
+        "不惜一切代价让复活的妻子继续存在",
+        "为自己的行为辩护并避免完全精神崩溃"
       ],
       "secrets": [
-        "He conducted human experiments to transform people into Cthulhu-related beings",
-        "His wife was resurrected as a ghoul and later committed suicide due to unbearable mental anguish",
-        "He personally transported Lucifero's body from the hospital morgue to the crematorium under orders",
-        "He knows Martin Gin (Ghost Hand) works for Patrizio and uses the hospital's pharmaceutical storage room, but doesn't know Ghost Hand is Martin",
-        "The hospital ID card he uses actually belongs to Martin Gin"
+        "他进行人体实验将人类转变为克苏鲁相关生物",
+        "他的妻子被复活为食尸鬼,后来因无法忍受的精神痛苦而自杀",
+        "他亲自按命令将路西法罗的尸体从医院太平间运送到火葬场",
+        "他知道马丁·金(幽灵之手)为帕特里齐奥工作并使用医院药品储藏室,但不知道幽灵之手是马丁",
+        "他使用的医院ID卡实际上属于马丁·金"
       ],
       "attributes": {
         "STR": 55,
@@ -35,7 +35,7 @@
         "maxSanity": 45,
         "luck": 45,
         "mp": 9,
-        "conditions": ["Alcoholism", "Severe guilt", "Chronic stress"]
+        "conditions": ["酗酒", "严重内疚", "慢性压力"]
       },
       "skills": {
         "Credit Rating": 45,
@@ -50,65 +50,65 @@
         "Pharmacy": 85
       },
       "inventory": [
-        "Hospital ID card (belonging to Martin Gin)",
-        "Medical notes on experimental drugs",
-        "Alcohol flask"
+        "医院ID卡(属于马丁·金)",
+        "实验药物医学笔记",
+        "酒瓶"
       ],
       "clues": [
         {
-          "clueText": "He assisted in treating victims infected by spider bites linked to occult rituals.",
+          "clueText": "他协助治疗被与神秘仪式相关的蜘蛛咬伤感染的受害者。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Constantine Frollo", "Patrizio von Samsa"]
+          "relatedTo": ["康斯坦丁·弗罗洛", "帕特里齐奥·冯·萨姆萨"]
         },
         {
-          "clueText": "His wife was resurrected as a ghoul and lived in the Cassandra cemetery.",
+          "clueText": "他的妻子被复活为食尸鬼,住在卡桑德拉公墓。",
           "category": "secret",
           "difficulty": "hard",
-          "relatedTo": ["Cassandra Cemetery"]
+          "relatedTo": ["卡桑德拉公墓"]
         },
         {
-          "clueText": "The hospital ID he uses actually belongs to Martin Gin.",
+          "clueText": "他使用的医院ID卡实际上属于马丁·金。",
           "category": "observation",
           "difficulty": "hard",
-          "relatedTo": ["Martin Gin"]
+          "relatedTo": ["马丁·金"]
         },
         {
-          "clueText": "He personally transported Lucifero's body from the hospital morgue to the crematorium under orders, causing the body to disappear from the morgue.",
+          "clueText": "他亲自按命令将路西法罗的尸体从医院太平间运送到火葬场,导致尸体从太平间消失。",
           "category": "secret",
           "difficulty": "hard",
-          "relatedTo": ["Jenny Florence (Lucifero)", "2003 Reindeer Bar murder", "Crematorium"]
+          "relatedTo": ["珍妮·弗洛伦斯(路西法罗)", "2003年驯鹿酒吧谋杀案", "火葬场"]
         },
         {
-          "clueText": "He knows Martin Gin (Ghost Hand) works for Patrizio and uses hospital resources, but doesn't realize Ghost Hand is the murderer of both the 2002 and 2003 cases.",
+          "clueText": "他知道马丁·金(幽灵之手)为帕特里齐奥工作并使用医院资源,但不知道幽灵之手是2002年和2003年两起案件的凶手。",
           "category": "knowledge",
           "difficulty": "extreme",
-          "relatedTo": ["Martin Gin", "2002 Paradil Hotel murder", "2003 Reindeer Bar murder"]
+          "relatedTo": ["马丁·金", "2002年帕拉迪尔酒店谋杀案", "2003年驯鹿酒吧谋杀案"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Patrizio von Samsa",
+          "targetName": "帕特里齐奥·冯·萨姆萨",
           "relationshipType": "ally",
           "attitude": -30,
-          "description": "Occult collaborator who coerced Vincent into human experimentation.",
-          "history": "Patrizio exploited Vincent’s grief and desperation to recruit him into forbidden research."
+          "description": "胁迫文森特进行人体实验的神秘合作者。",
+          "history": "帕特里齐奥利用文森特的悲伤和绝望招募他进行禁忌研究。"
         },
         {
-          "targetName": "Constantine Frollo",
+          "targetName": "康斯坦丁·弗罗洛",
           "relationshipType": "neutral",
           "attitude": -10,
-          "description": "A priest who heard Vincent’s drunken confession.",
-          "history": "Vincent confessed to Constantine during a drunken breakdown, believing divine judgment was upon him."
+          "description": "听取文森特醉酒忏悔的牧师。",
+          "history": "文森特在醉酒崩溃时向康斯坦丁忏悔,相信神的审判降临到他身上。"
         },
         {
-          "targetName": "Martin Gin",
+          "targetName": "马丁·金",
           "relationshipType": "neutral",
           "attitude": 0,
-          "description": "Subordinate who misuses hospital resources.",
-          "history": "Vincent knowingly ignored Martin’s illegal use of hospital supplies."
+          "description": "滥用医院资源的下属。",
+          "history": "文森特知情但忽视马丁非法使用医院物资。"
         }
       ],
-      "notes": "Vincent is deeply reluctant to speak with investigators. He feels genuine remorse but does not fully regret his choices, as abandoning them would mean accepting that his wife’s suffering was meaningless."
+      "notes": "文森特极不愿与调查员交谈。他感到真正的悔恨,但并不完全后悔自己的选择,因为放弃它们意味着承认妻子的痛苦毫无意义。"
     }
   ]

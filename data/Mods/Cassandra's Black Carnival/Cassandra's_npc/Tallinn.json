@@ -1,23 +1,23 @@
 [
     {
-      "name": "Tallinn",
-      "occupation": "Underworld fixer / intermediary",
+      "name": "塔林",
+      "occupation": "黑社会中间人 / 联络员",
       "age": 51,
       "gender": "male",
-      "appearance": "A middle-aged man with a hardened, world-weary look. He carries himself cautiously, dressed plainly, blending easily into criminal or working-class environments.",
-      "personality": "Cautious, tight-lipped, pragmatic, and emotionally reserved. Despite his criminal connections, he is capable of genuine attachment and loyalty to those he trusts.",
-      "background": "Tallinn operates on the fringes of the underworld and is familiar with criminal codes, contacts, and euphemisms. He had an ongoing working relationship with Lucifero, maintained through money and discretion. Although their relationship was professional, Tallinn genuinely regarded Lucifero as a friend. Learning of Lucifero’s death affected him deeply. He is knowledgeable about certain underworld terms and structures but avoids unnecessary exposure.",
+      "appearance": "一位中年男性,外表坚韧、世故疲惫。他行事谨慎,穿着朴素,容易融入犯罪或工人阶级环境。",
+      "personality": "谨慎、守口如瓶、务实、情感保守。尽管有犯罪关系,但他对信任的人能够产生真诚的依恋和忠诚。",
+      "background": "塔林在黑社会边缘活动,熟悉犯罪规则、联系人和隐语。他与路西法罗有持续的工作关系,通过金钱和谨慎维持。虽然他们的关系是职业性的,但塔林真心把路西法罗视为朋友。得知路西法罗的死讯让他深受影响。他了解某些黑社会术语和结构,但避免不必要的暴露。",
       "goals": [
-        "Avoid drawing attention from criminal organizations",
-        "Protect himself by limiting what he reveals"
+        "避免吸引犯罪组织的注意",
+        "通过限制透露内容来保护自己"
       ],
     "secrets": [
-      "He knows that the code word 'the docks' is used exclusively within the Mafia",
-      "He is aware that Lucifero claimed to be a messenger from hell (Hell Messenger/地狱使者)",
-      "His nickname is 'Tallinn Widow' (塔林寡妇)",
-      "He is gay and doesn't want anyone in the underworld to know",
-      "He asked Lucifero to help him threaten his partner who seemed to be cheating, because he didn't want to expose his identity by asking his underworld brothers",
-      "About two months before Lucifero's death, she told him she had finally defeated someone and seized a troublesome prize, which made her very excited"
+      "他知道暗语'码头'是黑手党内部专用的",
+      "他知道路西法罗自称是地狱使者",
+      "他的绰号是'塔林寡妇'",
+      "他是同性恋,不想让黑社会的人知道",
+      "他请路西法罗帮他威胁似乎出轨的伴侣,因为他不想通过请黑社会兄弟帮忙而暴露身份",
+      "在路西法罗死前约两个月,她告诉他终于击败了某人并夺取了一个麻烦的战利品,这让她非常兴奋"
     ],
       "attributes": {
         "STR": 55,
@@ -48,46 +48,46 @@
       "inventory": [],
     "clues": [
       {
-        "clueText": "Lucifero was extremely cautious and only dealt with people she trusted.",
+        "clueText": "路西法罗极度谨慎,只与她信任的人打交道。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["Jenny Florence (Lucifero)"]
+        "relatedTo": ["珍妮·弗洛伦斯(路西法罗)"]
       },
       {
-        "clueText": "About two months before Lucifero's death, she claimed to have defeated someone and seized a troublesome prize (likely referring to Simon's computer from the two-story wooden house).",
+        "clueText": "在路西法罗死前约两个月,她声称击败了某人并夺取了一个麻烦的战利品(可能指西蒙在两层木屋的电脑)。",
         "category": "knowledge",
         "difficulty": "hard",
-        "relatedTo": ["Jenny Florence (Lucifero)", "Simon Laplace", "Two-story wooden house"]
+        "relatedTo": ["珍妮·弗洛伦斯(路西法罗)", "西蒙·拉普拉斯", "两层木屋"]
       },
       {
-        "clueText": "The term 'the docks' is an internal Mafia code word, and those who know it are likely Mafia members.",
+        "clueText": "术语'码头'是黑手党内部暗语,知道它的人很可能是黑手党成员。",
         "category": "secret",
         "difficulty": "regular",
-        "relatedTo": ["Mafia", "Ben Cleo"]
+        "relatedTo": ["黑手党", "本·克利奥"]
       },
       {
-        "clueText": "His nickname is 'Tallinn Widow' and he asked Lucifero to help him with a personal matter involving his partner, which is why Lucifero had 'Tallinn Widow: threaten her husband disguised as terrorist, 5000 USD' on her note.",
+        "clueText": "他的绰号是'塔林寡妇',他请路西法罗帮他处理涉及伴侣的私人问题,这就是为什么路西法罗的笔记上有'塔林寡妇:伪装成恐怖分子威胁她的丈夫,5000美元'。",
         "category": "secret",
         "difficulty": "hard",
-        "relatedTo": ["Jenny Florence (Lucifero)", "2003 Reindeer Bar murder"]
+        "relatedTo": ["珍妮·弗洛伦斯(路西法罗)", "2003年驯鹿酒吧谋杀案"]
       }
     ],
       "relationships": [
         {
-          "targetName": "Lucifero",
+          "targetName": "路西法罗",
           "relationshipType": "friend",
           "attitude": 60,
-          "description": "Professional partner and trusted associate",
-          "history": "They worked together discreetly for money, but over time Tallinn came to regard Lucifero as a genuine friend."
+          "description": "职业伙伴和受信任的合作者",
+          "history": "他们为了钱谨慎地合作,但随着时间推移,塔林开始把路西法罗视为真正的朋友。"
         },
         {
-          "targetName": "Kovind",
+          "targetName": "科温德",
           "relationshipType": "neutral",
           "attitude": -10,
-          "description": "Annoying underworld contact",
-          "history": "Tallinn enjoys provoking Kovind by calling him \"little mouse,\" treating it as casual amusement."
+          "description": "烦人的黑社会联系人",
+          "history": "塔林喜欢通过叫他'小老鼠'来挑衅科温德,将其视为随意的娱乐。"
         }
       ],
-      "notes": "Tallinn withholds information unless investigators gain his trust or approach him through proper underworld channels."
+      "notes": "除非调查员赢得他的信任或通过适当的黑社会渠道接近他,否则塔林会隐瞒信息。"
     }
   ]

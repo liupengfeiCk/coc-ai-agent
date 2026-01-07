@@ -1,22 +1,22 @@
 [
     {
-      "name": "Kovind",
-      "occupation": "Gang enforcer / gambler",
+      "name": "科温德",
+      "occupation": "黑帮打手 / 赌徒",
       "age": 39,
       "gender": "male",
-      "appearance": "A well-built man with a tough, streetwise demeanor; moves confidently and keeps a watchful eye on his surroundings.",
-      "personality": "Aggressive, intimidating, pragmatic, enjoys exerting pressure on others and taking risks, but remains calculating rather than reckless.",
-      "background": "Kovind is involved in the local underworld and is accustomed to violence, gambling, and intimidation. He operates as muscle when needed and is comfortable using firearms. Within his social circle, he is known for his confrontational style and for being the target of mocking nicknames from those who enjoy provoking him.",
+      "appearance": "一位体格健壮的男性,外表强硬、精通街头智慧;行动自信,对周围环境保持警惕。",
+      "personality": "好斗、恐吓、务实,喜欢对他人施加压力和冒险,但保持精于算计而非鲁莽。",
+      "background": "科温德参与当地黑社会,习惯于暴力、赌博和恐吓。他在需要时充当打手,对使用枪械感到自在。在他的社交圈中,他以对抗风格和成为那些喜欢挑衅他的人的嘲笑绰号目标而闻名。",
       "goals": [
-        "Maintain his position and influence within the local criminal circles",
-        "Profit through gambling and underworld dealings"
+        "维持他在当地犯罪圈中的地位和影响力",
+        "通过赌博和黑社会交易获利"
       ],
       "secrets": [
-      "He holds compromising photos of Nancy Charlotte taken as collateral for her gambling debt",
-      "He trapped Nancy in a gambling scheme and demanded payment or sexual favors",
-      "He sent Lucifero (Jenny Florence) to collect Nancy's debt, but kept some of the photos",
-      "His nickname is 'Tiger' and he works with Tallinn at the underground casino",
-      "He is annoyed by Tallinn calling him 'little mouse'"
+      "他持有南希·夏洛特的敏感照片,作为她赌债的抵押",
+      "他让南希陷入赌博骗局并要求付款或性服务",
+      "他派路西法罗(珍妮·弗洛伦斯)去收南希的债,但保留了一些照片",
+      "他的绰号是'老虎',在地下赌场与塔林一起工作",
+      "他被塔林叫'小老鼠'而恼火"
     ],
       "attributes": {
         "STR": 45,
@@ -50,33 +50,33 @@
         "Gambling": 70
       },
       "inventory": [
-        "Handgun",
-        "Cash from gambling",
-        "Cigarettes"
+        "手枪",
+        "赌博收入",
+        "香烟"
       ],
       "clues": [
       {
-        "clueText": "He holds compromising photos of Nancy Charlotte and sent Lucifero to collect her gambling debt. Some photos are still missing.",
+        "clueText": "他持有南希·夏洛特的敏感照片,并派路西法罗去收她的赌债。一些照片仍然下落不明。",
         "category": "secret",
         "difficulty": "hard",
-        "relatedTo": ["Nancy Charlotte", "Jenny Florence (Lucifero)", "Gambling"]
+        "relatedTo": ["南希·夏洛特", "珍妮·弗洛伦斯(路西法罗)", "赌博"]
       },
       {
-        "clueText": "His nickname is 'Tiger' and he works at the underground casino in the church basement with Tallinn.",
+        "clueText": "他的绰号是'老虎',在教堂地下室的地下赌场与塔林一起工作。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["Underground casino", "Tallinn", "Church basement"]
+        "relatedTo": ["地下赌场", "塔林", "教堂地下室"]
       }
     ],
       "relationships": [
         {
-          "targetName": "Tallinn",
+          "targetName": "塔林",
           "relationshipType": "rival",
           "attitude": -30,
-          "description": "Tallinn frequently mocks Kovind by calling him 'little mouse,' treating his anger as entertainment.",
-          "history": "Their relationship is marked by verbal provocation and mutual irritation rather than open violence."
+          "description": "塔林经常通过叫他'小老鼠'来嘲笑科温德,将他的愤怒当作娱乐。",
+          "history": "他们的关系以言语挑衅和相互恼怒为特征,而非公开暴力。"
         }
       ],
-      "notes": "Kovind is volatile under provocation but usually stops short of unnecessary escalation unless his pride or interests are directly threatened."
+      "notes": "科温德在被挑衅时易怒,但通常会在不必要的升级前停下,除非他的自尊或利益受到直接威胁。"
     }
   ]

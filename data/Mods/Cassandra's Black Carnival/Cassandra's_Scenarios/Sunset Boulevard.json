@@ -1,70 +1,70 @@
 [
     {
-      "name": "Sunset Boulevard",
-      "description": "Sunset Boulevard runs along the outskirts of Cassandra, gradually transitioning from town structures into industrial and then wilderness areas. The street feels increasingly isolated the farther one travels, serving as the main route toward places tied to death, labor, and the unknown.",
+      "name": "日落大道",
+      "description": "日落大道沿着卡桑德拉的郊区延伸,逐渐从镇上的建筑过渡到工业区,然后是荒野地区。街道越往远处越感觉孤立,作为通向与死亡、劳动和未知相关的地方的主要路线。",
       "snapshot": {
-        "name": "Sunset Boulevard",
-        "location": "Cassandra – Sunset Boulevard",
-        "description": "Sunset Boulevard begins as a sparsely populated road and steadily loses signs of urban life. Buildings thin out, the air grows cooler, and natural sounds replace human activity. The boulevard functions less as a destination itself and more as a passage toward darker and more remote locations connected to Cassandra’s past and hidden horrors.",
+        "name": "日落大道",
+        "location": "卡桑德拉 - 日落大道",
+        "description": "日落大道开始是一条人烟稀少的道路,逐渐失去城市生活的迹象。建筑物稀疏,空气变得更冷,自然声音取代了人类活动。大道本身不太像一个目的地,更像是通往与卡桑德拉过去和隐藏恐怖相关的更黑暗、更偏远地点的通道。",
         "characters": [],
         "clues": [],
         "conditions": [
           {
-            "type": "sound",
-            "description": "Distant wind through trees and occasional industrial noises from afar.",
+            "type": "声音",
+            "description": "远处树木中的风声和偶尔远处的工业噪音。",
             "mechanicalEffect": ""
           },
           {
-            "type": "lighting",
-            "description": "Natural light fades quickly toward evening; street lighting is minimal or absent.",
+            "type": "照明",
+            "description": "自然光在傍晚时迅速消退;路灯照明最少或缺失。",
             "mechanicalEffect": ""
           },
           {
-            "type": "temperature",
-            "description": "Noticeably cooler than the town center, especially near the forest edge.",
+            "type": "温度",
+            "description": "明显比镇中心更冷,尤其是靠近森林边缘。",
             "mechanicalEffect": ""
           }
         ],
         "events": [],
         "exits": [
           {
-            "direction": "Roadside path",
-            "destination": "Cemetery",
-            "description": "A branching path leading to Cassandra’s cemetery, a quiet and somber resting place on the edge of town.",
+            "direction": "路边小径",
+            "destination": "墓地",
+            "description": "通向卡桑德拉墓地的分支小径,镇边缘一个安静而阴郁的安息之地。",
             "condition": ""
           },
           {
-            "direction": "Industrial spur",
-            "destination": "Logging Camp",
-            "description": "A rough road splitting off toward the logging camp, marked by signs of heavy labor and machinery.",
+            "direction": "工业支线",
+            "destination": "伐木营地",
+            "description": "分叉通向伐木营地的粗糙道路,标有繁重劳动和机械的迹象。",
             "condition": ""
           },
           {
-            "direction": "End of the road",
-            "destination": "Deep Forest",
-            "description": "The boulevard ultimately gives way to dense woodland, leading investigators into the forest depths beyond civilization.",
+            "direction": "道路尽头",
+            "destination": "森林深处",
+            "description": "大道最终通向密集的林地,引导调查员进入文明之外的森林深处。",
             "condition": ""
           }
         ],
-        "keeperNotes": "Sunset Boulevard should emphasize transition and unease. It is a liminal space, guiding investigators away from safety and toward increasingly dangerous and supernatural locations.",
+        "keeperNotes": "日落大道应该强调过渡和不安。这是一个边缘空间,引导调查员远离安全,走向越来越危险和超自然的地点。",
         "permanentChanges": []
       },
-      "tags": ["outskirts", "transition", "isolated", "ominous"],
+      "tags": ["郊区", "过渡", "孤立", "不祥"],
       "connections": [
         {
-          "scenarioName": "Cemetery",
-          "relationshipType": "leads_to",
-          "description": "Sunset Boulevard provides access to the cemetery located just beyond the town limits."
+          "scenarioName": "墓地",
+          "relationshipType": "导向",
+          "description": "日落大道提供通往位于镇界之外的墓地的通道。"
         },
         {
-          "scenarioName": "Logging Camp",
-          "relationshipType": "leads_to",
-          "description": "A branching road from Sunset Boulevard leads directly to the logging camp."
+          "scenarioName": "伐木营地",
+          "relationshipType": "导向",
+          "description": "从日落大道分支的道路直接通向伐木营地。"
         },
         {
-          "scenarioName": "Forest Depths",
-          "relationshipType": "leads_to",
-          "description": "At the far end of Sunset Boulevard, the road fades into the deep forest."
+          "scenarioName": "森林深处",
+          "relationshipType": "导向",
+          "description": "在日落大道的远端,道路消失在深林中。"
         }
       ]
     }

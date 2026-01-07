@@ -1,18 +1,18 @@
 [
     {
-      "name": "Johnny",
-      "occupation": "Hunter",
+      "name": "约翰尼",
+      "occupation": "猎人",
       "age": 35,
       "gender": "male",
-      "appearance": "A physically fit man with a rugged outdoorsman look, accustomed to hunting and physical activity.",
-      "personality": "Hot-tempered, possessive, impulsive, easily angered when provoked, especially regarding romantic rivals.",
-      "background": "A hunting enthusiast who has long harbored romantic feelings for Helen. He resents Vito, believing himself no inferior. On December 22, 2003, he arranged a date with Helen at the Reindeer Bar to confess his feelings, but got into a violent altercation with Philip Scaletta, who was harassing her. Although Johnny drove Philip off, the interruption ruined his chance to confess, and Helen left early, leaving Johnny furious and frustrated. This happened on the same day as the Reindeer Bar murder case.",
+      "appearance": "一位身体健壮的男性,外表粗犷,习惯于狩猎和体力活动。",
+      "personality": "脾气暴躁、占有欲强、冲动,尤其在涉及情敌时容易被激怒。",
+      "background": "一位狩猎爱好者,长期对海伦怀有浪漫感情。他憎恨维托,认为自己不比他差。2003年12月22日,他安排在驯鹿酒吧与海伦约会以表白,但与骚扰她的菲利普·斯卡莱塔发生暴力冲突。虽然约翰尼赶走了菲利普,但这次中断毁了他表白的机会,海伦提前离开,让约翰尼既愤怒又沮丧。这发生在驯鹿酒吧谋杀案的同一天。",
       "goals": [
-        "Win Helen’s affection",
-        "Prove himself superior to Vito"
+        "赢得海伦的感情",
+        "证明自己优于维托"
       ],
       "secrets": [
-        "His growing jealousy and anger could push him toward reckless or violent actions"
+        "他不断增长的嫉妒和愤怒可能会推动他采取鲁莽或暴力行动"
       ],
       "attributes": {
         "STR": 45,
@@ -44,40 +44,40 @@
         "Charm": 90
       },
       "inventory": [
-        "Hunting shotgun",
-        "Hunting gear"
+        "狩猎霰弹枪",
+        "狩猎装备"
       ],
     "clues": [
       {
-        "clueText": "Johnny violently confronted Philip Scaletta at the Reindeer Bar on December 22, 2003 (the day of the murder) for harassing Helen.",
+        "clueText": "约翰尼在2003年12月22日(谋杀当天)在驯鹿酒吧因菲利普骚扰海伦而暴力对抗他。",
         "category": "observation",
         "difficulty": "regular",
-        "relatedTo": ["Helen", "Philip Scaletta", "2003 Reindeer Bar murder"]
+        "relatedTo": ["海伦", "菲利普·斯卡莱塔", "2003年驯鹿酒吧谋杀案"]
       }
     ],
       "relationships": [
         {
-          "targetName": "Helen",
+          "targetName": "海伦",
           "relationshipType": "friend",
           "attitude": 60,
-          "description": "Johnny is deeply infatuated with Helen and wants to confess his feelings.",
-          "history": "He has admired her for a long time but has never successfully expressed his love."
+          "description": "约翰尼深深迷恋海伦并想表白。",
+          "history": "他仰慕她很长时间但从未成功表达爱意。"
         },
         {
-          "targetName": "Vito",
+          "targetName": "维托",
           "relationshipType": "rival",
           "attitude": -50,
-          "description": "Johnny resents Vito for being in a relationship with Helen.",
-          "history": "Johnny believes he is no worse than Vito and feels unfairly overlooked."
+          "description": "约翰尼憎恨维托与海伦的关系。",
+          "history": "约翰尼认为自己不比维托差,感到不公平地被忽视。"
         },
         {
-          "targetName": "Philip",
+          "targetName": "菲利普",
           "relationshipType": "enemy",
           "attitude": -70,
-          "description": "Philip was beaten by Johnny after harassing Helen.",
-          "history": "Their conflict began during a bar confrontation."
+          "description": "菲利普因骚扰海伦被约翰尼殴打。",
+          "history": "他们的冲突始于酒吧对抗。"
         }
       ],
-      "notes": "Johnny’s emotional volatility makes him a potential wildcard who could escalate situations unexpectedly."
+      "notes": "约翰尼的情绪不稳定使他成为潜在的不确定因素,可能意外升级局势。"
     }
   ]

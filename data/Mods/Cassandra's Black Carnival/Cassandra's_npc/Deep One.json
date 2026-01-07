@@ -1,18 +1,18 @@
 [
   {
-    "name": "Deep One",
-    "occupation": "Mythos Aquatic Humanoid",
+    "name": "深潜者",
+    "occupation": "神话水生人形",
     "age": 0,
-    "appearance": "A tall, powerfully built amphibious humanoid with slick, rubbery skin mottled by scales. Bulging, unblinking eyes, gill-slits along the neck, wide mouths filled with sharp teeth, and webbed hands and feet mark them as profoundly inhuman.",
-    "personality": "Cold, predatory, and communal. Deep Ones are patient and calculating, guided by ancient traditions and absolute loyalty to their kind and aquatic gods.",
-    "background": "Deep Ones are an ancient aquatic race dwelling in the ocean depths. They can live both underwater and on land and often interact with humans through cults, interbreeding, or coastal settlements, most infamously tied to the Innsmouth legacy.",
+    "appearance": "一个高大、体格强壮的两栖人形,有光滑、橡胶状的皮肤,上面布满鳞片。凸出、不眨眼的眼睛、颈部的鳃裂、满是尖牙的宽嘴以及有蹼的手脚,使它们深刻地非人类。",
+    "personality": "冷酷、掠食性和群居性。深潜者有耐心且精于算计,受古老传统和对同类及水生神祇的绝对忠诚指引。",
+    "background": "深潜者是栖息在海洋深处的古老水生种族。它们既能在水下也能在陆地上生活,经常通过邪教、杂交或沿海定居点与人类互动,最臭名昭著地与印斯茅斯遗产有关。",
     "goals": [
-      "Defend Deep One communities and territory",
-      "Expand influence through alliances, cults, and breeding"
+      "保卫深潜者社区和领地",
+      "通过联盟、邪教和繁殖扩大影响力"
     ],
     "secrets": [
-      "Deep Ones can interbreed with humans, producing hybrid offspring",
-      "They possess ancient lore and Mythos knowledge tied to oceanic deities"
+      "深潜者可以与人类杂交,产生混血后代",
+      "它们拥有与海洋神祇相关的古老知识和神话学识"
     ],
     "attributes": {
       "STR": 65,
@@ -40,23 +40,23 @@
     "inventory": [],
     "clues": [
       {
-        "clueText": "Deep Ones can breathe both underwater and on land without assistance.",
+        "clueText": "深潜者既能在水下也能在陆地上呼吸,无需辅助。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Deep Ones"
+          "深潜者"
         ]
       },
       {
-        "clueText": "They favor spears and tridents over human-made weapons.",
+        "clueText": "它们偏好长矛和三叉戟而非人造武器。",
         "category": "observation",
         "difficulty": "regular",
         "relatedTo": [
-          "Deep Ones"
+          "深潜者"
         ]
       }
     ],
     "relationships": [],
-    "notes": "Combat & Abilities:\n\nCombat Style:\nDeep Ones can use human weapons, but they prefer their own spears and tridents. They attack once per round.\n\nAttacks:\n• Fighting 45% (22/9): Damage is 1D6 + damage bonus, or weapon-dependent (e.g., spear: 1D8 + damage bonus).\n\nArmor:\n1 point (tough skin and scales).\n\nSpells:\nThere is a 40% chance that a Deep One knows 1D4 spells.\n\nSpecial Ability – Amphibious Respiration:\nDeep Ones can breathe underwater naturally and can also breathe on land without limitation.\n\nSanity Loss:\nSeeing a Deep One causes SAN loss of 0 / 1D6.\n\nKeeper Notes:\nDeep Ones function well as disciplined shock troops or as emissaries of vast, ancient oceanic powers. Their true horror lies not only in their appearance but in their timeless patience and inevitable return to claim what is theirs."
+    "notes": "战斗与能力:\n\n战斗风格:\n深潜者可以使用人类武器,但它们更喜欢自己的长矛和三叉戟。它们每回合攻击一次。\n\n攻击:\n• 战斗45%(22/9):伤害是1D6+伤害加值,或取决于武器(例如,长矛:1D8+伤害加值)。\n\n护甲:\n1点(坚韧皮肤和鳞片)。\n\n法术:\n深潜者有40%的几率知道1D4个法术。\n\n特殊能力 – 两栖呼吸:\n深潜者可以自然在水下呼吸,也可以在陆地上无限制地呼吸。\n\n理智损失:\n看到深潜者造成0/1D6点理智损失。\n\n守秘人提示:\n深潜者很好地充当训练有素的突击部队或作为庞大、古老海洋力量的使者。它们真正的恐怖不仅在于外表,还在于它们永恒的耐心和不可避免地回来索取属于它们的东西。"
   }
 ]

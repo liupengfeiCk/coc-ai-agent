@@ -1,24 +1,24 @@
 [
   {
-    "name": "Ben Cleo",
-    "occupation": "Mafia Boss / Underground Power Broker",
+    "name": "本·克莱奥",
+    "occupation": "黑手党老大/地下权力掮客",
     "age": 38,
     "gender": "male",
-    "appearance": "A composed and intimidating man with a calm posture. Dresses neatly and practically, giving the impression of a businessman rather than a criminal.",
-    "personality": "Cold-headed, pragmatic, disciplined, and authoritarian. Values order, loyalty, and efficiency; rarely acts on impulse.",
-    "background": "Ben Cleo is the current head of the Cleo family, a local mafia power in Cassandra. Raised within the criminal underworld, he inherited leadership after internal family power shifts. Under his control, the Cleo family manages smuggling and underground trade through the train station, operating under the principle of conducting business without interfering in the motives behind transactions. Ben maintains strict discipline among his subordinates and avoids unnecessary cruelty, focusing instead on long-term stability and profit.",
+    "appearance": "一个镇定且令人生畏的男人,姿态沉着。穿着整洁实用,给人商人而非罪犯的印象。",
+    "personality": "冷静、务实、纪律严明且权威。重视秩序、忠诚和效率;很少冲动行事。",
+    "background": "本·克莱奥是克莱奥家族的现任族长,卡珊德拉当地的黑手党势力。在犯罪地下世界中长大,在家族内部权力转移后继承了领导权。在他的控制下,克莱奥家族通过火车站管理走私和地下交易,遵循不干涉交易背后动机的原则进行业务。本对下属保持严格纪律,避免不必要的残忍,而是专注于长期稳定和利润。",
     "goals": [
-      "Maintain control over the Cleo family's underground operations",
-      "Prevent outside forces from destabilizing his business"
+      "维持对克莱奥家族地下业务的控制",
+      "防止外部势力破坏他的业务稳定"
     ],
     "secrets": [
-      "Has long-standing knowledge of illicit trades passing through the train station",
-      "Knows more about past family dealings and disappearances than he publicly admits",
-      "He has a gold-inlaid Desert Eagle .357 caliber pistol (1981 custom edition, MRI internal members only) that matches the caliber of the weapon used in the 2003 Reindeer Bar murder case",
-      "He was actually attending a secret gambling session at the church basement during the time of the 2003 Reindeer Bar murder, not praying as he claimed",
-      "The Reindeer Bar is his property, and the surveillance system was installed by his people, but the system was broken by Martin, not by Ben",
-      "He knows someone called 'Ghost Hand' works for Patrizio, but doesn't know Ghost Hand is Martin Cleo",
-      "He has a safe containing his father Karong's notes and books related to Nyogtha and other Mythos entities"
+      "对通过火车站进行的非法交易有长期了解",
+      "对过去的家族交易和失踪事件了解得比他公开承认的要多",
+      "他有一把镶金的沙漠之鹰.357口径手枪(1981年定制版,仅限MRI内部成员),口径与2003年驯鹿酒吧谋杀案中使用的武器相符",
+      "在2003年驯鹿酒吧谋杀案发生时,他实际上在教堂地下室参加秘密赌博会,而不是像他声称的那样在祈祷",
+      "驯鹿酒吧是他的财产,监控系统是他的人安装的,但系统是被马丁破坏的,不是本",
+      "他知道有个叫'鬼手'的人为帕特里齐奥工作,但不知道鬼手就是马丁·克莱奥",
+      "他有一个保险箱,里面装有他父亲卡龙关于尼奥格塔和其他神话实体的笔记和书籍"
     ],
     "attributes": {
       "STR": 65,
@@ -49,75 +49,75 @@
     },
     "inventory": [
       {
-        "name": "Beretta pistol",
+        "name": "贝雷塔手枪",
         "quantity": 1,
         "properties": {
-          "note": "His usual carry gun."
+          "note": "他常用的随身枪。"
         }
       },
       {
-        "name": "Desert Eagle (1981 custom, gold-inlaid edition, .357 caliber)",
+        "name": "沙漠之鹰(1981年定制版,镶金版,.357口径)",
         "quantity": 1,
         "properties": {
-          "clue": "Special customized gold version by MRI, internal members only. .357 caliber, matching the caliber of the weapon used in the 2003 Reindeer Bar murder case. Ben loves it and carries it everywhere, but rarely uses unless absolutely necessary."
+          "clue": "MRI定制的特殊镶金版,仅限内部成员。.357口径,与2003年驯鹿酒吧谋杀案中使用的武器口径相符。本非常喜欢它,到哪都带着,但除非绝对必要否则很少使用。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "The Cleo family uses the train station as a front for smuggling and black-market logistics.",
+        "clueText": "克莱奥家族利用火车站作为走私和黑市物流的掩护。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Cassandra Train Station",
-          "Cleo Family"
+          "卡珊德拉火车站",
+          "克莱奥家族"
         ]
       },
       {
-        "clueText": "Ben enforces a strict rule: conduct business without asking questions about clients' intentions.",
+        "clueText": "本执行严格的规则:做生意不问客户的意图。",
         "category": "observation",
         "difficulty": "regular",
         "relatedTo": [
-          "Cleo Family"
+          "克莱奥家族"
         ]
       },
       {
-        "clueText": "Ben has a .357 caliber Desert Eagle that matches the caliber of the weapon used in the 2003 Reindeer Bar murder case, but he was actually at a secret gambling session during the murder, not at the church as he claimed.",
+        "clueText": "本有一把.357口径沙漠之鹰,口径与2003年驯鹿酒吧谋杀案中使用的武器相符,但他在谋杀案发生时实际上在秘密赌博会,而不是像他声称的那样在教堂。",
         "category": "observation",
         "difficulty": "hard",
         "relatedTo": [
-          "2003 Reindeer Bar murder",
-          "Desert Eagle",
-          ".357 caliber"
+          "2003年驯鹿酒吧谋杀案",
+          "沙漠之鹰",
+          ".357口径"
         ]
       },
       {
-        "clueText": "The Reindeer Bar surveillance system was installed by Ben's people, but it was broken by Martin (Ghost Hand), not by Ben.",
+        "clueText": "驯鹿酒吧的监控系统是本的人安装的,但它被马丁(鬼手)破坏了,不是本破坏的。",
         "category": "knowledge",
         "difficulty": "hard",
         "relatedTo": [
-          "Reindeer Bar",
-          "Martin Gin",
-          "Surveillance"
+          "驯鹿酒吧",
+          "马丁·金",
+          "监控"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Haran Greenwood",
+        "targetName": "哈兰·格林伍德",
         "relationshipType": "employee",
         "attitude": 70,
-        "description": "Trusted subordinate responsible for guarding the train station entrance.",
-        "history": "Haran helped Ben secure power during earlier transitions within the Cleo family."
+        "description": "负责守卫火车站入口的可信赖下属。",
+        "history": "哈兰在克莱奥家族早期权力交接期间帮助本巩固了权力。"
       },
       {
-        "targetName": "Adolph Carl",
+        "targetName": "阿道夫·卡尔",
         "relationshipType": "neutral",
         "attitude": 10,
-        "description": "Occasional business contact acting as a middleman.",
-        "history": "They have cooperated when interests aligned but maintain distance."
+        "description": "偶尔的商业联系人,充当中间人。",
+        "history": "当利益一致时他们会合作,但保持距离。"
       }
     ],
-    "notes": "Ben rarely interacts directly with investigators unless provoked. Any harm done to Haran will eventually provoke retaliation from Ben."
+    "notes": "本很少直接与调查员互动,除非被激怒。对哈兰造成的任何伤害最终都会引发本的报复。"
   }
 ]

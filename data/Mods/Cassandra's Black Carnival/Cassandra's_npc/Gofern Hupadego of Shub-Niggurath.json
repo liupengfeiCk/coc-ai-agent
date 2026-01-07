@@ -1,18 +1,18 @@
 [
   {
-    "name": "Gofern-Hupadego-Shub-Nicholas",
-    "occupation": "Transformed cult creature (former human merchant)",
+    "name": "莎布·尼古拉丝的歌芬-胡帕德格",
+    "occupation": "转变的邪教生物(前人类商人)",
     "age": 45,
-    "appearance": "A grotesque hybrid creature born from human flesh and the influence of Shub-Niggurath. Its body shows distorted humanoid features mixed with bestial traits such as claws, hooves, horns, or fangs. The skin is rough and unhealthy, often damp with mud from the forest swamps it inhabits.",
-    "personality": "Bestial, predatory, and driven by instinct. Retains fragments of human cunning but is dominated by hunger, aggression, and obedience to Shub-Niggurath.",
-    "background": "Once a wealthy merchant who participated in forbidden rituals dedicated to Shub-Niggurath. During a failed or excessive ritual, he was transformed into a monstrous servitor known as a Gofern-Hupadego-Shub-Nicholas, doomed to live in the damp forests and swamps as a creature of the Dark Mother.",
+    "appearance": "一个由人类肉体和莎布·尼古拉丝影响诞生的怪诞混血生物。它的身体显示扭曲的类人特征,混合着野兽特征,如爪子、蹄子、角或尖牙。皮肤粗糙不健康,经常沾满它栖息的森林沼泽的泥浆。",
+    "personality": "野兽般、掠食性,由本能驱动。保留人类狡猾的碎片,但被饥饿、侵略性和对莎布·尼古拉丝的服从所支配。",
+    "background": "曾是一位参与献给莎布·尼古拉丝的禁忌仪式的富商。在一次失败或过度的仪式中,他被转变为被称为歌芬-胡帕德格-莎布-尼古拉斯的怪物仆从,注定作为黑暗之母的生物生活在潮湿的森林和沼泽中。",
     "goals": [
-      "Feed to sustain its unnatural existence",
-      "Serve the will of Shub-Niggurath"
+      "捕食以维持其非自然存在",
+      "侍奉莎布·尼古拉丝的意志"
     ],
     "secrets": [
-      "Was once human and retains fragments of human memory",
-      "Regenerates unnaturally each round unless completely destroyed"
+      "曾是人类并保留人类记忆的碎片",
+      "除非完全摧毁,否则每回合会非自然再生"
     ],
     "attributes": {
       "STR": 55,
@@ -32,7 +32,7 @@
       "luck": 60,
       "mp": 17,
       "conditions": [
-        "Regeneration"
+        "再生"
       ]
     },
     "skills": {
@@ -45,32 +45,32 @@
     "inventory": [],
     "clues": [
       {
-        "clueText": "These creatures were once wealthy merchants who vanished after forbidden rituals.",
+        "clueText": "这些生物曾是在禁忌仪式后消失的富商。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Shub-Niggurath",
-          "Black Goat Cult"
+          "莎布·尼古拉丝",
+          "黑山羊邪教"
         ]
       },
       {
-        "clueText": "They regenerate health each round unless slain completely.",
+        "clueText": "除非被完全杀死,否则它们每回合再生生命值。",
         "category": "observation",
         "difficulty": "hard",
         "relatedTo": [
-          "Forest Swamp"
+          "森林沼泽"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Shub-Niggurath",
+        "targetName": "莎布·尼古拉丝",
         "relationshipType": "employer",
         "attitude": 100,
-        "description": "Utter devotion to the Dark Mother.",
-        "history": "Transformation occurred during a ritual dedicated to Shub-Niggurath."
+        "description": "对黑暗之母的彻底奉献。",
+        "history": "转变发生在献给莎布·尼古拉丝的仪式中。"
       }
     ],
-    "notes": "Combat & Abilities Notes: Damage Bonus: +0. In combat, a Gofern-Hupadego of Shub-Niggurath may make one attack per round, choosing from a bite or a claw/hoof strike/punch. Some specimens bearing goat or ram horns may instead perform a headbutt. Certain individuals may wield crude clubs or other improvised weapons. Attack Chances: – Claw: 30% – Bite: 40% – Headbutt: 20% – Improvised Weapon: 25% Special Combat Maneuver – Relentless Bite: On a successful bite, the target suffers 1D6 damage and blood drain. Starting from the first round after the bite, the target loses 3D10 STR per round as long as the creature maintains its grip. Armor & Regeneration: The creature has no armor, but regenerates 1D6 HP per round until destroyed. Spells: All Gofern-Hupadego know the spells Call Shub-Niggurath, Summon/Bind Dark Young, Body Transformation, Spirit Transformation, and Crimson Circle, plus 1D5 additional spells chosen by the Keeper. Skills: – Claw 30% (1D6 + damage bonus) – Bite 40% (1D4) – Headbutt 20% (1D6 + damage bonus) – Improvised Weapon 25% (weapon damage + damage bonus) These creatures retain all skills from their former human lives, and additionally gain Hide 90% and Stealth 70%. Sanity Loss: Witnessing most Gofern-Hupadego of Shub-Niggurath causes 0/1D4 SAN loss; witnessing a particularly horrific or heavily mutated specimen causes 1/1D6 SAN loss."
+    "notes": "战斗与能力提示:伤害加值:+0。在战斗中,莎布·尼古拉丝的歌芬-胡帕德格每回合可进行一次攻击,从撕咬或爪子/蹄击/拳击中选择。一些带有山羊或公羊角的标本可能改为进行头撞。某些个体可能挥舞粗糙的棍棒或其他简易武器。攻击几率:– 爪子:30% – 撕咬:40% – 头撞:20% – 简易武器:25% 特殊战斗技巧 – 无情撕咬:撕咬成功时,目标遭受1D6伤害和失血。从撕咬后的第一回合开始,只要生物保持咬合,目标每回合失去3D10力量。护甲与再生:生物没有护甲,但每回合再生1D6生命值,直到被摧毁。法术:所有歌芬-胡帕德格都知道召唤莎布·尼古拉丝、召唤/束缚黑暗幼体、身体转变、灵魂转变和深红圆环法术,加上守秘人选择的1D5个额外法术。技能:– 爪子30%(1D6+伤害加值)– 撕咬40%(1D4)– 头撞20%(1D6+伤害加值)– 简易武器25%(武器伤害+伤害加值)这些生物保留前世人类生活的所有技能,并额外获得隐藏90%和潜行70%。理智损失:目睹大多数莎布·尼古拉丝的歌芬-胡帕德格造成0/1D4理智损失;目睹特别可怕或严重突变的标本造成1/1D6理智损失。"
   }
 ]

@@ -1,24 +1,24 @@
 [
   {
-    "name": "Constantine Frollo",
-    "occupation": "Catholic priest",
+    "name": "康斯坦丁·弗罗洛",
+    "occupation": "天主教神父",
     "age": 50,
     "gender": "male",
-    "appearance": "A stern-looking middle-aged man with sharp facial features, usually dressed in priestly garments. His posture is rigid, and his gaze is often intense, giving others a sense of pressure and unease.",
-    "personality": "Cold, controlling, self-righteous, and manipulative. Appears pious and disciplined on the surface, but is inwardly fanatical and convinced of his own moral superiority.",
-    "background": "Originally named Michael Parker, Constantine was born in the United States. At the age of six, he moved to France with his adoptive parents and grew up there, becoming culturally French. He later entered the clergy and eventually came to Cassandra as a priest. Beneath his religious role, he is deeply entangled with occult beliefs and forbidden forces, believing himself chosen to enact a divine plan.",
+    "appearance": "一个面容严厉的中年男人,面部特征尖锐,通常穿着神职人员服装。他的姿态僵硬,目光经常很强烈,给别人一种压力和不安的感觉。",
+    "personality": "冷酷、控制欲强、自以为是且善于操纵。表面上虔诚守纪,但内心狂热并确信自己的道德优越性。",
+    "background": "原名迈克尔·帕克,康斯坦丁出生于美国。六岁时,他随养父母搬到法国并在那里长大,文化上成为法国人。他后来进入神职人员,最终作为神父来到卡珊德拉。在他的宗教角色之下,他深深卷入神秘信仰和禁忌力量,相信自己被选中来实施神圣计划。",
     "goals": [
-      "Bring about the descent of a forbidden entity through religious ritual",
-      "Maintain control over the town of Cassandra through faith and fear"
+      "通过宗教仪式带来禁忌实体的降临",
+      "通过信仰和恐惧维持对卡珊德拉镇的控制"
     ],
     "secrets": [
-      "He is involved in occult practices disguised as religious rites",
-      "He collaborates with Patrizio von Samsa, including helping him eliminate threats like Bruno Galilei",
-      "He helped Patrizio deal with Bruno by distracting investigators when Patrizio killed Bruno",
-      "He knows Vincent Galenus's secrets from his confession and helps him deal with spider-infected people",
-      "The church basement contains Atlach-Nacha's web connecting to the Dreamlands, with cold spiders coming and going",
-      "He can control spider-people and decide the fate of those taken away in cocoons",
-      "He serves Atlach-Nacha and wants to bring the deity into the world, though this is not what Atlach-Nacha wants"
+      "他参与伪装成宗教仪式的神秘实践",
+      "他与帕特里齐奥·冯·萨姆萨合作,包括帮助他消除布鲁诺·伽利略等威胁",
+      "他通过在帕特里齐奥杀死布鲁诺时分散调查员注意力来帮助帕特里齐奥对付布鲁诺",
+      "他从文森特·加莱努斯的忏悔中知道他的秘密,并帮助他处理蜘蛛感染者",
+      "教堂地下室包含阿特拉克·纳克亚连接幻梦境的网,寒冷蜘蛛来来往往",
+      "他可以控制蜘蛛人并决定被茧子带走的人的命运",
+      "他侍奉阿特拉克·纳克亚并想将神祇带到世界,尽管这不是阿特拉克·纳克亚想要的"
     ],
     "attributes": {
       "STR": 45,
@@ -49,82 +49,82 @@
     },
     "inventory": [
       {
-        "name": "Silver cross (pure silver)",
+        "name": "银十字架(纯银)",
         "quantity": 1,
         "properties": {
-          "note": "The source material explicitly describes him wearing a pure silver cross; serves as a symbol of his priestly identity."
+          "note": "源材料明确描述他佩戴纯银十字架;作为他神父身份的象征。"
         }
       },
       {
-        "name": "Black priest robe",
+        "name": "黑色神父长袍",
         "quantity": 1,
         "properties": {
-          "note": "The source material explicitly describes him always wearing a black priest robe when appearing in Cassandra."
+          "note": "源材料明确描述他在卡珊德拉出现时总是穿着黑色神父长袍。"
         }
       },
       {
-        "name": "Church hidden-door access / knowledge",
+        "name": "教堂暗门通道/知识",
         "properties": {
-          "clue": "教堂暗门内为阿特拉克·纳克亚编织的网，连接幻梦境，冷蛛可出入；康斯坦丁与此相关并可一定程度影响“蛛人/茧子带走的人”的生死。"
+          "clue": "教堂暗门内为阿特拉克·纳克亚编织的网,连接幻梦境,冷蛛可出入;康斯坦丁与此相关并可一定程度影响'蛛人/茧子带走的人'的生死。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "He has no legitimate standing to serve God and is secretly practicing forbidden rituals.",
+        "clueText": "他没有合法资格侍奉上帝,正在秘密进行禁忌仪式。",
         "category": "secret",
         "difficulty": "hard",
         "relatedTo": [
-          "Cassandra Church"
+          "卡珊德拉教堂"
         ]
       },
       {
-        "clueText": "He is cooperating with Patrizio von Samsa and helped him eliminate Bruno Galilei by distracting investigators.",
+        "clueText": "他与帕特里齐奥·冯·萨姆萨合作,通过分散调查员注意力帮助他消除布鲁诺·伽利略。",
         "category": "secret",
         "difficulty": "extreme",
         "relatedTo": [
-          "Patrizio von Samsa",
-          "Bruno Galilei"
+          "帕特里齐奥·冯·萨姆萨",
+          "布鲁诺·伽利略"
         ]
       },
       {
-        "clueText": "He knows Vincent Galenus's secrets from his confession and helps him deal with spider-infected people, working with Patrizio to cover up these cases.",
+        "clueText": "他从文森特·加莱努斯的忏悔中知道他的秘密,并帮助他处理蜘蛛感染者,与帕特里齐奥合作掩盖这些案件。",
         "category": "secret",
         "difficulty": "hard",
         "relatedTo": [
-          "Vincent Galenus",
-          "Spider infection",
-          "Cold spiders"
+          "文森特·加莱努斯",
+          "蜘蛛感染",
+          "寒冷蜘蛛"
         ]
       },
       {
-        "clueText": "The church basement contains Atlach-Nacha's web connecting to the Dreamlands, and he can control spider-people through magic.",
+        "clueText": "教堂地下室包含阿特拉克·纳克亚连接幻梦境的网,他可以通过魔法控制蜘蛛人。",
         "category": "secret",
         "difficulty": "extreme",
         "relatedTo": [
-          "Atlach-Nacha",
-          "Dreamlands",
-          "Cold spiders",
-          "Spider-people"
+          "阿特拉克·纳克亚",
+          "幻梦境",
+          "寒冷蜘蛛",
+          "蜘蛛人"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Mayor Padrich",
+        "targetName": "帕德里奇市长",
         "relationshipType": "ally",
         "attitude": 70,
-        "description": "A co-conspirator working toward a shared occult objective.",
-        "history": "They formed an alliance to use Cassandra as the stage for a forbidden summoning."
+        "description": "共同致力于神秘目标的共谋者。",
+        "history": "他们结成联盟,将卡珊德拉作为禁忌召唤的舞台。"
       },
       {
-        "targetName": "Bruno Galilei",
+        "targetName": "布鲁诺·伽利略",
         "relationshipType": "enemy",
         "attitude": -80,
-        "description": "A dangerous investigator who came close to uncovering the truth.",
-        "history": "Bruno was warned never to trust Constantine and became a direct threat to his plans."
+        "description": "一个接近揭露真相的危险调查员。",
+        "history": "布鲁诺被警告永远不要信任康斯坦丁,并成为他计划的直接威胁。"
       }
     ],
-    "notes": "Constantine presents himself as a man of God, but is in fact a central occult antagonist within the Cassandra incident."
+    "notes": "康斯坦丁将自己呈现为上帝的仆人,但实际上是卡珊德拉事件中的核心神秘反派。"
   }
 ]

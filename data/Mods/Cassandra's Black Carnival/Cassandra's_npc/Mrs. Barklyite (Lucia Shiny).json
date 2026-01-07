@@ -1,92 +1,113 @@
 [
-    {
-      "name": "Mrs. Barklyite (Lucia Shiny)",
-      "occupation": "Lawyer",
-      "age": 35,
-      "gender": "female",
-      "appearance": "An elegant and composed woman, often seen wearing a distinctive ruby brooch gifted by her adoptive father. Her attire is formal and professional, reflecting her status as a capable lawyer.",
-      "personality": "Intelligent, diligent, and conscientious. She carries a sense of guilt toward her benefactor and is driven by a desire to prove her worth, while remaining unaware of the darker forces surrounding her upbringing.",
-      "background": "Lucia Shiny, known as Mrs. Barklyite or 'the Red Stone Lady,' was an orphan from the slums with no knowledge of her biological parents. She was adopted by Albert Shiny, who ran an orphanage and secretly was a Shoggoth Lord. Although his true intention was to increase the human population for predation, Lucia believed his motives were benevolent. She grew up to become a highly capable lawyer, though she feels she has not lived up to her adoptive father's expectations.",
-      "goals": [
-        "To achieve greater success and recognition as a lawyer",
-        "To repay her adoptive father's kindness and live up to his expectations"
-      ],
-    "secrets": [
-      "She is unaware that her adoptive father is a non-human entity with horrific motives",
-      "Her upbringing was part of a larger, inhuman scheme rather than an act of pure charity",
-      "She worked under the alias 'Susan' as a nurse at Star Hospital to investigate Patrizio's activities",
-      "On December 26, 2003, she disguised herself as Isabela Smith after Isabela left with her mentally disturbed fiancé",
-      "She knows 'Shore Master' (Adolph Carl) and conducted business with Lucifero through him",
-      "She asked Lucifero to intercept some of the Borrachero that Lux was transporting to the hospital",
-      "She is skilled in disguise and can help investigators if they gain her trust",
-      "The ruby brooch she wears comes from moon-beasts in the Dreamlands, and her adoptive father can exchange her through it if she becomes useless"
+  {
+    "name": "巴克莱特夫人（露西亚·夏尼）",
+    "occupation": "古董店老板/神话学者",
+    "age": 46,
+    "gender": "female",
+    "description": "一位表面上优雅高贵的中年妇女，实际上是嘉年华中隐藏极深的重要人物。她经营着一家看似普通的古董店，但实际上掌握着许多禁忌的知识和物品。",
+    "personality": "表面温和有礼，善于伪装，实际上城府极深，冷酷无情。她对神话知识有着病态的痴迷，为了获取力量不择手段。",
+    "background": "露西亚·夏尼曾是一位考古学家，在一次考古发掘中接触到了不该接触的事物。她失去了原本的身份，以巴克莱特夫人的新身份出现在嘉年华附近。多年来，她一直在收集与外神相关的物品和知识，并与嘉年华的核心秘密有着千丝万缕的联系。",
+    "appearance": "40多岁，保养得宜，穿着考究的维多利亚风格服装。深色的头发整齐地盘起，戴着珍珠项链。她的眼神总是带着审视的意味，微笑中隐藏着危险。",
+    "goals": [
+      "收集完整的神话知识",
+      "获得永生或超越人类的力量",
+      "完成某个危险的神话仪式"
     ],
-      "attributes": {
-        "STR": 40,
-        "CON": 50,
-        "DEX": 55,
-        "APP": 65,
-        "POW": 60,
-        "SIZ": 50,
-        "INT": 75,
-        "EDU": 80
-      },
-      "status": {
-        "hp": 10,
-        "maxHp": 10,
-        "sanity": 60,
-        "maxSanity": 60,
-        "luck": 65,
-        "mp": 12,
-        "conditions": []
-      },
-      "skills": {
-        "Law": 80,
-        "Persuade": 70,
-        "Charm": 60,
-        "Psychology": 55,
-        "Credit Rating": 60
-      },
-      "inventory": [
-        "Ruby brooch",
-        "Legal documents",
-        "Handbag with personal effects"
-      ],
-    "clues": [
+    "secrets": [
+      "她的真实身份是露西亚·夏尼，一个曾经失踪的考古学家",
+      "已经部分被神话存在腐化，正在缓慢地转化为非人的存在",
+      "古董店地下藏有大量禁忌物品和一个隐秘的仪式场所"
+    ],
+    "attributes": {
+      "STR": 45,
+      "CON": 55,
+      "SIZ": 55,
+      "DEX": 60,
+      "APP": 70,
+      "INT": 85,
+      "POW": 75,
+      "EDU": 80
+    },
+    "status": {
+      "hp": 11,
+      "maxHp": 11,
+      "sanity": 45,
+      "maxSanity": 75,
+      "luck": 50,
+      "mp": 15,
+      "conditions": []
+    },
+    "skills": {
+      "Archaeology": 85,
+      "Cthulhu Mythos": 70,
+      "Library Use": 80,
+      "History": 75,
+      "Appraise": 80,
+      "Persuade": 70,
+      "Psychology": 65,
+      "Stealth": 50,
+      "Listen": 60
+    },
+    "inventory": [
       {
-        "clueText": "Her adoptive father ran an orphanage that selectively took in intelligent children.",
-        "category": "knowledge",
-        "difficulty": "regular",
-        "relatedTo": ["Albert Shiny", "Shiny Orphanage"]
-      },
-      {
-        "clueText": "She worked under the alias 'Susan' at Star Hospital and knows about Patrizio's experiments there. After December 26, 2003, she disguised herself as Isabela Smith.",
-        "category": "secret",
-        "difficulty": "hard",
-        "relatedTo": ["Star Hospital", "Patrizio von Samsa", "Isabela Smith"]
-      },
-      {
-        "clueText": "She conducted business with Lucifero through Adolph Carl (Shore Master), asking her to intercept Borrachero shipments.",
-        "category": "secret",
-        "difficulty": "hard",
-        "relatedTo": ["Jenny Florence (Lucifero)", "Adolph Carl", "Lux Lynch", "Borrachero"]
+        "name": "《死灵之书》残页",
+        "properties": {
+          "description": "破损的禁忌典籍，包含危险的咒语",
+          "clue": "记载了某些召唤仪式的片段"
+        }
       },
       {
-        "clueText": "She helped Ben Cleo escape conviction for murdering a judge five years ago, which she now deeply regrets.",
-        "category": "knowledge",
-        "difficulty": "regular",
-        "relatedTo": ["Ben Cleo"]
+        "name": "刻有符文的护身符",
+        "properties": {
+          "description": "数个神秘护身符，提供某种保护",
+          "effect": "防护特定神话生物"
+        }
+      },
+      {
+        "name": "古老镜子",
+        "properties": {
+          "description": "可以显示过去影像的魔法物品",
+          "clue": "能够窥探过去发生的事件"
+        }
       }
     ],
-      "relationships": [
-        {
-          "targetName": "Albert Shiny",
-          "relationshipType": "family",
-          "attitude": 60,
-          "description": "Her adoptive father, whom she respects deeply and feels indebted to.",
-          "history": "Albert Shiny adopted Lucia from an orphanage and supported her education, shaping her entire life."
-        }
-      ],
-      "notes": "Known in social circles as the 'Red Stone Lady' due to her signature ruby brooch."
-    }
-  ]
+    "clues": [
+      {
+        "clueText": "巴克莱特夫人的古董店地下室藏有大量神话物品和一个仪式场所。",
+        "category": "location",
+        "difficulty": "hard",
+        "relatedTo": ["巴克莱特古董店", "神话仪式", "禁忌知识"]
+      },
+      {
+        "clueText": "她的真实身份是失踪的考古学家露西亚·夏尼。",
+        "category": "identity",
+        "difficulty": "extreme",
+        "relatedTo": ["露西亚·夏尼", "失踪案件"]
+      }
+    ],
+    "relationships": [
+      {
+        "targetName": "嘉年华核心成员",
+        "relationshipType": "ally",
+        "attitude": 50,
+        "description": "神话崇拜者同盟",
+        "history": "与嘉年华的秘密组织有联系，但保持一定距离。"
+      },
+      {
+        "targetName": "调查员",
+        "relationshipType": "neutral",
+        "attitude": 20,
+        "description": "潜在工具或威胁",
+        "history": "会评估调查员的价值，决定是利用、欺骗还是消灭他们。"
+      },
+      {
+        "targetName": "敌对神话组织",
+        "relationshipType": "enemy",
+        "attitude": -70,
+        "description": "竞争对手",
+        "history": "与其他追求神话知识的组织存在冲突。"
+      }
+    ],
+    "notes": "巴克莱特夫人是一个危险的NPC，她会根据调查员的价值决定如何对待他们。初次见面时会表现得友好，但实际上在评估和操控。避免直接冲突，更倾向于使用魔法、陷阱和心理操纵。她对某些神话物品有病态执念，这可以被利用。"
+  }
+]

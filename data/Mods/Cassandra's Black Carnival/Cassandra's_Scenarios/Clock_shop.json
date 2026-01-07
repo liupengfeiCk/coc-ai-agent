@@ -1,80 +1,80 @@
 [
-    {
-      "name": "Clock Shop",
-      "description": "A small, old-fashioned clock shop located on Cassandra Old Street, packed tightly with clocks and pocket watches of exquisite craftsmanship. The shop has an unsettling reputation due to its owner's obsession with perfect timekeeping and his uncanny awareness of temporal anomalies in the town.",
-      "snapshot": {
-        "name": "Marks White's Clock Shop",
-        "location": "Cassandra Old Street (Old-Street)",
-        "description": "The interior of the shop is cramped and quiet, filled wall-to-wall with ticking clocks of all sizes. Glass display cases hold finely crafted pocket watches, each engraved with the maker’s name. Time seems unnaturally precise here, almost oppressive. An old decorative oil painting hangs on the wall, its abstract form subtly disturbing.",
-        "characters": [
-          {
-            "name": "Marks White",
-            "role": "Shop owner / witness",
-            "status": "alive",
-            "location": "Inside the clock shop",
-            "notes": "A frail, elderly man with reading glasses. A master clockmaker who prides himself on absolute accuracy. He is aware of the town’s temporal abnormalities but refuses to intervene."
-          }
-        ],
-        "clues": [
-          {
-            "clueText": "All clocks and pocket watches are engraved with Marks White's name and are unnaturally precise, never losing even a single second.",
-            "category": "observation",
-            "difficulty": "automatic",
-            "location": "Display cases and wall clocks",
-            "discoveryMethod": "",
-            "reveals": ["The town’s time distortion is abnormal and possibly controlled or influenced."]
-          },
-          {
-            "clueText": "Marks White claims the church's grand clock was also made by him and considers it his greatest work.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Conversation with Marks White",
-            "discoveryMethod": "Charm / Talk",
-            "reveals": ["A connection between the clock shop and the church."]
-          },
-          {
-            "clueText": "An old decorative oil painting in the shop contains a distorted figure resembling a hybrid Hound of Tindalos.",
-            "category": "environment",
-            "difficulty": "hard",
-            "location": "Wall painting inside the shop",
-            "discoveryMethod": "Spot Hidden / Mythos knowledge",
-            "reveals": ["Temporal predators may already be present in Cassandra."]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "sound",
-            "description": "Constant synchronized ticking from dozens of clocks.",
-            "mechanicalEffect": "Extended exposure may increase unease; Keeper may call for a SAN check in prolonged scenes."
-          },
-          {
-            "type": "other",
-            "description": "Timekeeping devices function with unnatural precision.",
-            "mechanicalEffect": ""
-          }
-        ],
-        "events": [
-          "Marks White explains his philosophy of being 'standard time'.",
-          "Marks White refuses to aid investigators despite knowing the town's secret."
-        ],
-        "exits": [
-          {
-            "direction": "Front door",
-            "destination": "Cassandra Old Street",
-            "description": "A narrow wooden door leading back to the old street.",
-            "condition": ""
-          }
-        ],
-        "keeperNotes": "Marks White is a passive but important lore character. He should not push the plot directly, but his dialogue reinforces the theme of distorted time and inevitability.",
-        "permanentChanges": []
-      },
-      "tags": ["time anomaly", "old street", "mythos foreshadowing", "witness NPC"],
-      "connections": [
+  {
+    "name": "钟表店",
+    "description": "位于卡森德拉旧街的一家小型老式钟表店,密集地堆放着精致工艺的钟表和怀表。由于店主对完美计时的痴迷以及他对镇上时间异常的不可思议的察觉,这家店有着令人不安的名声。",
+    "snapshot": {
+      "name": "马克斯·怀特的钟表店",
+      "location": "卡森德拉旧街",
+      "description": "店内狭窄而安静,四壁挂满了各种尺寸的滴答作响的钟表。玻璃展示柜里陈列着精心制作的怀表,每个都刻有制造商的名字。这里的时间似乎不自然地精确,几乎令人压抑。墙上挂着一幅旧装饰油画,其抽象形式微妙地令人不安。",
+      "characters": [
         {
-          "scenarioName": "Church",
-          "relationshipType": "leads_to",
-          "description": "Marks White built the church's grand clock, linking the clock shop to the church and its secrets."
+          "name": "马克斯·怀特",
+          "role": "店主/目击者",
+          "status": "存活",
+          "location": "钟表店内",
+          "notes": "一个体弱的老人,戴着阅读眼镜。一位以绝对准确为傲的钟表大师。他意识到镇上的时间异常,但拒绝干预。"
         }
-      ]
-    }
-  ]
+      ],
+      "clues": [
+        {
+          "clueText": "所有钟表和怀表都刻有马克斯·怀特的名字,并且不自然地精确,从不损失哪怕一秒。",
+          "category": "观察",
+          "difficulty": "自动",
+          "location": "展示柜和墙钟",
+          "discoveryMethod": "",
+          "reveals": ["镇上的时间扭曲是异常的,可能被控制或受到影响。"]
+        },
+        {
+          "clueText": "马克斯·怀特声称教堂的大钟也是他制作的,并认为它是他最伟大的作品。",
+          "category": "证词",
+          "difficulty": "常规",
+          "location": "与马克斯·怀特的对话",
+          "discoveryMethod": "魅力/交谈",
+          "reveals": ["钟表店与教堂之间的联系。"]
+        },
+        {
+          "clueText": "店内的一幅旧装饰油画包含一个扭曲的形象,类似于廷达罗斯猎犬的混血体。",
+          "category": "环境",
+          "difficulty": "困难",
+          "location": "店内墙上的画",
+          "discoveryMethod": "侦查/神话知识",
+          "reveals": ["时间捕食者可能已经出现在卡森德拉。"]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "声音",
+          "description": "数十个钟表持续同步的滴答声。",
+          "mechanicalEffect": "长时间暴露可能增加不安;守秘人可能在延长场景中要求理智检定。"
+        },
+        {
+          "type": "其他",
+          "description": "计时装置以不自然的精度运作。",
+          "mechanicalEffect": ""
+        }
+      ],
+      "events": [
+        "马克斯·怀特解释他作为'标准时间'的哲学。",
+        "马克斯·怀特尽管知道镇上的秘密,但拒绝帮助调查员。"
+      ],
+      "exits": [
+        {
+          "direction": "前门",
+          "destination": "卡森德拉旧街",
+          "description": "一扇通往旧街的狭窄木门。",
+          "condition": ""
+        }
+      ],
+      "keeperNotes": "马克斯·怀特是一个被动但重要的知识角色。他不应该直接推动情节,但他的对话强化了扭曲时间和不可避免性的主题。",
+      "permanentChanges": []
+    },
+    "tags": ["时间异常", "旧街", "神话预示", "目击者NPC"],
+    "connections": [
+      {
+        "scenarioName": "教堂",
+        "relationshipType": "通向",
+        "description": "马克斯·怀特建造了教堂的大钟,将钟表店与教堂及其秘密联系起来。"
+      }
+    ]
+  }
+]

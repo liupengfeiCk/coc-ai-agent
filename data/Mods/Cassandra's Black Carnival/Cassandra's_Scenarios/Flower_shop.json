@@ -1,66 +1,66 @@
 [
     {
-      "name": "Flower Shop",
-      "description": "A small local flower shop in Cassandra that normally serves as a quiet, ordinary business, but may become the final resting place of a tragic victim if events take a darker turn.",
+      "name": "花店",
+      "description": "卡桑德拉的一家小型本地花店,通常是一家安静、普通的生意,但如果事件发生黑暗转折,可能会成为一位悲剧受害者的最后安息之地。",
       "snapshot": {
-        "name": "Flower Shop",
-        "location": "A neighborhood flower shop in Cassandra",
-        "description": "The flower shop is usually filled with fresh flowers and the scent of plants. Under normal circumstances it is peaceful and unremarkable. However, under certain outcomes of the investigation, it becomes a grim discovery site where a body is found among the flowers, sharply contrasting with the shop’s intended atmosphere of beauty and life.",
+        "name": "花店",
+        "location": "卡桑德拉的一家社区花店",
+        "description": "花店通常充满了鲜花和植物的香气。在正常情况下,这里平静而不起眼。然而,在调查的某些结果下,它成为一个阴森的发现地点,在花丛中发现了一具尸体,与花店原本美丽和生命的氛围形成鲜明对比。",
         "characters": [
           {
-            "name": "Nancy",
-            "role": "Victim",
-            "status": "Deceased (conditional)",
-            "location": "Inside the flower shop",
-            "notes": "If the surgical intervention fails or is not performed, Nancy’s corpse will appear here."
+            "name": "南希",
+            "role": "受害者",
+            "status": "已死(有条件)",
+            "location": "花店内部",
+            "notes": "如果手术干预失败或未进行,南希的尸体将出现在这里。"
           }
         ],
         "clues": [
           {
-            "clueText": "Nancy’s body is discovered inside the flower shop.",
-            "category": "observation",
-            "difficulty": "automatic",
-            "location": "Among the flower displays inside the shop",
+            "clueText": "南希的尸体在花店内被发现。",
+            "category": "观察",
+            "difficulty": "自动",
+            "location": "花店内的花卉展示区",
             "discoveryMethod": "",
-            "reveals": ["Failure to save Nancy from the spider infection", "The tragic consequence of earlier investigative choices"]
+            "reveals": ["未能拯救南希免受蜘蛛感染", "早期调查选择的悲剧性后果"]
           }
         ],
         "conditions": [
           {
-            "type": "smell",
-            "description": "A strong floral scent mixed with the unsettling odor of death",
+            "type": "气味",
+            "description": "浓烈的花香混合着令人不安的死亡气味",
             "mechanicalEffect": ""
           },
           {
-            "type": "lighting",
-            "description": "Soft indoor lighting typical of a small retail shop",
+            "type": "照明",
+            "description": "小型零售店典型的柔和室内照明",
             "mechanicalEffect": ""
           }
         ],
         "events": [
-          "Discovery of Nancy’s corpse if the operation fails",
-          "Simon collapses emotionally and disappears following the discovery"
+          "如果手术失败,发现南希的尸体",
+          "西蒙情绪崩溃并在发现后消失"
         ],
         "exits": [
           {
-            "direction": "Front entrance",
-            "destination": "Cassandra streets",
-            "description": "The main glass door leading out to the street",
+            "direction": "正门",
+            "destination": "卡桑德拉街道",
+            "description": "通向街道的主玻璃门",
             "condition": ""
           }
         ],
-        "keeperNotes": "The flower shop is a conditional scene that only becomes relevant if Nancy dies. Use the contrast between flowers and death to heighten horror. This scene marks a major emotional and narrative turning point, especially for Simon.",
+        "keeperNotes": "花店是一个有条件的场景,只有在南希死亡时才会变得相关。利用花朵与死亡之间的对比来加剧恐怖感。这个场景标志着一个重大的情感和叙事转折点,尤其是对西蒙而言。",
         "permanentChanges": [
-          "Nancy is dead",
-          "Simon disappears from the story"
+          "南希已死",
+          "西蒙从故事中消失"
         ]
       },
-      "tags": ["shop", "death scene", "conditional location", "emotional climax"],
+      "tags": ["商店", "死亡现场", "有条件地点", "情感高潮"],
       "connections": [
         {
-          "scenarioName": "Winery",
-          "relationshipType": "prerequisite",
-          "description": "Nancy’s spider bite near the winery and the failed attempt to save her lead to this outcome"
+          "scenarioName": "酒庄",
+          "relationshipType": "前置",
+          "description": "南希在酒庄附近被蜘蛛咬伤,以及拯救她失败导致了这个结果"
         }
       ]
     }

@@ -1,15 +1,15 @@
 [
     {
-      "name": "Lily",
-      "occupation": "Detective",
+      "name": "莉莉",
+      "occupation": "侦探",
       "age": 25,
       "gender": "female",
-      "appearance": "A young woman with a striking and pleasant appearance; carries herself with confidence shaped by field experience despite her age.",
-      "personality": "Idealistic, observant, and emotionally driven. She admires her mentor deeply, is earnest in her work, and shows courage even after past mistakes.",
-      "background": "Lily is a detective who greatly admires her senior colleague Bruno. While working alongside him in the past, she accidentally injured both Reid and Hawthorne during an operation. This incident, though traumatic, led to a closer bond among them and solidified her place within the group. She later traveled to Cassandra with her friends during Christmas 2003, becoming involved in the unfolding events.",
+      "appearance": "一位年轻女性,外表引人注目且令人愉快;尽管年轻,但举止自信,由实地经验塑造。",
+      "personality": "理想主义、观察力强、情绪驱动。她深深钦佩导师,工作认真,即使在过去的错误之后也表现出勇气。",
+      "background": "莉莉是一位非常钦佩资深同事布鲁诺的侦探。在过去与他一起工作时,她在一次行动中意外伤害了里德和霍桑。这一事件虽然创伤性,但导致他们之间关系更加密切,并巩固了她在团队中的位置。她后来在2003年圣诞节期间与朋友们一起前往卡桑德拉,卷入了展开的事件。",
       "goals": [
-        "Prove herself as a capable detective",
-        "Protect her friends and uncover the truth behind the Cassandra incidents"
+        "证明自己是一名有能力的侦探",
+        "保护朋友并揭露卡桑德拉事件背后的真相"
       ],
       "secrets": [],
       "attributes": {
@@ -47,41 +47,41 @@
       "clues": [],
       "relationships": [
         {
-          "targetName": "Bruno Galilei",
+          "targetName": "布鲁诺·伽利略",
           "relationshipType": "ally",
           "attitude": 85,
-          "description": "Her respected mentor and role model.",
-          "history": "Lily deeply admires Bruno and chose her career path largely because of his influence."
+          "description": "她尊敬的导师和榜样。",
+          "history": "莉莉深深钦佩布鲁诺,很大程度上因为他的影响而选择了职业道路。"
         },
         {
-          "targetName": "Reid",
+          "targetName": "里德",
           "relationshipType": "friend",
           "attitude": 55,
-          "description": "A close friend who was once injured by Lily during an operation.",
-          "history": "Their relationship grew stronger after the accidental injury incident."
+          "description": "一位曾在行动中被莉莉误伤的亲密朋友。",
+          "history": "他们的关系在意外伤害事件后变得更加牢固。"
         },
         {
-          "targetName": "Hawthorne",
+          "targetName": "霍桑",
           "relationshipType": "friend",
           "attitude": 55,
-          "description": "A forensic pathologist and trusted companion.",
-          "history": "Also injured during Lily’s past mistake, leading to a lasting bond."
+          "description": "一位法医病理学家和可信的同伴。",
+          "history": "在莉莉过去的错误中也受伤,导致了持久的纽带。"
         },
         {
-          "targetName": "Bigbear",
+          "targetName": "大熊",
           "relationshipType": "friend",
           "attitude": 45,
-          "description": "A physically imposing but friendly member of the group.",
-          "history": "Part of the same circle brought together through Bruno."
+          "description": "一位身材魁梧但友好的团队成员。",
+          "history": "通过布鲁诺聚在一起的同一圈子的一部分。"
         },
         {
-          "targetName": "Lyn",
+          "targetName": "琳",
           "relationshipType": "friend",
           "attitude": 50,
-          "description": "A hardened soldier with a straightforward attitude.",
-          "history": "Trust built through shared danger and mutual reliance."
+          "description": "一位坚强的士兵,态度直率。",
+          "history": "通过共同的危险和相互依赖建立信任。"
         }
       ],
-      "notes": "Lily’s past mistake still weighs on her, driving her to be more cautious yet more determined in dangerous situations."
+      "notes": "莉莉过去的错误仍然让她心有余悸,驱使她在危险情况下更加谨慎但更加坚定。"
     }
   ]

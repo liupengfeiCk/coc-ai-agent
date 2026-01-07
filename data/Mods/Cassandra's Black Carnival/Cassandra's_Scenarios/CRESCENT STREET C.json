@@ -1,53 +1,53 @@
 [
-    {
-      "name": "Crescent Street C",
-      "description": "Crescent Street C is a short, quiet residential street in Cassandra. It is sparsely developed and largely devoid of public activity. According to both the scenario text and the town map, the street ends without branching into other locations, reinforcing a sense of isolation and finality.",
-      "snapshot": {
-        "name": "Crescent Street C",
-        "location": "A narrow residential street in Cassandra, ending in a single private residence.",
-        "description": "Crescent Street C is calm and largely empty, with little foot traffic. The road stretches forward only to terminate at a single house. There are no shops, public buildings, or side streets along the way. At the very end of the street stands Philip Scaletta’s home, the only notable structure on this road.",
-        "characters": [
-          {
-            "name": "Philip Scaletta",
-            "role": "Resident / suspect / witness",
-            "status": "alive",
-            "location": "Philip's house at the end of Crescent Street C",
-            "notes": "Philip lives alone at the very end of Crescent Street C. His home is the only significant destination on this street, making visits here deliberate and difficult to conceal."
-          }
-        ],
-        "clues": [],
-        "conditions": [
-          {
-            "type": "sound",
-            "description": "The street is unusually quiet, with little traffic or ambient noise.",
-            "mechanicalEffect": ""
-          }
-        ],
-        "events": [],
-        "exits": [
-          {
-            "direction": "Street end",
-            "destination": "Philip Scaletta’s house",
-            "description": "The road terminates directly at Philip’s residence; there are no other buildings or paths beyond this point.",
-            "condition": ""
-          },
-          {
-            "direction": "Back toward town",
-            "destination": "Other parts of Cassandra",
-            "description": "The only way out of Crescent Street C is to return the way investigators came.",
-            "condition": ""
-          }
-        ],
-        "keeperNotes": "Crescent Street C should feel deliberately sparse. Emphasize that Philip’s house is the sole point of interest and that anyone coming here has a clear, traceable purpose.",
-        "permanentChanges": []
-      },
-      "tags": ["residential", "quiet", "dead end", "isolated"],
-      "connections": [
+  {
+    "name": "新月街C大道",
+    "description": "新月街C大道是卡森德拉的一条短而安静的住宅街道。它开发稀疏,基本上没有公共活动。根据场景文本和城镇地图,这条街道没有分支到其他地点,强化了孤立和终结的感觉。",
+    "snapshot": {
+      "name": "新月街C大道",
+      "location": "卡森德拉的一条狭窄住宅街道,终止于一处私人住宅。",
+      "description": "新月街C大道平静而基本空旷,几乎没有行人。道路向前延伸,只在一座房子处终止。沿途没有商店、公共建筑或支路。在街道的尽头矗立着菲利普·斯卡莱塔的家,这条路上唯一值得注意的建筑。",
+      "characters": [
         {
-          "scenarioName": "Philip Scaletta’s House",
-          "relationshipType": "leads_to",
-          "description": "Crescent Street C exists primarily to lead investigators to Philip’s home, which sits at the end of the street."
+          "name": "菲利普·斯卡莱塔",
+          "role": "居民/嫌疑人/目击者",
+          "status": "存活",
+          "location": "新月街C大道尽头的菲利普的家",
+          "notes": "菲利普独自住在新月街C大道的尽头。他的家是这条街上唯一重要的目的地,使得访问这里是有意为之且难以隐藏的。"
         }
-      ]
-    }
-  ]
+      ],
+      "clues": [],
+      "conditions": [
+        {
+          "type": "声音",
+          "description": "这条街异常安静,几乎没有交通或环境噪音。",
+          "mechanicalEffect": ""
+        }
+      ],
+      "events": [],
+      "exits": [
+        {
+          "direction": "街道尽头",
+          "destination": "菲利普·斯卡莱塔的家",
+          "description": "道路直接终止于菲利普的住所;这个点之外没有其他建筑或小径。",
+          "condition": ""
+        },
+        {
+          "direction": "返回城镇",
+          "destination": "卡森德拉其他地区",
+          "description": "离开新月街C大道的唯一方式是原路返回。",
+          "condition": ""
+        }
+      ],
+      "keeperNotes": "新月街C大道应该让人感到刻意的稀疏。强调菲利普的房子是唯一的兴趣点,任何来这里的人都有明确、可追溯的目的。",
+      "permanentChanges": []
+    },
+    "tags": ["住宅", "安静", "死胡同", "孤立"],
+    "connections": [
+      {
+        "scenarioName": "菲利普·斯卡莱塔的家",
+        "relationshipType": "通向",
+        "description": "新月街C大道的存在主要是为了引导调查员前往菲利普的家,它位于街道的尽头。"
+      }
+    ]
+  }
+]

@@ -1,15 +1,15 @@
 [
     {
-      "name": "Reid",
-      "occupation": "Tourist / Visitor",
+      "name": "里德",
+      "occupation": "游客 / 访客",
       "age": 35,
       "gender": "male",
-      "appearance": "An ordinary-looking adult man, casually dressed for travel. Nothing about his appearance stands out, allowing him to easily blend in as a normal holiday visitor.",
-      "personality": "Friendly, easygoing, and loyal to his friends. Prefers to avoid trouble and treats the trip as a relaxing getaway rather than an adventure.",
-      "background": "Reid is part of a close group of friends that includes Bigbear, Hawthorne, Lily, Lyn, Jun, Wind, Solomon, and others. They all met through a mutual friend, a police officer named Bruno (not the Cassandra Bruno). In December 2003, the group traveled to Cassandra to accompany Wind, who was about to get married, and to visit his fiancée Isabela. Reid has no connection to the occult events in Cassandra and is categorized as a cameo NPC.",
+      "appearance": "一位外表普通的成年男性,穿着休闲旅行装。外表没有任何突出之处,容易融入普通度假游客中。",
+      "personality": "友好、随和,忠于朋友。宁愿避免麻烦,将旅行视为放松的假期而非冒险。",
+      "background": "里德是一个亲密朋友圈的成员,包括大熊、霍桑、莉莉、琳、俊、温德、所罗门等人。他们都是通过一位共同的朋友——警官布鲁诺(不是卡桑德拉的布鲁诺)相识的。2003年12月,这群人前往卡桑德拉陪伴即将结婚的温德,并拜访他的未婚妻伊莎贝拉。里德与卡桑德拉的神秘事件没有任何联系,属于客串NPC。",
       "goals": [
-        "Enjoy the holiday trip with friends",
-        "Leave Cassandra safely without incident"
+        "与朋友享受假期旅行",
+        "平安离开卡桑德拉"
       ],
       "secrets": [],
       "attributes": {
@@ -36,34 +36,34 @@
       "clues": [],
       "relationships": [
         {
-          "targetName": "Bigbear",
+          "targetName": "大熊",
           "relationshipType": "friend",
           "attitude": 65,
-          "description": "Close friend and fellow traveler.",
-          "history": "They have known each other for years through the same friend group."
+          "description": "亲密朋友和旅伴。",
+          "history": "他们通过同一个朋友圈认识多年。"
         },
         {
-          "targetName": "Wind",
+          "targetName": "温德",
           "relationshipType": "friend",
           "attitude": 70,
-          "description": "Friend whose upcoming wedding motivated the trip.",
-          "history": "Reid joined the journey to support Wind before his marriage."
+          "description": "即将举行婚礼的朋友,促成了这次旅行。",
+          "history": "里德加入旅程是为了在温德结婚前支持他。"
         },
         {
-          "targetName": "Lily",
+          "targetName": "莉莉",
           "relationshipType": "friend",
           "attitude": 60,
-          "description": "Member of the same close-knit group.",
-          "history": "They travel together regularly and share a long-standing friendship."
+          "description": "同一紧密团体的成员。",
+          "history": "他们经常一起旅行,拥有长期友谊。"
         },
         {
-          "targetName": "Bruno Galilei",
+          "targetName": "布鲁诺·伽利略",
           "relationshipType": "friend",
           "attitude": 70,
-          "description": "Police officer who originally connected the group.",
-          "history": "Bruno was the mutual friend through whom Reid met the rest of the group."
+          "description": "最初连接这个群体的警官。",
+          "history": "布鲁诺是共同朋友,里德通过他认识了群体中的其他人。"
         }
       ],
-      "notes": "Reid is a cameo NPC and does not participate in the investigators’ investigation unless the Keeper deliberately expands his role."
+      "notes": "里德是客串NPC,除非守秘人刻意扩展他的角色,否则不会参与调查员的调查。"
     }
   ]

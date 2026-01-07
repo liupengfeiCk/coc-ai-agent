@@ -1,49 +1,49 @@
 [
     {
-      "name": "Pomegranate Lane",
-      "description": "Pomegranate Lane is a narrow residential lane in Cassandra, quieter than the main streets and lightly trafficked. The lane feels enclosed and private, with few destinations and little reason for passersby to linger.",
+      "name": "石榴巷",
+      "description": "石榴巷是卡桑德拉的一条狭窄的住宅小巷,比主要街道更安静,车流量较少。小巷感觉封闭且私密,目的地很少,路人没有什么理由逗留。",
       "snapshot": {
-        "name": "Pomegranate Lane",
-        "location": "Cassandra – Pomegranate Lane",
-        "description": "Pomegranate Lane is a short, subdued street bordered by closely spaced residential buildings. The atmosphere is muted and restrained, giving the impression of a place where residents prefer not to draw attention. The most notable feature of the lane is Adolph's house, which stands out as the primary destination here.",
+        "name": "石榴巷",
+        "location": "卡桑德拉 - 石榴巷",
+        "description": "石榴巷是一条短而低调的街道,两旁是间距紧密的住宅建筑。气氛低沉且克制,给人一种居民宁愿不引起注意的地方的印象。小巷最显著的特征是阿道夫的房子,它作为这里的主要目的地而突出。",
         "characters": [],
         "clues": [],
         "conditions": [
           {
-            "type": "sound",
-            "description": "Very little ambient noise; conversations and footsteps carry easily.",
+            "type": "声音",
+            "description": "几乎没有环境噪音;对话和脚步声很容易传播。",
             "mechanicalEffect": ""
           },
           {
-            "type": "lighting",
-            "description": "Limited lighting at night, with shadows pooling between buildings.",
+            "type": "照明",
+            "description": "夜晚照明有限,阴影聚集在建筑物之间。",
             "mechanicalEffect": ""
           }
         ],
         "events": [],
         "exits": [
           {
-            "direction": "Residential entrance",
-            "destination": "Adolph's House",
-            "description": "A private residence belonging to Adolph, located directly along Pomegranate Lane and serving as the main point of interest on the street.",
+            "direction": "住宅入口",
+            "destination": "阿道夫的房子",
+            "description": "属于阿道夫的私人住所,直接位于石榴巷,是街上的主要兴趣点。",
             "condition": ""
           },
           {
-            "direction": "Lane entrance",
-            "destination": "Connecting streets of Cassandra",
-            "description": "The lane opens back toward the surrounding streets of Cassandra.",
+            "direction": "巷口",
+            "destination": "卡桑德拉的连接街道",
+            "description": "小巷通向卡桑德拉周围的街道。",
             "condition": ""
           }
         ],
-        "keeperNotes": "Pomegranate Lane should feel intimate and exposed. Investigators visiting Adolph's house are noticeable, and any activity here may quickly draw the attention of nearby residents.",
+        "keeperNotes": "石榴巷应该给人亲密和暴露的感觉。拜访阿道夫房子的调查员很显眼,这里的任何活动可能很快引起附近居民的注意。",
         "permanentChanges": []
       },
-      "tags": ["residential", "quiet", "narrow street"],
+      "tags": ["住宅", "安静", "狭窄街道"],
       "connections": [
         {
-          "scenarioName": "Adolph's House",
-          "relationshipType": "leads_to",
-          "description": "Pomegranate Lane primarily serves as access to Adolph's residence."
+          "scenarioName": "阿道夫的房子",
+          "relationshipType": "导向",
+          "description": "石榴巷主要作为通往阿道夫住所的通道。"
         }
       ]
     }

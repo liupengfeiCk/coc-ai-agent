@@ -1,26 +1,26 @@
 [
   {
-    "name": "Anatole Laplace (Anatole)",
-    "occupation": "Information Security Engineer / Surveillance System Designer",
+    "name": "阿纳托尔·拉普拉斯(阿纳托尔)",
+    "occupation": "信息安全工程师/监控系统设计师",
     "age": 36,
     "gender": "male",
-    "appearance": "A thin, pale man with sharp features and tired eyes. Often dressed in simple shirts and jackets, giving off the impression of a reclusive technician rather than a social figure.",
-    "personality": "Coldly rational, controlling, and distrustful. Anatole believes order and control are necessary to survive in a dangerous world. He is intelligent but emotionally rigid, easily frustrated by what he sees as others’ irresponsibility.",
-    "background": "Anatole is a highly skilled information security and surveillance systems expert. In 1998, he was recruited via the dark web by two wealthy businessmen seeking to build a secure monitoring system to facilitate their secret sacrificial activities. Anatole designed and implemented the \"Qianwei System,\" a comprehensive surveillance network. He deliberately left a backdoor in the system, allowing himself remote access and approximate geolocation of all monitored sites. When he discovered the system ultimately centered on Cassandra, he relocated there, viewing it as the safest place due to his absolute control over the surveillance infrastructure. Anatole strongly disapproved of Simon’s decision to take Nancy away and live a drifting life, seeing it as reckless.",
+    "appearance": "一个瘦削苍白的男人,面容尖锐,眼神疲惫。经常穿简单的衬衫和夹克,给人隐居技术员而非社交人物的印象。",
+    "personality": "冷静理性、控制欲强、不信任他人。阿纳托尔认为秩序和控制对于在危险世界中生存是必要的。他很聪明但情感僵化,容易因他人的不负责任而感到沮丧。",
+    "background": "阿纳托尔是一位技术高超的信息安全和监控系统专家。1998年,他通过暗网被两名富商招募,建造一个安全的监控系统以促进他们的秘密祭祀活动。阿纳托尔设计并实施了'千维系统',一个全面的监控网络。他故意在系统中留了一个后门,允许自己远程访问并大致定位所有被监控站点。当他发现系统最终集中在卡珊德拉时,他搬到了那里,将其视为最安全的地方,因为他对监控基础设施拥有绝对控制权。阿纳托尔强烈反对西蒙带走南希过流浪生活的决定,认为这是鲁莽的。",
     "goals": [
-      "Maintain total control over the surveillance system in Cassandra",
-      "Ensure his own safety through information dominance"
+      "维持对卡珊德拉监控系统的完全控制",
+      "通过信息主导确保自身安全"
     ],
     "secrets": [
-      "He knowingly enabled and protected ritual sacrifice activities by providing surveillance technology",
-      "He retains secret backdoor access capable of exposing or sabotaging powerful individuals",
-      "He is Simon's alter ego (dissociative identity disorder) - Simon is the host personality",
-      "During the 2003 Reindeer Bar incident, he was in control and had an argument with Lucifero (Jenny Florence)",
-      "He received a threatening note from Adolph arranging a meeting at the Reindeer Bar on December 22, mentioning the 1988 incident",
-      "He hates Black people due to childhood trauma and would use racial slurs",
-      "He has a habit of stalking and spying on underage girls, both online and in person",
-      "He can easily find evidence of Lux Lynch's corruption and use it to make him talk",
-      "He is not interested in stopping Patrizio, only in solving his own problems and getting rid of Nancy"
+      "他明知故犯地通过提供监控技术来支持和保护仪式祭祀活动",
+      "他保留着秘密后门访问权限,能够揭露或破坏有权势的个人",
+      "他是西蒙的另一个人格(分离性身份障碍)——西蒙是主人格",
+      "在2003年驯鹿酒吧事件期间,他处于控制状态并与露西弗罗(珍妮·弗洛伦斯)发生争吵",
+      "他收到了阿道夫的威胁纸条,安排在12月22日在驯鹿酒吧见面,提到1988年事件",
+      "由于童年创伤,他憎恨黑人,会使用种族侮辱性语言",
+      "他有在网上和现实中跟踪和监视未成年女孩的习惯",
+      "他可以轻松找到勒克斯·林奇的腐败证据并用它让他开口",
+      "他对阻止帕特里齐奥不感兴趣,只想解决自己的问题并摆脱南希"
     ],
     "attributes": {
       "STR": 40,
@@ -51,69 +51,69 @@
     },
     "inventory": [
       {
-        "name": "Qianwei System (creator-level know-how / backdoor design knowledge)",
+        "name": "千维系统(创建者级别的知识/后门设计知识)",
         "properties": {
-          "clue": "Anatole built the real Qianwei System (and later it was taken by Adolph)."
+          "clue": "阿纳托尔建造了真正的千维系统(后来被阿道夫拿走)。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "The Qianwei surveillance system covers most of Cassandra and key facilities.",
+        "clueText": "千维监控系统覆盖卡珊德拉大部分地区和关键设施。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Cassandra",
-          "Qianwei System"
+          "卡珊德拉",
+          "千维系统"
         ]
       },
       {
-        "clueText": "A hidden backdoor allows Anatole to remotely access and control the entire system.",
+        "clueText": "隐藏的后门允许阿纳托尔远程访问和控制整个系统。",
         "category": "secret",
         "difficulty": "hard",
         "relatedTo": [
-          "Qianwei System",
-          "Dark Web Clients"
+          "千维系统",
+          "暗网客户"
         ]
       },
       {
-        "clueText": "During the 2003 Reindeer Bar incident, Anatole was in control and had an argument with Lucifero, but Simon was not aware of this until later.",
+        "clueText": "在2003年驯鹿酒吧事件期间,阿纳托尔处于控制状态并与露西弗罗发生争吵,但西蒙直到后来才意识到这一点。",
         "category": "secret",
         "difficulty": "extreme",
         "relatedTo": [
-          "2003 Reindeer Bar murder",
-          "Jenny Florence (Lucifero)",
-          "Simon Laplace",
-          "Dissociative Identity Disorder"
+          "2003年驯鹿酒吧谋杀案",
+          "珍妮·弗洛伦斯(露西弗罗)",
+          "西蒙·拉普拉斯",
+          "分离性身份障碍"
         ]
       },
       {
-        "clueText": "He received a threatening note from Adolph mentioning the 1988 incident, which forced him to attend the meeting at the Reindeer Bar.",
+        "clueText": "他收到了阿道夫提到1988年事件的威胁纸条,迫使他参加驯鹿酒吧的会面。",
         "category": "secret",
         "difficulty": "hard",
         "relatedTo": [
-          "Adolph Carl",
-          "1988 Paris incident",
-          "Reindeer Bar"
+          "阿道夫·卡尔",
+          "1988年巴黎事件",
+          "驯鹿酒吧"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Simon Laplace",
+        "targetName": "西蒙·拉普拉斯",
         "relationshipType": "family",
         "attitude": -60,
-        "description": "Disapproves of Simon’s choices and views him as irresponsible.",
-        "history": "Their relationship deteriorated after Simon took Nancy away and rejected Anatole’s plans."
+        "description": "不赞成西蒙的选择,认为他不负责任。",
+        "history": "西蒙带走南希并拒绝阿纳托尔的计划后,他们的关系恶化了。"
       },
       {
-        "targetName": "Nancy",
+        "targetName": "南希",
         "relationshipType": "neutral",
         "attitude": -20,
-        "description": "Sees her as a destabilizing influence on Simon.",
-        "history": "Blames her presence for Simon abandoning a controlled, profitable life."
+        "description": "将她视为对西蒙的不稳定影响。",
+        "history": "责怪她的存在让西蒙放弃了受控的、有利可图的生活。"
       }
     ],
-    "notes": "Anatole is more dangerous as an information broker than as a direct combatant. He may attempt to manipulate investigators through surveillance data rather than confrontation."
+    "notes": "阿纳托尔作为信息掮客比直接战斗更危险。他可能试图通过监控数据操纵调查员,而不是直接对抗。"
   }
 ]

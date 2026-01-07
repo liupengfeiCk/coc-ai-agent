@@ -1,16 +1,16 @@
 [
     {
-      "name": "Cthulhu",
-      "occupation": "Great Old One",
-      "appearance": "A colossal, alien entity with a vaguely humanoid form, octopus-like head covered in writhing tentacles, immense wings, and a massive, bloated body of otherworldly flesh.",
-      "background": "Cthulhu is a Great Old One who lies in a deathlike slumber in the sunken city of R'lyeh beneath the Pacific Ocean. When the stars are right, he may awaken and bring madness and destruction to the world. His presence influences dreams, cults, and cosmic events even while he sleeps.",
+      "name": "克苏鲁",
+      "occupation": "旧日支配者",
+      "appearance": "一个巨大的异类实体,有模糊的类人形态、章鱼状头部覆盖着扭动的触手、巨大翅膀和由超凡肉体构成的庞大臃肿身体。",
+      "background": "克苏鲁是一位旧日支配者,沉睡在太平洋海底的沉没城市拉莱耶中,如死一般。当群星正位时,他可能醒来并为世界带来疯狂和毁灭。即使在沉睡中,他的存在也影响着梦境、邪教和宇宙事件。",
       "goals": [
-        "Awaken from his slumber when the stars are right",
-        "Reestablish dominion over the Earth alongside other Great Old Ones"
+        "当群星正位时从沉睡中醒来",
+        "与其他旧日支配者一起重新建立对地球的统治"
       ],
       "secrets": [
-        "Cthulhu cannot be truly destroyed and will regenerate even after apparent annihilation",
-        "His dreams subtly control and guide cultists and sensitive minds across the world"
+        "克苏鲁无法被真正摧毁,即使在明显毁灭后也会再生",
+        "他的梦境微妙地控制和引导世界各地的邪教徒和敏感心灵"
       ],
       "attributes": {
         "STR": 700,
@@ -34,6 +34,6 @@
       "skills": {
         "Fighting (Brawl)": 100
       },
-     "notes": "Combat Style: Cthulhu is immense in size and can trample, kick, or strike enemies with his feet, long-clawed hands, and tentacles. Attacks per round: 2.\nCombat: Fighting 100% (50/20), damage 1D6 + 21D6 damage bonus.\nSpecial Attack – Scoop the Sea: Each round, Cthulhu may seize 1D3 investigators with his gigantic hands, killing them in horrific fashion. If Cthulhu emerges from a cavity or bends down, the facial tentacles may also attack, allowing him to grasp up to four targets per round and pierce through small openings.\nArmor: 21 points of extradimensional slime and muscle. Additionally, Cthulhu regenerates 6 HP (Hit Points) per round. When reduced to 0 HP, Cthulhu bursts apart and dissolves into a loathsome, slick green gaseous cloud, then immediately begins reforming. He requires 1D10+10 minutes to fully restore a solid form, after which he again possesses 160 HP.\nSpells: Knows hundreds of spells, excluding Summon/Bind Nightgaunts and Contact Nodens. Through terrifying dreams, Cthulhu may grant the spells Contact Deep Ones and Contact Cthulhu.\nSkills: Fighting 100%.\nSanity Loss: Viewing Cthulhu directly costs 1D10/1D100 SAN."
+     "notes": "战斗风格:克苏鲁体型巨大,可以用脚、长爪手和触手践踏、踢或击打敌人。每回合攻击:2次。\n战斗:战斗100%(50/20),伤害1D6+21D6伤害加值。\n特殊攻击 – 舀海:每回合,克苏鲁可以用巨手抓住1D3名调查员,以可怕的方式杀死他们。如果克苏鲁从洞穴中出现或弯腰,面部触手也可以攻击,允许他每回合抓住最多四个目标并穿透小开口。\n护甲:21点超维黏液和肌肉。此外,克苏鲁每回合再生6生命值。当生命值降至0时,克苏鲁爆裂并溶解成令人厌恶的、光滑的绿色气态云,然后立即开始重新形成。他需要1D10+10分钟完全恢复固体形态,之后再次拥有160生命值。\n法术:知道数百个法术,不包括召唤/束缚夜魇和接触诺登斯。通过可怕的梦境,克苏鲁可能授予接触深潜者和接触克苏鲁法术。\n技能:战斗100%。\n理智损失:直接看到克苏鲁损失1D10/1D100理智。"
   }
   ]

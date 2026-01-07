@@ -1,115 +1,115 @@
 [
-    {
-      "name": "Cassandra Church",
-      "description": "A small yet solemn church in Cassandra, built in a cruciform layout. Despite its modest size, the building carries an oppressive and unsettling atmosphere. The church is normally closed, quiet, and seemingly abandoned, but hides profound secrets beneath its sacred façade.",
-      "snapshot": {
-        "name": "The Church",
-        "location": "A cruciform church with a tall main door, central nave, altar, bell tower, and stained-glass windows",
-        "description": "The church features a four-meter-high main entrance that inspires awe before entry. Inside, the building forms a cross shape. At the deepest end stands a crucifix of Jesus Christ. Behind it rises a bell tower, backed by a massive stained-glass window. Above the tower is a domed ceiling that deepens the sense of depth and silence. The interior is usually quiet, with faint echoes and an unnatural stillness.",
-        "characters": [
-          {
-            "name": "Constantine Frollo",
-            "role": "Priest / Cultist",
-            "status": "Alive",
-            "location": "Inside the church, usually near the altar or reading the Bible",
-            "notes": "Appears calm and devout, but is secretly influenced by Atlach-Nacha. He claims to have been in the church at specific times and subtly pressures investigators to leave, stating the church is closed."
-          },
-          {
-            "name": "Three Mysterious Visitors",
-            "role": "Unknown / Suspected cult associates",
-            "status": "Alive",
-            "location": "Church entrance",
-            "notes": "Dressed similarly to Ben. They are dismissed by Constantine, who refuses to explain their relationship to him."
-          }
-        ],
-        "clues": [
-          {
-            "clueText": "The church bell shows signs of incorrect time despite being crafted by a master clockmaker.",
-            "category": "observation",
-            "difficulty": "regular",
-            "location": "Bell tower",
-            "discoveryMethod": "Observation or Mechanical Repair",
-            "reveals": ["Time irregularities in Cassandra", "Possible tampering or supernatural influence"]
-          },
-          {
-            "clueText": "Hidden trapdoor concealed within the church, behind signs of spider activity.",
-            "category": "environment",
-            "difficulty": "hard",
-            "location": "Church interior",
-            "discoveryMethod": "Spot Hidden",
-            "reveals": ["Access to hidden structures beneath the church"]
-          },
-          {
-            "clueText": "A massive web woven by Atlach-Nacha connects the church to the Dreamlands.",
-            "category": "knowledge",
-            "difficulty": "extreme",
-            "location": "Behind the hidden door",
-            "discoveryMethod": "Cthulhu Mythos",
-            "reveals": ["Atlach-Nacha’s influence", "Cold spiders entering the real world"]
-          },
-          {
-            "clueText": "Black spiders are occasionally seen roaming the church after certain investigations.",
-            "category": "observation",
-            "difficulty": "automatic",
-            "location": "Church interior",
-            "reveals": ["Connection between the church and spider-related infections"]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "lighting",
-            "description": "Dim natural light filtered through stained-glass windows.",
-            "mechanicalEffect": "Perception-based rolls may be harder."
-          },
-          {
-            "type": "sound",
-            "description": "Oppressive silence, broken only by faint echoes.",
-            "mechanicalEffect": "Heightens tension and unease."
-          }
-        ],
-        "events": [
-          "First meeting with Constantine",
-          "Discovery of time discrepancy in the bell",
-          "Appearance of black spiders after hospital investigation",
-          "Potential discovery of hidden door and underground secrets",
-          "Three mysterious men in black clothing may suddenly visit the church. If investigators ask other passersby about them, they will say they haven't seen them. If investigators ask Marks White at the clock shop, he will tell them he saw three men in black clothes heading toward the train station platform"
-        ],
-        "exits": [
-          {
-            "direction": "Main Entrance",
-            "destination": "Cassandra Town",
-            "description": "Large front doors of the church"
-          },
-          {
-            "direction": "Hidden Trapdoor",
-            "destination": "Underground Casino / Web Chamber",
-            "description": "Concealed passage behind the church interior",
-            "condition": "hidden"
-          }
-        ],
-        "keeperNotes": "The church is a key nexus of Atlach-Nacha’s influence. Constantine believes himself a priest but is deeply compromised. The church evolves based on investigator progress, especially after hospital revelations.",
-        "permanentChanges": [
-          "Once discovered, spider presence in the church becomes persistent",
-          "The hidden trapdoor remains known to investigators"
-        ]
-      },
-      "tags": ["church", "cult", "Atlach-Nacha", "hidden passage", "time anomaly"],
-      "connections": [
+  {
+    "name": "卡森德拉教堂",
+    "description": "卡森德拉的一座小而庄严的教堂,采用十字形布局。尽管规模不大,但建筑带有压抑和令人不安的氛围。教堂通常关闭、安静,似乎被遗弃,但在其神圣外表下隐藏着深刻的秘密。",
+    "snapshot": {
+      "name": "教堂",
+      "location": "一座十字形教堂,有高大的主门、中央中殿、祭坛、钟楼和彩色玻璃窗",
+      "description": "教堂的主入口有四米高,在进入前就令人敬畏。内部,建筑呈十字形。最深处矗立着耶稣基督的十字架。在它后面升起一座钟楼,背后是一扇巨大的彩色玻璃窗。塔楼上方是一个圆顶天花板,加深了深度和寂静的感觉。内部通常安静,有微弱的回声和不自然的静止。",
+      "characters": [
         {
-          "scenarioName": "Hospital",
-          "relationshipType": "prerequisite",
-          "description": "Discovering the truth about Constantine and spiders in the hospital enables further developments in the church."
+          "name": "康斯坦丁·弗罗洛",
+          "role": "神父/邪教徒",
+          "status": "存活",
+          "location": "教堂内,通常在祭坛附近或阅读圣经",
+          "notes": "表现得平静而虔诚,但暗中受到阿特拉克·纳克亚的影响。他声称在特定时间待在教堂,并微妙地施压调查员离开,声称教堂已关闭。"
         },
         {
-          "scenarioName": "Underground Casino",
-          "relationshipType": "leads_to",
-          "description": "A hidden passage beneath the church connects to the underground casino."
-        },
-        {
-          "scenarioName": "Clock Shop",
-          "relationshipType": "alternate",
-          "description": "The clockmaker Marks White provides insight into the abnormal bell mechanism."
+          "name": "三个神秘访客",
+          "role": "未知/疑似邪教同伙",
+          "status": "存活",
+          "location": "教堂入口",
+          "notes": "穿着与本相似。他们被康斯坦丁打发走,他拒绝解释他们与他的关系。"
         }
+      ],
+      "clues": [
+        {
+          "clueText": "教堂的钟显示出不正确的时间迹象,尽管它是由大师钟表匠制作的。",
+          "category": "观察",
+          "difficulty": "常规",
+          "location": "钟楼",
+          "discoveryMethod": "观察或机械修理",
+          "reveals": ["卡森德拉的时间异常", "可能存在篡改或超自然影响"]
+        },
+        {
+          "clueText": "隐藏在教堂内的暗门,隐藏在蜘蛛活动的迹象后面。",
+          "category": "环境",
+          "difficulty": "困难",
+          "location": "教堂内部",
+          "discoveryMethod": "侦查",
+          "reveals": ["通往教堂下方隐藏结构的通道"]
+        },
+        {
+          "clueText": "阿特拉克·纳克亚编织的巨大蛛网将教堂与梦境之地连接起来。",
+          "category": "知识",
+          "difficulty": "极难",
+          "location": "隐藏门后",
+          "discoveryMethod": "克苏鲁神话",
+          "reveals": ["阿特拉克·纳克亚的影响", "冷蜘蛛进入现实世界"]
+        },
+        {
+          "clueText": "在某些调查后,教堂内偶尔能看到黑色蜘蛛游荡。",
+          "category": "观察",
+          "difficulty": "自动",
+          "location": "教堂内部",
+          "reveals": ["教堂与蜘蛛相关感染之间的联系"]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "光照",
+          "description": "透过彩色玻璃窗过滤的昏暗自然光。",
+          "mechanicalEffect": "基于感知的检定可能更困难。"
+        },
+        {
+          "type": "声音",
+          "description": "压抑的寂静,只被微弱的回声打破。",
+          "mechanicalEffect": "增加紧张和不安。"
+        }
+      ],
+      "events": [
+        "与康斯坦丁的初次见面",
+        "发现钟的时间差异",
+        "医院调查后黑色蜘蛛的出现",
+        "可能发现隐藏的门和地下秘密",
+        "三个穿黑衣的神秘男子可能突然访问教堂。如果调查员询问其他路人关于他们的事,他们会说没见过他们。如果调查员询问钟表店的马克斯·怀特,他会告诉他们看到三个穿黑衣的男子前往火车站月台"
+      ],
+      "exits": [
+        {
+          "direction": "主入口",
+          "destination": "卡森德拉镇",
+          "description": "教堂的大前门"
+        },
+        {
+          "direction": "隐藏暗门",
+          "destination": "地下赌场/蛛网室",
+          "description": "教堂内部后面的隐藏通道",
+          "condition": "隐藏"
+        }
+      ],
+      "keeperNotes": "教堂是阿特拉克·纳克亚影响的关键枢纽。康斯坦丁相信自己是神父,但已被深度妥协。教堂根据调查员的进展而演变,特别是在医院揭露之后。",
+      "permanentChanges": [
+        "一旦被发现,教堂中的蜘蛛存在就会持续",
+        "隐藏的暗门对调查员来说仍然是已知的"
       ]
-    }
-  ]
+    },
+    "tags": ["教堂", "邪教", "阿特拉克·纳克亚", "隐藏通道", "时间异常"],
+    "connections": [
+      {
+        "scenarioName": "医院",
+        "relationshipType": "前置条件",
+        "description": "在医院发现关于康斯坦丁和蜘蛛的真相使教堂的进一步发展成为可能。"
+      },
+      {
+        "scenarioName": "地下赌场",
+        "relationshipType": "通向",
+        "description": "教堂下方的隐藏通道连接到地下赌场。"
+      },
+      {
+        "scenarioName": "钟表店",
+        "relationshipType": "备选",
+        "description": "钟表匠马克斯·怀特提供了对异常钟机制的见解。"
+      }
+    ]
+  }
+]

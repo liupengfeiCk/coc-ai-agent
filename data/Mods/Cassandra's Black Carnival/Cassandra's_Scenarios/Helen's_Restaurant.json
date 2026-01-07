@@ -1,46 +1,46 @@
 [
     {
-      "name": "Helen's Restaurant",
-      "description": "A small local restaurant operated by Helen, serving as a casual public space where townsfolk gather for meals and conversation. The atmosphere is ordinary on the surface, but it may function as a social information hub within the town.",
+      "name": "海伦的餐厅",
+      "description": "由海伦经营的一家小型本地餐厅,作为镇民聚集用餐和交谈的休闲公共空间。表面上氛围普通,但它可能在镇上充当社交信息中心。",
       "snapshot": {
-        "name": "Helen's Restaurant",
-        "location": "A modest roadside or town-center restaurant with a dining area and service counter",
-        "description": "The restaurant is clean but worn, with simple tables and the lingering smell of cooked food. Customers come and go throughout the day, making it a suitable place to overhear rumors or speak with locals. Nothing overtly unnatural is immediately visible.",
+        "name": "海伦的餐厅",
+        "location": "一家简朴的路边或镇中心餐厅,设有用餐区和服务台",
+        "description": "餐厅干净但陈旧,有简单的桌子和挥之不去的熟食气味。顾客全天进出,使其成为偷听谣言或与当地人交谈的合适场所。没有明显不自然的东西立即可见。",
         "characters": [
           {
-            "name": "Helen",
-            "role": "Owner / witness",
-            "status": "alive",
-            "location": "Behind the counter or in the kitchen area",
-            "notes": "Runs the restaurant and interacts regularly with local customers. May have overheard or witnessed unusual conversations or behaviors."
+            "name": "海伦",
+            "role": "店主 / 目击者",
+            "status": "存活",
+            "location": "柜台后或厨房区域",
+            "notes": "经营餐厅并定期与当地顾客互动。可能偷听或目睹了不寻常的对话或行为。"
           }
         ],
         "clues": [],
         "conditions": [
           {
-            "type": "smell",
-            "description": "The mixed aroma of cooked food, oil, and coffee hangs in the air.",
+            "type": "气味",
+            "description": "空气中弥漫着熟食、油和咖啡的混合香气。",
             "mechanicalEffect": ""
           },
           {
-            "type": "sound",
-            "description": "Low background noise from conversation, clinking dishes, and kitchen activity.",
+            "type": "声音",
+            "description": "来自对话、餐具叮当声和厨房活动的低背景噪音。",
             "mechanicalEffect": ""
           }
         ],
         "events": [],
         "exits": [
           {
-            "direction": "Front door",
-            "destination": "Street / town area",
-            "description": "The main entrance used by customers.",
+            "direction": "前门",
+            "destination": "街道 / 镇区",
+            "description": "顾客使用的主入口。",
             "condition": ""
           }
         ],
-        "keeperNotes": "Use this location primarily for social interaction, rumor gathering, and grounding the investigators in everyday normalcy before introducing darker elements.",
+        "keeperNotes": "主要将这个地点用于社交互动、收集谣言,以及在引入更黑暗的元素之前让调查员扎根于日常正常生活。",
         "permanentChanges": []
       },
-      "tags": ["restaurant", "public place", "social hub"],
+      "tags": ["餐厅", "公共场所", "社交中心"],
       "connections": []
     }
   ]

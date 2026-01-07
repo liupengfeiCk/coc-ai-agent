@@ -453,13 +453,23 @@ export class DirectorAgent {
     };
 
     const prompt = composeTemplate(template, {}, templateContext, "handlebars");
+    
+    const promptChars = prompt.length;
+    console.log(`\n📝 [Director Agent - Scene Change] LLM请求统计:`);
+    console.log(`   Prompt字符数: ${promptChars} chars`);
 
     try {
+      const llmStart = Date.now();
       const response = await generateText({
         runtime,
         context: prompt,
         modelClass: ModelClass.SMALL,
       });
+      const llmDuration = Date.now() - llmStart;
+      
+      console.log(`   Response字符数: ${response.length} chars`);
+      console.log(`   总字符数: ${promptChars + response.length} chars`);
+      console.log(`   LLM耗时: ${llmDuration}ms\n`);
 
       // Parse LLM response
       let parsedResponse: {
@@ -467,7 +477,26 @@ export class DirectorAgent {
         reasoning?: string;
       };
       try {
-        parsedResponse = JSON.parse(response);
+        // Extract JSON from markdown code blocks if present
+        let jsonText = response.trim();
+
+        // Try to extract JSON from markdown code blocks
+        const codeBlockMatch = jsonText.match(/```(?:json)?\s*([\s\S]*?)```/i);
+        if (codeBlockMatch) {
+          jsonText = codeBlockMatch[1].trim();
+          console.log(`   📝 Detected markdown code block, extracted JSON content`);
+        }
+
+        // Try to extract JSON object if wrapped in other text
+        if (!jsonText.startsWith('{') && !jsonText.startsWith('[')) {
+          const jsonObjectMatch = jsonText.match(/\{[\s\S]*\}/);
+          if (jsonObjectMatch) {
+            jsonText = jsonObjectMatch[0];
+            console.log(`   📝 Extracted JSON object from text`);
+          }
+        }
+
+        parsedResponse = JSON.parse(jsonText);
       } catch (error) {
         console.error("Failed to parse LLM response as JSON:", error);
         console.error("Raw response:", response);
@@ -497,6 +526,7 @@ export class DirectorAgent {
 
   /**
    * Check if story progression should trigger and generate simulated player intent query
+   * 🔧 CONFIGURABLE: Set ENABLE_AUTO_PROGRESSION=true in .env to enable (default: false)
    */
   async checkStoryProgression(
     gameStateManager: GameStateManager
@@ -508,10 +538,20 @@ export class DirectorAgent {
     const threshold = gameStateManager.getProgressionThreshold();
     const minutesSinceInput = gameStateManager.getMinutesSinceLastInput();
 
+    // 🔧 Check if auto-progression is enabled (default: false)
+    const autoProgressionEnabled = process.env.ENABLE_AUTO_PROGRESSION === 'true';
+
     console.log(`\n🎬 [Director Agent] Story Progression Check`);
+    console.log(`   Auto-progression: ${autoProgressionEnabled ? '✅ ENABLED' : '🔒 DISABLED'}`);
     console.log(`   Turns in scene: ${turnsInScene} / ${threshold}`);
     console.log(`   Minutes since input: ${minutesSinceInput} / 3`);
     console.log(`   Tension: ${gameState.tension}/10`);
+
+    // If auto-progression is disabled, return early
+    if (!autoProgressionEnabled) {
+      console.log(`   🔒 Auto-progression is disabled (set ENABLE_AUTO_PROGRESSION=true to enable)`);
+      return { shouldTrigger: false, simulatedQuery: null };
+    }
 
     // Check if either threshold is reached
     const shouldTrigger = gameStateManager.shouldTriggerProgression();
@@ -563,23 +603,45 @@ export class DirectorAgent {
     };
 
     const prompt = composeTemplate(template, {}, templateContext, "handlebars");
+    
+    const promptChars = prompt.length;
+    console.log(`\n📝 [Director Agent - Scene Change] LLM请求统计:`);
+    console.log(`   Prompt字符数: ${promptChars} chars`);
 
     try {
+      const llmStart = Date.now();
       const response = await generateText({
         runtime,
         context: prompt,
         modelClass: ModelClass.SMALL,
       });
+      const llmDuration = Date.now() - llmStart;
+      
+      console.log(`   Response字符数: ${response.length} chars`);
+      console.log(`   总字符数: ${promptChars + response.length} chars`);
+      console.log(`   LLM耗时: ${llmDuration}ms\n`);
 
       // Parse response
       let parsed;
       try {
-        const jsonMatch = response.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          parsed = JSON.parse(jsonMatch[0]);
-        } else {
-          parsed = JSON.parse(response);
+        // Extract JSON from markdown code blocks if present
+        let jsonText = response.trim();
+
+        // Try to extract JSON from markdown code blocks
+        const codeBlockMatch = jsonText.match(/```(?:json)?\s*([\s\S]*?)```/i);
+        if (codeBlockMatch) {
+          jsonText = codeBlockMatch[1].trim();
         }
+
+        // Try to extract JSON object if wrapped in other text
+        if (!jsonText.startsWith('{') && !jsonText.startsWith('[')) {
+          const jsonMatch = jsonText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            jsonText = jsonMatch[0];
+          }
+        }
+
+        parsed = JSON.parse(jsonText);
       } catch (error) {
         console.error("Failed to parse player intent analysis:", error);
         return { shouldTrigger: false, simulatedQuery: null };
@@ -631,23 +693,44 @@ export class DirectorAgent {
     // 使用模板和LLM生成叙事方向指导
     const prompt = composeTemplate(template, {}, templateContext, "handlebars");
     
+    const promptChars = prompt.length;
+    console.log(`\n📝 [Director Agent - Narrative Direction] LLM请求统计:`);
+    console.log(`   Prompt字符数: ${promptChars} chars`);
+    
     try {
+      const llmStart = Date.now();
       const response = await generateText({
         runtime,
         context: prompt,
         modelClass: ModelClass.SMALL,
       });
+      const llmDuration = Date.now() - llmStart;
+      
+      console.log(`   Response字符数: ${response.length} chars`);
+      console.log(`   总字符数: ${promptChars + response.length} chars`);
+      console.log(`   LLM耗时: ${llmDuration}ms\n`);
       
       // 解析LLM的JSON响应
       let parsedResponse;
       try {
-        // 尝试从响应中提取JSON
-        const jsonMatch = response.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          parsedResponse = JSON.parse(jsonMatch[0]);
-        } else {
-          parsedResponse = JSON.parse(response);
+        // Extract JSON from markdown code blocks if present
+        let jsonText = response.trim();
+
+        // Try to extract JSON from markdown code blocks
+        const codeBlockMatch = jsonText.match(/```(?:json)?\s*([\s\S]*?)```/i);
+        if (codeBlockMatch) {
+          jsonText = codeBlockMatch[1].trim();
         }
+
+        // Try to extract JSON object if wrapped in other text
+        if (!jsonText.startsWith('{') && !jsonText.startsWith('[')) {
+          const jsonMatch = jsonText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            jsonText = jsonMatch[0];
+          }
+        }
+
+        parsedResponse = JSON.parse(jsonText);
       } catch (error) {
         console.error("Failed to parse narrative direction response as JSON:", error);
         console.error("Raw response:", response);

@@ -1,18 +1,18 @@
 [
     {
-      "name": "Solomon",
-      "occupation": "Occult book collector",
+      "name": "所罗门",
+      "occupation": "神秘书籍收藏家",
       "age": 50,
       "gender": "male",
-      "appearance": "A middle-aged man with a thoughtful demeanor, often appearing absorbed in books and research rather than his surroundings.",
-      "personality": "Curious about the occult, secretive, cautious, and financially impulsive when it comes to mystical knowledge. Generally reserved and unwilling to share sensitive information.",
-      "background": "Solomon is considered a descendant of Native Americans under the 'one-drop blood rule.' From a young age, he showed a strong interest in mysticism and appeared to possess some magical aptitude, particularly precognitive abilities. However, as he grew older, these abilities faded and are currently dormant. He habitually spends any money he has on books related to the occult, though he often ends up being deceived by unreliable sellers. Before coming to Cassandra, Solomon purchased a myth-related book connected to real occult lore—'The King in Yellow'—which contains no spells but is tied to genuine mythos knowledge.",
+      "appearance": "一位中年男性,神情深思,经常沉浸在书籍和研究中而非周围环境。",
+      "personality": "对神秘学好奇,保密,谨慎,在神秘知识方面财务冲动。总体上保守,不愿分享敏感信息。",
+      "background": "根据'一滴血规则',所罗门被视为美洲原住民后裔。从小就对神秘主义表现出浓厚兴趣,并似乎拥有一些魔法天赋,特别是预知能力。然而,随着年龄增长,这些能力逐渐消退,目前处于休眠状态。他习惯性地将所有钱花在与神秘学相关的书籍上,但经常被不可靠的卖家欺骗。在来到卡桑德拉之前,所罗门购买了一本与真正神秘学相关的神话书籍——《黄衣之王》——它不包含法术,但与真正的神话知识有关。",
       "goals": [
-        "Acquire rare occult knowledge",
-        "Avoid attracting dangerous attention from mythos forces"
+        "获取稀有神秘学知识",
+        "避免吸引神话力量的危险注意"
       ],
       "secrets": [
-        "He owns a copy of 'The King in Yellow' and refuses to let anyone else read it or even learn its title"
+        "他拥有一本《黄衣之王》,拒绝让其他人阅读,甚至不让人知道书名"
       ],
       "attributes": {
         "STR": 45,
@@ -40,37 +40,37 @@
         "Psychology": 40
       },
       "inventory": [
-        "A copy of 'The King in Yellow'"
+        "一本《黄衣之王》"
       ],
       "clues": [
         {
-          "clueText": "Solomon regularly reads 'The King in Yellow' but no longer loses sanity from it.",
+          "clueText": "所罗门定期阅读《黄衣之王》,但不再因此失去理智。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["The King in Yellow"]
+          "relatedTo": ["黄衣之王"]
         },
         {
-          "clueText": "He insists that 'The King in Yellow' will not appear or have influence in Cassandra.",
+          "clueText": "他坚称《黄衣之王》不会在卡桑德拉出现或产生影响。",
           "category": "knowledge",
           "difficulty": "hard",
-          "relatedTo": ["Cassandra"]
+          "relatedTo": ["卡桑德拉"]
         },
         {
-          "clueText": "Solomon will not allow investigators to read the book or even know its name.",
+          "clueText": "所罗门不会让调查员阅读这本书,甚至不让他们知道书名。",
           "category": "secret",
           "difficulty": "regular",
-          "relatedTo": ["The King in Yellow"]
+          "relatedTo": ["黄衣之王"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Robin",
+          "targetName": "罗宾",
           "relationshipType": "friend",
           "attitude": 70,
-          "description": "Close personal friend",
-          "history": "Robin visited Solomon in Cassandra and helped care for another friend during that time."
+          "description": "亲密的私人朋友",
+          "history": "罗宾在卡桑德拉拜访所罗门,在那段时间帮助照顾另一位朋友。"
         }
       ],
-      "notes": "Solomon's former precognitive abilities are currently sealed and inactive."
+      "notes": "所罗门之前的预知能力目前被封印且不活跃。"
     }
   ]

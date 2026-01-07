@@ -1,113 +1,113 @@
 [
-    {
-      "name": "Church Underground Casino",
-      "description": "A large illegal underground casino hidden beneath the church. It serves as a major black-market hub and meeting point for the local mafia, sharply contrasting with the sacred silence above.",
-      "snapshot": {
-        "name": "The Underground Casino Beneath the Church",
-        "location": "Beneath the church, accessed through a hidden passage",
-        "description": "Hidden beneath the church is a vast, dimly lit underground casino. The air is thick with smoke and noise, filled with shouting gamblers, stacked gambling tables, and constant movement. Lookouts may be stationed near the entrance. The atmosphere is tense and hostile toward intruders, especially those without permission. This location is controlled by the local mafia and serves as an operational base rather than mere entertainment.",
-        "characters": [
-          {
-            "name": "Ben Cleo",
-            "role": "Mafia boss",
-            "status": "Alive",
-            "location": "Underground casino",
-            "notes": "The leader of the local mafia. Ben Cleo will stop hostilities if he arrives and may propose cooperation to the investigators."
-          },
-          {
-            "name": "Covent",
-            "role": "Casino overseer / Enforcer",
-            "status": "Alive",
-            "location": "Underground casino",
-            "notes": "The person in charge on site. He will immediately attack investigators who enter without permission."
-          },
-          {
-            "name": "Tallinn",
-            "role": "Mafia associate",
-            "status": "Alive",
-            "location": "Underground casino",
-            "notes": "Appears here once investigators have aligned with Ben Cleo."
-          },
-          {
-            "name": "Lookouts",
-            "role": "Guards",
-            "status": "Alive",
-            "location": "Casino entrance",
-            "notes": "Stationed near the entrance to warn against or intercept intruders."
-          }
-        ],
-        "clues": [
-          {
-            "clueText": "The church conceals a fully operational underground casino.",
-            "category": "environment",
-            "difficulty": "automatic",
-            "location": "Underground casino",
-            "reveals": ["The church is tied to organized crime activities"]
-          },
-          {
-            "clueText": "Unauthorized entry into the casino is met with immediate lethal force.",
-            "category": "observation",
-            "difficulty": "automatic",
-            "location": "Underground casino",
-            "reveals": ["The mafia strictly controls access and operations"]
-          },
-          {
-            "clueText": "The underground casino functions as a base for mafia negotiations and deals.",
-            "category": "knowledge",
-            "difficulty": "regular",
-            "location": "Underground casino",
-            "discoveryMethod": "Conversation or Social skills",
-            "reveals": ["The mafia’s broader influence in Cassandra"]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "lighting",
-            "description": "Low, artificial lighting with heavy shadows.",
-            "mechanicalEffect": "Spot Hidden rolls may be harder."
-          },
-          {
-            "type": "sound",
-            "description": "Constant shouting, gambling calls, and crowd noise.",
-            "mechanicalEffect": "Stealth actions are easier, but communication is harder."
-          },
-          {
-            "type": "smell",
-            "description": "Smoke, sweat, and alcohol hang thick in the air.",
-            "mechanicalEffect": ""
-          }
-        ],
-        "events": [
-          "Immediate combat if investigators enter without Ben Cleo's approval",
-          "Ben Cleo arrives and halts the fight",
-          "Ben Cleo proposes cooperation and assigns investigators to investigate Padric"
-        ],
-        "exits": [
-          {
-            "direction": "Hidden Stairway",
-            "destination": "Church",
-            "description": "A concealed passage leading back to the church interior",
-            "condition": "hidden"
-          }
-        ],
-        "keeperNotes": "This location should feel dangerous and overwhelming. The casino reinforces the theme that Cassandra's institutions are deeply corrupted. Ben Cleo can act as a temporary ally, but the mafia remains morally ambiguous and self-interested.",
-        "permanentChanges": [
-          "Once allied with Ben Cleo, investigators may freely enter the casino",
-          "Hostility ceases after cooperation is established"
-        ]
-      },
-      "tags": ["underground", "casino", "mafia", "illegal gambling", "hidden location"],
-      "connections": [
+  {
+    "name": "教堂地下赌场",
+    "description": "隐藏在教堂下方的大型非法地下赌场。它是当地黑手党的主要黑市枢纽和会面点,与上方神圣的寂静形成鲜明对比。",
+    "snapshot": {
+      "name": "教堂下方的地下赌场",
+      "location": "教堂下方,通过隐藏通道进入",
+      "description": "教堂下方隐藏着一个巨大、光线昏暗的地下赌场。空气中弥漫着烟雾和噪音,充满了喊叫的赌徒、堆叠的赌桌和持续的移动。瞭望哨可能驻守在入口附近。气氛紧张且对入侵者充满敌意,特别是那些没有许可的人。这个地点由当地黑手党控制,作为行动基地而非单纯的娱乐场所。",
+      "characters": [
         {
-          "scenarioName": "Church",
-          "relationshipType": "prerequisite",
-          "description": "The casino is accessed through a hidden passage beneath the church."
+          "name": "本·克莱奥",
+          "role": "黑手党老大",
+          "status": "存活",
+          "location": "地下赌场",
+          "notes": "当地黑手党的领导者。本·克莱奥到达后会停止敌对行动,并可能向调查员提出合作。"
         },
         {
-          "scenarioName": "Train Station (The Dock)",
-          "relationshipType": "concurrent",
-          "description": "Both locations serve as operational hubs for Ben Cleo's mafia organization."
+          "name": "科文特",
+          "role": "赌场监督者/执行者",
+          "status": "存活",
+          "location": "地下赌场",
+          "notes": "现场负责人。他会立即攻击未经许可进入的调查员。"
+        },
+        {
+          "name": "塔林",
+          "role": "黑手党同伙",
+          "status": "存活",
+          "location": "地下赌场",
+          "notes": "一旦调查员与本·克莱奥结盟,就会出现在这里。"
+        },
+        {
+          "name": "瞭望哨",
+          "role": "警卫",
+          "status": "存活",
+          "location": "赌场入口",
+          "notes": "驻守在入口附近以警告或拦截入侵者。"
         }
+      ],
+      "clues": [
+        {
+          "clueText": "教堂隐藏着一个完全运作的地下赌场。",
+          "category": "环境",
+          "difficulty": "自动",
+          "location": "地下赌场",
+          "reveals": ["教堂与有组织犯罪活动有关"]
+        },
+        {
+          "clueText": "未经授权进入赌场会立即遭到致命武力。",
+          "category": "观察",
+          "difficulty": "自动",
+          "location": "地下赌场",
+          "reveals": ["黑手党严格控制访问和运营"]
+        },
+        {
+          "clueText": "地下赌场作为黑手党谈判和交易的基地。",
+          "category": "知识",
+          "difficulty": "常规",
+          "location": "地下赌场",
+          "discoveryMethod": "对话或社交技能",
+          "reveals": ["黑手党在卡森德拉的更广泛影响"]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "光照",
+          "description": "低暗的人工照明,阴影很重。",
+          "mechanicalEffect": "侦查检定可能更困难。"
+        },
+        {
+          "type": "声音",
+          "description": "持续的叫喊、赌博叫声和人群噪音。",
+          "mechanicalEffect": "潜行行动更容易,但沟通更困难。"
+        },
+        {
+          "type": "气味",
+          "description": "烟雾、汗水和酒精在空气中浓厚地悬浮。",
+          "mechanicalEffect": ""
+        }
+      ],
+      "events": [
+        "如果调查员在没有本·克莱奥批准的情况下进入,立即发生战斗",
+        "本·克莱奥到达并停止战斗",
+        "本·克莱奥提出合作并指派调查员调查帕德里奇"
+      ],
+      "exits": [
+        {
+          "direction": "隐藏楼梯",
+          "destination": "教堂",
+          "description": "一条通往教堂内部的隐藏通道",
+          "condition": "隐藏"
+        }
+      ],
+      "keeperNotes": "这个地点应该感觉危险和压倒性。赌场强化了卡森德拉的机构深受腐败的主题。本·克莱奥可以作为临时盟友,但黑手党仍然在道德上模棱两可和自利。",
+      "permanentChanges": [
+        "一旦与本·克莱奥结盟,调查员可以自由进入赌场",
+        "合作建立后敌意停止"
       ]
-    }
-  ]
+    },
+    "tags": ["地下", "赌场", "黑手党", "非法赌博", "隐藏地点"],
+    "connections": [
+      {
+        "scenarioName": "教堂",
+        "relationshipType": "前置条件",
+        "description": "赌场通过教堂下方的隐藏通道进入。"
+      },
+      {
+        "scenarioName": "火车站(码头)",
+        "relationshipType": "并发",
+        "description": "两个地点都是本·克莱奥黑手党组织的行动枢纽。"
+      }
+    ]
+  }
+]

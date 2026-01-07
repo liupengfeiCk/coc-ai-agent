@@ -1,15 +1,15 @@
 [
     {
-      "name": "Robin",
-      "occupation": "Unemployed socialite",
+      "name": "罗宾",
+      "occupation": "无业社交名流",
       "age": 50,
       "gender": "male",
-      "appearance": "A well-groomed middle-aged individual who often presents in feminine clothing, with a style that reflects access to wealth and refined taste.",
-      "personality": "Caring, loyal to friends, discreet, and emotionally resilient. Tends to avoid direct conflict and prefers to resolve matters quietly.",
-      "background": "Robin is a cross-dresser with a very wealthy adoptive father. A close friend of Solomon, Robin came to Cassandra some time ago to visit him. During that period, Robin took responsibility for caring for another friend, Bo He, who was suffering from mental instability. Before the investigators arrived in Cassandra, Robin had already left the town.",
+      "appearance": "一位打扮精致的中年人,经常穿着女性服装,风格体现出财富和精致品味。",
+      "personality": "关心他人,忠于朋友,谨慎,情感坚韧。倾向于避免直接冲突,更喜欢悄悄解决问题。",
+      "background": "罗宾是一位变装者,有一位非常富有的养父。作为所罗门的亲密朋友,罗宾不久前来到卡桑德拉拜访他。在那段时间,罗宾负责照顾另一位遭受精神不稳定困扰的朋友薄荷。在调查员到达卡桑德拉之前,罗宾已经离开了小镇。",
       "goals": [
-        "Protect and care for close friends",
-        "Maintain distance from dangerous or unstable situations"
+        "保护和照顾亲密朋友",
+        "远离危险或不稳定的情况"
       ],
       "secrets": [],
       "attributes": {
@@ -40,41 +40,41 @@
       "inventory": [],
       "clues": [
         {
-          "clueText": "Robin left Cassandra before the investigators arrived.",
+          "clueText": "罗宾在调查员到达之前就离开了卡桑德拉。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Cassandra"]
+          "relatedTo": ["卡桑德拉"]
         },
         {
-          "clueText": "Robin was caring for Bo He, who was suffering from mental instability.",
+          "clueText": "罗宾在照顾遭受精神不稳定困扰的薄荷。",
           "category": "knowledge",
           "difficulty": "regular",
-          "relatedTo": ["Bo He"]
+          "relatedTo": ["薄荷"]
         }
       ],
       "relationships": [
         {
-          "targetName": "Solomon",
+          "targetName": "所罗门",
           "relationshipType": "friend",
           "attitude": 70,
-          "description": "Close personal friend",
-          "history": "Robin traveled to Cassandra specifically to visit Solomon and maintains a strong friendship with him."
+          "description": "亲密的私人朋友",
+          "history": "罗宾专门前往卡桑德拉拜访所罗门,与他保持着牢固的友谊。"
         },
         {
-          "targetName": "Bo He",
+          "targetName": "薄荷",
           "relationshipType": "friend",
           "attitude": 80,
-          "description": "Friend under Robin's care",
-          "history": "Robin took responsibility for looking after Bo He during a period of mental instability."
+          "description": "受罗宾照顾的朋友",
+          "history": "罗宾在薄荷精神不稳定期间负责照顾他。"
         },
         {
-          "targetName": "Wealthy adoptive father",
+          "targetName": "富有的养父",
           "relationshipType": "family",
           "attitude": 50,
-          "description": "Financial supporter",
-          "history": "Robin was adopted by a very wealthy individual who provides financial security."
+          "description": "经济支持者",
+          "history": "罗宾被一位非常富有的人收养,后者提供经济保障。"
         }
       ],
-      "notes": "Robin does not participate directly in the investigation due to having already left Cassandra."
+      "notes": "由于已经离开卡桑德拉,罗宾不会直接参与调查。"
     }
   ]

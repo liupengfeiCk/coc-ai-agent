@@ -1,15 +1,15 @@
 [
   {
-    "name": "Bigbear",
-    "occupation": "Security Guard / Enforcer",
+    "name": "大熊",
+    "occupation": "保安/执行者",
     "age": 35,
     "gender": "male",
-    "appearance": "A very large, muscular man with an intimidating build. Thick neck, broad shoulders, and a rough, weathered look. His physical presence alone is enough to make most people think twice before provoking him.",
-    "personality": "Loyal, straightforward, protective of friends, and action-oriented. Not very talkative, but dependable and decisive when violence or danger arises.",
-    "background": "Bigbear is part of a close-knit group of friends including Reid, Hawthorne, Lily, Lyn, Jun, Wind, and Solomon. They originally met through a mutual friend, a police officer named Bruno (not the Cassandra Bruno). In 2003, they traveled to Cassandra together during Christmas to accompany Wind, who was about to get married, and to visit his fiancée Isabela. Bigbear has practical experience with violence and protection work, making him the group’s de facto muscle.",
+    "appearance": "一个非常高大、肌肉发达的男人,体格令人生畏。粗脖子、宽肩膀,外表粗犷饱经风霜。光是他的身体存在就足以让大多数人在激怒他之前三思。",
+    "personality": "忠诚、直率、保护朋友,行动导向。话不多,但在暴力或危险出现时可靠且果断。",
+    "background": "大熊是一个紧密联系的朋友圈的一员,包括里德、霍桑、莉莉、琳、君、温德和所罗门。他们最初通过一位共同的朋友相识,一位名叫布鲁诺的警察(不是卡珊德拉的布鲁诺)。2003年,他们在圣诞节期间一起前往卡珊德拉,陪伴即将结婚的温德,并拜访他的未婚妻伊莎贝拉。大熊有暴力和保护工作的实际经验,使他成为团队的实际力量担当。",
     "goals": [
-      "Protect his friends from danger",
-      "Get everyone out of Cassandra alive"
+      "保护他的朋友免受危险",
+      "让所有人活着离开卡珊德拉"
     ],
     "secrets": [],
     "attributes": {
@@ -47,43 +47,43 @@
     },
     "inventory": [
       {
-        "name": "N/A",
+        "name": "无",
         "properties": {
-          "note": "Listed as cameo/non-major NPC; no inventory details provided in the document excerpt."
+          "note": "列为客串/非主要NPC;文档摘录中未提供库存详情。"
         }
       }
     ],
     "clues": [],
     "relationships": [
       {
-        "targetName": "Reid",
+        "targetName": "里德",
         "relationshipType": "friend",
         "attitude": 70,
-        "description": "Close friend and travel companion.",
-        "history": "They have known each other for years through a shared friend group."
+        "description": "亲密的朋友和旅行伙伴。",
+        "history": "他们通过共同的朋友圈认识多年。"
       },
       {
-        "targetName": "Wind",
+        "targetName": "温德",
         "relationshipType": "friend",
         "attitude": 80,
-        "description": "Friend whose upcoming wedding prompted the trip.",
-        "history": "Bigbear joined the trip to support Wind before his marriage."
+        "description": "即将举行婚礼的朋友,促成了这次旅行。",
+        "history": "大熊加入旅行是为了在温德结婚前支持他。"
       },
       {
-        "targetName": "Lily",
+        "targetName": "莉莉",
         "relationshipType": "friend",
         "attitude": 65,
-        "description": "Member of the same close friend group.",
-        "history": "Part of the long-standing group connected through Bruno."
+        "description": "同一个紧密朋友圈的成员。",
+        "history": "通过布鲁诺联系的长期团体的一部分。"
       },
       {
-        "targetName": "Bruno Galilei",
+        "targetName": "布鲁诺·伽利略",
         "relationshipType": "friend",
         "attitude": 75,
-        "description": "Police officer who originally brought the group together.",
-        "history": "Bruno’s friendship was the reason the group originally met."
+        "description": "最初将这个团体聚在一起的警察。",
+        "history": "布鲁诺的友谊是这个团体最初相识的原因。"
       }
     ],
-    "notes": "Bigbear is categorized as a cameo NPC. While not part of the investigation, he can become a powerful ally in combat or rescue situations if the Keeper chooses to involve him."
+    "notes": "大熊被归类为客串NPC。虽然不是调查的一部分,但如果守密人选择让他参与,他可以在战斗或救援情况下成为强大的盟友。"
   }
 ]

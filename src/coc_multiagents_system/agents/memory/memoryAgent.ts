@@ -12,6 +12,7 @@ import { actionRules } from "../../rules/index.js";
 import type { CoCDatabase } from "./database/index.js";
 import type { ScenarioSnapshot } from "../models/scenarioTypes.js";
 import type { Evidence, RagManager } from "./RagManager.js";
+import { NPCLoader } from "../character/npcloader/npcLoader.js";
 
 
 /**
@@ -615,7 +616,35 @@ export const loadCheckpoint = (
   }
 
   console.log(`✓ Loaded checkpoint: "${checkpoint.checkpointName}" from ${checkpoint.metadata.createdAt}`);
-  return checkpoint.gameState as GameState;
+  
+  const restoredGameState = checkpoint.gameState as GameState;
+  
+  // CRITICAL FIX: Reload all NPCs from database to ensure no NPCs are missing
+  // Checkpoints only save NPCs that were loaded at save time, but new NPCs
+  // may have been added or the checkpoint may have been created with a subset
+  try {
+    const npcLoader = new NPCLoader(db);
+    const allNPCsFromDB = npcLoader.getAllNPCs();
+    
+    if (allNPCsFromDB.length > 0) {
+      // Parse and merge: preserve NPC state from checkpoint but add missing NPCs from DB
+      const checkpointNPCIds = new Set(restoredGameState.npcCharacters.map(npc => npc.id));
+      const missingNPCs = allNPCsFromDB.filter(dbNpc => !checkpointNPCIds.has(dbNpc.id));
+      
+      if (missingNPCs.length > 0) {
+        console.log(`   ⚠️  Checkpoint was missing ${missingNPCs.length} NPCs, adding them now:`);
+        console.log(`      ${missingNPCs.slice(0, 5).map(npc => npc.name).join(', ')}${missingNPCs.length > 5 ? '...' : ''}`);
+        restoredGameState.npcCharacters.push(...missingNPCs);
+      }
+      
+      console.log(`   ✓ Total NPCs after restore: ${restoredGameState.npcCharacters.length}`);
+    }
+  } catch (error) {
+    console.error(`   ⚠️  Failed to load missing NPCs from database:`, error);
+    console.log(`   → Continuing with checkpoint NPCs only (${restoredGameState.npcCharacters.length} NPCs)`);
+  }
+  
+  return restoredGameState;
 };
 
 /**

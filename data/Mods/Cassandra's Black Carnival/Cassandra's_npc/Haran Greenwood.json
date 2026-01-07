@@ -1,20 +1,20 @@
 [
   {
-    "name": "Haran Greenwood",
-    "occupation": "Train Station Attendant",
+    "name": "哈兰·格林伍德",
+    "occupation": "火车站服务员",
     "age": 65,
     "gender": "male",
-    "appearance": "An elderly man with a weathered face, dressed in old-fashioned work clothes typical of a small-town train station employee. He carries himself with the quiet routine of someone who has spent decades in the same place.",
-    "personality": "Taciturn, routine-oriented, and detached. Haran rarely involves himself in other people's affairs and shows little curiosity about the strange events around Cassandra.",
-    "background": "Haran has worked at the Cassandra train station for over forty years. He has no children, and his wife passed away many years ago. The train station was originally built underground and later relocated above ground; Haran has been there since those early days. He is well-known to locals like Bruno but remains largely overlooked.",
+    "appearance": "一个饱经风霜的老人,穿着典型的小镇火车站员工的旧式工作服。他带着某种安静的日常感,像是在同一个地方度过了几十年的人。",
+    "personality": "沉默寡言、按部就班且超然。哈兰很少参与别人的事务,对卡珊德拉周围的怪异事件也显示出很少的好奇心。",
+    "background": "哈兰在卡珊德拉火车站工作了四十多年。他没有孩子,妻子多年前就去世了。火车站最初建在地下,后来搬迁到地面上;哈兰从那些早期就在那里。他为像布鲁诺这样的当地人所熟知,但在很大程度上被忽视。",
     "goals": [
-      "Finish his remaining years quietly at the train station",
-      "Avoid involvement in town affairs or dangerous secrets"
+      "在火车站安静地度过余生",
+      "避免卷入镇上的事务或危险秘密"
     ],
     "secrets": [
-      "He witnessed and handled Sanchez Cleo's urgent request to send Martin away before his disappearance, though he didn't understand the reason",
-      "He knows about the Cleo family's business operations and cargo movements through the train station",
-      "His work shack connects to the Mafia headquarters entrance, and he serves as a guard"
+      "他目睹并处理了桑切斯·克莱奥在失踪前要求紧急送走马丁的请求,尽管他不理解原因",
+      "他知道克莱奥家族通过火车站的业务运营和货物流动",
+      "他的工作棚连接着黑手党总部入口,他充当守卫"
     ],
     "attributes": {
       "STR": 40,
@@ -43,37 +43,37 @@
     },
     "inventory": [
       {
-        "name": "Cargo transaction records (train station business)",
+        "name": "货物交易记录(火车站业务)",
         "properties": {
-          "clue": "Manages train station 'business' transactions for Ben; maintains internal records of cargo movements (deals only, no questions about background), which can serve as an entry point for investigating smuggling/cargo flow."
+          "clue": "为本管理火车站'业务'交易;维护货物流动的内部记录(仅交易,不问背景),这可以作为调查走私/货物流向的切入点。"
         }
       },
       {
-        "name": "Work shack access / guard post",
+        "name": "工作棚通道/守卫岗",
         "properties": {
-          "clue": "The work shack connects to the Mafia headquarters entrance; Haran serves as a guard, and any forced entry must pass through him (meaning he knows the entrance location/access protocols)."
+          "clue": "工作棚连接着黑手党总部入口;哈兰充当守卫,任何强行进入都必须通过他(意味着他知道入口位置/访问协议)。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "Haran has worked at the Cassandra train station for over forty years and knows its history, including its original underground construction.",
+        "clueText": "哈兰在卡珊德拉火车站工作了四十多年,了解其历史,包括最初的地下建设。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Cassandra Train Station"
+          "卡珊德拉火车站"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Bruno Galilei",
+        "targetName": "布鲁诺·伽利略",
         "relationshipType": "friend",
         "attitude": 30,
-        "description": "A familiar local policeman who occasionally talks with Haran at the station.",
-        "history": "They have known each other for many years through routine encounters at the train station."
+        "description": "一个熟悉的当地警察,偶尔在火车站与哈兰交谈。",
+        "history": "他们通过在火车站的日常接触认识多年。"
       }
     ],
-    "notes": "Haran is a background NPC useful for atmosphere and local history rather than direct plot progression."
+    "notes": "哈兰是一个背景NPC,对于氛围和当地历史有用,而不是直接推动情节进展。"
   }
 ]

@@ -1,73 +1,73 @@
 [
     {
-      "name": "Old Street (Cassandra Old Street)",
-      "description": "Old Street is one of the oldest surviving streets in Cassandra, lined with aging buildings and remnants of the town’s earlier prosperity. Compared to newer streets, it feels worn, heavy with history, and slightly neglected, reflecting Cassandra’s long-standing decay beneath a familiar surface.",
+      "name": "老街(卡桑德拉老街)",
+      "description": "老街是卡桑德拉最古老的幸存街道之一,两旁是老化的建筑和小镇早期繁荣的遗迹。与较新的街道相比,它感觉破旧,充满历史感,略显被忽视,反映了卡桑德拉在熟悉表面下的长期衰败。",
       "snapshot": {
-        "name": "Old Street",
-        "location": "Cassandra – Old Street",
-        "description": "Old Street runs through a quieter, more timeworn part of town. The architecture is outdated, with cracked walls, faded signage, and a general sense that time has slowed here. Few people linger for long. The street hosts several notable but aging locations, each tied to Cassandra’s past rather than its present.",
+        "name": "老街",
+        "location": "卡桑德拉 - 老街",
+        "description": "老街穿过城镇一个更安静、更陈旧的部分。建筑风格过时,有裂缝的墙壁、褪色的标牌,以及时间在这里放慢的整体感觉。很少有人长时间逗留。街道上有几个值得注意但老化的地点,每个都与卡桑德拉的过去而非现在相关联。",
         "characters": [
           {
-            "name": "Shandra Hernández",
-            "role": "Resident / witness",
-            "status": "alive",
-            "location": "Shandra’s cabin",
-            "notes": "Shandra lives alone in a small cabin on Old Street. She keeps to herself and rarely draws attention, blending into the street’s forgotten atmosphere."
+            "name": "珊德拉·埃尔南德斯",
+            "role": "居民 / 目击者",
+            "status": "存活",
+            "location": "珊德拉的小屋",
+            "notes": "珊德拉独自住在老街的一间小屋里。她自己待着,很少引起注意,融入街道被遗忘的氛围中。"
           }
         ],
         "clues": [],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Lighting is dim, especially at dusk and night, with weak streetlamps and long shadows.",
+            "type": "照明",
+            "description": "照明昏暗,尤其是在黄昏和夜晚,路灯微弱,阴影绵长。",
             "mechanicalEffect": ""
           },
           {
-            "type": "sound",
-            "description": "The street is quiet, interrupted only by distant industrial noises or creaking structures.",
+            "type": "声音",
+            "description": "街道安静,只有远处的工业噪音或吱吱作响的结构偶尔打断。",
             "mechanicalEffect": ""
           }
         ],
         "events": [],
         "exits": [
           {
-            "direction": "Shopfront",
-            "destination": "Clock Shop",
-            "description": "An old clock shop with a traditional display window, its mechanisms and ticking sounds echoing the passage of time.",
+            "direction": "店面",
+            "destination": "钟表店",
+            "description": "一家有传统橱窗展示的旧钟表店,其机械装置和滴答声回荡着时间的流逝。",
             "condition": ""
           },
           {
-            "direction": "Industrial end",
-            "destination": "Distillery",
-            "description": "An aging distillery occupying a larger structure along Old Street, a reminder of Cassandra’s former industry.",
+            "direction": "工业区",
+            "destination": "酿酒厂",
+            "description": "沿老街的一个较大结构的老化酿酒厂,提醒着卡桑德拉过去的工业。",
             "condition": ""
           },
           {
-            "direction": "Side path",
-            "destination": "Shandra’s Cabin",
-            "description": "A small, modest cabin tucked slightly away from the main road, serving as Shandra Hernández’s residence.",
+            "direction": "小路",
+            "destination": "珊德拉的小屋",
+            "description": "一间小型、简朴的小屋,略微远离主路,作为珊德拉·埃尔南德斯的住所。",
             "condition": ""
           }
         ],
-        "keeperNotes": "Old Street should feel heavy with history and decline. Emphasize contrast between its past importance and its current stagnation, making it ideal for slow-burn discoveries rather than overt action.",
+        "keeperNotes": "老街应该给人沉重的历史和衰落感。强调其过去的重要性与当前停滞之间的对比,使其成为缓慢发现而非明显行动的理想场所。",
         "permanentChanges": []
       },
-      "tags": ["old town", "decay", "historical", "quiet"],
+      "tags": ["老城", "衰败", "历史", "安静"],
       "connections": [
         {
-          "scenarioName": "Clock Shop",
-          "relationshipType": "leads_to",
-          "description": "Old Street provides access to the clock shop, a location tied to the town’s older residents and secrets."
+          "scenarioName": "钟表店",
+          "relationshipType": "导向",
+          "description": "老街提供通往钟表店的通道,这是一个与镇上老居民和秘密相关的地点。"
         },
         {
-          "scenarioName": "Distillery",
-          "relationshipType": "leads_to",
-          "description": "The distillery is directly accessible from Old Street and represents Cassandra’s industrial past."
+          "scenarioName": "酿酒厂",
+          "relationshipType": "导向",
+          "description": "酿酒厂可以从老街直接进入,代表着卡桑德拉的工业过去。"
         },
         {
-          "scenarioName": "Shandra’s Cabin",
-          "relationshipType": "leads_to",
-          "description": "Shandra’s cabin branches off Old Street and serves as her primary residence."
+          "scenarioName": "珊德拉的小屋",
+          "relationshipType": "导向",
+          "description": "珊德拉的小屋从老街分支出来,是她的主要住所。"
         }
       ]
     }

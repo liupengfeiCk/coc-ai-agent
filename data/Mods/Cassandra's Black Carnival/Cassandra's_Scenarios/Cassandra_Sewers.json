@@ -1,98 +1,98 @@
 [
-    {
-      "name": "Cassandra Sewers",
-      "description": "An underground sewer system beneath the town of Cassandra. Dark, damp, and largely forgotten, the sewers connect to hidden routes used by inhuman creatures and cult-related activities, making it a dangerous and oppressive environment for investigators.",
-      "snapshot": {
-        "name": "Cassandra Sewers",
-        "location": "Underground sewer network beneath Cassandra",
-        "description": "The sewers are narrow and labyrinthine, filled with stagnant water, rusted ladders, and crumbling brick tunnels. The air is heavy with rot and chemical waste, and unnatural echoes travel far in the darkness. This place serves as a hidden transit route for inhuman beings and a dumping ground for things that should not be seen by the surface world.",
-        "characters": [],
-        "clues": [
-          {
-            "clueText": "Signs of frequent non-human movement through the tunnels, including drag marks and unusual footprints near the water channels.",
-            "category": "observation",
-            "difficulty": "regular",
-            "location": "Tunnel floors and water edges",
-            "discoveryMethod": "Track or Spot Hidden",
-            "reveals": [
-              "The sewers are actively used as a hidden route by inhuman entities."
-            ]
-          },
-          {
-            "clueText": "Residue of foul, oily mucus clinging to the brick walls, inconsistent with normal sewage.",
-            "category": "physical",
-            "difficulty": "hard",
-            "location": "Lower tunnel walls near submerged passages",
-            "discoveryMethod": "Biology or Natural World",
-            "reveals": [
-              "The presence of Shoggoth-like or Deep One–related organisms."
-            ]
-          },
-          {
-            "clueText": "Sections of the sewer that avoid municipal maintenance records, suggesting intentional neglect or concealment.",
-            "category": "document",
-            "difficulty": "regular",
-            "location": "Maintenance access points and sealed grates",
-            "discoveryMethod": "Library Use or Accounting",
-            "reveals": [
-              "Someone deliberately keeps parts of the sewer off official oversight."
-            ]
-          }
-        ],
-        "conditions": [
-          {
-            "type": "lighting",
-            "description": "Almost total darkness, broken only by occasional maintenance lamps.",
-            "mechanicalEffect": "Investigators without light sources suffer disadvantage on Spot Hidden–related rolls."
-          },
-          {
-            "type": "smell",
-            "description": "Overpowering stench of rot, sewage, and chemical decay.",
-            "mechanicalEffect": "Extended exposure may require a CON roll to avoid nausea."
-          },
-          {
-            "type": "sound",
-            "description": "Constant dripping water and distant, echoing movements.",
-            "mechanicalEffect": ""
-          }
-        ],
-        "events": [
-          "Unseen movement splashes through nearby tunnels.",
-          "A sudden tunnel collapse blocks or redirects a route.",
-          "Investigators may encounter an inhuman entity using the sewers as a passage."
-        ],
-        "exits": [
-          {
-            "direction": "Maintenance Ladder",
-            "destination": "Street-level manhole",
-            "description": "A rusted ladder leading back to the surface streets.",
-            "condition": "Slippery"
-          },
-          {
-            "direction": "Flooded Tunnel",
-            "destination": "Unknown underground chambers",
-            "description": "A submerged passage leading deeper underground.",
-            "condition": "Partially flooded"
-          }
-        ],
-        "keeperNotes": "Use the sewers to emphasize claustrophobia and isolation. This location works best as a transitional or ambush site rather than a place for prolonged investigation. Threats here should feel sudden and difficult to escape.",
-        "permanentChanges": [
-          "Collapsed tunnels may permanently alter available routes.",
-          "Evidence of inhuman passage remains once discovered."
-        ]
-      },
-      "tags": ["underground", "sewers", "inhuman presence", "dangerous environment"],
-      "connections": [
+  {
+    "name": "卡森德拉下水道",
+    "description": "卡森德拉镇下方的地下下水道系统。黑暗、潮湿且基本被遗忘,下水道连接着被非人类生物和邪教相关活动使用的隐藏路线,使其成为调查员的危险和压抑环境。",
+    "snapshot": {
+      "name": "卡森德拉下水道",
+      "location": "卡森德拉下方的地下下水道网络",
+      "description": "下水道狭窄而迷宫般,充满停滞的水、生锈的梯子和破碎的砖砌隧道。空气中弥漫着腐烂和化学废物的味道,不自然的回声在黑暗中传播很远。这个地方作为非人类存在的隐藏通道和地表世界不应看到的东西的倾倒场。",
+      "characters": [],
+      "clues": [
         {
-          "scenarioName": "Church",
-          "relationshipType": "alternate",
-          "description": "Hidden sewer routes may connect indirectly to underground structures beneath the church."
+          "clueText": "隧道中频繁非人类移动的迹象,包括水道附近的拖痕和不寻常的脚印。",
+          "category": "观察",
+          "difficulty": "常规",
+          "location": "隧道地板和水边",
+          "discoveryMethod": "追踪或侦查",
+          "reveals": [
+            "下水道被非人类实体积极用作隐藏路线。"
+          ]
         },
         {
-          "scenarioName": "Two-Story Wooden Cabin",
-          "relationshipType": "alternate",
-          "description": "The sewers serve as an alternative hidden route that bypasses surface surveillance near the cabin."
+          "clueText": "附着在砖墙上的恶臭油性粘液残留物,与正常污水不一致。",
+          "category": "物理",
+          "difficulty": "困难",
+          "location": "淹没通道附近的下层隧道墙壁",
+          "discoveryMethod": "生物学或自然世界",
+          "reveals": [
+            "修格斯类或深潜者相关生物的存在。"
+          ]
+        },
+        {
+          "clueText": "下水道的某些部分避开市政维护记录,暗示故意忽视或隐藏。",
+          "category": "文件",
+          "difficulty": "常规",
+          "location": "维护入口和密封格栅",
+          "discoveryMethod": "图书馆使用或会计",
+          "reveals": [
+            "有人故意将下水道的部分保持在官方监督之外。"
+          ]
         }
+      ],
+      "conditions": [
+        {
+          "type": "光照",
+          "description": "几乎完全黑暗,只有偶尔的维护灯打破。",
+          "mechanicalEffect": "没有光源的调查员在侦查相关检定上受劣势。"
+        },
+        {
+          "type": "气味",
+          "description": "压倒性的腐烂、污水和化学腐败的恶臭。",
+          "mechanicalEffect": "长时间暴露可能需要体质检定以避免恶心。"
+        },
+        {
+          "type": "声音",
+          "description": "持续的滴水声和远处回响的移动。",
+          "mechanicalEffect": ""
+        }
+      ],
+      "events": [
+        "看不见的移动在附近隧道中溅起水花。",
+        "突然的隧道坍塌阻挡或改变路线。",
+        "调查员可能会遇到使用下水道作为通道的非人类实体。"
+      ],
+      "exits": [
+        {
+          "direction": "维护梯子",
+          "destination": "街道层面的检修孔",
+          "description": "一个生锈的梯子通往地表街道。",
+          "condition": "湿滑"
+        },
+        {
+          "direction": "淹没隧道",
+          "destination": "未知地下室",
+          "description": "一条通往地下更深处的淹没通道。",
+          "condition": "部分淹没"
+        }
+      ],
+      "keeperNotes": "使用下水道来强调幽闭恐惧和孤立。这个地点最好作为过渡或伏击地点,而不是长时间调查的地方。这里的威胁应该感觉突然且难以逃脱。",
+      "permanentChanges": [
+        "坍塌的隧道可能永久改变可用路线。",
+        "非人类通行的证据一旦发现就会保留。"
       ]
-    }
-  ]
+    },
+    "tags": ["地下", "下水道", "非人类存在", "危险环境"],
+    "connections": [
+      {
+        "scenarioName": "教堂",
+        "relationshipType": "备选",
+        "description": "隐藏的下水道路线可能间接连接到教堂下方的地下结构。"
+      },
+      {
+        "scenarioName": "二层木屋",
+        "relationshipType": "备选",
+        "description": "下水道作为一条替代隐藏路线,绕过木屋附近的地表监视。"
+      }
+    ]
+  }
+]

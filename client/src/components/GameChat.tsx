@@ -365,11 +365,11 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
       {/* Session Info Bar */}
       <div className="session-info-bar">
         <div className="session-metadata">
-          <span className="session-label">Session ID:</span>
+          <span className="session-label">会话ID:</span>
           <span className="session-value">{sessionId}</span>
         </div>
         <div className="character-info">
-          <span className="character-label">Playing as:</span>
+          <span className="character-label">当前角色:</span>
           <span className="character-value">{characterName}</span>
         </div>
         <div className="save-checkpoint-section">
@@ -377,9 +377,9 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
             className="save-checkpoint-btn"
             onClick={handleSaveCheckpoint}
             disabled={isSaving}
-            title="Save current game progress"
+            title="保存当前游戏进度"
           >
-            {isSaving ? '💾 Saving...' : '💾 Save'}
+            {isSaving ? '💾 保存中...' : '💾 保存'}
           </button>
           {saveMessage && (
             <span className="save-message" style={{ 
@@ -397,8 +397,8 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
       <div className="messages-scroll-area">
         {messages.length === 0 && (
           <div className="empty-chat-prompt">
-            <p>🎲 Welcome to Call of Cthulhu!</p>
-            <p>Describe your investigator's actions to begin the adventure...</p>
+            <p>🎲 欢迎来到克苏鲁的呼唤!</p>
+            <p>描述你的调查员行动来开始冒险...</p>
           </div>
         )}
 
@@ -422,20 +422,20 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
         {(isSending || isPolling) && (
           <div className="chat-message keeper loading">
             <div className="message-meta">
-              <span className="sender-name">🎭 Keeper</span>
+              <span className="sender-name">🎭 守秘人</span>
             </div>
             <div className="message-text">
               <span className="typing-indicator">
                 <span>•</span><span>•</span><span>•</span>
               </span>
-              {isPolling ? ' The Keeper contemplates...' : ' Processing your action...'}
+              {isPolling ? ' 守秘人正在思考...' : ' 处理你的行动中...'}
             </div>
           </div>
         )}
 
         {error && (
           <div className="error-message">
-            <strong>⚠️ Error:</strong> {error}
+            <strong>⚠️ 错误:</strong> {error}
           </div>
         )}
 
@@ -449,7 +449,7 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="I examine the ancient tome on the desk..."
+          placeholder="我检查桌上的古老书卷..."
           disabled={isSending || isPolling}
           rows={3}
         />
@@ -458,7 +458,7 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
           onClick={handleSendMessage}
           disabled={!inputValue.trim() || isSending || isPolling}
         >
-          {isSending || isPolling ? '⏳ Processing...' : '🎲 Declare Action'}
+          {isSending || isPolling ? '⏳ 处理中...' : '🎲 执行行动'}
         </button>
       </div>
     </div>

@@ -1,70 +1,70 @@
 [
     {
-      "name": "Crescent Street B",
-      "description": "Crescent Street B is a worn residential street marked by neglect and quiet tension. Old houses, uneven pavement, and aging municipal infrastructure give the impression of a place long ignored by the town’s authorities. Though seemingly ordinary, the street subtly connects several critical locations tied to the investigation.",
+      "name": "新月街B",
+      "description": "新月街B是一条破旧的住宅街道,充满了被忽视和安静紧张的气氛。老旧的房屋、不平整的路面和老化的市政基础设施,给人一种被镇当局长期忽视的印象。尽管看似普通,这条街道却巧妙地连接着与调查相关的几个关键地点。",
       "snapshot": {
-        "name": "Crescent Street B",
-        "location": "Crescent Street B, Cassandra",
-        "description": "The street is lined with aging houses and dim, unreliable streetlights. Cracks in the pavement reveal repeated repairs, and the air often carries a faint damp smell from underground utilities. Residents keep to themselves, avoiding unnecessary attention. At night, the street feels especially oppressive, as if something beneath the surface is active but unseen.",
+        "name": "新月街B",
+        "location": "卡桑德拉,新月街B",
+        "description": "街道两旁排列着老化的房屋和昏暗、不可靠的路灯。路面上的裂缝显示出反复修补的痕迹,空气中常常弥漫着来自地下设施的淡淡潮湿气味。居民们都自顾自,避免引起不必要的关注。到了夜晚,街道感觉特别压抑,仿佛地表下有什么东西在活动,但却看不见。",
         "characters": [],
         "clues": [],
         "conditions": [
           {
-            "type": "lighting",
-            "description": "Streetlights flicker intermittently, leaving long stretches in partial darkness.",
-            "mechanicalEffect": "No mechanical effect; atmosphere-focused"
+            "type": "照明",
+            "description": "路灯间歇性闪烁,留下大片区域处于半黑暗中。",
+            "mechanicalEffect": "无机制效果;仅用于氛围"
           },
           {
-            "type": "smell",
-            "description": "A faint, persistent odor of dampness and sewage lingers near certain sections of the street.",
-            "mechanicalEffect": "No mechanical effect"
+            "type": "气味",
+            "description": "在街道的某些区段附近,弥漫着一股持续的潮湿和污水气味。",
+            "mechanicalEffect": "无机制效果"
           }
         ],
         "events": [],
         "exits": [
           {
-            "direction": "Residential lot",
-            "destination": "Two-story wooden cabin",
-            "description": "A weathered two-story wooden house set slightly back from the street, appearing poorly maintained and unusually isolated.",
-            "condition": "accessible"
+            "direction": "住宅区",
+            "destination": "两层木屋",
+            "description": "一座风化的两层木屋,略微后退于街道,看起来保养不善且异常孤立。",
+            "condition": "可通行"
           },
           {
-            "direction": "Street level access",
-            "destination": "Underground sewer system",
-            "description": "Sewer access points concealed within the street, blending into the damaged pavement.",
-            "condition": "locked"
+            "direction": "街面入口",
+            "destination": "地下下水道系统",
+            "description": "隐藏在街道内的下水道入口,与损坏的路面融为一体。",
+            "condition": "上锁"
           },
           {
-            "direction": "Curbside",
-            "destination": "Bruno Galilei’s car",
-            "description": "Bruno’s vehicle parked along the street, used during the investigation and serving as a temporary point of mobility.(The car only appears after 12.26,with Bruno's dead body found in the car)",
-            "condition": "accessible"
+            "direction": "路边",
+            "destination": "布鲁诺·伽利略的车",
+            "description": "布鲁诺的汽车停在街边,在调查期间使用,作为临时的移动点。(这辆车只在12月26日之后出现,布鲁诺的尸体在车内被发现)",
+            "condition": "可通行"
           },
           {
-            "direction": "West",
-            "destination": "Crescent Street A",
-            "description": "Leads back toward Crescent Street A."
+            "direction": "西",
+            "destination": "新月街A",
+            "description": "通向新月街A。"
           },
           {
-            "direction": "East",
-            "destination": "Crescent Street C",
-            "description": "Continues toward other residential areas of Cassandra."
+            "direction": "东",
+            "destination": "新月街C",
+            "description": "继续通向卡桑德拉的其他住宅区。"
           }
         ],
-        "keeperNotes": "Crescent Street B is best used as a connective and transitional environment. While it offers few immediate clues, its exits link to several high-impact locations. Emphasize unease, neglect, and the sense that the street itself is quietly complicit in the town’s secrets.",
+        "keeperNotes": "新月街B最适合用作连接和过渡环境。虽然它提供的直接线索很少,但其出口连接着几个高影响力的地点。强调不安、被忽视的感觉,以及街道本身似乎在悄悄地默许小镇的秘密。",
         "permanentChanges": []
       },
-      "tags": ["street", "residential", "neglect", "infrastructure"],
+      "tags": ["街道", "住宅", "废弃", "基础设施"],
       "connections": [
         {
-          "scenarioName": "Crescent Street A – South",
-          "relationshipType": "concurrent",
-          "description": "Connected streets forming part of the same residential and official boundary zone."
+          "scenarioName": "新月街A - 南",
+          "relationshipType": "并发",
+          "description": "相连的街道,形成相同住宅和官方边界区域的一部分。"
         },
         {
-          "scenarioName": "Crescent Street C",
-          "relationshipType": "concurrent",
-          "description": "Crescent Street B transitions into Crescent Street C within the residential district."
+          "scenarioName": "新月街C",
+          "relationshipType": "并发",
+          "description": "新月街B在住宅区内过渡到新月街C。"
         }
       ]
     }

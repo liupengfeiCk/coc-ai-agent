@@ -212,4 +212,36 @@ export const models: Models = {
       },
     },
   },
+  [ModelProviderName.DEEPSEEK]: {
+    endpoint: process.env.DEEPSEEK_API_URL || "https://api.deepseek.com/v1",
+    model: {
+      [ModelClass.SMALL]: {
+        name: process.env.SMALL_DEEPSEEK_MODEL || "deepseek-chat",
+        stop: [],
+        maxInputTokens: 128000,
+        maxOutputTokens: 8192,
+        frequency_penalty: 0.0,
+        presence_penalty: 0.0,
+        temperature: 0.7,
+      },
+      [ModelClass.MEDIUM]: {
+        name: process.env.MEDIUM_DEEPSEEK_MODEL || "deepseek-chat",
+        stop: [],
+        maxInputTokens: 128000,
+        maxOutputTokens: 8192,
+        frequency_penalty: 0.0,
+        presence_penalty: 0.0,
+        temperature: 0.7,
+      },
+      [ModelClass.LARGE]: {
+        name: process.env.LARGE_DEEPSEEK_MODEL || "deepseek-reasoner",
+        stop: [],
+        maxInputTokens: 128000,
+        maxOutputTokens: 8192,
+        frequency_penalty: 0.0,
+        presence_penalty: 0.0,
+        temperature: 0.7,
+      },
+    },
+  },
 };

@@ -1,74 +1,74 @@
 [
     {
-      "name": "Distillery",
-      "description": "A large but partially abandoned vodka distillery on the outskirts of Cassandra. Although the facility appears sizable, much of it is unused, giving the place a cold, hollow, and economically declining atmosphere.",
+      "name": "酿酒厂",
+      "description": "位于卡桑德拉郊区的一家大型但部分废弃的伏特加酿酒厂。尽管设施看起来很大,但大部分都闲置不用,给这个地方带来了寒冷、空洞和经济衰退的氛围。",
       "snapshot": {
-        "name": "William Distillery",
-        "location": "Cassandra (industrial outskirts)",
-        "description": "The distillery feels quiet and desolate. Large sections of the facility stand empty, machinery idle and coated with dust. The air smells faintly of alcohol and cold metal. Shortly after the investigators arrive, they encounter the distillery owner and directly witness his sudden death.",
+        "name": "威廉酿酒厂",
+        "location": "卡桑德拉(工业郊区)",
+        "description": "酿酒厂感觉安静而荒凉。设施的大部分区域空无一人,机器闲置着,覆盖着灰尘。空气中弥漫着淡淡的酒精和冷金属的气味。调查员到达后不久,他们遇到了酿酒厂老板,并直接目睹了他的突然死亡。",
         "characters": [
           {
-            "name": "Abel William",
-            "role": "Victim / distillery owner",
-            "status": "dead",
-            "location": "Inside the distillery",
-            "notes": "A middle-aged man who inherited the distillery after his father’s death. He struggled to manage the business and believed economic decline was the cause of its failure."
+            "name": "阿贝尔·威廉",
+            "role": "受害者 / 酿酒厂老板",
+            "status": "死亡",
+            "location": "酿酒厂内部",
+            "notes": "一个中年男子,在父亲去世后继承了酿酒厂。他努力经营这家企业,并认为经济衰退是其失败的原因。"
           }
         ],
         "clues": [
           {
-            "clueText": "Large portions of the distillery are completely unused, suggesting long-term decline rather than a sudden shutdown.",
-            "category": "environment",
-            "difficulty": "automatic",
-            "location": "Throughout the distillery",
+            "clueText": "酿酒厂的大部分区域完全闲置,表明是长期衰退而非突然关闭。",
+            "category": "环境",
+            "difficulty": "自动",
+            "location": "整个酿酒厂",
             "discoveryMethod": "",
-            "reveals": ["The distillery has been failing for a long time."]
+            "reveals": ["酿酒厂已经衰败很长时间了。"]
           },
           {
-            "clueText": "The investigators personally witness the death of the distillery owner upon arrival.",
-            "category": "observation",
-            "difficulty": "automatic",
-            "location": "Main production area",
+            "clueText": "调查员到达时亲眼目睹了酿酒厂老板的死亡。",
+            "category": "观察",
+            "difficulty": "自动",
+            "location": "主要生产区域",
             "discoveryMethod": "",
-            "reveals": ["This death may be connected to the broader events unfolding in Cassandra."]
+            "reveals": ["这次死亡可能与卡桑德拉正在发生的更广泛事件有关。"]
           }
         ],
         "conditions": [
           {
-            "type": "temperature",
-            "description": "Cold and drafty due to the vast empty interior.",
+            "type": "温度",
+            "description": "由于巨大的空荡内部而寒冷且有穿堂风。",
             "mechanicalEffect": ""
           },
           {
-            "type": "smell",
-            "description": "A lingering scent of vodka and industrial alcohol.",
+            "type": "气味",
+            "description": "挥之不去的伏特加和工业酒精的气味。",
             "mechanicalEffect": ""
           }
         ],
         "events": [
-          "Investigators arrive at the distillery.",
-          "The distillery owner (Abel William) dies in front of the investigators. His body begins to convulse, and a black spider crawls out from his neck, leaving a circular hole. The spider immediately disappears into the darkness. William's neck shows a circular blood hole, and blood spreads through his beard. He is already dead.",
-          "Investigators should leave immediately—no one will discover they were here. The next day, William's death will be reported in the newspaper, stating he was killed by a sharp object to the neck. His body will be found in the wine cellar, but only the investigators know the actual circumstances."
+          "调查员到达酿酒厂。",
+          "酿酒厂老板(阿贝尔·威廉)在调查员面前死亡。他的身体开始抽搐,一只黑色蜘蛛从他的脖子里爬出来,留下一个圆形的洞。蜘蛛立即消失在黑暗中。威廉的脖子上有一个圆形的血洞,血液从他的胡须中渗出。他已经死了。",
+          "调查员应该立即离开——没有人会发现他们来过这里。第二天,威廉的死亡将在报纸上报道,称他被锐器刺穿脖子而死。他的尸体将在酒窖中被发现,但只有调查员知道实际情况。"
         ],
         "exits": [
           {
-            "direction": "Main gate",
-            "destination": "Cassandra roads",
-            "description": "A wide industrial gate leading out of the distillery grounds.",
+            "direction": "正门",
+            "destination": "卡桑德拉道路",
+            "description": "通向酿酒厂场地外的宽阔工业大门。",
             "condition": ""
           }
         ],
-        "keeperNotes": "The death at the distillery is meant to be witnessed, not prevented. Emphasize the emptiness and decline of the location to reinforce the sense of inevitability.",
+        "keeperNotes": "酿酒厂的死亡是为了被目击,而不是被阻止。强调地点的空荡和衰败,以强化不可避免的感觉。",
         "permanentChanges": [
-          "The distillery owner is dead."
+          "酿酒厂老板已死。"
         ]
       },
-      "tags": ["industrial site", "death scene", "economic decline", "witnessed event"],
+      "tags": ["工业场地", "死亡现场", "经济衰退", "目击事件"],
       "connections": [
         {
-          "scenarioName": "Hospital",
-          "relationshipType": "leads_to",
-          "description": "The aftermath of the distillery owner’s death may involve medical or official handling of the body."
+          "scenarioName": "医院",
+          "relationshipType": "导向",
+          "description": "酿酒厂老板死亡的后续可能涉及对尸体的医疗或官方处理。"
         }
       ]
     }

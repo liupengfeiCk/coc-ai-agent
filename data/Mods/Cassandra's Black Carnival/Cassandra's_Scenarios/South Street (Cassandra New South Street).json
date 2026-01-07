@@ -1,65 +1,65 @@
 [
     {
-      "name": "South Street (Cassandra New South Street)",
-      "description": "South Street is one of the more active streets in Cassandra, blending social gathering spots, religious presence, and everyday commerce. It is a place where townsfolk regularly cross paths, making it an important social artery and a frequent destination for investigators.",
+      "name": "南街(卡桑德拉新南街)",
+      "description": "南街是卡桑德拉较活跃的街道之一,融合了社交聚会点、宗教存在和日常商业。这是镇民经常交叉路径的地方,使其成为重要的社交动脉和调查员的频繁目的地。",
       "snapshot": {
-        "name": "South Street",
-        "location": "Cassandra – New South Street",
-        "description": "South Street carries a steady flow of people throughout the day and night. The atmosphere shifts noticeably depending on the time: lively and noisy near the bar in the evenings, subdued and contemplative near the church, and practical and utilitarian around the hardware store. This mix gives the street a layered social texture, where casual conversations, rumors, and routine activities coexist.",
+        "name": "南街",
+        "location": "卡桑德拉 - 新南街",
+        "description": "南街全天候保持稳定的人流。气氛根据时间明显变化:晚上在酒吧附近热闹喧嚣,在教堂附近低调而沉思,在五金店周围实用而功利。这种混合给街道带来了分层的社交质感,休闲对话、谣言和日常活动共存。",
         "characters": [],
         "clues": [],
         "conditions": [
           {
-            "type": "sound",
-            "description": "Mixed ambient noise: voices and laughter near the bar, quieter footsteps and murmurs near the church.",
+            "type": "声音",
+            "description": "混合的环境噪音:酒吧附近的声音和笑声,教堂附近更安静的脚步声和低语。",
             "mechanicalEffect": ""
           },
           {
-            "type": "smell",
-            "description": "Alcohol and food smells from the bar mingle with dust and metal scents from the hardware store.",
+            "type": "气味",
+            "description": "酒吧的酒精和食物气味与五金店的灰尘和金属气味混合。",
             "mechanicalEffect": ""
           }
         ],
         "events": [],
         "exits": [
           {
-            "direction": "Bar entrance",
-            "destination": "Reindeer Bar",
-            "description": "A popular local bar and the site of THE SECOND MURDER CASE (December 22, 2003): 21-year-old Aberforth Locefern (Lucifero) killed by gunshot and knife—exactly one year after the first case at Paradil Grand Hotel.",
+            "direction": "酒吧入口",
+            "destination": "驯鹿酒吧",
+            "description": "受欢迎的本地酒吧和第二起谋杀案(2003年12月22日)的现场:21岁的阿伯福斯·洛斯费恩(路西菲罗)被枪击和刀刺杀——正好在帕拉迪尔大酒店第一起案件一年后。",
             "condition": ""
           },
           {
-            "direction": "Church grounds",
-            "destination": "Church",
-            "description": "A place of worship standing prominently along South Street, offering a stark contrast to the nearby bar.",
+            "direction": "教堂场地",
+            "destination": "教堂",
+            "description": "一座突出矗立在南街的礼拜场所,与附近的酒吧形成鲜明对比。",
             "condition": ""
           },
           {
-            "direction": "Storefront",
-            "destination": "Hardware Store",
-            "description": "A practical shop selling tools and supplies, frequented by townsfolk for everyday needs.",
+            "direction": "店面",
+            "destination": "五金店",
+            "description": "一家出售工具和用品的实用商店,镇民为日常需求而光顾。",
             "condition": ""
           }
         ],
-        "keeperNotes": "South Street is ideal for overlapping leads. The Reindeer Bar here is the site of THE SECOND MURDER CASE (December 22, 2003—21-year-old Lucifero, gunshot/stab), exactly one year after THE FIRST CASE at Paradil Grand Hotel (December 22, 2002—19-year-old girl, frozen in ice). Investigators can easily move between social, religious, and practical locations, allowing rumors, witnesses, and tension to intersect naturally.",
+        "keeperNotes": "南街非常适合重叠的线索。这里的驯鹿酒吧是第二起谋杀案(2003年12月22日——21岁的路西菲罗,枪击/刺伤)的现场,正好在帕拉迪尔大酒店第一起案件(2002年12月22日——19岁女孩,冻在冰中)一年后。调查员可以轻松地在社交、宗教和实用地点之间移动,允许谣言、目击者和紧张自然交叉。",
         "permanentChanges": []
       },
-      "tags": ["street", "social hub", "mixed-use", "investigation"],
+      "tags": ["街道", "社交中心", "混合用途", "调查"],
       "connections": [
         {
-          "scenarioName": "Reindeer Bar",
-          "relationshipType": "leads_to",
-          "description": "South Street provides direct access to the Reindeer Bar and its central murder investigation."
+          "scenarioName": "驯鹿酒吧",
+          "relationshipType": "导向",
+          "description": "南街提供通往驯鹿酒吧及其核心谋杀调查的直接通道。"
         },
         {
-          "scenarioName": "Church",
-          "relationshipType": "leads_to",
-          "description": "Investigators can enter the church directly from South Street to pursue religious or cult-related leads."
+          "scenarioName": "教堂",
+          "relationshipType": "导向",
+          "description": "调查员可以直接从南街进入教堂追踪宗教或邪教相关线索。"
         },
         {
-          "scenarioName": "Hardware Store",
-          "relationshipType": "leads_to",
-          "description": "The hardware store branches off South Street and may support practical preparations or minor leads."
+          "scenarioName": "五金店",
+          "relationshipType": "导向",
+          "description": "五金店从南街分支出来,可能支持实用准备或次要线索。"
         }
       ]
     }

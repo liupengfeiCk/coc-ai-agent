@@ -1,21 +1,21 @@
 [
   {
-    "name": "Abel William",
-    "occupation": "Distillery owner",
+    "name": "阿贝尔·威廉",
+    "occupation": "酿酒厂老板",
     "age": 40,
     "gender": "male",
-    "appearance": "A bearded man with a square face and darker complexion than most white men. He keeps a thick beard that appears carefully groomed.",
-    "personality": "Anxious, overworked, and frustrated. He tries to stay professional but is clearly under pressure from economic decline and unexplained events.",
-    "background": "After his father Peter William died, Abel inherited the family distillery in Cassandra. He manages the business alone, but declining economic conditions forced him to shut down part of the factory and lay off many workers, leaving much of the facility unused.",
+    "appearance": "留着胡子的方脸男人,肤色比大多数白人更深。他留着看起来精心修剪的浓密胡须。",
+    "personality": "焦虑、过度劳累且沮丧。他试图保持专业,但显然承受着经济衰退和无法解释的事件的压力。",
+    "background": "父亲彼得·威廉去世后,阿贝尔继承了卡珊德拉的家族酿酒厂。他独自管理业务,但经济状况恶化迫使他关闭了部分工厂并解雇了许多工人,使得大部分设施闲置。",
     "goals": [
-      "Keep the distillery operational",
-      "Understand the strange events plaguing his workplace"
+      "保持酿酒厂运营",
+      "了解困扰他工作场所的怪异事件"
     ],
     "secrets": [
-      "The spider infestation and his own death are connected to unnatural forces (cold spiders from Constantine's church)",
-      "He was already dead earlier than it appeared to investigators",
-      "He was infected by a cold spider bite, similar to Nancy Charlotte's infection",
-      "His father's death in 2002 may be connected to Patrizio von Samsa's human experiments"
+      "蜘蛛侵扰和他自己的死亡与超自然力量有关(来自康斯坦丁教堂的寒冷蜘蛛)",
+      "他实际上比调查员看到的更早就已经死了",
+      "他被寒冷蜘蛛咬伤感染,类似于南希·夏洛特的感染",
+      "他父亲在2002年的死亡可能与帕特里齐奥·冯·萨姆萨的人体实验有关"
     ],
     "attributes": {
       "STR": 50,
@@ -46,75 +46,75 @@
     },
     "inventory": [
       {
-        "name": "Scrapbook clippings (incl. father's obituary + loose 1988 newspaper clipping)",
+        "name": "剪报集(包括父亲的讣告 + 散落的1988年报纸剪报)",
         "properties": {
-          "clue": "Obituary + a loose 1988-era clipping about a riot, hinting at Simon's past."
+          "clue": "讣告 + 一张关于暴乱的1988年时代散落剪报,暗示西蒙的过去。"
         }
       },
       {
-        "name": "Recent newspaper (weeks old)",
+        "name": "最近的报纸(几周前的)",
         "properties": {
-          "clue": "Reports unusual Pacific fish activity + shark attacks/beach controls; foreshadows Cassandra anomalies tied to Deep Ones activity."
+          "clue": "报道异常的太平洋鱼类活动 + 鲨鱼袭击/海滩管制;预示着与深潜者活动相关的卡珊德拉异常现象。"
         }
       }
     ],
     "clues": [
       {
-        "clueText": "Abel complained about a growing spider infestation in and around the distillery (cold spiders from Constantine's church).",
+        "clueText": "阿贝尔抱怨酿酒厂内外蜘蛛侵扰越来越严重(来自康斯坦丁教堂的寒冷蜘蛛)。",
         "category": "observation",
         "difficulty": "regular",
         "relatedTo": [
-          "William Distillery",
-          "Cold spiders",
-          "Constantine Frollo"
+          "威廉酿酒厂",
+          "寒冷蜘蛛",
+          "康斯坦丁·弗罗洛"
         ]
       },
       {
-        "clueText": "A black spider (cold spider) emerged from Abel's neck, killing him instantly. This is the same type of infection that Nancy Charlotte suffers from.",
+        "clueText": "一只黑色蜘蛛(寒冷蜘蛛)从阿贝尔的脖子里钻出来,立即杀死了他。这与南希·夏洛特遭受的感染类型相同。",
         "category": "observation",
         "difficulty": "regular",
         "relatedTo": [
-          "William Distillery",
-          "Cold spider",
-          "Spider infection",
-          "Nancy Charlotte"
+          "威廉酿酒厂",
+          "寒冷蜘蛛",
+          "蜘蛛感染",
+          "南希·夏洛特"
         ]
       },
       {
-        "clueText": "Marcel was one of the employees laid off after the distillery downsized.",
+        "clueText": "马赛尔是酿酒厂缩减规模后被解雇的员工之一。",
         "category": "knowledge",
         "difficulty": "regular",
         "relatedTo": [
-          "Marcel Gwynplaine"
+          "马赛尔·格温普兰"
         ]
       },
       {
-        "clueText": "His father's death in 2002 may be connected to Patrizio von Samsa's human experiments.",
+        "clueText": "他父亲在2002年的死亡可能与帕特里齐奥·冯·萨姆萨的人体实验有关。",
         "category": "secret",
         "difficulty": "hard",
         "relatedTo": [
-          "Peter William",
-          "Patrizio von Samsa",
-          "Human experiments"
+          "彼得·威廉",
+          "帕特里齐奥·冯·萨姆萨",
+          "人体实验"
         ]
       }
     ],
     "relationships": [
       {
-        "targetName": "Peter William",
+        "targetName": "彼得·威廉",
         "relationshipType": "family",
         "attitude": 60,
-        "description": "Son and successor",
-        "history": "Inherited the distillery after Peter’s death."
+        "description": "儿子和继承人",
+        "history": "彼得去世后继承了酿酒厂。"
       },
       {
-        "targetName": "Marcel",
+        "targetName": "马赛尔",
         "relationshipType": "employee",
         "attitude": -20,
-        "description": "Former employee",
-        "history": "Marcel was dismissed during downsizing of the distillery."
+        "description": "前员工",
+        "history": "马赛尔在酿酒厂缩减规模期间被解雇。"
       }
     ],
-    "notes": "Abel’s corpse may later reappear in the wine cellar if investigators return."
+    "notes": "如果调查员返回,阿贝尔的尸体可能稍后会重新出现在酒窖中。"
   }
 ]

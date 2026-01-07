@@ -1,11 +1,11 @@
 [
     {
-      "name": "Shoggoth Lord (Mr. Shani)",
-      "occupation": "Unique Shoggoth Entity / Hidden Manipulator",
+      "name": "修格斯领主(沙尼先生)",
+      "occupation": "独特修格斯实体 / 隐藏操纵者",
       "age": 1000000,
-      "appearance": "In human form, Mr. Shani appears as an unremarkable middle-aged man whose presence feels subtly unsettling. When revealing his true nature, he becomes a massive, amorphous Shoggoth—an ever-melting black mass capable of forming crushing limbs and engulfing victims.",
-      "personality": "Extremely self-controlled, cautious, and calculating. He is capable of long-term planning and deception, prioritizing secrecy above all else. When overwhelmed by anger, hunger, or emotional turmoil, he loses control and reverts to his monstrous instincts.",
-      "background": "Mr. Shani is the sole known Shoggoth Lord, a unique being among his species. Unlike ordinary Shoggoths, he possesses high intelligence and the ability to assume and maintain a human form. He lives covertly among humanity, feeding only in isolation and eliminating witnesses before fleeing the scene.",
+      "appearance": "人类形态时,沙尼先生看起来是一个不起眼的中年男人,但他的存在让人感到微妙的不安。显露真实本质时,他变成一个巨大的无定形修格斯——一团不断融化的黑色物质,能够形成碾压的肢体并吞噬受害者。",
+      "personality": "极度自制、谨慎、精于算计。他能够进行长期规划和欺骗,将保密置于一切之上。当被愤怒、饥饿或情绪动荡压倒时,他会失去控制并恢复怪物本能。",
+      "background": "沙尼先生是已知唯一的修格斯领主,在他的物种中是独特的存在。与普通修格斯不同,他拥有高智力和假设并维持人类形态的能力。他隐秘地生活在人类中,只在隔离状态下进食,并在逃离现场前消灭目击者。",
       "attributes": {
         "STR": 120,
         "CON": 130,
@@ -45,6 +45,6 @@
         "Stealth": 70,
         "Track": 75
       },
-      "notes": "Combat Behavior: In human form, Mr. Shani relies on powerful grapples (bear hugs) or devastating punches. He avoids prolonged fights and, once exposed, attempts to kill all witnesses as quickly as possible before escaping. He goes to great lengths to conceal his true identity. When driven by intense hunger, he drags victims into abandoned buildings or dark basements to feed undisturbed.\n\nForm Control: As long as Mr. Shani remains calm and emotionally controlled, he can maintain his human form. If he becomes enraged or mentally distressed, he rapidly melts into his Shoggoth form. Regardless of circumstances, if his human form’s HP is reduced to 0, he automatically reverts to Shoggoth form.\n\nAttacks per Round: 2 attacks per round in Shoggoth form; 1 attack per round in human form.\n\nCombat Attacks: Crush (Shoggoth form) 100%, damage 2D6 + damage bonus. Rhino Punch 95% (damage bonus 2D6 in Shoggoth form, 1D6 in human form), damage 2D3 + damage bonus. Grab (Shoggoth form) 90%: the victim is pulled into Mr. Shani’s body and suffers 1D6 damage per round until fully dissolved.\n\nArmor & Regeneration: No armor. Fire and electrical attacks deal only half damage. Physical weapons such as firearms inflict only 1 point of damage per hit if they fail to penetrate. Mr. Shani regenerates 2 HP per round.\n\nMagic: Knows the spell 'Control' and may possess additional spells at the Keeper’s discretion, limited by his intelligence and slow learning speed.\n\nLanguages: Arabic 20%, Ancient Egyptian 10%, English 60%, Nàttic 65%, Spanish 30%, Sumerian 5%.\n\nSanity Loss: Seeing Mr. Shani in human form causes no SAN loss. Seeing his Shoggoth form causes 1D6/1D20 SAN loss. Witnessing the transformation from human to Shoggoth causes an additional 1/1D5 SAN loss."
+      "notes": "战斗行为:人类形态时,沙尼先生依靠强力擒抱(熊抱)或毁灭性拳击。他避免长时间战斗,一旦暴露,会尝试尽快杀死所有目击者后逃跑。他竭尽全力隐藏真实身份。当被强烈饥饿驱使时,他会将受害者拖入废弃建筑或黑暗地下室,在不受干扰的情况下进食。\n\n形态控制:只要沙尼先生保持冷静和情绪控制,他就能维持人类形态。如果他变得愤怒或精神受扰,他会迅速融化为修格斯形态。无论何种情况,如果他的人类形态生命值降至0,他会自动恢复修格斯形态。\n\n每回合攻击:修格斯形态每回合2次攻击;人类形态每回合1次攻击。\n\n战斗攻击:碾压(修格斯形态)100%,伤害2D6+伤害加值。犀牛拳95%(修格斯形态伤害加值2D6,人类形态1D6),伤害2D3+伤害加值。抓取(修格斯形态)90%:受害者被拉入沙尼先生体内,每回合受到1D6伤害直到完全溶解。\n\n护甲与再生:无护甲。火焰和电击攻击仅造成一半伤害。枪械等物理武器如果未能穿透,每次命中仅造成1点伤害。沙尼先生每回合再生2生命值。\n\n魔法:知道'控制'法术,根据守秘人判断可能拥有其他法术,受其智力和缓慢学习速度限制。\n\n语言:阿拉伯语20%,古埃及语10%,英语60%,纳提克语65%,西班牙语30%,苏美尔语5%。\n\n理智损失:看到沙尼先生人类形态不造成理智损失。看到修格斯形态造成1D6/1D20理智损失。目睹从人类变为修格斯的转变额外造成1/1D5理智损失。"
     }
   ]

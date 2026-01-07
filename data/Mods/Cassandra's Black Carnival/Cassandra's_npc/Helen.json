@@ -1,17 +1,17 @@
 [
     {
-      "name": "Helen",
-      "occupation": "Restaurant Owner and Chef (secretly a retired assassin)",
-      "appearance": "A sexy Latina woman with a confident and alluring presence, well-groomed and stylish, blending the charm of a successful restaurateur with subtle hints of danger.",
-      "personality": "Calm, observant, and socially adept; outwardly warm and sociable, but inwardly cautious, independent, and capable of lethal decisiveness.",
-      "background": "Helen is an ordinary friend of Jenny Florence (berforth Locefern). Publicly, she runs a restaurant as its beautiful owner and chef. In truth, she is a retired assassin enjoying a peaceful life. She and Lucifero often go shopping together, yet neither knows the other's hidden identity. On the day of the 2003 Reindeer Bar incident (December 22, 2003), she was invited by a friend named Johnny to drink, but they parted on bad terms. Later, when she intended to invite Lucifero out for a drink, she discovered that Lucifero had been killed. She is Vito's girlfriend, and Philip Scaletta tried to flirt with her at the Reindeer Bar, leading to a fight where Philip lost his folding knife.",
+      "name": "海伦",
+      "occupation": "餐厅老板兼厨师(秘密身份:退休杀手)",
+      "appearance": "一个性感的拉丁裔女人,自信且诱人,打扮精致时尚,融合了成功餐厅老板的魅力和微妙的危险暗示。",
+      "personality": "冷静、观察力强、社交能力强;外表温暖友善,但内心谨慎、独立,能够做出致命决定。",
+      "background": "海伦是珍妮·弗洛伦斯(阿伯福斯·洛斯芬)的普通朋友。公开地,她经营一家餐厅,是美丽的老板兼厨师。实际上,她是一个享受平静生活的退休杀手。她和露西弗罗经常一起购物,但彼此都不知道对方的隐藏身份。在2003年驯鹿酒吧事件当天(2003年12月22日),她被一个名叫约翰尼的朋友邀请去喝酒,但他们不欢而散。后来,当她打算邀请露西弗罗出去喝一杯时,她发现露西弗罗已经被杀。她是维托的女朋友,菲利普·斯卡莱塔曾在驯鹿酒吧试图调情她,导致了一场打架,菲利普丢失了他的折叠刀。",
       "goals": [
-        "Maintain her peaceful retired life without exposing her past",
-        "Understand the circumstances behind Locefern's death"
+        "维持她平静的退休生活而不暴露过去",
+        "了解洛斯芬死亡的情况"
       ],
       "secrets": [
-        "She is a retired professional killer",
-        "Her background has indirect ties to the Italian Mafia"
+        "她是一个退休的职业杀手",
+        "她的背景与意大利黑手党有间接联系"
       ],
       "attributes": {
         "STR": 55,
@@ -32,33 +32,33 @@
       },
     "clues": [
       {
-        "clueText": "She once suspected that Vito was having an affair with Shandra because he visited Shandra's cabin to look for Bruno several times, but later realized it was a misunderstanding.",
+        "clueText": "她曾怀疑维托与珊德拉有外遇,因为他多次去珊德拉的小屋找布鲁诺,但后来意识到这是误会。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["Vito", "Shandra Hernandez", "Bruno Galilei"]
+        "relatedTo": ["维托", "珊德拉·埃尔南德斯", "布鲁诺·伽利略"]
       },
       {
-        "clueText": "She has some familial or cultural connections to the Italian Mafia, which influenced her lukewarm faith in Catholicism.",
+        "clueText": "她与意大利黑手党有一些家族或文化联系,这影响了她对天主教的不冷不热的信仰。",
         "category": "secret",
         "difficulty": "hard",
-        "relatedTo": ["Italian Mafia", "Catholic Church"]
+        "relatedTo": ["意大利黑手党", "天主教会"]
       },
       {
-        "clueText": "On the day of the 2003 Reindeer Bar murder (December 22, 2003), she was at the bar with Johnny, and Philip Scaletta tried to flirt with her, leading to a fight where Philip lost his folding knife (which was later found stuck in Lucifero's back).",
+        "clueText": "在2003年驯鹿酒吧谋杀案当天(2003年12月22日),她和约翰尼在酒吧,菲利普·斯卡莱塔试图调情她,导致了一场打架,菲利普丢失了他的折叠刀(后来发现插在露西弗罗背上)。",
         "category": "knowledge",
         "difficulty": "regular",
-        "relatedTo": ["2003 Reindeer Bar murder", "Philip Scaletta", "Jenny Florence (Lucifero)"]
+        "relatedTo": ["2003年驯鹿酒吧谋杀案", "菲利普·斯卡莱塔", "珍妮·弗洛伦斯(露西弗罗)"]
       }
     ],
       "relationships": [
         {
-          "targetName": "berforth Locefern",
+          "targetName": "阿伯福斯·洛斯芬",
           "relationshipType": "friend",
           "attitude": 40,
-          "description": "A casual shopping companion and ordinary friend, unaware of each other's true identities.",
-          "history": "They spent time together socially, believing the other to be a normal civilian."
+          "description": "一个随意的购物伙伴和普通朋友,彼此都不知道对方的真实身份。",
+          "history": "她们在社交上共度时光,认为对方是正常的平民。"
         }
       ],
-      "notes": "Helen serves as a seemingly minor NPC who can unexpectedly display high competence and hidden depth if events force her past to resurface."
+      "notes": "海伦作为一个看似次要的NPC,如果事件迫使她的过去浮出水面,可以出乎意料地展示出高能力和隐藏深度。"
     }
   ]

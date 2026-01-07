@@ -1,94 +1,94 @@
 [
     {
-      "name": "Marcel's Home",
-      "description": "A low-income apartment unit where Marcel Gwynplaine lives, located near the intersection of Crescent Street B. The residence reflects Marcel's unstable life: poorly maintained, cramped, and permeated with neglect and frustration.",
+      "name": "马塞尔的家",
+      "description": "马塞尔·格温普兰居住的低收入公寓单元,位于新月街B的交叉口附近。这个住所反映了马塞尔不稳定的生活:保养不善、狭窄,充满了被忽视和沮丧的气氛。",
       "snapshot": {
-        "name": "Marcel's Home",
-        "location": "A low-rent apartment unit on Crescent Street B, opposite the intersection",
-        "description": "Marcel's home is a modest, poorly kept apartment in a low-income housing block. The interior shows signs of long-term neglect—scattered belongings, the lingering smell of alcohol, and an overall sense of stagnation. The environment mirrors Marcel's bitterness and social decline after losing his job at the winery.",
+        "name": "马塞尔的家",
+        "location": "新月街B的低租金公寓单元,在交叉口对面",
+        "description": "马塞尔的家是低收入住房区的一个简朴、保养不善的公寓。室内显示出长期被忽视的迹象——散落的物品、挥之不去的酒精气味,以及整体停滞的感觉。环境反映了马塞尔在酒庄失业后的苦涩和社会衰落。",
         "characters": [
           {
-            "name": "Marcel Gwynplaine",
-            "role": "Witness / Local resident",
-            "status": "Alive",
-            "location": "Inside his apartment",
-            "notes": "An unemployed drifter and heavy drinker, recently fired from the winery. Grew up in Cassandra, left briefly, then returned disillusioned. Complains about social injustice but is fundamentally timid. He was a witness to THE SECOND MURDER CASE (December 22, 2003) at Reindeer Bar, where he discovered the body of 21-year-old Lucifero."
+            "name": "马塞尔·格温普兰",
+            "role": "目击者 / 当地居民",
+            "status": "存活",
+            "location": "公寓内",
+            "notes": "一个失业的流浪者和酗酒者,最近从酒庄被解雇。在卡桑德拉长大,短暂离开后幻灭地回来。抱怨社会不公,但本质上胆小。他是第二起谋杀案(2003年12月22日)在驯鹿酒吧的目击者,他发现了21岁路西菲罗的尸体。"
           }
         ],
         "clues": [
           {
-            "clueText": "Signs of heavy drinking and recent agitation in Marcel's apartment",
-            "category": "environment",
-            "difficulty": "automatic",
-            "location": "Inside Marcel's living space",
+            "clueText": "马塞尔公寓中酗酒和最近激动的迹象",
+            "category": "环境",
+            "difficulty": "自动",
+            "location": "马塞尔的生活空间内",
             "discoveryMethod": "",
-            "reveals": ["Marcel's unstable mental state and self-destructive lifestyle"]
+            "reveals": ["马塞尔不稳定的心理状态和自我毁灭的生活方式"]
           },
           {
-            "clueText": "Personal effects indicating Marcel's long residence in Cassandra",
-            "category": "observation",
-            "difficulty": "regular",
-            "location": "Apartment interior",
-            "discoveryMethod": "Spot Hidden",
-            "reveals": ["Marcel's familiarity with the town and its long-term changes"]
+            "clueText": "显示马塞尔长期居住在卡桑德拉的个人物品",
+            "category": "观察",
+            "difficulty": "普通",
+            "location": "公寓内部",
+            "discoveryMethod": "侦查",
+            "reveals": ["马塞尔对小镇及其长期变化的熟悉"]
           },
           {
-            "clueText": "Marcel witnessed THE SECOND MURDER CASE (December 22, 2003) at Reindeer Bar, where he discovered the body of 21-year-old Lucifero in the restroom. He claims he saw the victim alive and talking on the phone just before finding her dead.",
-            "category": "witness",
-            "difficulty": "regular",
-            "location": "Conversation with Marcel",
-            "discoveryMethod": "Talk or Persuade",
+            "clueText": "马塞尔目睹了第二起谋杀案(2003年12月22日)在驯鹿酒吧,他在卫生间发现了21岁路西菲罗的尸体。他声称在发现她死亡前不久看到受害者还活着并在打电话。",
+            "category": "目击",
+            "difficulty": "普通",
+            "location": "与马塞尔的对话",
+            "discoveryMethod": "交谈或说服",
             "reveals": [
-              "Marcel was present at the SECOND CASE murder scene",
-              "The victim was alive shortly before death",
-              "This is the SECOND CASE, distinct from the FIRST CASE (19-year-old, December 22, 2002)"
+              "马塞尔在第二起案件的谋杀现场",
+              "受害者在死前不久还活着",
+              "这是第二起案件,与第一起案件(19岁,2002年12月22日)不同"
             ]
           }
         ],
         "conditions": [
           {
-            "type": "smell",
-            "description": "Stale alcohol and unclean living conditions",
+            "type": "气味",
+            "description": "陈腐的酒精和不干净的生活条件",
             "mechanicalEffect": ""
           },
           {
-            "type": "lighting",
-            "description": "Dim, poor indoor lighting",
-            "mechanicalEffect": "May impose a penalty die on detailed visual inspections"
+            "type": "照明",
+            "description": "昏暗、糟糕的室内照明",
+            "mechanicalEffect": "可能对详细的视觉检查施加惩罚骰"
           }
         ],
         "events": [
-          "Investigators may question Marcel about THE SECOND MURDER CASE at Reindeer Bar",
-          "Marcel may complain bitterly about being fired from the winery",
-          "Marcel reveals details about discovering the SECOND CASE victim's body"
+          "调查员可能询问马塞尔关于驯鹿酒吧的第二起谋杀案",
+          "马塞尔可能痛苦地抱怨被酒庄解雇",
+          "马塞尔透露发现第二起案件受害者尸体的细节"
         ],
         "exits": [
           {
-            "direction": "Front door",
-            "destination": "Crescent Street B",
-            "description": "Leads out to the street and nearby intersections",
+            "direction": "前门",
+            "destination": "新月街B",
+            "description": "通向街道和附近的交叉口",
             "condition": ""
           }
         ],
-        "keeperNotes": "Marcel is not brave and will avoid danger. CRITICALLY: Marcel was a witness to THE SECOND MURDER CASE (December 22, 2003) at Reindeer Bar, where he discovered the body of 21-year-old Lucifero in the restroom. He saw the victim alive and talking on the phone just before finding her dead. This is DISTINCT from the FIRST CASE (December 22, 2002, 19-year-old girl frozen in ice at Paradil Grand Hotel). He can provide local color and minor information but may exaggerate or complain rather than give clear facts.",
+        "keeperNotes": "马塞尔不勇敢,会避免危险。关键:马塞尔是第二起谋杀案(2003年12月22日)在驯鹿酒吧的目击者,他在卫生间发现了21岁路西菲罗的尸体。他在发现她死亡前不久看到受害者还活着并在打电话。这与第一起案件(2002年12月22日,19岁女孩在帕拉迪尔大酒店冻在冰中)不同。他可以提供当地色彩和次要信息,但可能夸大或抱怨而不是给出明确的事实。",
         "permanentChanges": []
       },
-      "tags": ["residential", "low-income", "witness", "local resident"],
+      "tags": ["住宅", "低收入", "目击者", "当地居民"],
       "connections": [
         {
-          "scenarioName": "Crescent Street B",
-          "relationshipType": "leads_to",
-          "description": "Marcel's home opens directly onto Crescent Street B"
+          "scenarioName": "新月街B",
+          "relationshipType": "导向",
+          "description": "马塞尔的家直接通向新月街B"
         },
         {
-          "scenarioName": "Paradile Grand Hotel",
-          "relationshipType": "concurrent",
-          "description": "Located nearby on Crescent Street. The hotel is the site of THE FIRST CASE (December 22, 2002), while Marcel witnessed THE SECOND CASE (December 22, 2003)."
+          "scenarioName": "帕拉迪尔大酒店",
+          "relationshipType": "并发",
+          "description": "位于新月街附近。酒店是第一起案件(2002年12月22日)的地点,而马塞尔目睹了第二起案件(2003年12月22日)。"
         },
         {
-          "scenarioName": "Reindeer Bar",
-          "relationshipType": "leads_to",
-          "description": "Marcel witnessed THE SECOND MURDER CASE (December 22, 2003) at Reindeer Bar where 21-year-old Lucifero was killed."
+          "scenarioName": "驯鹿酒吧",
+          "relationshipType": "导向",
+          "description": "马塞尔目睹了第二起谋杀案(2003年12月22日)在驯鹿酒吧,21岁的路西菲罗在那里被杀。"
         }
       ]
     }
