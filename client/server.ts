@@ -2522,6 +2522,49 @@ app.get("/api/checkpoints/list", (req, res) => {
   }
 });
 
+// DELETE /api/checkpoints/:checkpointId - Delete a checkpoint
+app.delete("/api/checkpoints/:checkpointId", (req, res) => {
+  try {
+    // Initialize database if not already initialized
+    if (!db) {
+      const dataDir = path.join(process.cwd(), "data");
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      db = new CoCDatabase();
+      seedDatabase(db);
+      console.log("Database initialized for checkpoint deletion");
+    }
+
+    const { checkpointId } = req.params;
+    if (!checkpointId) {
+      return res.status(400).json({ error: "checkpointId is required" });
+    }
+
+    // Check if checkpoint exists before deletion
+    const database = db.getDatabase();
+    const checkStmt = database.prepare("SELECT checkpoint_id FROM game_checkpoints WHERE checkpoint_id = ?");
+    const checkpoint = checkStmt.get(checkpointId);
+
+    if (!checkpoint) {
+      return res.status(404).json({ error: "Checkpoint not found" });
+    }
+
+    // Delete the checkpoint using database method
+    db.deleteCheckpoint(checkpointId);
+    console.log(`✓ Checkpoint deleted: ${checkpointId}`);
+
+    res.json({
+      success: true,
+      message: "Checkpoint deleted successfully",
+      checkpointId,
+    });
+  } catch (error) {
+    console.error("Error deleting checkpoint:", error);
+    res.status(500).json({ error: "Failed to delete checkpoint: " + (error as Error).message });
+  }
+});
+
 // POST /api/checkpoints/load - Load a checkpoint and restore game state
 app.post("/api/checkpoints/load", async (req, res) => {
   try {

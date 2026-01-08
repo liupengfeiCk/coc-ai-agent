@@ -603,6 +603,7 @@ export class CharacterAgent {
       targetName: string;
       relationshipType: string;
       attitude: number;
+      sessionId: string;
       description?: string;
     }> = [];
 
@@ -653,6 +654,7 @@ export class CharacterAgent {
           targetName: playerName,
           relationshipType: initial.relationshipType,
           attitude: initial.attitude,
+          sessionId: gameState.sessionId,
           description: initial.description
         });
         continue;
@@ -686,6 +688,7 @@ export class CharacterAgent {
           targetName: relationship.targetName,
           relationshipType: relationship.relationshipType,
           attitude: newAttitude,
+          sessionId: gameState.sessionId,
           description: relationship.description
         });
       }

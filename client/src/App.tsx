@@ -427,6 +427,39 @@ const App: React.FC = () => {
     }
   };
 
+  // Handle checkpoint deletion
+  const handleDeleteCheckpoint = async (checkpointId: string, checkpointName: string) => {
+    // Confirmation dialog
+    const confirmed = window.confirm(
+      `确定要删除存档 "${checkpointName}" 吗?\n\n此操作无法撤销!`
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/checkpoints/${checkpointId}`, {
+        method: "DELETE",
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // Remove checkpoint from local state
+        setCheckpoints((prevCheckpoints) => 
+          prevCheckpoints.filter((cp) => cp.checkpointId !== checkpointId)
+        );
+        console.log(`✓ Checkpoint deleted: ${checkpointId}`);
+      } else {
+        alert("删除存档失败: " + (data.error || "Unknown error"));
+      }
+    } catch (error) {
+      console.error("Error deleting checkpoint:", error);
+      alert("网络错误，无法删除存档");
+    }
+  };
+
   const onChange = (key: string, value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
   };
@@ -1526,20 +1559,11 @@ const App: React.FC = () => {
                   {checkpoints.map((checkpoint: any) => (
                     <div
                       key={checkpoint.checkpointId}
-                      onClick={() => handleLoadCheckpoint(checkpoint.checkpointId)}
                       style={{
                         padding: '15px',
                         border: '2px solid #8b7355',
                         borderRadius: '4px',
-                        cursor: 'pointer',
                         backgroundColor: '#fff',
-                        transition: 'background-color 0.2s',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#f0ebe0';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = '#fff';
                       }}
                     >
                       <div style={{ fontWeight: 'bold', marginBottom: '5px', color: '#3d2817' }}>
@@ -1551,8 +1575,60 @@ const App: React.FC = () => {
                         {checkpoint.gameDay && ` | 第 ${checkpoint.gameDay} 天`}
                         {checkpoint.gameTime && ` | ${checkpoint.gameTime}`}
                       </div>
-                      <div style={{ fontSize: '0.75rem', color: '#999', marginTop: '5px' }}>
+                      <div style={{ fontSize: '0.75rem', color: '#999', marginTop: '5px', marginBottom: '10px' }}>
                         {checkpoint.createdAt && new Date(checkpoint.createdAt).toLocaleString('zh-CN')}
+                      </div>
+                      
+                      {/* Action buttons */}
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <button
+                          onClick={() => handleLoadCheckpoint(checkpoint.checkpointId)}
+                          style={{
+                            flex: 1,
+                            padding: '8px 12px',
+                            backgroundColor: '#8b7355',
+                            color: '#f5f1e8',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '0.9rem',
+                            fontWeight: 'bold',
+                            transition: 'background-color 0.2s',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#6b5a45';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = '#8b7355';
+                          }}
+                        >
+                          📂 加载存档
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation(); // Prevent triggering parent click
+                            handleDeleteCheckpoint(checkpoint.checkpointId, checkpoint.checkpointName || '未命名存档');
+                          }}
+                          style={{
+                            padding: '8px 12px',
+                            backgroundColor: '#c41e3a',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '0.9rem',
+                            fontWeight: 'bold',
+                            transition: 'background-color 0.2s',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#a01828';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = '#c41e3a';
+                          }}
+                        >
+                          🗑️ 删除
+                        </button>
                       </div>
                     </div>
                   ))}

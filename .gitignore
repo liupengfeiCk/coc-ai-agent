@@ -65,3 +65,6 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+
+#explain
+explain.md

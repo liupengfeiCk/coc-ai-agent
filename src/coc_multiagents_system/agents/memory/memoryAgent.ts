@@ -43,15 +43,14 @@ export const injectActionTypeRules = (
 
 /**
  * Extract recent conversation history (last N completed turns) from database
- * Note: Simulate queries (with actionAnalysis === null) are included in conversationHistory
- * but should not count towards turn statistics (turnsInCurrentScene).
- * Real queries have actionAnalysis set by the Orchestrator Agent.
+ * Note: Uses is_simulated field to distinguish between real player input and AI-generated events
+ * Real queries have is_simulated=0, simulated queries have is_simulated=1
  */
 export const extractRecentConversationHistory = async (
   db: CoCDatabase | undefined,
   sessionId: string,
   limit = 1
-): Promise<Array<{ turnNumber: number; characterInput: string; keeperNarrative: string | null; actionAnalysis?: any | null }>> => {
+): Promise<Array<{ turnNumber: number; characterInput: string; keeperNarrative: string | null; actionAnalysis?: any | null; isSimulated?: boolean }>> => {
   if (!db) return [];
 
   try {
@@ -59,7 +58,7 @@ export const extractRecentConversationHistory = async (
     const turns = db.getTurnHistory(sessionId, limit * 2);
     
     // Filter only completed turns with keeper narrative, then take the last N
-    // Include both real queries (with actionAnalysis) and simulate queries (actionAnalysis === null)
+    // Include both real queries and simulate queries
     const completedTurns = turns
       .filter(turn => turn.status === 'completed' && turn.keeperNarrative)
       .slice(0, limit)
@@ -67,12 +66,13 @@ export const extractRecentConversationHistory = async (
         turnNumber: turn.turnNumber,
         characterInput: turn.characterInput,
         keeperNarrative: turn.keeperNarrative,
-        actionAnalysis: turn.actionAnalysis || null, // null indicates simulate query
+        actionAnalysis: turn.actionAnalysis || null,
+        isSimulated: turn.isSimulated || false, // Use is_simulated field from database
       }))
       .reverse(); // Reverse to get chronological order (oldest first)
 
     if (completedTurns.length > 0) {
-      const simulateCount = completedTurns.filter(t => !t.actionAnalysis).length;
+      const simulateCount = completedTurns.filter(t => t.isSimulated).length;
       const realCount = completedTurns.length - simulateCount;
       console.log(`📜 [Memory Agent] 提取了 ${completedTurns.length} 轮历史对话 (Turn #${completedTurns[0]?.turnNumber} 到 Turn #${completedTurns[completedTurns.length - 1]?.turnNumber}), 其中真实轮数: ${realCount}, simulate轮数: ${simulateCount}`);
     }
@@ -618,31 +618,7 @@ export const loadCheckpoint = (
   console.log(`✓ Loaded checkpoint: "${checkpoint.checkpointName}" from ${checkpoint.metadata.createdAt}`);
   
   const restoredGameState = checkpoint.gameState as GameState;
-  
-  // CRITICAL FIX: Reload all NPCs from database to ensure no NPCs are missing
-  // Checkpoints only save NPCs that were loaded at save time, but new NPCs
-  // may have been added or the checkpoint may have been created with a subset
-  try {
-    const npcLoader = new NPCLoader(db);
-    const allNPCsFromDB = npcLoader.getAllNPCs();
-    
-    if (allNPCsFromDB.length > 0) {
-      // Parse and merge: preserve NPC state from checkpoint but add missing NPCs from DB
-      const checkpointNPCIds = new Set(restoredGameState.npcCharacters.map(npc => npc.id));
-      const missingNPCs = allNPCsFromDB.filter(dbNpc => !checkpointNPCIds.has(dbNpc.id));
-      
-      if (missingNPCs.length > 0) {
-        console.log(`   ⚠️  Checkpoint was missing ${missingNPCs.length} NPCs, adding them now:`);
-        console.log(`      ${missingNPCs.slice(0, 5).map(npc => npc.name).join(', ')}${missingNPCs.length > 5 ? '...' : ''}`);
-        restoredGameState.npcCharacters.push(...missingNPCs);
-      }
-      
-      console.log(`   ✓ Total NPCs after restore: ${restoredGameState.npcCharacters.length}`);
-    }
-  } catch (error) {
-    console.error(`   ⚠️  Failed to load missing NPCs from database:`, error);
-    console.log(`   → Continuing with checkpoint NPCs only (${restoredGameState.npcCharacters.length} NPCs)`);
-  }
+  console.log(`   ✓ Restored ${restoredGameState.npcCharacters.length} NPCs from checkpoint`);
   
   return restoredGameState;
 };

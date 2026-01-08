@@ -139,6 +139,12 @@ For each NPC in the current scene, analyze:
 
 3. **Do NOT set attitudeChange** for first-time interactions (only use initialRelationship)
 
+4. **⚠️ CRITICAL: You MUST provide initialRelationship for ALL NPCs with isFirstTimeInteraction=true**
+   - **EVEN IF** the NPC chooses not to respond (willRespond: false)
+   - **EVEN IF** the NPC is not the direct target of the action
+   - The system needs to record the initial relationship for future interactions
+   - Example: If the investigator talks to NPC-A, NPC-B (also present) still needs initialRelationship even if NPC-B doesn't respond
+
 ### For Existing Relationships (isFirstTimeInteraction: false)
 
 **When an NPC has isFirstTimeInteraction: false:**
