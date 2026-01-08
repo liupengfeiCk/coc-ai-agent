@@ -16,7 +16,7 @@ import {
   type ActionAnalysis,
   type ActionResult,
 } from "./state.js";
-import { contentToString, latestHumanMessage } from "./utils.js";
+import { latestHumanMessage } from "./utils.js";
 import { enrichMemoryContext } from "./coc_multiagents_system/agents/memory/memoryAgent.js";
 import { TurnManager } from "./coc_multiagents_system/agents/memory/index.js";
 
@@ -29,13 +29,13 @@ export interface GraphState {
   stepTimings?: Record<string, number>;  // Track execution time for each step (in ms)
 }
 
-export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?: RagManager) => {
+export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader | null, rag?: RagManager) => {
   const orchestrator = new OrchestratorAgent();
-  const actionAgent = new ActionAgent(scenarioLoader);
+  const actionAgent = new ActionAgent(scenarioLoader || undefined);
   const characterAgent = new CharacterAgent();
   characterAgent.setDatabase(db); // Inject database for relationship persistence
   const keeperAgent = new KeeperAgent();
-  const directorAgent = new DirectorAgent(scenarioLoader, db);
+  const directorAgent = scenarioLoader ? new DirectorAgent(scenarioLoader, db) : null;
   const turnManager = new TurnManager(db);
 
   const graph = new StateGraph<GraphState>({
@@ -147,7 +147,7 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
     const gsm = new GameStateManager(state.gameState ?? initialGameState);
     const userInput = latestHumanMessage(state.messages);
     console.log(`🎯 [Orchestrator Agent] 用户输入: "${userInput.substring(0, 100)}${userInput.length > 100 ? '...' : ''}"`);
-    const result = await orchestrator.processInput(userInput, gsm, db);
+    await orchestrator.processInput(userInput, gsm, db);
     const duration = Date.now() - startTime;
     console.log(`✅ [Orchestrator Agent] 分析完成 (耗时: ${duration}ms)`);
     
@@ -440,11 +440,15 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
       console.log(`   原因: ${sceneChangeRequest.reason}`);
       console.log(`   时间戳: ${sceneChangeRequest.timestamp.toISOString()}`);
       
-      await directorAgent.handleActionDrivenSceneChange(
-        gsm, 
-        sceneChangeRequest.targetSceneName,
-        sceneChangeRequest.reason
-      );
+      if (directorAgent) {
+        await directorAgent.handleActionDrivenSceneChange(
+          gsm, 
+          sceneChangeRequest.targetSceneName,
+          sceneChangeRequest.reason
+        );
+      } else {
+        console.warn("⚠️  DirectorAgent未初始化,跳过场景转换");
+      }
       
       const gameStateAfter = gsm.getGameState();
       console.log(`\n📊 [Director Agent] 处理后状态:`);
@@ -470,13 +474,18 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?
     
     try {
       console.log("\n🎬 [Director Agent] 开始生成叙事方向指导...");
-      const narrativeDirection = await directorAgent.generateNarrativeDirection(
-        gsm,
-        characterInput,
-        actionResults
-      );
-      gsm.setNarrativeDirection(narrativeDirection);
-      console.log(`✅ [Director Agent] 叙事方向指导已生成: ${narrativeDirection.substring(0, 100)}${narrativeDirection.length > 100 ? '...' : ''}`);
+      if (directorAgent) {
+        const narrativeDirection = await directorAgent.generateNarrativeDirection(
+          gsm,
+          characterInput,
+          actionResults
+        );
+        gsm.setNarrativeDirection(narrativeDirection);
+        console.log(`✅ [Director Agent] 叙事方向指导已生成: ${narrativeDirection.substring(0, 100)}${narrativeDirection.length > 100 ? '...' : ''}`);
+      } else {
+        console.warn("⚠️  DirectorAgent未初始化,跳过叙事方向生成");
+        gsm.setNarrativeDirection(null);
+      }
     } catch (error) {
       console.error("❌ [Director Agent] 生成叙事方向指导失败:", error);
       // Set null if generation fails
@@ -648,9 +657,13 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
     let simulatedQuery: string | null = null;
 
     try {
-      const result = await directorAgent.checkStoryProgression(gsm);
-      shouldTrigger = result.shouldTrigger;
-      simulatedQuery = result.simulatedQuery;
+      if (directorAgent) {
+        const result = await directorAgent.checkStoryProgression(gsm);
+        shouldTrigger = result.shouldTrigger;
+        simulatedQuery = result.simulatedQuery;
+      } else {
+        console.warn("⚠️  DirectorAgent未初始化,跳过进度检查");
+      }
     } catch (error) {
       console.error("❌ [Listener Graph] Error checking progression:", error);
       return {
@@ -833,11 +846,15 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
     const sceneChangeRequest = gameStateBefore.temporaryInfo.sceneChangeRequest;
     
     if (sceneChangeRequest?.shouldChange && sceneChangeRequest.targetSceneName) {
-      await directorAgent.handleActionDrivenSceneChange(
-        gsm, 
-        sceneChangeRequest.targetSceneName,
-        sceneChangeRequest.reason
-      );
+      if (directorAgent) {
+        await directorAgent.handleActionDrivenSceneChange(
+          gsm, 
+          sceneChangeRequest.targetSceneName,
+          sceneChangeRequest.reason
+        );
+      } else {
+        console.warn("⚠️  DirectorAgent未初始化,跳过场景转换");
+      }
     }
     
     gsm.clearSceneChangeRequest();
@@ -847,12 +864,17 @@ export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoad
     const actionResults = currentGameState.temporaryInfo.actionResults || [];
     
     try {
-      const narrativeDirection = await directorAgent.generateNarrativeDirection(
-        gsm,
-        characterInput,
-        actionResults
-      );
-      gsm.setNarrativeDirection(narrativeDirection);
+      if (directorAgent) {
+        const narrativeDirection = await directorAgent.generateNarrativeDirection(
+          gsm,
+          characterInput,
+          actionResults
+        );
+        gsm.setNarrativeDirection(narrativeDirection);
+      } else {
+        console.warn("⚠️  DirectorAgent未初始化,跳过叙事方向生成");
+        gsm.setNarrativeDirection(null);
+      }
     } catch (error) {
       console.error("❌ [Director Agent] 生成叙事方向指导失败:", error);
       gsm.setNarrativeDirection(null);

@@ -33,7 +33,7 @@ http://localhost:3000
 2. The message is sent to the `/api/message` endpoint
 3. The server saves the message using `MemoryAgent.logEvent()`:
    - Event type: `dialogue`
-   - Session ID: auto-generated based on current date
+   - Session ID: auto-generated based on client IP (format: `session-ip-{hash}`)
    - Timestamp: current time
    - Details: includes message content and type
    - Tags: `['user', 'chat']`

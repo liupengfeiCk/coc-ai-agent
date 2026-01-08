@@ -6,10 +6,6 @@
 import Database from "better-sqlite3";
 type DBInstance = InstanceType<typeof Database>;
 import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export class CoCDatabase {
   private db: DBInstance;
@@ -183,36 +179,51 @@ export class CoCDatabase {
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE(character_id, npc_id, session_id)
             );
-            CREATE INDEX IF NOT EXISTS idx_relationships_character ON relationships(character_id);
-            CREATE INDEX IF NOT EXISTS idx_relationships_npc ON relationships(npc_id);
         `);
+    
+    // Create indexes for relationships table
+    try {
+      this.db.exec(`CREATE INDEX IF NOT EXISTS idx_relationships_character ON relationships(character_id);`);
+      this.db.exec(`CREATE INDEX IF NOT EXISTS idx_relationships_npc ON relationships(npc_id);`);
+      this.db.exec(`CREATE INDEX IF NOT EXISTS idx_relationships_session ON relationships(session_id);`);
+    } catch {
+      // ignore errors
+    }
 
-    // Characters table
+    // Characters table (包含玩家角色和NPC)
     this.db.exec(`
             CREATE TABLE IF NOT EXISTS characters (
                 character_id TEXT PRIMARY KEY,
+                session_id TEXT,
+                template_npc_id TEXT,
                 name TEXT NOT NULL,
-                attributes TEXT NOT NULL, -- JSON blob of attributes (STR, DEX, etc.)
-                status TEXT NOT NULL, -- JSON blob of HP/Sanity/Luck/etc.
-                inventory TEXT, -- JSON array of strings
-                skills TEXT, -- JSON map of skillName -> value
+                attributes TEXT NOT NULL,
+                status TEXT NOT NULL,
+                inventory TEXT,
+                skills TEXT,
                 notes TEXT,
-                is_npc INTEGER DEFAULT 0, -- 0 for PC, 1 for NPC
+                is_npc INTEGER DEFAULT 0,
                 occupation TEXT,
                 age INTEGER,
                 gender TEXT,
                 appearance TEXT,
+                description TEXT,
                 personality TEXT,
                 background TEXT,
-                goals TEXT, -- JSON array
-                secrets TEXT, -- JSON array
-                current_location TEXT, -- NPC的当前地点
-                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                goals TEXT,
+                secrets TEXT,
+                current_location TEXT,
+                combat TEXT,
+                special_abilities TEXT,
+                encounter_notes TEXT,
+                weaknesses TEXT,
+                sanity_loss TEXT,
+                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (session_id) REFERENCES sessions(session_id)
             );
-            CREATE INDEX IF NOT EXISTS idx_characters_name ON characters(name);
-            CREATE INDEX IF NOT EXISTS idx_characters_is_npc ON characters(is_npc);
         `);
-    // Backfill columns for existing tables
+    
+    // Backfill columns for existing characters table
     const columnsToAdd = [
       "skills TEXT",
       "is_npc INTEGER DEFAULT 0",
@@ -220,41 +231,89 @@ export class CoCDatabase {
       "age INTEGER",
       "gender TEXT",
       "appearance TEXT",
+      "description TEXT",
       "personality TEXT",
       "background TEXT",
       "goals TEXT",
       "secrets TEXT",
       "current_location TEXT",
+      "session_id TEXT",
+      "template_npc_id TEXT",
+      "combat TEXT",
+      "special_abilities TEXT",
+      "encounter_notes TEXT",
+      "weaknesses TEXT",
+      "sanity_loss TEXT",
     ];
     for (const column of columnsToAdd) {
       try {
-        this.db.exec(`ALTER TABLE characters ADD COLUMN ${column};`);
+        const columnName = column.split(' ')[0];
+        if (!this.hasColumn("characters", columnName)) {
+          this.db.exec(`ALTER TABLE characters ADD COLUMN ${column};`);
+        }
       } catch {
         // ignore if column already exists
       }
     }
+    
+    // Create indexes for new columns if they don't exist (after ensuring columns exist)
+    try {
+      this.db.exec(`CREATE INDEX IF NOT EXISTS idx_characters_name ON characters(name);`);
+      if (this.hasColumn("characters", "is_npc")) {
+        this.db.exec(`CREATE INDEX IF NOT EXISTS idx_characters_is_npc ON characters(is_npc);`);
+      }
+      if (this.hasColumn("characters", "session_id")) {
+        this.db.exec(`CREATE INDEX IF NOT EXISTS idx_characters_session ON characters(session_id);`);
+        if (this.hasColumn("characters", "is_npc")) {
+          this.db.exec(`CREATE INDEX IF NOT EXISTS idx_characters_session_npc ON characters(session_id, is_npc);`);
+        }
+      }
+      if (this.hasColumn("characters", "template_npc_id")) {
+        this.db.exec(`CREATE INDEX IF NOT EXISTS idx_characters_template ON characters(template_npc_id);`);
+      }
+    } catch {
+      // ignore errors
+    }
 
-    // NPC Clues table
+    // NPC Clues table (游戏实例NPC线索)
     this.db.exec(`
             CREATE TABLE IF NOT EXISTS npc_clues (
                 id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL,
                 npc_id TEXT NOT NULL,
                 clue_text TEXT NOT NULL,
                 category TEXT,
                 difficulty TEXT,
                 revealed INTEGER DEFAULT 0,
-                related_to TEXT, -- JSON array
+                related_to TEXT,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (session_id) REFERENCES sessions(session_id),
                 FOREIGN KEY (npc_id) REFERENCES characters(character_id)
             );
             CREATE INDEX IF NOT EXISTS idx_npc_clues_npc ON npc_clues(npc_id);
             CREATE INDEX IF NOT EXISTS idx_npc_clues_revealed ON npc_clues(revealed);
+            CREATE INDEX IF NOT EXISTS idx_npc_clues_session ON npc_clues(session_id);
         `);
+    
+    // Backfill session_id column for npc_clues if table already existed
+    try {
+      if (!this.hasColumn("npc_clues", "session_id")) {
+        this.db.exec(
+          "ALTER TABLE npc_clues ADD COLUMN session_id TEXT;"
+        );
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_npc_clues_session ON npc_clues(session_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
 
-    // NPC Relationships table (extended version)
+    // NPC Relationships table (extended version) - 游戏实例NPC关系
     this.db.exec(`
             CREATE TABLE IF NOT EXISTS npc_relationships (
                 id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL,
                 source_id TEXT NOT NULL,
                 target_id TEXT NOT NULL,
                 target_name TEXT NOT NULL,
@@ -263,12 +322,28 @@ export class CoCDatabase {
                 description TEXT,
                 history TEXT,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (session_id) REFERENCES sessions(session_id),
                 FOREIGN KEY (source_id) REFERENCES characters(character_id),
-                UNIQUE(source_id, target_id)
+                UNIQUE(source_id, target_id, session_id)
             );
             CREATE INDEX IF NOT EXISTS idx_npc_relationships_source ON npc_relationships(source_id);
             CREATE INDEX IF NOT EXISTS idx_npc_relationships_target ON npc_relationships(target_id);
+            CREATE INDEX IF NOT EXISTS idx_npc_relationships_session ON npc_relationships(session_id);
         `);
+    
+    // Backfill session_id column for npc_relationships if table already existed
+    try {
+      if (!this.hasColumn("npc_relationships", "session_id")) {
+        this.db.exec(
+          "ALTER TABLE npc_relationships ADD COLUMN session_id TEXT;"
+        );
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_npc_relationships_session ON npc_relationships(session_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
 
     // Full-text search for events
     this.db.exec(`
@@ -295,19 +370,136 @@ export class CoCDatabase {
             END;
         `);
 
-    // Scenarios table - for managing scenario/location data
+    // ========================================
+    // 模板层 (Template Layer) - 只读模组数据
+    // ========================================
+    
+    // 1. 模组场景模板表 - 存储场景的全部原始信息
+    this.db.exec(`
+            CREATE TABLE IF NOT EXISTS module_scenarios (
+                template_scenario_id TEXT PRIMARY KEY,
+                module_name TEXT NOT NULL,
+                name TEXT NOT NULL,
+                location TEXT NOT NULL,
+                description TEXT NOT NULL,
+                characters TEXT,
+                clues TEXT,
+                conditions TEXT,
+                events TEXT,
+                exits TEXT,
+                keeper_notes TEXT,
+                tags TEXT,
+                connections TEXT,
+                metadata TEXT NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+            CREATE INDEX IF NOT EXISTS idx_module_scenarios_name ON module_scenarios(name);
+            CREATE INDEX IF NOT EXISTS idx_module_scenarios_module ON module_scenarios(module_name);
+        `);
+    
+    // Backfill columns for module_scenarios if they don't exist
+    const scenarioColumns = [
+      "location TEXT",
+      "characters TEXT",
+      "clues TEXT", 
+      "conditions TEXT",
+      "events TEXT",
+      "exits TEXT",
+      "keeper_notes TEXT"
+    ];
+    for (const column of scenarioColumns) {
+      try {
+        const columnName = column.split(' ')[0];
+        if (!this.hasColumn("module_scenarios", columnName)) {
+          this.db.exec(`ALTER TABLE module_scenarios ADD COLUMN ${column};`);
+        }
+      } catch {
+        // ignore if column already exists
+      }
+    }
+
+    // 2. 模组NPC模板表 - 存储NPC的全部原始信息
+    this.db.exec(`
+            CREATE TABLE IF NOT EXISTS module_npcs (
+                template_npc_id TEXT PRIMARY KEY,
+                module_name TEXT NOT NULL,
+                name TEXT NOT NULL,
+                occupation TEXT,
+                age INTEGER,
+                gender TEXT,
+                appearance TEXT,
+                description TEXT,
+                personality TEXT,
+                background TEXT,
+                goals TEXT,
+                secrets TEXT,
+                attributes TEXT,
+                status TEXT,
+                skills TEXT,
+                inventory TEXT,
+                relationships TEXT,
+                clues TEXT,
+                notes TEXT,
+                combat TEXT,
+                special_abilities TEXT,
+                encounter_notes TEXT,
+                weaknesses TEXT,
+                sanity_loss TEXT,
+                metadata TEXT,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+            CREATE INDEX IF NOT EXISTS idx_module_npcs_name ON module_npcs(name);
+            CREATE INDEX IF NOT EXISTS idx_module_npcs_module ON module_npcs(module_name);
+        `);
+    
+    // Backfill columns for module_npcs if they don't exist
+    const npcColumns = [
+      "gender TEXT",
+      "appearance TEXT",
+      "description TEXT",
+      "goals TEXT",
+      "status TEXT",
+      "inventory TEXT",
+      "notes TEXT",
+      "combat TEXT",
+      "special_abilities TEXT",
+      "encounter_notes TEXT",
+      "weaknesses TEXT",
+      "sanity_loss TEXT"
+    ];
+    for (const column of npcColumns) {
+      try {
+        const columnName = column.split(' ')[0];
+        if (!this.hasColumn("module_npcs", columnName)) {
+          this.db.exec(`ALTER TABLE module_npcs ADD COLUMN ${column};`);
+        }
+      } catch {
+        // ignore if column already exists
+      }
+    }
+
+    // ========================================
+    // 实例层 (Instance Layer) - 游戏会话数据
+    // ========================================
+    
+    // 游戏场景实例表 (原 scenarios 表改造)
     this.db.exec(`
             CREATE TABLE IF NOT EXISTS scenarios (
                 scenario_id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL,
+                template_scenario_id TEXT,
                 name TEXT NOT NULL,
                 description TEXT NOT NULL,
-                tags TEXT, -- JSON array
-                connections TEXT, -- JSON array of connections
-                permanent_changes TEXT, -- JSON array of permanent changes (scenario-level, shared by all snapshots)
-                metadata TEXT NOT NULL, -- JSON blob with created_at, updated_at, source, author, gameSystem
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                tags TEXT,
+                connections TEXT,
+                permanent_changes TEXT,
+                metadata TEXT NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (session_id) REFERENCES sessions(session_id)
             );
             CREATE INDEX IF NOT EXISTS idx_scenarios_name ON scenarios(name);
+            CREATE INDEX IF NOT EXISTS idx_scenarios_session ON scenarios(session_id);
+            CREATE INDEX IF NOT EXISTS idx_scenarios_template ON scenarios(template_scenario_id);
         `);
     
     // Backfill permanent_changes column if table already existed
@@ -320,23 +512,60 @@ export class CoCDatabase {
     } catch {
       // ignore if column already exists or cannot be added
     }
+    
+    // Backfill session_id column if table already existed
+    try {
+      if (!this.hasColumn("scenarios", "session_id")) {
+        this.db.exec(
+          "ALTER TABLE scenarios ADD COLUMN session_id TEXT;"
+        );
+        // Create index for new column
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_scenarios_session ON scenarios(session_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
+    
+    // Backfill template_scenario_id column if table already existed
+    try {
+      if (!this.hasColumn("scenarios", "template_scenario_id")) {
+        this.db.exec(
+          "ALTER TABLE scenarios ADD COLUMN template_scenario_id TEXT;"
+        );
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_scenarios_template ON scenarios(template_scenario_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
 
-    // Scenario snapshots table - each scenario can have multiple snapshots with time restrictions
+    // 游戏场景快照实例表 (原 scenario_snapshots 表改造)
     this.db.exec(`
             CREATE TABLE IF NOT EXISTS scenario_snapshots (
                 snapshot_id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL,
                 scenario_id TEXT NOT NULL,
+                template_snapshot_id TEXT,
                 snapshot_name TEXT,
                 location TEXT NOT NULL,
                 description TEXT NOT NULL,
-                events TEXT, -- JSON array
-                exits TEXT, -- JSON array
+                characters TEXT,
+                clues TEXT,
+                conditions TEXT,
+                events TEXT,
+                exits TEXT,
                 keeper_notes TEXT,
-                time_restriction TEXT, -- Optional time restriction (e.g., "day1 evening", "day2 (after)")
+                time_restriction TEXT,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (session_id) REFERENCES sessions(session_id),
                 FOREIGN KEY (scenario_id) REFERENCES scenarios(scenario_id)
             );
             CREATE INDEX IF NOT EXISTS idx_snapshots_scenario ON scenario_snapshots(scenario_id);
+            CREATE INDEX IF NOT EXISTS idx_snapshots_session ON scenario_snapshots(session_id);
+            CREATE INDEX IF NOT EXISTS idx_snapshots_template ON scenario_snapshots(template_snapshot_id);
         `);
     
     // Backfill time_restriction column if table already existed
@@ -350,12 +579,41 @@ export class CoCDatabase {
       // ignore if column already exists or cannot be added
     }
     
+    // Backfill session_id column if table already existed
+    try {
+      if (!this.hasColumn("scenario_snapshots", "session_id")) {
+        this.db.exec(
+          "ALTER TABLE scenario_snapshots ADD COLUMN session_id TEXT;"
+        );
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_snapshots_session ON scenario_snapshots(session_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
+    
+    // Backfill template_snapshot_id column if table already existed
+    try {
+      if (!this.hasColumn("scenario_snapshots", "template_snapshot_id")) {
+        this.db.exec(
+          "ALTER TABLE scenario_snapshots ADD COLUMN template_snapshot_id TEXT;"
+        );
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_snapshots_template ON scenario_snapshots(template_snapshot_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
+    
     // Legacy time fields removed - scenarios no longer have timeline/timepoint data
 
-    // Scenario characters table - characters present in scenarios
+    // 游戏场景角色关联表 (原 scenario_characters 表改造)
     this.db.exec(`
             CREATE TABLE IF NOT EXISTS scenario_characters (
                 id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL,
                 snapshot_id TEXT NOT NULL,
                 character_name TEXT NOT NULL,
                 character_role TEXT NOT NULL,
@@ -363,47 +621,113 @@ export class CoCDatabase {
                 character_location TEXT,
                 character_notes TEXT,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (session_id) REFERENCES sessions(session_id),
                 FOREIGN KEY (snapshot_id) REFERENCES scenario_snapshots(snapshot_id)
             );
             CREATE INDEX IF NOT EXISTS idx_scenario_characters_snapshot ON scenario_characters(snapshot_id);
             CREATE INDEX IF NOT EXISTS idx_scenario_characters_name ON scenario_characters(character_name);
+            CREATE INDEX IF NOT EXISTS idx_scenario_characters_session ON scenario_characters(session_id);
         `);
+    
+    // Backfill session_id column for scenario_characters if table already existed
+    try {
+      if (!this.hasColumn("scenario_characters", "session_id")) {
+        this.db.exec(
+          "ALTER TABLE scenario_characters ADD COLUMN session_id TEXT;"
+        );
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_scenario_characters_session ON scenario_characters(session_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
 
-    // Scenario clues table - clues available in scenarios
+    // 游戏场景线索表 (原 scenario_clues 表改造)
     this.db.exec(`
             CREATE TABLE IF NOT EXISTS scenario_clues (
                 clue_id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL,
                 snapshot_id TEXT NOT NULL,
+                template_clue_id TEXT,
                 clue_text TEXT NOT NULL,
-                category TEXT NOT NULL, -- 'physical', 'witness', 'document', 'environment', 'knowledge', 'observation'
-                difficulty TEXT NOT NULL, -- 'automatic', 'regular', 'hard', 'extreme'
+                category TEXT NOT NULL,
+                difficulty TEXT NOT NULL,
                 clue_location TEXT NOT NULL,
                 discovery_method TEXT,
-                reveals TEXT, -- JSON array
+                reveals TEXT,
                 discovered INTEGER DEFAULT 0,
-                discovery_details TEXT, -- JSON blob with discoveredBy, discoveredAt, method
+                discovery_details TEXT,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (session_id) REFERENCES sessions(session_id),
                 FOREIGN KEY (snapshot_id) REFERENCES scenario_snapshots(snapshot_id)
             );
             CREATE INDEX IF NOT EXISTS idx_scenario_clues_snapshot ON scenario_clues(snapshot_id);
             CREATE INDEX IF NOT EXISTS idx_scenario_clues_location ON scenario_clues(clue_location);
             CREATE INDEX IF NOT EXISTS idx_scenario_clues_discovered ON scenario_clues(discovered);
+            CREATE INDEX IF NOT EXISTS idx_scenario_clues_session ON scenario_clues(session_id);
+            CREATE INDEX IF NOT EXISTS idx_scenario_clues_template ON scenario_clues(template_clue_id);
         `);
+    
+    // Backfill session_id column for scenario_clues if table already existed
+    try {
+      if (!this.hasColumn("scenario_clues", "session_id")) {
+        this.db.exec(
+          "ALTER TABLE scenario_clues ADD COLUMN session_id TEXT;"
+        );
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_scenario_clues_session ON scenario_clues(session_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
+    
+    // Backfill template_clue_id column for scenario_clues if table already existed
+    try {
+      if (!this.hasColumn("scenario_clues", "template_clue_id")) {
+        this.db.exec(
+          "ALTER TABLE scenario_clues ADD COLUMN template_clue_id TEXT;"
+        );
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_scenario_clues_template ON scenario_clues(template_clue_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
 
-    // Scenario conditions table - environmental conditions
+    // 游戏场景条件表 (原 scenario_conditions 表改造)
     this.db.exec(`
             CREATE TABLE IF NOT EXISTS scenario_conditions (
                 condition_id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL,
                 snapshot_id TEXT NOT NULL,
-                condition_type TEXT NOT NULL, -- 'weather', 'lighting', 'sound', 'smell', 'temperature', 'other'
+                condition_type TEXT NOT NULL,
                 description TEXT NOT NULL,
                 mechanical_effect TEXT,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (session_id) REFERENCES sessions(session_id),
                 FOREIGN KEY (snapshot_id) REFERENCES scenario_snapshots(snapshot_id)
             );
             CREATE INDEX IF NOT EXISTS idx_scenario_conditions_snapshot ON scenario_conditions(snapshot_id);
             CREATE INDEX IF NOT EXISTS idx_scenario_conditions_type ON scenario_conditions(condition_type);
+            CREATE INDEX IF NOT EXISTS idx_scenario_conditions_session ON scenario_conditions(session_id);
         `);
+    
+    // Backfill session_id column for scenario_conditions if table already existed
+    try {
+      if (!this.hasColumn("scenario_conditions", "session_id")) {
+        this.db.exec(
+          "ALTER TABLE scenario_conditions ADD COLUMN session_id TEXT;"
+        );
+        this.db.exec(
+          "CREATE INDEX IF NOT EXISTS idx_scenario_conditions_session ON scenario_conditions(session_id);"
+        );
+      }
+    } catch {
+      // ignore if column already exists or cannot be added
+    }
 
     // Full-text search for scenarios
     this.db.exec(`
@@ -1110,17 +1434,18 @@ export class CoCDatabase {
     targetName: string,
     relationshipType: string,
     attitude: number,
+    sessionId: string,
     description?: string,
     history?: string
   ): void {
     const database = this.db;
-    const relId = `${sourceNpcId}-rel-${targetId}`;
+    const relId = `${sourceNpcId}-rel-${targetId}-${sessionId}`;
     
     const stmt = database.prepare(`
       INSERT INTO npc_relationships (
-        id, source_id, target_id, target_name, relationship_type, attitude, description, history
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(source_id, target_id) DO UPDATE SET
+        id, session_id, source_id, target_id, target_name, relationship_type, attitude, description, history
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(id) DO UPDATE SET
         target_name = excluded.target_name,
         relationship_type = excluded.relationship_type,
         attitude = excluded.attitude,
@@ -1130,6 +1455,7 @@ export class CoCDatabase {
     
     stmt.run(
       relId,
+      sessionId,
       sourceNpcId,
       targetId,
       targetName,
@@ -1150,6 +1476,7 @@ export class CoCDatabase {
     targetName: string;
     relationshipType: string;
     attitude: number;
+    sessionId: string;
     description?: string;
     history?: string;
   }>): void {
@@ -1158,9 +1485,9 @@ export class CoCDatabase {
     const database = this.db;
     const stmt = database.prepare(`
       INSERT INTO npc_relationships (
-        id, source_id, target_id, target_name, relationship_type, attitude, description, history
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(source_id, target_id) DO UPDATE SET
+        id, session_id, source_id, target_id, target_name, relationship_type, attitude, description, history
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(id) DO UPDATE SET
         target_name = excluded.target_name,
         relationship_type = excluded.relationship_type,
         attitude = excluded.attitude,
@@ -1170,9 +1497,10 @@ export class CoCDatabase {
     
     const transaction = this.db.transaction(() => {
       for (const rel of relationships) {
-        const relId = `${rel.sourceNpcId}-rel-${rel.targetId}`;
+        const relId = `${rel.sourceNpcId}-rel-${rel.targetId}-${rel.sessionId}`;
         stmt.run(
           relId,
+          rel.sessionId,
           rel.sourceNpcId,
           rel.targetId,
           rel.targetName,

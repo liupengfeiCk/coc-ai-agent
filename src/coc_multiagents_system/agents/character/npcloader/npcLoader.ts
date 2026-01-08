@@ -1097,6 +1097,23 @@ Return ONLY JSON array, no extra text.`;
   }
 
   /**
+   * Get all NPCs for a specific session
+   */
+  getAllNPCsBySession(sessionId: string): NPCProfile[] {
+    const database = this.db.getDatabase();
+
+    const characters = database
+      .prepare(`
+            SELECT character_id FROM characters WHERE is_npc = 1 AND session_id = ?
+        `)
+      .all(sessionId) as any[];
+
+    return characters
+      .map((c) => this.getNPCById(c.character_id))
+      .filter((npc) => npc !== null) as NPCProfile[];
+  }
+
+  /**
    * Check if NPC already exists in database
    */
   npcExists(npcId: string): boolean {

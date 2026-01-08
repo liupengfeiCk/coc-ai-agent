@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRef } from "react";
 import Homes from "./views/Homes";
 import { GameChat } from "./components/GameChat";
 import { GameSidebar } from "./components/GameSidebar";
@@ -6,7 +6,7 @@ import { CharacterSelector } from "./components/CharacterSelector";
 import { ModSelector } from "./components/ModSelector";
 
 type SkillEntry = { name: string; nameCn: string; base: string; category: string };
-type AppPage = "home" | "sheet" | "game" | "character-select" | "mod-select" | "module-intro";
+type AppPage = "home" | "sheet" | "game" | "character-select" | "mod-select" | "module-intro" | "module-import";
 
 const SKILLS: SkillEntry[] = [
   // Interpersonal & Social Skills
@@ -107,6 +107,9 @@ const App: React.FC = () => {
   const [sessionId, setSessionId] = useState<string>("");
   const [showAttributeSelector, setShowAttributeSelector] = useState(false);
   const [attributeOptions, setAttributeOptions] = useState<any[]>([]);
+  
+  // 防止重复提交的锁
+  const isSubmittingRef = useRef(false);
   const [characterName, setCharacterName] = useState<string>("Investigator");
   const [selectedCharacterId, setSelectedCharacterId] = useState<string>("");
   const [selectedModName, setSelectedModName] = useState<string>("");
@@ -125,6 +128,8 @@ const App: React.FC = () => {
   }> | null>(null);
   const [sidebarRefreshTrigger, setSidebarRefreshTrigger] = useState(0);
   const [isCreatingFromGameFlow, setIsCreatingFromGameFlow] = useState(false);
+  const [importingModule, setImportingModule] = useState(false);
+  const [importMessage, setImportMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   const [form, setForm] = React.useState<Record<string, string>>({});
 
@@ -197,112 +202,24 @@ const App: React.FC = () => {
     setPage("mod-select");
   };
 
-  // Handle mod selection - load mod data, then fetch and show module introduction
+  // Handle mod selection - only record the module name and show introduction
   const handleSelectMod = async (modName: string) => {
     setSelectedModName(modName);
     setLoadingModData(true);
-    setModLoadProgress({ stage: "Initializing", progress: 0, message: "Initializing..." });
+    setModLoadProgress({ stage: "加载", progress: 50, message: "正在获取模组介绍..." });
     
     try {
-      // Step 1: Load mod data with SSE progress updates
-      let loadData: any = null;
-      
-      const loadResponse = await fetch("http://localhost:3000/api/mod/load?stream=true", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Accept": "text/event-stream"
-        },
-        body: JSON.stringify({ modName }),
-      });
-
-      if (!loadResponse.ok) {
-        // Try to read error message from stream or JSON
-        const reader = loadResponse.body?.getReader();
-        if (reader) {
-          const decoder = new TextDecoder();
-          let errorBuffer = "";
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            errorBuffer += decoder.decode(value, { stream: true });
-          }
-          try {
-            const errorData = JSON.parse(errorBuffer);
-            throw new Error(errorData.error || "Failed to load module data");
-          } catch (e) {
-            throw new Error(errorBuffer || "Failed to load module data");
-          }
-        } else {
-          throw new Error("Failed to load module data");
-        }
-      }
-
-      // Read SSE stream
-      const reader = loadResponse.body?.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-
-      if (reader) {
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop() || "";
-
-          for (const line of lines) {
-            if (line.startsWith("data: ")) {
-              try {
-                const data = JSON.parse(line.slice(6));
-                
-                // Check for errors
-                if (data.stage === "Error" && data.message) {
-                  throw new Error(data.message);
-                }
-                
-                // Update progress if this is a progress update
-                if (data.stage && typeof data.progress === "number" && data.message) {
-                  setModLoadProgress({ 
-                    stage: data.stage, 
-                    progress: data.progress, 
-                    message: data.message 
-                  });
-                }
-                
-                // Store final result data
-                if (data.success && data.scenariosLoaded !== undefined) {
-                  loadData = data;
-                }
-              } catch (e) {
-                // If it's an Error object we threw, re-throw it
-                if (e instanceof Error && e.message) {
-                  throw e;
-                }
-                console.error("Error parsing SSE data:", e, line);
-              }
-            }
-          }
-        }
-      }
-
-      if (!loadData) {
-        throw new Error("Server did not return load result");
-      }
-
-      // Step 2: Fetch module introduction
-      setModLoadProgress({ stage: "Generating Introduction Narrative", progress: 90, message: "Generating module introduction narrative..." });
+      // Only fetch module introduction (do NOT import template yet)
       const introResponse = await fetch(`http://localhost:3000/api/module/introduction?modName=${encodeURIComponent(modName)}`);
       const introData = await introResponse.json();
 
       if (introResponse.ok && introData.success) {
         setModuleIntroduction(introData.moduleIntroduction);
-        setModLoadProgress({ stage: "Complete", progress: 100, message: "Ready" });
+        setModLoadProgress({ stage: "完成", progress: 100, message: "准备就绪" });
         setTimeout(() => {
           setLoadingModData(false);
           setModLoadProgress(null);
-          setPage("module-intro"); // Show module introduction page
+          setPage("module-intro");
         }, 500);
       } else {
         // If failed to get introduction, go directly to character select
@@ -312,51 +229,73 @@ const App: React.FC = () => {
         setPage("character-select");
       }
     } catch (error) {
-      console.error("Error loading mod:", error);
+      console.error("Error loading mod info:", error);
       setLoadingModData(false);
       setModLoadProgress(null);
-      alert("Failed to load module: " + (error as Error).message);
+      alert("Failed to load module info: " + (error as Error).message);
       setPage("mod-select");
     }
   };
 
   // Handle character selection and start game
-  // Note: Data import is now handled in CharacterSelector component
+  // Import template (if needed) → Create instance from template → Start game
   const handleSelectCharacter = async (characterId: string, charName: string) => {
     console.log("Selected character:", characterId, charName);
     setSelectedCharacterId(characterId);
     setCharacterName(charName);
     
     try {
-      // Start game with selected character and mod
-      const response = await fetch("http://localhost:3000/api/game/start", {
+      // Step 1: Import module to template table (backend will check if already imported)
+      console.log(`Importing module template: ${selectedModName}`);
+      
+      const importResponse = await fetch("http://localhost:3000/api/modules/import", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          moduleName: selectedModName, 
+          forceReimport: false  // Don't re-import if already exists
+        }),
+      });
+
+      const importData = await importResponse.json();
+
+      if (!importResponse.ok) {
+        throw new Error(importData.error || "Failed to import module template");
+      }
+
+      console.log(`✅ Module template ready: ${importData.scenarioCount} scenarios, ${importData.npcCount} NPCs`);
+
+      // Step 2: Start game session (backend will create game instance using IP-based sessionId)
+      const startResponse = await fetch("http://localhost:3000/api/game/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ characterId, modName: selectedModName }),
       });
 
-      const data = await response.json();
+      const startData = await startResponse.json();
 
-      if (response.ok) {
-        setSessionId(data.sessionId || `session-${Date.now()}`);
+      if (startResponse.ok) {
+        // Use the sessionId returned by backend (IP-based, not time-based)
+        setSessionId(startData.sessionId);
         // Clear conversation history for new game (will be loaded from API)
         setConversationHistory(null);
         // Don't show module introduction again (already shown before character selection)
         setShowModuleIntro(false);
         setPage("game");
       } else {
-        alert("Failed to start game: " + (data.error || "Unknown error"));
+        alert("Failed to start game: " + (startData.error || "Unknown error"));
         setPage("character-select");
       }
     } catch (error) {
       console.error("Error starting game:", error);
-      alert("Network error, unable to connect to server");
+      alert("Failed to start game: " + (error as Error).message);
       setPage("character-select");
     }
   };
 
   const handleBackToHome = () => {
     setPage("home");
+    setImportMessage(null);
   };
 
   // Handle continue game - show checkpoint selector
@@ -383,6 +322,11 @@ const App: React.FC = () => {
     }
   };
 
+  // Handle import module - show module selector in import mode
+  const handleImportModule = () => {
+    setPage("module-import");
+  };
+
   // Handle checkpoint selection and load
   const handleLoadCheckpoint = async (checkpointId: string) => {
     try {
@@ -396,7 +340,7 @@ const App: React.FC = () => {
 
       if (response.ok && data.success) {
         // Restore game state
-        setSessionId(data.sessionId || `session-${Date.now()}`);
+        setSessionId(data.sessionId);
         
         // Extract character name from game state if available
         if (data.gameState?.playerCharacter?.name) {
@@ -626,6 +570,13 @@ const App: React.FC = () => {
       return;
     }
 
+    // 防止重复提交
+    if (isSubmittingRef.current) {
+      console.log("角色创建已在进行中,忽略重复提交");
+      return;
+    }
+
+    isSubmittingRef.current = true;
     setSaving(true);
     setSaveMessage(null);
 
@@ -665,6 +616,7 @@ const App: React.FC = () => {
       setSaveMessage({ type: "error", text: "网络错误，无法连接到服务器" });
     } finally {
       setSaving(false);
+      isSubmittingRef.current = false;  // 释放锁
     }
   };
 
@@ -1523,6 +1475,7 @@ const App: React.FC = () => {
           }}
           onStartGame={handleShowCharacterSelector}
           onContinueGame={handleContinueGame}
+          onImportModule={handleImportModule}
         />
         {showCheckpointSelector && (
           <div className="checkpoint-selector-overlay" style={{
@@ -1663,6 +1616,9 @@ const App: React.FC = () => {
         <ModSelector
           onSelectMod={handleSelectMod}
           onCancel={handleBackToHome}
+          onImportModule={async (modName) => {
+            console.log(`✅ Module ${modName} imported to template table successfully`);
+          }}
         />
         
         {/* Loading Progress Modal */}
@@ -1899,6 +1855,150 @@ const App: React.FC = () => {
           setPage("sheet");
         }}
       />
+    );
+  }
+
+  // Module import page (dedicated import mode)
+  if (page === "module-import") {
+    const handleModuleImportSuccess = async (modName: string) => {
+      setImportMessage({ 
+        type: "success", 
+        text: `✅ 模组 "${modName}" 已成功导入到模板表！` 
+      });
+      // Auto return to home after 2 seconds
+      setTimeout(() => {
+        setPage("home");
+        setImportMessage(null);
+      }, 2000);
+    };
+
+    const handleModuleImportError = (error: string) => {
+      setImportMessage({ 
+        type: "error", 
+        text: `导入失败: ${error}` 
+      });
+    };
+
+    return (
+      <>
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'var(--paper, #f5f1e8)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '20px',
+        }}>
+          <div style={{
+            maxWidth: '800px',
+            width: '100%',
+            textAlign: 'center',
+            marginBottom: '30px'
+          }}>
+            <h1 style={{ 
+              fontSize: '2.5rem', 
+              color: '#3d2817', 
+              marginBottom: '10px',
+              fontFamily: 'serif'
+            }}>
+              📦 导入模组到模板表
+            </h1>
+            <p style={{ 
+              fontSize: '1.1rem', 
+              color: '#5a4a3a',
+              marginBottom: '20px'
+            }}>
+              选择一个模组将其场景和NPC数据导入到模板表中，供后续创建游戏实例使用
+            </p>
+            
+            {importMessage && (
+              <div style={{
+                padding: '15px',
+                borderRadius: '6px',
+                marginBottom: '20px',
+                backgroundColor: importMessage.type === "success" ? "#d4edda" : "#f8d7da",
+                color: importMessage.type === "success" ? "#155724" : "#721c24",
+                border: `2px solid ${importMessage.type === "success" ? "#c3e6cb" : "#f5c6cb"}`,
+                fontSize: '1rem',
+                fontWeight: 'bold',
+              }}>
+                {importMessage.text}
+              </div>
+            )}
+
+            <button
+              onClick={handleBackToHome}
+              style={{
+                padding: '10px 20px',
+                backgroundColor: '#8b7355',
+                color: '#f5f1e8',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                marginBottom: '20px',
+                transition: 'background-color 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#6b5a45';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#8b7355';
+              }}
+            >
+              ← 返回主页
+            </button>
+          </div>
+
+          <ModSelector
+            onSelectMod={async (modName) => {
+              // In import mode, clicking "确认选择" should trigger import
+              try {
+                setImportingModule(true);
+                setImportMessage({ type: "success", text: `正在导入模组 "${modName}"...` });
+
+                const response = await fetch('http://localhost:3000/api/modules/import', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ moduleName: modName, forceReimport: true })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                  setImportMessage({ 
+                    type: "success", 
+                    text: `✅ 模组 "${modName}" 已成功导入到模板表！导入了 ${data.scenarioCount} 个场景和 ${data.npcCount} 个NPC` 
+                  });
+                  
+                  // Auto return to home after 2 seconds
+                  setTimeout(() => {
+                    setPage("home");
+                    setImportMessage(null);
+                    setImportingModule(false);
+                  }, 2000);
+                } else {
+                  throw new Error(data.error || '导入失败');
+                }
+              } catch (error) {
+                console.error('Error importing module:', error);
+                setImportMessage({ 
+                  type: "error", 
+                  text: `导入失败: ${(error as Error).message}` 
+                });
+                setImportingModule(false);
+              }
+            }}
+            onCancel={handleBackToHome}
+          />
+        </div>
+      </>
     );
   }
   

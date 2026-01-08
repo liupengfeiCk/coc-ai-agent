@@ -539,50 +539,28 @@ export class ScenarioLoader {
       return null;
     }
 
-    // Get characters for this snapshot
-    const characters = database
-      .prepare(`SELECT * FROM scenario_characters WHERE snapshot_id = ?`)
-      .all(snap.snapshot_id) as any[];
-
-    // Get clues for this snapshot
-    const clues = database
-      .prepare(`SELECT * FROM scenario_clues WHERE snapshot_id = ?`)
-      .all(snap.snapshot_id) as any[];
-
-    // Get conditions for this snapshot
-    const conditions = database
-      .prepare(`SELECT * FROM scenario_conditions WHERE snapshot_id = ?`)
-      .all(snap.snapshot_id) as any[];
+    // Parse JSON fields from snapshot
+    const characters = snap.characters ? JSON.parse(snap.characters) : [];
+    const clues = snap.clues ? JSON.parse(snap.clues) : [];
+    const conditions = snap.conditions ? JSON.parse(snap.conditions) : [];
 
     const snapshot: ScenarioSnapshot = {
       id: snap.snapshot_id,
       name: snap.snapshot_name,
       location: snap.location,
       description: snap.description,
-      characters: characters.map((c) => ({
-        id: c.id,
-        name: c.character_name,
-        role: c.character_role,
-        status: c.character_status,
-        location: c.character_location,
-        notes: c.character_notes,
+      characters: characters,
+      clues: clues.map((c: any) => ({
+        id: c.id || `clue-${Math.random()}`,
+        clueText: c.text || c.clueText,
+        category: c.category || "general",
+        difficulty: c.difficulty || "medium",
+        location: c.location,
+        discoveryMethod: c.discoveryMethod,
+        reveals: c.reveals || [],
+        discovered: false,
       })),
-      clues: clues.map((c) => ({
-        id: c.clue_id,
-        clueText: c.clue_text,
-        category: c.category,
-        difficulty: c.difficulty,
-        location: c.clue_location,
-        discoveryMethod: c.discovery_method,
-        reveals: c.reveals ? JSON.parse(c.reveals) : [],
-        discovered: c.discovered === 1,
-        discoveryDetails: c.discovery_details ? JSON.parse(c.discovery_details) : undefined,
-      })),
-      conditions: conditions.map((c) => ({
-        type: c.condition_type,
-        description: c.description,
-        mechanicalEffect: c.mechanical_effect,
-      })),
+      conditions: conditions,
       events: snap.events ? JSON.parse(snap.events) : [],
       exits: snap.exits ? JSON.parse(snap.exits) : [],
       permanentChanges: scenario.permanent_changes ? JSON.parse(scenario.permanent_changes) : [],

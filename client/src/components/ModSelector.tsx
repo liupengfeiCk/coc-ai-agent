@@ -9,17 +9,21 @@ export interface ModSelectorProps {
   apiBaseUrl?: string;
   onSelectMod: (modName: string) => void;
   onCancel: () => void;
+  onImportModule?: (modName: string) => Promise<void>;
 }
 
 export function ModSelector({ 
   apiBaseUrl = 'http://localhost:3000/api',
   onSelectMod,
-  onCancel
+  onCancel,
+  onImportModule
 }: ModSelectorProps) {
   const [mods, setMods] = useState<Mod[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedMod, setSelectedMod] = useState<string>('');
+  const [importing, setImporting] = useState(false);
+  const [importProgress, setImportProgress] = useState<{ stage: string; message: string } | null>(null);
 
   useEffect(() => {
     fetchMods();
@@ -51,6 +55,47 @@ export function ModSelector({
   const handleSelect = () => {
     if (selectedMod) {
       onSelectMod(selectedMod);
+    }
+  };
+
+  const handleImport = async () => {
+    if (!selectedMod) return;
+    
+    try {
+      setImporting(true);
+      setImportProgress({ stage: 'Importing', message: `正在导入模组 ${selectedMod} 到模板表...` });
+
+      const response = await fetch(`${apiBaseUrl}/modules/import`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ moduleName: selectedMod, forceReimport: true })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setImportProgress({ 
+          stage: 'Complete', 
+          message: `✅ 成功导入 ${data.scenarioCount} 个场景和 ${data.npcCount} 个NPC` 
+        });
+        
+        // Call callback if provided
+        if (onImportModule) {
+          await onImportModule(selectedMod);
+        }
+
+        setTimeout(() => {
+          setImporting(false);
+          setImportProgress(null);
+        }, 2000);
+      } else {
+        throw new Error(data.error || '导入失败');
+      }
+    } catch (err) {
+      console.error('Error importing module:', err);
+      setError(`导入模组失败: ${(err as Error).message}`);
+      setImporting(false);
+      setImportProgress(null);
     }
   };
 
@@ -247,6 +292,44 @@ export function ModSelector({
         </div>
       </div>
 
+      {/* Import Progress Modal */}
+      {importing && importProgress && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.85)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 2000,
+        }}>
+          <div style={{
+            backgroundColor: '#f5f1e8',
+            padding: '40px',
+            borderRadius: '8px',
+            maxWidth: '400px',
+            width: '90%',
+            border: '3px solid #8b7355',
+            textAlign: 'center',
+          }}>
+            <h3 style={{ marginTop: 0, marginBottom: '20px', color: '#3d2817' }}>
+              {importProgress.stage}
+            </h3>
+            <p style={{ color: '#5a4a3a', fontSize: '1rem' }}>
+              {importProgress.message}
+            </p>
+            {importProgress.stage === 'Importing' && (
+              <div style={{ marginTop: '20px' }}>
+                <div className="spinner"></div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       <style>{`
         .mod-selector-overlay {
           position: fixed;
@@ -315,6 +398,42 @@ export function ModSelector({
           color: var(--accent, #8b7355);
           font-size: 1.5rem;
           font-weight: bold;
+        }
+
+        .import-button {
+          padding: 12px 24px;
+          font-size: 1rem;
+          font-weight: 600;
+          border: 2px solid;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all 0.2s;
+          color: white;
+        }
+
+        .import-button:hover:not(:disabled) {
+          opacity: 0.9;
+          transform: translateY(-1px);
+        }
+
+        .import-button:disabled {
+          cursor: not-allowed;
+          opacity: 0.6;
+        }
+
+        .spinner {
+          border: 4px solid #f3f3f3;
+          border-top: 4px solid #8b7355;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
+          margin: 0 auto;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
       `}</style>
     </>

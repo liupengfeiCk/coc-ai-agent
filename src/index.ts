@@ -8,10 +8,12 @@ import {
   seedDatabase,
 } from "./coc_multiagents_system/agents/memory/database/index.js";
 import { NPCLoader } from "./coc_multiagents_system/agents/character/npcloader/index.js";
+import { TemplateNPCLoader } from "./coc_multiagents_system/agents/character/npcloader/templateNPCLoader.js";
 import { ModuleLoader } from "./coc_multiagents_system/agents/memory/moduleloader/index.js";
 import { ScenarioLoader } from "./coc_multiagents_system/agents/memory/scenarioloader/index.js";
+import { TemplateScenarioLoader } from "./coc_multiagents_system/agents/memory/scenarioloader/templateScenarioLoader.js";
+import { GameInstanceManager } from "./coc_multiagents_system/agents/memory/index.js";
 import { buildGraph } from "./graph.js";
-import type { GraphState } from "./graph.js";
 import { initialGameState } from "./state.js";
 import { createBgeSqliteRagManager } from "./coc_multiagents_system/agents/memory/RagManager.js";
 
@@ -24,6 +26,13 @@ if (!fs.existsSync(dataDir)) {
 const db = new CoCDatabase();
 seedDatabase(db);
 
+// 配置: 模组名称 (用于模板-实例架构)
+const MODULE_NAME = "Cassandra's Black Carnival";
+const USE_TEMPLATE_ARCHITECTURE = true; // 是否使用新的模板-实例架构
+
+// 声明scenarioLoader (根据USE_TEMPLATE_ARCHITECTURE决定是否使用)
+let scenarioLoader: ScenarioLoader | null = null;
+
 // Initialize NPC directory
 const npcDir = path.join(process.cwd(), "data", "npcs");
 if (!fs.existsSync(npcDir)) {
@@ -34,14 +43,26 @@ if (!fs.existsSync(npcDir)) {
   );
 }
 
-// Load NPCs from JSON files in Mods directory (skip document parsing)
-const npcLoader = new NPCLoader(db);
-const cassandraNPCsDir = path.join(process.cwd(), "data", "Mods", "Cassandra's Black Carnival", "Cassandra's_npc");
-if (fs.existsSync(cassandraNPCsDir)) {
-  await npcLoader.loadNPCsFromJSONDirectory(cassandraNPCsDir);
+// Load NPCs from JSON files in Mods directory
+const cassandraNPCsDir = path.join(process.cwd(), "data", "Mods", MODULE_NAME, "Cassandra's_npc");
+
+if (USE_TEMPLATE_ARCHITECTURE) {
+  // 新架构: 导入到模板表
+  console.log(`\n📦 使用模板-实例架构加载NPC...`);
+  const templateNPCLoader = new TemplateNPCLoader(db);
+  if (fs.existsSync(cassandraNPCsDir)) {
+    await templateNPCLoader.loadNPCsToTemplate(cassandraNPCsDir, MODULE_NAME);
+  } else {
+    console.log(`⚠️  NPC目录不存在: ${cassandraNPCsDir}`);
+  }
 } else {
-  // Fallback to document parsing if JSON directory doesn't exist
-  await npcLoader.loadNPCsFromDirectory(npcDir);
+  // 旧架构: 直接加载到实例表 (向后兼容)
+  const npcLoader = new NPCLoader(db);
+  if (fs.existsSync(cassandraNPCsDir)) {
+    await npcLoader.loadNPCsFromJSONDirectory(cassandraNPCsDir);
+  } else {
+    await npcLoader.loadNPCsFromDirectory(npcDir);
+  }
 }
 
 // Initialize module loader
@@ -97,14 +118,44 @@ if (!fs.existsSync(scenarioDir)) {
   );
 }
 
-// Load scenarios from JSON files in Mods directory (skip document parsing)
-const scenarioLoader = new ScenarioLoader(db);
-const cassandraScenariosDir = path.join(process.cwd(), "data", "Mods", "Cassandra's Black Carnival", "Cassandra's_Scenarios");
-if (fs.existsSync(cassandraScenariosDir)) {
-  await scenarioLoader.loadScenariosFromJSONDirectory(cassandraScenariosDir);
+// Load scenarios from JSON files in Mods directory
+const cassandraScenariosDir = path.join(process.cwd(), "data", "Mods", MODULE_NAME, "Cassandra's_Scenarios");
+
+if (USE_TEMPLATE_ARCHITECTURE) {
+  // 新架构: 导入到模板表
+  console.log(`\n📦 使用模板-实例架构加载场景...`);
+  const templateScenarioLoader = new TemplateScenarioLoader(db);
+  if (fs.existsSync(cassandraScenariosDir)) {
+    await templateScenarioLoader.loadScenariosToTemplate(cassandraScenariosDir, MODULE_NAME);
+  } else {
+    console.log(`⚠️  场景目录不存在: ${cassandraScenariosDir}`);
+  }
+  
+  // ===== 新增: 从模板创建游戏实例 =====
+  const gameInstanceManager = new GameInstanceManager(db);
+  const testSessionId = "test-session-001"; // 测试用session_id
+  const testCharacterId = "player-001"; // 测试用角色ID
+  
+  await gameInstanceManager.createGameInstance(testSessionId, MODULE_NAME, testCharacterId);
+  
+  // 验证生成的实例数据
+  const stats = gameInstanceManager.getInstanceStats(testSessionId);
+  console.log(`\n📊 游戏实例统计:`);
+  console.log(`  场景数量: ${stats.scenarioCount}`);
+  console.log(`  NPC数量: ${stats.npcCount}`);
+  console.log(`  线索数量: ${stats.clueCount}`);
+  console.log(`  已发现线索: ${stats.discoveredClueCount}\n`);
+  
+  // TODO: 新架构的场景不需要ScenarioLoader,RAG需要适配模板表
+  scenarioLoader = null; // 暂时设为null
 } else {
-  // Fallback to document parsing if JSON directory doesn't exist
-  await scenarioLoader.loadScenariosFromDirectory(scenarioDir);
+  // 旧架构: 直接加载到实例表 (向后兼容)
+  scenarioLoader = new ScenarioLoader(db);
+  if (fs.existsSync(cassandraScenariosDir)) {
+    await scenarioLoader.loadScenariosFromJSONDirectory(cassandraScenariosDir);
+  } else {
+    await scenarioLoader.loadScenariosFromDirectory(scenarioDir);
+  }
 }
 
 // Initialize RAG Manager (SQLite-backed, BGE embeddings with hash fallback)
@@ -114,12 +165,13 @@ const ragManager = createBgeSqliteRagManager(db);
 const SKIP_RAG = true; // 设置为 false 以启用 RAG
 
 // Build RAG knowledge base from loaded data
-if (!SKIP_RAG) {
+if (!SKIP_RAG && scenarioLoader) {
   const scenarioProfiles = scenarioLoader.getAllScenarios();
+  const npcLoader = new NPCLoader(db);
   const npcProfiles = npcLoader.getAllNPCs();
   await ragManager.buildKnowledgeBase(
     {
-      scenarios: scenarioProfiles.map((s) => s.snapshot),
+      scenarios: scenarioProfiles.map((s: any) => s.snapshot),
       npcs: npcProfiles,
       clues: [],
       rules: [],

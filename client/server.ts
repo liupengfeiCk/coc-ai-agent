@@ -11,6 +11,9 @@ import { CoCDatabase, seedDatabase } from "../src/coc_multiagents_system/agents/
 import { NPCLoader } from "../src/coc_multiagents_system/agents/character/npcloader/index.js";
 import { ModuleLoader } from "../src/coc_multiagents_system/agents/memory/moduleloader/index.js";
 import { ScenarioLoader } from "../src/coc_multiagents_system/agents/memory/scenarioloader/index.js";
+import { TemplateScenarioLoader } from "../src/coc_multiagents_system/agents/memory/scenarioloader/templateScenarioLoader.js";
+import { TemplateNPCLoader } from "../src/coc_multiagents_system/agents/character/npcloader/templateNPCLoader.js";
+import { GameInstanceManager } from "../src/coc_multiagents_system/agents/memory/gameInstanceManager.js";
 import type { ScenarioProfile } from "../src/coc_multiagents_system/agents/models/scenarioTypes.js";
 import { createBgeSqliteRagManager, RagManager } from "../src/coc_multiagents_system/agents/memory/RagManager.js";
 import { buildGraph, buildListenerGraph, type GraphState } from "../src/graph.js";
@@ -32,6 +35,8 @@ let graph: any = null;
 let listenerGraph: any = null;  // Separate graph for listener/progression checking
 let ragManager: RagManager | null = null;
 let turnManager: TurnManager | null = null;
+let scenarioLoader: ScenarioLoader | null = null;  // 用于读取实例数据
+let npcLoader: NPCLoader | null = null;  // 用于读取实例数据
 
 // TODO: 暂时跳过RAG环节
 const SKIP_RAG = true; // 设置为 false 以启用 RAG
@@ -68,8 +73,10 @@ function getClientIp(req: express.Request): string {
  * Generate sessionId based on client IP address
  */
 function generateSessionIdFromIp(ip: string): string {
-  // Create a hash of the IP address for consistent sessionId per IP
-  const hash = createHash("sha256").update(ip).digest("hex").slice(0, 16);
+  // Create a unique sessionId for each game by combining IP and timestamp
+  // This ensures each new game gets a unique session even from the same IP
+  const uniqueString = `${ip}-${Date.now()}-${Math.random()}`;
+  const hash = createHash("sha256").update(uniqueString).digest("hex").slice(0, 16);
   return `session-ip-${hash}`;
 }
 
@@ -233,15 +240,15 @@ app.post("/api/game/import-data", async (req, res) => {
 
     const cassandraModDir = findCassandraModDir();
 
-    // Load scenarios from JSON files
-    const scenarioLoader = new ScenarioLoader(db);
+    // Load scenarios to template table (新架构)
+    const templateScenarioLoader = new TemplateScenarioLoader(db);
     let scenariosLoaded = 0;
     if (cassandraModDir) {
       const cassandraScenariosDir = path.join(cassandraModDir, "Cassandra's_Scenarios");
       if (fs.existsSync(cassandraScenariosDir)) {
-        const scenarios = await scenarioLoader.loadScenariosFromJSONDirectory(cassandraScenariosDir);
-        scenariosLoaded = scenarios.length;
-        console.log(`Loaded ${scenariosLoaded} scenarios`);
+        const modName = "Cassandra's Black Carnival";
+        await templateScenarioLoader.loadScenariosToTemplate(cassandraScenariosDir, modName);
+        console.log(`Scenarios loaded to template table`);
       } else {
         console.log("Cassandra's_Scenarios directory not found, skipping scenario import");
       }
@@ -249,14 +256,15 @@ app.post("/api/game/import-data", async (req, res) => {
       console.log("Cassandra mod directory not found, skipping scenario import");
     }
 
-    // Load NPCs from JSON files
-    const npcLoader = new NPCLoader(db);
+    // Load NPCs to template table (新架构)
+    const templateNpcLoader = new TemplateNPCLoader(db);
     let npcsLoaded = 0;
     if (cassandraModDir) {
       const cassandraNPCsDir = path.join(cassandraModDir, "Cassandra's_npc");
       if (fs.existsSync(cassandraNPCsDir)) {
-        const npcs = await npcLoader.loadNPCsFromJSONDirectory(cassandraNPCsDir);
-        npcsLoaded = npcs.length;
+        const modName = "Cassandra's Black Carnival";
+        await templateNpcLoader.loadNPCsToTemplate(cassandraNPCsDir, modName);
+        console.log(`NPCs loaded to template table`);
         console.log(`Loaded ${npcsLoaded} NPCs`);
       } else {
         console.log("Cassandra's_npc directory not found, skipping NPC import");
@@ -362,8 +370,9 @@ app.post("/api/mod/load", async (req, res) => {
 
     sendProgress(res, useSSE, "初始化", 10, "正在初始化加载器...");
 
-    const scenarioLoader = new ScenarioLoader(db);
-    const npcLoader = new NPCLoader(db);
+    // 使用新架构的模板加载器
+    const templateScenarioLoader = new TemplateScenarioLoader(db);
+    const templateNpcLoader = new TemplateNPCLoader(db);
     const moduleLoader = new ModuleLoader(db);
 
     const modsDir = path.join(process.cwd(), "data", "Mods");
@@ -435,15 +444,14 @@ app.post("/api/mod/load", async (req, res) => {
       currentStep++;
       const stepProgress = 15 + (currentStep / (totalSteps + 1)) * 65;
       sendProgress(res, useSSE, "加载场景", stepProgress, "正在加载场景数据...");
-      console.log(`\n📋 [1/${totalSteps}] 加载场景数据...`);
+      console.log(`\n📋 [1/${totalSteps}] 加载场景数据到模板表...`);
       for (const scenarioDirName of scenarioDirs) {
         const scenariosDir = path.join(modPath, scenarioDirName);
         console.log(`   → 从文件夹加载场景: ${scenarioDirName}`);
         try {
-          const scenarios = await scenarioLoader.loadScenariosFromJSONDirectory(scenariosDir, false); // false = don't force reload
-          scenariosLoaded += scenarios.length;
-          console.log(`   ✓ 已加载 ${scenarios.length} 个场景`);
-          sendProgress(res, useSSE, "加载场景", stepProgress, `已加载 ${scenariosLoaded} 个场景`);
+          await templateScenarioLoader.loadScenariosToTemplate(scenariosDir, modName);
+          console.log(`   ✓ 场景已加载到模板表`);
+          sendProgress(res, useSSE, "加载场景", stepProgress, `场景已加载到模板表`);
         } catch (error) {
           console.error(`   ✗ 加载场景失败 ${scenarioDirName}:`, error);
         }
@@ -452,20 +460,19 @@ app.post("/api/mod/load", async (req, res) => {
       console.log(`\n📋 [1/${totalSteps}] 未找到场景文件夹（包含"scenario"的文件夹）`);
     }
 
-    // Load NPCs
+    // Load NPCs to template table
     if (npcDirs.length > 0) {
       currentStep++;
       const stepProgress = 15 + (currentStep / (totalSteps + 1)) * 65;
       sendProgress(res, useSSE, "加载NPC", stepProgress, "正在加载NPC数据...");
-      console.log(`\n👥 [2/${totalSteps}] 加载NPC数据...`);
+      console.log(`\n👥 [2/${totalSteps}] 加载NPC数据到模板表...`);
       for (const npcDirName of npcDirs) {
         const npcsDir = path.join(modPath, npcDirName);
         console.log(`   → 从文件夹加载NPC: ${npcDirName}`);
         try {
-          const npcs = await npcLoader.loadNPCsFromJSONDirectory(npcsDir, false); // false = don't force reload
-          npcsLoaded += npcs.length;
-          console.log(`   ✓ 已加载 ${npcs.length} 个NPC`);
-          sendProgress(res, useSSE, "加载NPC", stepProgress, `已加载 ${npcsLoaded} 个NPC`);
+          await templateNpcLoader.loadNPCsToTemplate(npcsDir, modName);
+          console.log(`   ✓ NPC已加载到模板表`);
+          sendProgress(res, useSSE, "加载NPC", stepProgress, `NPC已加载到模板表`);
         } catch (error) {
           console.error(`   ✗ 加载NPC失败 ${npcDirName}:`, error);
         }
@@ -634,7 +641,8 @@ app.get("/api/module/introduction", async (req, res) => {
 // API endpoint to start/initialize the game
 app.post("/api/game/start", async (req, res) => {
   try {
-    const { characterId, modName } = req.body;
+    const { characterId, modName, moduleName } = req.body;
+    const effectiveModuleName = moduleName || modName; // Support both field names
 
     console.log(`[${new Date().toISOString()}] Initializing multi-agent system...`);
 
@@ -659,8 +667,9 @@ app.post("/api/game/start", async (req, res) => {
       console.log(`🎮 开始加载模组: ${modName}`);
       console.log(`${"=".repeat(60)}\n`);
       
-      scenarioLoader = new ScenarioLoader(db);
-      npcLoader = new NPCLoader(db);
+      // 使用新架构的模板加载器
+      const templateScenarioLoader = new TemplateScenarioLoader(db);
+      const templateNpcLoader = new TemplateNPCLoader(db);
       moduleLoader = new ModuleLoader(db);
 
       const modsDir = path.join(process.cwd(), "data", "Mods");
@@ -697,14 +706,14 @@ app.post("/api/game/start", async (req, res) => {
         name.toLowerCase().includes("module")
       );
 
-      // Load scenarios (loader will check for changes and skip if already loaded)
+      // Load scenarios to template table (新架构)
       if (scenarioDirs.length > 0) {
         console.log(`\n📋 [1/3] 检查场景数据...`);
         for (const scenarioDirName of scenarioDirs) {
           const scenariosDir = path.join(modPath, scenarioDirName);
           console.log(`   → 检查场景文件夹: ${scenarioDirName}`);
           try {
-            await scenarioLoader.loadScenariosFromJSONDirectory(scenariosDir, false); // false = don't force reload
+            await templateScenarioLoader.loadScenariosToTemplate(scenariosDir, modName);
           } catch (error) {
             console.error(`   ✗ 加载场景失败 ${scenarioDirName}:`, error);
           }
@@ -713,14 +722,14 @@ app.post("/api/game/start", async (req, res) => {
         console.log(`\n📋 [1/3] 未找到场景文件夹（包含"scenario"的文件夹）`);
       }
 
-      // Load NPCs (loader will check for changes and skip if already loaded)
+      // Load NPCs to template table (新架构)
       if (npcDirs.length > 0) {
         console.log(`\n👥 [2/3] 检查NPC数据...`);
         for (const npcDirName of npcDirs) {
           const npcsDir = path.join(modPath, npcDirName);
           console.log(`   → 检查NPC文件夹: ${npcDirName}`);
           try {
-            await npcLoader.loadNPCsFromJSONDirectory(npcsDir, false); // false = don't force reload
+            await templateNpcLoader.loadNPCsToTemplate(npcsDir, modName);
           } catch (error) {
             console.error(`   ✗ 加载NPC失败 ${npcDirName}:`, error);
           }
@@ -763,8 +772,9 @@ app.post("/api/game/start", async (req, res) => {
       console.log(`${"=".repeat(60)}\n`);
     } else {
       // Fallback: use existing loaders (for backward compatibility)
-      scenarioLoader = new ScenarioLoader(db);
-      npcLoader = new NPCLoader(db);
+      // 使用新架构的模板加载器
+      const templateScenarioLoader = new TemplateScenarioLoader(db);
+      const templateNpcLoader = new TemplateNPCLoader(db);
       moduleLoader = new ModuleLoader(db);
     }
 
@@ -775,6 +785,10 @@ app.post("/api/game/start", async (req, res) => {
     // Lazy-load multi-agent system components (only when game starts)
     if (!graph || !ragManager) {
       console.log(`[${new Date().toISOString()}] Initializing multi-agent system...`);
+
+      // Initialize loaders for reading instance data
+      if (!scenarioLoader) scenarioLoader = new ScenarioLoader(db);
+      if (!npcLoader) npcLoader = new NPCLoader(db);
 
       // Initialize RAG Manager (using base RAG - checkpoint_id IS NULL)
       ragManager = createBgeSqliteRagManager(db);
@@ -871,13 +885,22 @@ app.post("/api/game/start", async (req, res) => {
         }
       }
 
-      console.log(`📝 [1/3] 创建基础游戏状态...`);
+      console.log(`📝 [1/4] 创建游戏实例...`);
       // Generate sessionId based on client IP
       const clientIp = getClientIp(req);
       const sessionId = generateSessionIdFromIp(clientIp);
       console.log(`   - 客户端 IP: ${clientIp}`);
       console.log(`   - Session ID: ${sessionId}`);
       
+      // Create game instance from template tables
+      if (effectiveModuleName) {
+        const gameInstanceManager = new GameInstanceManager(db);
+        console.log(`   → 从模板表创建游戏实例 (模组: ${effectiveModuleName})`);
+        await gameInstanceManager.createGameInstance(sessionId, effectiveModuleName, characterId);
+        console.log(`   ✓ 游戏实例创建完成`);
+      }
+      
+      console.log(`\n📝 [2/4] 创建基础游戏状态...`);
       let gameState: GameState = {
         ...JSON.parse(JSON.stringify(initialGameState)),
         sessionId: sessionId,
@@ -896,9 +919,15 @@ app.post("/api/game/start", async (req, res) => {
       console.log(`   - 角色: ${character.name}`);
       console.log(`   - 阶段: ${gameState.phase}`);
       console.log(`   - 游戏时间: 第${gameState.gameDay}天 ${gameState.timeOfDay}`);
+      
+      // Load all NPCs for this session into game state
+      console.log(`   → 加载当前session的所有NPC到游戏状态...`);
+      const allSessionNPCs = npcLoader.getAllNPCsBySession(sessionId);
+      gameState.npcCharacters = allSessionNPCs;
+      console.log(`   ✓ 已加载 ${allSessionNPCs.length} 个NPC到游戏状态`);
 
       // Load module data and set keeper guidance and initial scenario
-      console.log(`\n📚 [2/3] 加载模组配置到游戏状态...`);
+      console.log(`\n📚 [3/4] 加载模组配置到游戏状态...`);
       const modules = moduleLoader.getAllModules();
       let moduleIntroduction: { introduction: string; moduleNotes: string } | null = null;
       
@@ -959,134 +988,78 @@ app.post("/api/game/start", async (req, res) => {
             console.log(`     - 出口数: ${initialScenarioProfile.snapshot.exits?.length || 0}`);
             console.log(`     - 事件数: ${initialScenarioProfile.snapshot.events?.length || 0}`);
 
-            // Inject NPCs from scenario characters and module.initialScenarioNPCs into gameState
+            // Update initial scenario NPCs' location in game state
             if (scenarioLocation) {
-              const allNPCs = npcLoader.getAllNPCs();
-              const database = db.getDatabase();
-              let matchedCount = 0;
-              const npcsToAdd: any[] = [];
-              const npcNamesToProcess = new Set<string>();
+              const npcNamesToPlace = new Set<string>();
               
               // Collect character names from scenario
               if (initialScenarioProfile.snapshot.characters && initialScenarioProfile.snapshot.characters.length > 0) {
-                initialScenarioProfile.snapshot.characters.forEach(c => npcNamesToProcess.add(c.name));
+                initialScenarioProfile.snapshot.characters.forEach(c => npcNamesToPlace.add(c.name));
               }
               
               // Also collect NPCs from module.initialScenarioNPCs
               if (module.initialScenarioNPCs && module.initialScenarioNPCs.length > 0) {
-                module.initialScenarioNPCs.forEach(name => npcNamesToProcess.add(name));
+                module.initialScenarioNPCs.forEach(name => npcNamesToPlace.add(name));
               }
               
-              if (npcNamesToProcess.size > 0) {
-                const scenarioCharCount = initialScenarioProfile.snapshot.characters?.length || 0;
-                const moduleNpcCount = module.initialScenarioNPCs?.length || 0;
-                console.log(`   → 根据场景角色列表和模组配置注入NPC到游戏状态 (场景角色: ${scenarioCharCount}, 模组配置: ${moduleNpcCount}, 总计: ${npcNamesToProcess.size}):`);
+              if (npcNamesToPlace.size > 0) {
+                console.log(`   → 设置初始场景NPC位置 (${npcNamesToPlace.size} 个):`);
+                const database = db.getDatabase();
+                let updatedCount = 0;
                 
-                for (const charName of npcNamesToProcess) {
-                  // Find matching NPC by name (使用80%相似度的模糊匹配)
-                  const matchingNpc = allNPCs.find(npc => {
-                    return isNameSimilar(npc.name, charName);
-                  });
-
+                for (const charName of npcNamesToPlace) {
+                  // Find matching NPC in gameState (already loaded all NPCs)
+                  const matchingNpc = gameState.npcCharacters.find(npc => isNameSimilar(npc.name, charName)) as any;
+                  
                   if (matchingNpc) {
-                    // Check if this NPC is already in npcsToAdd (avoid duplicates)
-                    const alreadyAdded = npcsToAdd.some(npc => npc.id === matchingNpc.id);
-                    if (alreadyAdded) {
-                      continue;
-                    }
-                    
-                    const npcProfile = matchingNpc as any; // NPCProfile
-                    const oldLocation = npcProfile.currentLocation || null;
-                    npcProfile.currentLocation = scenarioLocation;
+                    const oldLocation = matchingNpc.currentLocation || null;
+                    matchingNpc.currentLocation = scenarioLocation;
                     
                     if (oldLocation !== scenarioLocation) {
                       console.log(`     ✓ ${matchingNpc.name}: ${oldLocation || "Unknown"} → ${scenarioLocation}`);
-                      matchedCount++;
+                      updatedCount++;
                       
-                      // Update NPC in database
-                      const updateStmt = database.prepare(`
+                      // Update NPC location in database
+                      database.prepare(`
                         UPDATE characters 
                         SET current_location = ? 
                         WHERE character_id = ? AND is_npc = 1
-                      `);
-                      updateStmt.run(scenarioLocation, matchingNpc.id);
+                      `).run(scenarioLocation, matchingNpc.id);
                     } else {
                       console.log(`     - ${matchingNpc.name}: 已在 ${scenarioLocation} (无需更新)`);
-                      matchedCount++;
                     }
                     
-                    // Add NPC to gameState (create a copy to avoid mutating the original)
-                    npcsToAdd.push({
-                      ...npcProfile,
-                      currentLocation: scenarioLocation
-                    });
-                  } else {
-                    console.warn(`     ⚠️  NPC "${charName}" 未在NPC数据库中找到匹配的NPC`);
-                  }
-                }
-                
-                // Add all matched NPCs to gameState
-                if (npcsToAdd.length > 0) {
-                  // Merge with existing NPCs, avoiding duplicates
-                  const existingNpcIds = new Set((gameState.npcCharacters || []).map(npc => npc.id));
-                  const newNpcs = npcsToAdd.filter(npc => !existingNpcIds.has(npc.id));
-                  const updatedNpcs = npcsToAdd.filter(npc => existingNpcIds.has(npc.id));
-                  
-                  if (newNpcs.length > 0) {
-                    gameState.npcCharacters = [...(gameState.npcCharacters || []), ...newNpcs];
-                  }
-                  
-                  // Update existing NPCs' locations
-                  if (updatedNpcs.length > 0) {
-                    gameState.npcCharacters = (gameState.npcCharacters || []).map(npc => {
-                      const updatedNpc = updatedNpcs.find(u => u.id === npc.id);
-                      return updatedNpc ? { ...npc, currentLocation: scenarioLocation } : npc;
-                    });
-                  }
-                  
-                  console.log(`   ✓ 已将 ${newNpcs.length} 个新NPC注入到游戏状态`);
-                  if (updatedNpcs.length > 0) {
-                    console.log(`   ✓ 已更新 ${updatedNpcs.length} 个已存在NPC的位置`);
-                  }
-                  
-                  // Also update currentScenario.characters with NPC information
-                  if (gameState.currentScenario) {
-                    const scenarioCharacters = gameState.currentScenario.characters || [];
-                    const updatedCharacters = [...scenarioCharacters];
-                    
-                    for (const npc of npcsToAdd) {
-                      // Check if NPC already exists in scenario characters
-                      const existingIndex = updatedCharacters.findIndex(c => 
-                        c.id === npc.id || c.name.toLowerCase() === npc.name.toLowerCase()
+                    // Update scenario.characters
+                    if (gameState.currentScenario) {
+                      const scenarioCharacters = gameState.currentScenario.characters || [];
+                      const existingIndex = scenarioCharacters.findIndex(c => 
+                        c.id === matchingNpc.id || c.name.toLowerCase() === matchingNpc.name.toLowerCase()
                       );
                       
                       if (existingIndex >= 0) {
-                        // Update existing character
-                        updatedCharacters[existingIndex] = {
-                          ...updatedCharacters[existingIndex],
-                          location: scenarioLocation,
-                          status: updatedCharacters[existingIndex].status || 'present'
-                        };
+                        scenarioCharacters[existingIndex].location = scenarioLocation;
+                        scenarioCharacters[existingIndex].status = scenarioCharacters[existingIndex].status || 'present';
                       } else {
-                        // Add new character to scenario
-                        updatedCharacters.push({
-                          id: npc.id,
-                          name: npc.name,
-                          role: npc.occupation || 'npc',
+                        scenarioCharacters.push({
+                          id: matchingNpc.id,
+                          name: matchingNpc.name,
+                          role: matchingNpc.occupation || 'npc',
                           status: 'present',
                           location: scenarioLocation,
-                          notes: npc.background ? npc.background.substring(0, 100) : undefined
+                          notes: matchingNpc.background ? matchingNpc.background.substring(0, 100) : undefined
                         });
                       }
+                      
+                      gameState.currentScenario.characters = scenarioCharacters;
                     }
-                    
-                    gameState.currentScenario.characters = updatedCharacters;
+                  } else {
+                    console.warn(`     ⚠️  NPC "${charName}" 未在已加载的NPC中找到`);
                   }
                 }
                 
-                console.log(`   ✓ 已匹配并注入 ${matchedCount}/${npcNamesToProcess.size} 个NPC到游戏状态`);
+                console.log(`   ✓ 已设置 ${updatedCount} 个NPC的初始位置`);
               } else {
-                console.log(`   → 场景和模组配置中均未指定NPC，跳过NPC注入`);
+                console.log(`   → 场景和模组配置中均未指定NPC，跳过位置设置`);
               }
             } else {
               console.warn(`   ⚠️  场景位置未指定，无法设置场景NPC位置`);
@@ -1143,7 +1116,7 @@ app.post("/api/game/start", async (req, res) => {
         console.log(`   ⚠️  未找到模组数据，使用默认配置`);
       }
 
-      console.log(`\n💾 [3/3] 保存游戏状态...`);
+      console.log(`\n💾 [4/4] 保存游戏状态...`);
       persistentGameState = gameState;
       console.log(`   ✓ 游戏状态已保存`);
       console.log(`   - Session ID: ${gameState.sessionId}`);
@@ -1222,13 +1195,22 @@ app.post("/api/game/start", async (req, res) => {
       console.log(`🎲 初始化游戏状态（使用默认角色）...`);
       console.log(`${"=".repeat(60)}\n`);
 
-      console.log(`📝 [1/3] 创建基础游戏状态...`);
+      console.log(`📝 [1/4] 创建游戏实例...`);
       // Generate sessionId based on client IP
       const clientIp = getClientIp(req);
       const sessionId = generateSessionIdFromIp(clientIp);
       console.log(`   - 客户端 IP: ${clientIp}`);
       console.log(`   - Session ID: ${sessionId}`);
       
+      // Create game instance from template tables
+      if (effectiveModuleName) {
+        const gameInstanceManager = new GameInstanceManager(db);
+        console.log(`   → 从模板表创建游戏实例 (模组: ${effectiveModuleName})`);
+        await gameInstanceManager.createGameInstance(sessionId, effectiveModuleName, characterId);
+        console.log(`   ✓ 游戏实例创建完成`);
+      }
+      
+      console.log(`\n📝 [2/4] 创建基础游戏状态...`);
       let gameState: GameState = {
         ...JSON.parse(JSON.stringify(initialGameState)),
         sessionId: sessionId,
@@ -1307,134 +1289,78 @@ app.post("/api/game/start", async (req, res) => {
             console.log(`     - 出口数: ${initialScenarioProfile.snapshot.exits?.length || 0}`);
             console.log(`     - 事件数: ${initialScenarioProfile.snapshot.events?.length || 0}`);
 
-            // Inject NPCs from scenario characters and module.initialScenarioNPCs into gameState
+            // Update initial scenario NPCs' location in game state
             if (scenarioLocation) {
-              const allNPCs = npcLoader.getAllNPCs();
-              const database = db.getDatabase();
-              let matchedCount = 0;
-              const npcsToAdd: any[] = [];
-              const npcNamesToProcess = new Set<string>();
+              const npcNamesToPlace = new Set<string>();
               
               // Collect character names from scenario
               if (initialScenarioProfile.snapshot.characters && initialScenarioProfile.snapshot.characters.length > 0) {
-                initialScenarioProfile.snapshot.characters.forEach(c => npcNamesToProcess.add(c.name));
+                initialScenarioProfile.snapshot.characters.forEach(c => npcNamesToPlace.add(c.name));
               }
               
               // Also collect NPCs from module.initialScenarioNPCs
               if (module.initialScenarioNPCs && module.initialScenarioNPCs.length > 0) {
-                module.initialScenarioNPCs.forEach(name => npcNamesToProcess.add(name));
+                module.initialScenarioNPCs.forEach(name => npcNamesToPlace.add(name));
               }
               
-              if (npcNamesToProcess.size > 0) {
-                const scenarioCharCount = initialScenarioProfile.snapshot.characters?.length || 0;
-                const moduleNpcCount = module.initialScenarioNPCs?.length || 0;
-                console.log(`   → 根据场景角色列表和模组配置注入NPC到游戏状态 (场景角色: ${scenarioCharCount}, 模组配置: ${moduleNpcCount}, 总计: ${npcNamesToProcess.size}):`);
+              if (npcNamesToPlace.size > 0) {
+                console.log(`   → 设置初始场景NPC位置 (${npcNamesToPlace.size} 个):`);
+                const database = db.getDatabase();
+                let updatedCount = 0;
                 
-                for (const charName of npcNamesToProcess) {
-                  // Find matching NPC by name (使用80%相似度的模糊匹配)
-                  const matchingNpc = allNPCs.find(npc => {
-                    return isNameSimilar(npc.name, charName);
-                  });
-
+                for (const charName of npcNamesToPlace) {
+                  // Find matching NPC in gameState (already loaded all NPCs)
+                  const matchingNpc = gameState.npcCharacters.find(npc => isNameSimilar(npc.name, charName)) as any;
+                  
                   if (matchingNpc) {
-                    // Check if this NPC is already in npcsToAdd (avoid duplicates)
-                    const alreadyAdded = npcsToAdd.some(npc => npc.id === matchingNpc.id);
-                    if (alreadyAdded) {
-                      continue;
-                    }
-                    
-                    const npcProfile = matchingNpc as any; // NPCProfile
-                    const oldLocation = npcProfile.currentLocation || null;
-                    npcProfile.currentLocation = scenarioLocation;
+                    const oldLocation = matchingNpc.currentLocation || null;
+                    matchingNpc.currentLocation = scenarioLocation;
                     
                     if (oldLocation !== scenarioLocation) {
                       console.log(`     ✓ ${matchingNpc.name}: ${oldLocation || "Unknown"} → ${scenarioLocation}`);
-                      matchedCount++;
+                      updatedCount++;
                       
-                      // Update NPC in database
-                      const updateStmt = database.prepare(`
+                      // Update NPC location in database
+                      database.prepare(`
                         UPDATE characters 
                         SET current_location = ? 
                         WHERE character_id = ? AND is_npc = 1
-                      `);
-                      updateStmt.run(scenarioLocation, matchingNpc.id);
+                      `).run(scenarioLocation, matchingNpc.id);
                     } else {
                       console.log(`     - ${matchingNpc.name}: 已在 ${scenarioLocation} (无需更新)`);
-                      matchedCount++;
                     }
                     
-                    // Add NPC to gameState (create a copy to avoid mutating the original)
-                    npcsToAdd.push({
-                      ...npcProfile,
-                      currentLocation: scenarioLocation
-                    });
-                  } else {
-                    console.warn(`     ⚠️  NPC "${charName}" 未在NPC数据库中找到匹配的NPC`);
-                  }
-                }
-                
-                // Add all matched NPCs to gameState
-                if (npcsToAdd.length > 0) {
-                  // Merge with existing NPCs, avoiding duplicates
-                  const existingNpcIds = new Set((gameState.npcCharacters || []).map(npc => npc.id));
-                  const newNpcs = npcsToAdd.filter(npc => !existingNpcIds.has(npc.id));
-                  const updatedNpcs = npcsToAdd.filter(npc => existingNpcIds.has(npc.id));
-                  
-                  if (newNpcs.length > 0) {
-                    gameState.npcCharacters = [...(gameState.npcCharacters || []), ...newNpcs];
-                  }
-                  
-                  // Update existing NPCs' locations
-                  if (updatedNpcs.length > 0) {
-                    gameState.npcCharacters = (gameState.npcCharacters || []).map(npc => {
-                      const updatedNpc = updatedNpcs.find(u => u.id === npc.id);
-                      return updatedNpc ? { ...npc, currentLocation: scenarioLocation } : npc;
-                    });
-                  }
-                  
-                  console.log(`   ✓ 已将 ${newNpcs.length} 个新NPC注入到游戏状态`);
-                  if (updatedNpcs.length > 0) {
-                    console.log(`   ✓ 已更新 ${updatedNpcs.length} 个已存在NPC的位置`);
-                  }
-                  
-                  // Also update currentScenario.characters with NPC information
-                  if (gameState.currentScenario) {
-                    const scenarioCharacters = gameState.currentScenario.characters || [];
-                    const updatedCharacters = [...scenarioCharacters];
-                    
-                    for (const npc of npcsToAdd) {
-                      // Check if NPC already exists in scenario characters
-                      const existingIndex = updatedCharacters.findIndex(c => 
-                        c.id === npc.id || c.name.toLowerCase() === npc.name.toLowerCase()
+                    // Update scenario.characters
+                    if (gameState.currentScenario) {
+                      const scenarioCharacters = gameState.currentScenario.characters || [];
+                      const existingIndex = scenarioCharacters.findIndex(c => 
+                        c.id === matchingNpc.id || c.name.toLowerCase() === matchingNpc.name.toLowerCase()
                       );
                       
                       if (existingIndex >= 0) {
-                        // Update existing character
-                        updatedCharacters[existingIndex] = {
-                          ...updatedCharacters[existingIndex],
-                          location: scenarioLocation,
-                          status: updatedCharacters[existingIndex].status || 'present'
-                        };
+                        scenarioCharacters[existingIndex].location = scenarioLocation;
+                        scenarioCharacters[existingIndex].status = scenarioCharacters[existingIndex].status || 'present';
                       } else {
-                        // Add new character to scenario
-                        updatedCharacters.push({
-                          id: npc.id,
-                          name: npc.name,
-                          role: npc.occupation || 'npc',
+                        scenarioCharacters.push({
+                          id: matchingNpc.id,
+                          name: matchingNpc.name,
+                          role: matchingNpc.occupation || 'npc',
                           status: 'present',
                           location: scenarioLocation,
-                          notes: npc.background ? npc.background.substring(0, 100) : undefined
+                          notes: matchingNpc.background ? matchingNpc.background.substring(0, 100) : undefined
                         });
                       }
+                      
+                      gameState.currentScenario.characters = scenarioCharacters;
                     }
-                    
-                    gameState.currentScenario.characters = updatedCharacters;
+                  } else {
+                    console.warn(`     ⚠️  NPC "${charName}" 未在已加载的NPC中找到`);
                   }
                 }
                 
-                console.log(`   ✓ 已匹配并注入 ${matchedCount}/${npcNamesToProcess.size} 个NPC到游戏状态`);
+                console.log(`   ✓ 已设置 ${updatedCount} 个NPC的初始位置`);
               } else {
-                console.log(`   → 场景和模组配置中均未指定NPC，跳过NPC注入`);
+                console.log(`   → 场景和模组配置中均未指定NPC，跳过位置设置`);
               }
             } else {
               console.warn(`   ⚠️  场景位置未指定，无法设置场景NPC位置`);
@@ -1491,7 +1417,7 @@ app.post("/api/game/start", async (req, res) => {
         console.log(`   ⚠️  未找到模组数据，使用默认配置`);
       }
 
-      console.log(`\n💾 [3/3] 保存游戏状态...`);
+      console.log(`\n💾 [4/4] 保存游戏状态...`);
       persistentGameState = gameState;
       console.log(`   ✓ 游戏状态已保存`);
       console.log(`   - Session ID: ${gameState.sessionId}`);
@@ -2793,6 +2719,238 @@ wss.on('connection', (ws: WebSocket, req) => {
   // Start progression checker if this is the first client
   if (wsClients.size === 1) {
     startProgressionChecker();
+  }
+});
+
+// ========================================
+// 模组管理 API (Module Management APIs)
+// ========================================
+
+// GET /api/modules - 列出所有已导入的模组
+app.get("/api/modules", (req, res) => {
+  try {
+    // Initialize database if not already initialized
+    if (!db) {
+      const dataDir = path.join(process.cwd(), "data");
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      db = new CoCDatabase();
+      seedDatabase(db);
+      console.log("Database initialized for module listing");
+    }
+
+    const moduleImporter = new ModuleImporter(db);
+    
+    const modules = moduleImporter.listModules();
+    
+    res.json({
+      success: true,
+      modules,
+      count: modules.length
+    });
+  } catch (error) {
+    console.error("Error listing modules:", error);
+    res.status(500).json({ error: "Failed to list modules: " + (error as Error).message });
+  }
+});
+
+// POST /api/modules/import - 导入/覆盖导入模组
+// POST /api/modules/import - 导入模组到模板表
+app.post("/api/modules/import", async (req, res) => {
+  try {
+    // Initialize database if not already initialized
+    if (!db) {
+      const dataDir = path.join(process.cwd(), "data");
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      db = new CoCDatabase();
+      seedDatabase(db);
+      console.log("Database initialized for module import");
+    }
+
+    const { moduleName, forceReimport = false } = req.body;
+    
+    if (!moduleName) {
+      return res.status(400).json({ error: "moduleName is required" });
+    }
+
+    // 查找模组目录
+    const modsDir = path.join(process.cwd(), "data", "Mods");
+    const moduleDirs = fs.readdirSync(modsDir, { withFileTypes: true })
+      .filter(dirent => dirent.isDirectory())
+      .map(dirent => dirent.name);
+    
+    const matchedDir = moduleDirs.find(dir => 
+      normalizeName(dir) === normalizeName(moduleName) ||
+      dir.toLowerCase().includes(moduleName.toLowerCase())
+    );
+    
+    if (!matchedDir) {
+      return res.status(404).json({ error: `Module ${moduleName} not found in Mods directory` });
+    }
+
+    // Check if module already imported (if not forcing reimport)
+    if (!forceReimport) {
+      const database = db.getDatabase();
+      const existingScenarios = database.prepare(
+        "SELECT COUNT(*) as count FROM module_scenarios WHERE module_name = ?"
+      ).get(matchedDir) as { count: number };
+      
+      const existingNPCs = database.prepare(
+        "SELECT COUNT(*) as count FROM module_npcs WHERE module_name = ?"
+      ).get(matchedDir) as { count: number };
+
+      if (existingScenarios.count > 0 || existingNPCs.count > 0) {
+        console.log(`✓ Module ${matchedDir} already imported (${existingScenarios.count} scenarios, ${existingNPCs.count} NPCs), skipping...`);
+        return res.json({
+          success: true,
+          message: `Module ${matchedDir} already imported, skipped`,
+          moduleName: matchedDir,
+          scenarioCount: existingScenarios.count,
+          npcCount: existingNPCs.count,
+          alreadyImported: true
+        });
+      }
+    }
+    
+    const modulePath = path.join(modsDir, matchedDir);
+    
+    // 扫描子目录查找场景和NPC文件
+    const subdirs = fs.readdirSync(modulePath, { withFileTypes: true })
+      .filter(dirent => dirent.isDirectory())
+      .map(dirent => dirent.name);
+
+    console.log(`📂 Scanning module subdirectories: ${subdirs.join(", ")}`);
+
+    // 查找场景目录
+    const scenarioDirs = subdirs.filter(name => 
+      name.toLowerCase().includes("scenario")
+    );
+    
+    // 查找NPC目录
+    const npcDirs = subdirs.filter(name => 
+      name.toLowerCase().includes("npc")
+    );
+
+    // 使用已测试过的Loader导入
+    const scenarioLoader = new TemplateScenarioLoader(db);
+    const npcLoader = new TemplateNPCLoader(db);
+    
+    let scenarioCount = 0;
+    let npcCount = 0;
+    
+    // 加载场景
+    if (scenarioDirs.length > 0) {
+      for (const scenarioDirName of scenarioDirs) {
+        const scenariosDir = path.join(modulePath, scenarioDirName);
+        await scenarioLoader.loadScenariosToTemplate(scenariosDir, matchedDir);
+        const files = fs.readdirSync(scenariosDir).filter(f => f.endsWith(".json"));
+        scenarioCount += files.length;
+      }
+    }
+    
+    // 加载NPC
+    if (npcDirs.length > 0) {
+      for (const npcDirName of npcDirs) {
+        const npcsDir = path.join(modulePath, npcDirName);
+        await npcLoader.loadNPCsToTemplate(npcsDir, matchedDir);
+        const files = fs.readdirSync(npcsDir).filter(f => f.endsWith(".json"));
+        npcCount += files.length;
+      }
+    }
+    
+    res.json({
+      success: true,
+      message: `Module ${matchedDir} imported successfully`,
+      moduleName: matchedDir,
+      scenarioCount: scenarioCount,
+      npcCount: npcCount,
+      alreadyImported: false
+    });
+  } catch (error) {
+    console.error("Error importing module:", error);
+    res.status(500).json({ error: "Failed to import module: " + (error as Error).message });
+  }
+});
+
+// POST /api/game/create-instance - 从模板表创建游戏实例
+app.post("/api/game/create-instance", async (req, res) => {
+  try {
+    // Initialize database if not already initialized
+    if (!db) {
+      const dataDir = path.join(process.cwd(), "data");
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      db = new CoCDatabase();
+      seedDatabase(db);
+      console.log("Database initialized for instance creation");
+    }
+
+    const { sessionId, moduleName, characterId } = req.body;
+    
+    if (!sessionId || !moduleName || !characterId) {
+      return res.status(400).json({ 
+        error: "sessionId, moduleName and characterId are required" 
+      });
+    }
+
+    // 使用GameInstanceManager创建实例
+    const gameInstanceManager = new GameInstanceManager(db);
+    
+    console.log(`Creating game instance: session=${sessionId}, module=${moduleName}, character=${characterId}`);
+    
+    await gameInstanceManager.createGameInstance(sessionId, moduleName, characterId);
+    
+    res.json({
+      success: true,
+      message: `Game instance created successfully`,
+      sessionId,
+      moduleName,
+      characterId
+    });
+  } catch (error) {
+    console.error("Error creating game instance:", error);
+    res.status(500).json({ 
+      error: "Failed to create game instance: " + (error as Error).message 
+    });
+  }
+});
+
+// DELETE /api/modules/:moduleName - 删除模组模板
+app.delete("/api/modules/:moduleName", async (req, res) => {
+  try {
+    // Initialize database if not already initialized
+    if (!db) {
+      const dataDir = path.join(process.cwd(), "data");
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      db = new CoCDatabase();
+      seedDatabase(db);
+      console.log("Database initialized for module deletion");
+    }
+
+    const { moduleName } = req.params;
+    
+    if (!moduleName) {
+      return res.status(400).json({ error: "moduleName is required" });
+    }
+
+    const moduleImporter = new ModuleImporter(db);
+    
+    await moduleImporter.deleteModule(moduleName);
+    
+    res.json({
+      success: true,
+      message: `Module ${moduleName} deleted successfully`,
+      moduleName
+    });
+  } catch (error) {
+    console.error("Error deleting module:", error);
+    res.status(500).json({ error: "Failed to delete module: " + (error as Error).message });
   }
 });
 

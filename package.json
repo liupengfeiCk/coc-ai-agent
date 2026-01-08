@@ -20,6 +20,8 @@
     "chat:frontend": "cd client && npm run dev",
     "chat:dev": "concurrently \"pnpm chat\" \"pnpm chat:frontend\"",
     "clean": "rm -rf dist node_modules/.cache",
+    "clean:db": "tsx scripts/clean-database.ts",
+    "clean:db:backup": "tsx scripts/clean-database.ts --backup",
     "test": "vitest",
     "test:coverage": "vitest --coverage"
   },

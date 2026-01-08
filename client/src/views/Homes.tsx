@@ -4,9 +4,10 @@ interface HomeProps {
   onCreate: () => void;
   onStartGame: () => void;
   onContinueGame: () => void;
+  onImportModule: () => void;
 }
 
-const Homes: React.FC<HomeProps> = ({ onCreate, onStartGame, onContinueGame }) => {
+const Homes: React.FC<HomeProps> = ({ onCreate, onStartGame, onContinueGame, onImportModule }) => {
   const handleStartGame = () => {
     // Just trigger the character selector
     onStartGame();
@@ -32,6 +33,9 @@ const Homes: React.FC<HomeProps> = ({ onCreate, onStartGame, onContinueGame }) =
           </button>
           <button onClick={onCreate}>
             创建角色
+          </button>
+          <button onClick={onImportModule}>
+            📦 导入模组
           </button>
         </div>
       </div>
