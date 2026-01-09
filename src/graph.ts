@@ -29,14 +29,13 @@ export interface GraphState {
   stepTimings?: Record<string, number>;  // Track execution time for each step (in ms)
 }
 
-export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader | null, rag?: RagManager) => {
+export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader | null, turnManager: TurnManager, rag?: RagManager) => {
   const orchestrator = new OrchestratorAgent();
   const actionAgent = new ActionAgent(scenarioLoader || undefined);
   const characterAgent = new CharacterAgent();
   characterAgent.setDatabase(db); // Inject database for relationship persistence
   const keeperAgent = new KeeperAgent();
   const directorAgent = scenarioLoader ? new DirectorAgent(scenarioLoader, db) : null;
-  const turnManager = new TurnManager(db);
 
   const graph = new StateGraph<GraphState>({
     channels: {
@@ -609,9 +608,8 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader | nul
  * Build a separate graph for listener/progression checking
  * This graph is used by WebSocket periodic checks to trigger simulate queries
  */
-export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, rag?: RagManager) => {
+export const buildListenerGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader, turnManager: TurnManager, rag?: RagManager) => {
   const directorAgent = new DirectorAgent(scenarioLoader, db);
-  const turnManager = new TurnManager(db);
   const characterAgent = new CharacterAgent();
   characterAgent.setDatabase(db); // Inject database for relationship persistence
   const actionAgent = new ActionAgent(scenarioLoader);

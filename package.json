@@ -16,7 +16,7 @@
     "start": "node dist/src/index.js",
     "dev": "tsx src/index.ts",
     "dev:debug": "cross-env NODE_ENV=development DEBUG=coc:* tsx src/index.ts",
-    "chat": "tsx client/server.ts",
+    "chat": "tsx server/server.ts",
     "chat:frontend": "cd client && npm run dev",
     "chat:dev": "concurrently \"pnpm chat\" \"pnpm chat:frontend\"",
     "clean": "rm -rf dist node_modules/.cache",

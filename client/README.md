@@ -62,24 +62,6 @@ Save a user message to memory.
 }
 ```
 
-### GET /api/messages
-Retrieve message history for the current session.
-
-**Response:**
-```json
-{
-  "success": true,
-  "messages": [
-    {
-      "id": 123,
-      "content": "Hello, world!",
-      "timestamp": "2025-12-11T10:30:00.000Z",
-      "type": "user_message"
-    }
-  ]
-}
-```
-
 ## Database Schema
 
 Messages are stored in the `game_events` table with the following structure:

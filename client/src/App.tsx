@@ -210,7 +210,7 @@ const App: React.FC = () => {
     
     try {
       // Only fetch module introduction (do NOT import template yet)
-      const introResponse = await fetch(`http://localhost:3000/api/module/introduction?modName=${encodeURIComponent(modName)}`);
+      const introResponse = await fetch(`http://localhost:3000/api/mod/introduction?modName=${encodeURIComponent(modName)}`);
       const introData = await introResponse.json();
 
       if (introResponse.ok && introData.success) {
@@ -412,7 +412,7 @@ const App: React.FC = () => {
   const handleRandomizeAttributes = async () => {
     try {
       const age = Number(form.age) || undefined;
-      const response = await fetch("http://localhost:3000/api/character/random-attributes", {
+      const response = await fetch("http://localhost:3000/api/characters/random-attributes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ age }),
@@ -440,7 +440,7 @@ const App: React.FC = () => {
 
     try {
       const age = Number(form.age) || undefined;
-      const response = await fetch("http://localhost:3000/api/character/random-attributes", {
+      const response = await fetch("http://localhost:3000/api/characters/random-attributes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ age }),
@@ -581,7 +581,7 @@ const App: React.FC = () => {
     setSaveMessage(null);
 
     try {
-      const response = await fetch("http://localhost:3000/api/character", {
+      const response = await fetch("http://localhost:3000/api/characters/save", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
