@@ -23,6 +23,19 @@ async function processGameTurn(turnId: string, userInput: string, gameState: Gam
     })) as unknown as GraphState;
 
     console.log(`[${new Date().toISOString()}] Turn ${turnId} completed successfully`);
+    
+    // 🔧 CRITICAL: Update container's gameState in-place with result
+    const updatedState = result.gameState as GameState;
+    const containerGameState = container.resolve('gameState') as GameState;
+    
+    // Copy all properties from updated state to container's gameState
+    Object.assign(containerGameState, updatedState);
+    
+    console.log("💾 [Turn] 游戏状态已原地更新到container");
+    console.log(`   - 当前场景: ${containerGameState.currentScenario?.name || '无'}`);
+    console.log(`   - 当前位置: ${containerGameState.currentScenario?.location || '未知'}`);
+    console.log(`   - 游戏时间: ${containerGameState.timeOfDay}`);
+    console.log(`   - 游戏天数: 第${containerGameState.gameDay}天`);
   } catch (error) {
     console.error(`[${new Date().toISOString()}] Turn ${turnId} failed:`, error);
     throw error;
@@ -104,6 +117,9 @@ turnRouter.get("/:turnId", async (req, res) => {
         if (turn.status === 'completed' || turn.status === 'error') {
           console.log(`📖 [API] 获取 Turn ${turnId}: status=${turn.status}, keeperNarrative=${turn.keeperNarrative ? `${turn.keeperNarrative.length} 字符` : 'null'}`);
           
+          // Get latest gameState from container
+          const latestGameState = container.resolve('gameState') as GameState;
+          
           return res.json({
             success: true,
             turn: {
@@ -111,6 +127,7 @@ turnRouter.get("/:turnId", async (req, res) => {
               turnNumber: turn.turnNumber,
               characterInput: turn.characterInput,
               keeperNarrative: turn.keeperNarrative,
+              actionResults: turn.actionResults, // 包含diceRolls
               status: turn.status,
               errorMessage: turn.errorMessage,
               startedAt: turn.startedAt,
@@ -119,6 +136,15 @@ turnRouter.get("/:turnId", async (req, res) => {
               sceneName: turn.sceneName,
               location: turn.location,
             },
+            gameState: latestGameState ? {
+              phase: latestGameState.phase,
+              currentScenario: latestGameState.currentScenario,
+              timeOfDay: latestGameState.timeOfDay,
+              gameDay: latestGameState.gameDay,
+              tension: latestGameState.tension,
+              playerCharacter: latestGameState.playerCharacter,
+              npcCharacters: latestGameState.npcCharacters,
+            } : null,
           });
         }
 
@@ -133,6 +159,10 @@ turnRouter.get("/:turnId", async (req, res) => {
       }
 
       console.log(`📖 [API] 获取 Turn ${turnId}: timeout, status=${turn.status}`);
+      
+      // Get latest gameState from container
+      const latestGameState = container.resolve('gameState') as GameState;
+      
       return res.json({
         success: true,
         turn: {
@@ -140,6 +170,7 @@ turnRouter.get("/:turnId", async (req, res) => {
           turnNumber: turn.turnNumber,
           characterInput: turn.characterInput,
           keeperNarrative: turn.keeperNarrative,
+          actionResults: turn.actionResults, // 包含diceRolls
           status: turn.status,
           errorMessage: turn.errorMessage,
           startedAt: turn.startedAt,
@@ -148,6 +179,15 @@ turnRouter.get("/:turnId", async (req, res) => {
           sceneName: turn.sceneName,
           location: turn.location,
         },
+        gameState: latestGameState ? {
+          phase: latestGameState.phase,
+          currentScenario: latestGameState.currentScenario,
+          timeOfDay: latestGameState.timeOfDay,
+          gameDay: latestGameState.gameDay,
+          tension: latestGameState.tension,
+          playerCharacter: latestGameState.playerCharacter,
+          npcCharacters: latestGameState.npcCharacters,
+        } : null,
       });
     }
 
@@ -160,6 +200,9 @@ turnRouter.get("/:turnId", async (req, res) => {
 
     console.log(`📖 [API] 获取 Turn ${turnId}: status=${turn.status}, keeperNarrative=${turn.keeperNarrative ? `${turn.keeperNarrative.length} 字符` : 'null'}`);
 
+    // Get latest gameState from container
+    const latestGameState = container.resolve('gameState') as GameState;
+
     res.json({
       success: true,
       turn: {
@@ -167,6 +210,7 @@ turnRouter.get("/:turnId", async (req, res) => {
         turnNumber: turn.turnNumber,
         characterInput: turn.characterInput,
         keeperNarrative: turn.keeperNarrative,
+        actionResults: turn.actionResults, // 包含diceRolls
         status: turn.status,
         errorMessage: turn.errorMessage,
         startedAt: turn.startedAt,
@@ -176,6 +220,15 @@ turnRouter.get("/:turnId", async (req, res) => {
         location: turn.location,
         isSimulated: turn.isSimulated || false,
       },
+      gameState: latestGameState ? {
+        phase: latestGameState.phase,
+        currentScenario: latestGameState.currentScenario,
+        timeOfDay: latestGameState.timeOfDay,
+        gameDay: latestGameState.gameDay,
+        tension: latestGameState.tension,
+        playerCharacter: latestGameState.playerCharacter,
+        npcCharacters: latestGameState.npcCharacters,
+      } : null,
     });
   } catch (error) {
     console.error("Error fetching turn:", error);

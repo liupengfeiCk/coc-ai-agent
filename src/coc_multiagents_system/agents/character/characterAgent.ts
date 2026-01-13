@@ -160,11 +160,6 @@ export class CharacterAgent {
     console.log(`   Scene: ${scenarioInfo.location || "Unknown"}`);
     console.log(`   NPCs to analyze: ${npcsWithInteractionFlags.length}`);
     
-    // DEBUG: Log NPC first-time interaction flags
-    for (const npc of npcsWithInteractionFlags) {
-      console.log(`   [DEBUG] ${npc.name}: isFirstTimeInteraction=${npc.isFirstTimeInteraction}`);
-    }
-    
     const promptChars = context.length;
     console.log(`\n📝 [Character Agent] LLM请求统计:`);
     console.log(`   Prompt字符数: ${promptChars} chars`);
@@ -304,19 +299,20 @@ export class CharacterAgent {
     // Check if one name is a prefix of the other (handles "南希" vs "南希夏洛特")
     if (na.startsWith(nb) || nb.startsWith(na)) return true;
 
-    // If first word is the same, consider similar
+    // 🔧 CRITICAL FIX: For Chinese full names with shared surnames (e.g., "塔兰·埃米利翁" vs "卢茨·埃米利翁"),
+    // DO NOT match if first names are different, even if they share the same surname.
+    // Only match if the ENTIRE first token (first name + surname combo) is the same.
     const tokensA = na.split(/\s+/);
     const tokensB = nb.split(/\s+/);
+    
+    // If first word is exactly the same, consider similar (e.g., "布鲁诺" matches "布鲁诺伽利略")
     if (tokensA[0] && tokensA[0] === tokensB[0]) return true;
 
-    // Check if any token from shorter name appears in longer name
-    const shorterTokens = tokensA.length <= tokensB.length ? tokensA : tokensB;
-    const longerTokens = tokensA.length > tokensB.length ? tokensA : tokensB;
-    if (shorterTokens.some(token => longerTokens.includes(token) && token.length >= 2)) {
-      return true;
-    }
+    // ❌ REMOVED: Do NOT match based on shared last word (surname) alone
+    // This was causing "塔兰·埃米利翁" to match "卢茨·埃米利翁" incorrectly
+    // Old logic: if (shorterTokens.some(token => longerTokens.includes(token) && token.length >= 2))
 
-    // Calculate Levenshtein distance and convert to similarity
+    // Use Levenshtein distance for fuzzy matching (typos, variations)
     const dist = this.levenshtein(na, nb);
     const maxLen = Math.max(na.length, nb.length);
     if (maxLen === 0) return false;
@@ -488,14 +484,6 @@ export class CharacterAgent {
           analyses.push(validated);
 
           console.log(`   ✓ ${validated.npcName}: ${validated.willRespond ? validated.responseType : 'no response'}`);
-          
-          // DEBUG: Log relationship fields
-          if (validated.isFirstInteraction) {
-            console.log(`      [DEBUG] isFirstInteraction=true, initialRelationship=${JSON.stringify(validated.initialRelationship)}`);
-          }
-          if (validated.attitudeChange !== undefined) {
-            console.log(`      [DEBUG] attitudeChange=${validated.attitudeChange}`);
-          }
         }
       }
     }
@@ -607,6 +595,8 @@ export class CharacterAgent {
       description?: string;
     }> = [];
 
+    console.log(`\n📊 [Relationship Manager] Processing ${analyses.length} NPC analyses...`);
+
     for (const analysis of analyses) {
       // Find the NPC in game state (both in npcCharacters array for memory update)
       const npc = gameState.npcCharacters.find(npc =>
@@ -630,7 +620,7 @@ export class CharacterAgent {
         this.isNameSimilar(rel.targetName, playerName)
       );
 
-      // Handle first-time interaction
+      // Handle first-time interaction (create relationship even if NPC doesn't respond)
       if (!relationship && analysis.isFirstInteraction && analysis.initialRelationship) {
         const initial = analysis.initialRelationship;
         const newRelationship: NPCProfile["relationships"][0] = {
@@ -644,7 +634,7 @@ export class CharacterAgent {
         // ✅ CRITICAL: Update memory (gameState.npcCharacters)
         npcProfile.relationships.push(newRelationship);
 
-        console.log(`✨ [Relationship Manager] ${analysis.npcName} → ${playerName}: NEW relationship (memory updated)`);
+        console.log(`✨ [Relationship Manager] ${analysis.npcName} → ${playerName}: NEW relationship`);
         console.log(`   Type: ${initial.relationshipType}, Attitude: ${initial.attitude}, Description: "${initial.description}"`);
         
         // Queue for database save
@@ -657,15 +647,11 @@ export class CharacterAgent {
           sessionId: gameState.sessionId,
           description: initial.description
         });
-        continue;
-      }
-      
-      // DEBUG: Log why relationship wasn't created
-      if (!relationship && !analysis.isFirstInteraction) {
-        console.log(`   ⚠️  [DEBUG] ${analysis.npcName}: NO relationship but isFirstInteraction=false (LLM未设置)`);
-      }
-      if (!relationship && analysis.isFirstInteraction && !analysis.initialRelationship) {
-        console.log(`   ⚠️  [DEBUG] ${analysis.npcName}: isFirstInteraction=true but initialRelationship missing (LLM未提供)`);
+        
+        // Continue to handle attitude change if NPC responded
+        if (analysis.responseType === 'none') {
+          continue; // No response, skip attitude update
+        }
       }
 
       // Handle attitude change for existing relationship
@@ -679,7 +665,7 @@ export class CharacterAgent {
         // ✅ CRITICAL: Update memory (gameState.npcCharacters)
         relationship.attitude = newAttitude;
 
-        console.log(`📊 [Relationship Manager] ${analysis.npcName} → ${playerName}: attitude ${oldAttitude} → ${newAttitude} (${analysis.attitudeChange >= 0 ? '+' : ''}${analysis.attitudeChange}) (memory updated)`);
+        console.log(`📊 [Relationship Manager] ${analysis.npcName} → ${playerName}: attitude ${oldAttitude} → ${newAttitude} (${analysis.attitudeChange >= 0 ? '+' : ''}${analysis.attitudeChange})`);
         
         // Queue for database save
         relationshipsToSave.push({
@@ -698,7 +684,7 @@ export class CharacterAgent {
     if (this.db && relationshipsToSave.length > 0) {
       try {
         this.db.batchUpsertNPCRelationships(relationshipsToSave);
-        console.log(`💾 [Relationship Manager] 已保存 ${relationshipsToSave.length} 个关系变更到数据库 (DB + memory双写完成)`);
+        console.log(`💾 [Relationship Manager] 已保存 ${relationshipsToSave.length} 个关系变更到数据库`);
       } catch (error) {
         console.error(`❌ [Relationship Manager] 保存关系到数据库失败:`, error);
       }

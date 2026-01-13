@@ -52,6 +52,12 @@ async function testScenarioLoader() {
     logger.success("Database initialized successfully");
 
     // Initialize Scenario Loader
+    // DEPRECATED: ScenarioLoader.loadScenariosFromDirectory() is no longer supported
+    // Use TemplateScenarioLoader.loadScenariosToTemplate() instead
+    console.warn('⚠️  Test skipped: ScenarioLoader.loadScenariosFromDirectory() is DEPRECATED');
+    console.warn('    Use TemplateScenarioLoader instead for loading scenarios');
+    return;
+    
     const scenarioLoader = new ScenarioLoader(db);
     logger.success("Scenario Loader initialized");
 

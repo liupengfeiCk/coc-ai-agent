@@ -100,9 +100,18 @@ apiRouter.post("/message", async (req, res) => {
     })) as unknown as GraphState;
     console.log("✅ [API] Graph 流程执行完成");
 
-    // Update the persistent state with the result
-    persistentGameState = result.gameState as GameState;
-    console.log("💾 [API] 游戏状态已更新");
+    // Update container's gameState in-place (preserve reference)
+    const updatedState = result.gameState as GameState;
+    const containerGameState = container.resolve('gameState') as GameState;
+    
+    // Copy all properties from updated state to container's gameState
+    Object.assign(containerGameState, updatedState);
+    persistentGameState = containerGameState;
+    
+    console.log("💾 [API] 游戏状态已原地更新");
+    console.log(`   - 当前场景: ${persistentGameState.currentScenario?.name || '无'}`);
+    console.log(`   - 当前位置: ${persistentGameState.currentScenario?.location || '未知'}`);
+    console.log(`   - 游戏时间: ${persistentGameState.timeOfDay}`);
 
     // Extract the keeper's response (last AI message)
     const agentMessages = (result.messages as BaseMessage[]).filter(

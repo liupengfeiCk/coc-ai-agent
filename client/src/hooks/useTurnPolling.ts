@@ -20,6 +20,10 @@ export interface TurnStatus {
   sceneName: string | null;
   location: string | null;
   isSimulated?: boolean;
+  actionResults?: Array<{
+    diceRolls?: string[];
+    [key: string]: any;
+  }>;
 }
 
 export interface UseTurnPollingResult {

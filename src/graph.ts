@@ -311,7 +311,7 @@ export const buildGraph = (db: CoCDatabase, scenarioLoader: ScenarioLoader | nul
     // Update turn with action results if turnId exists
     if (state.turnId) {
       try {
-        if (actionResults) {
+        if (actionResults && actionResults.length > 0) {
           turnManager.updateProcessing(state.turnId, {
             actionResults: actionResults
           });

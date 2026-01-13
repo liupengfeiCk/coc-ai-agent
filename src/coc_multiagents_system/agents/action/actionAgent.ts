@@ -51,23 +51,21 @@ USAGE:
 
 !!! Important: Always follow the 7th edition rules of Call of Cthulhu.
 
-DiceUsed field:
-- Record ONLY the dice you actually used from the pre-rolled dice
-- Each line MUST follow ONE of these exact formats:
-  * Skill check: "[dice_name]: [result] ([skill_name] [skill%] = [success/failure])"
-  * Damage roll: "[dice_name]: [result] + [modifier] ([modifier_name]) = [total] (damage to [target])"
-  * Simple roll: "[dice_name]: [result] ([purpose])"
-- Correct examples:
-  * "1d100: 52 (Fighting (Brawl) 71% = success)"
-  * "1d6: 2 + 0 (DB) = 2 (damage to 藤蔓)"
-  * "1d100_opposed: 86 (Dodge 0% = failure)"
-  * "1d3: 2 (藤蔓攻击) + 0 (DB) = 2 (damage to 马克·莱利)"
-- Wrong examples (DO NOT do this):
-  * "1d6: 2 (手术刀伤害) + 0 (DB) = 2 (藤蔓伤害)" ❌ Mixing multiple purposes
-  * "1d100_opposed: 86 (藤蔓反击 - Dodge 0% = failure)" ❌ Adding extra description
-- Keep each line focused on ONE dice roll result
-- Do NOT mix multiple actions or targets in one line
-- If no dice needed, use empty array: "diceUsed": []
+DiceUsed field (使用中文格式):
+- Record dice rolls you perform during action execution
+- MUST use CHINESE format for better frontend display:
+  * Skill check: "[行为]: 1d100=[结果] (目标[技能值]) → [成功/失败/大成功/大失败]"
+  * Combat: "对 [目标] 进行 [行为]: 1d100=[结果] ([技能名] [技能值]) → [成功/失败]"
+  * Damage: "对 [目标] 造成伤害: [骰子]+[修正]=[骰子]+[修正]=[总计]"
+  * Simple: "[用途]: [骰子]=[结果] ([说明])"
+- Examples:
+  * "侦查检定: 1d100=35 (目标70) → 成功" ✓
+  * "对 藤蔓怪物 进行 攻击: 1d100=35 (斗殴 71) → 成功" ✓
+  * "对 藤蔓怪物 造成伤害: 1d6+2=4+2=6" ✓
+  * "随机事件: 1d20=15 (事件判定)" ✓
+- Use Chinese: 成功/失败/大成功/大失败
+- Include target names for combat/damage
+- If no dice: []
 
 Include "scenarioUpdate" if the action permanently changes the environment. "scenarioUpdate" can include:
 - description: updated scene flavor text
@@ -99,10 +97,14 @@ Be realistic and use your judgment. Include "timeElapsedMinutes" in your respons
 
 SCENE CHANGE DETECTION:
 1. Determine if the character intends to move to a new location (entering/exiting rooms, moving between areas, climbing/crossing obstacles)
-2. If movement requires a skill check (locked door, difficult terrain, stealth entry), call roll_dice first and base scene change on the result
-3. If movement is unobstructed (open door, clear path), directly return sceneChange with shouldChange: true
-4. If any movement intent detected, return sceneChange with shouldChange: true
-IMPORTANT: When returning sceneChange with shouldChange: true, you MUST select the targetSceneName from the AVAILABLE SCENES list provided below. Use the EXACT scene name from that list. Do not make up scene names.
+2. **IMPORTANT**: Movement with dialogue intent (e.g., "和XX去某地谈话", "跟随XX到某地") also counts as scene change
+3. If movement requires a skill check (locked door, difficult terrain, stealth entry), call roll_dice first and base scene change on the result
+4. If movement is unobstructed (open door, clear path), directly return sceneChange with shouldChange: true
+5. If any movement intent detected (including conversational movement), return sceneChange with shouldChange: true
+CRITICAL: When returning sceneChange with shouldChange: true, you MUST:
+- Select the targetSceneName from the AVAILABLE SCENES list provided below
+- Use the EXACT scene name from that list (match by name OR location description)
+- Do not make up scene names or use paraphrased versions
 
 You MUST respond with a JSON result:
 
@@ -112,13 +114,31 @@ Example:
   "summary": "Brief description of what happened (1-2 sentences)",
 
   "diceUsed": [
-    // Array of dice you actually used (empty array if no dice needed)
-    // Each line MUST follow ONE of these formats:
-    // - Skill check: "[dice_name]: [result] ([skill_name] [skill%] = [success/failure])"
-    // - Damage roll: "[dice_name]: [result] + [modifier] ([modifier_name]) = [total] (damage to [target])"
-    // - Simple roll: "[dice_name]: [result] ([purpose])"
-    "1d100: 67 (Fighting (Brawl) 50% = failure)",
-    "1d3: 2 + 1 (DB) = 3 (damage to enemy)"
+    // Array of dice rolls you performed (empty array if no dice needed)
+    // IMPORTANT: Use CHINESE format for better readability!
+    // 
+    // Format options:
+    // 
+    // 1. SKILL CHECK (技能检定):
+    //    "[行为]: 1d100=[结果] (目标[技能值]) → [成功/失败/大成功/大失败]"
+    //    Examples:
+    //    "侦查检定: 1d100=35 (目标70) → 成功"
+    //    "闪避检定: 1d100=88 (目标50) → 失败"
+    //
+    // 2. COMBAT CHECK (战斗检定):
+    //    "对 [目标] 进行 [行为]: 1d100=[结果] ([技能名] [技能值]) → [成功/失败]"
+    //    Examples:
+    //    "对 藤蔓怪物 进行 攻击: 1d100=35 (斗殴 71) → 成功"
+    //
+    // 3. DAMAGE ROLL (伤害骰):
+    //    "对 [目标] 造成伤害: [骰子]+[修正]=[骰子结果]+[修正]=[总计]"
+    //    Examples:
+    //    "对 藤蔓怪物 造成伤害: 1d6+2=4+2=6"
+    //
+    // 4. SIMPLE ROLL (简单投骰):
+    //    "[用途]: [骰子]=[结果] ([说明])"
+    //    Examples:
+    //    "随机事件: 1d20=15 (事件判定)"
   ],
 
   "stateUpdate": {
@@ -422,13 +442,24 @@ Example:
     if (this.scenarioLoader) {
       const allScenarios = this.scenarioLoader.getAllScenarios();
       if (allScenarios.length > 0) {
-        const sceneNames = allScenarios.map(s => s.snapshot.name).filter(name => name);
-        if (sceneNames.length > 0) {
-          context += "\n\n=== AVAILABLE SCENES FOR SCENE CHANGE ===";
-          context += `\nIf the ${isNPC ? 'NPC' : 'player'} wants to move to a new location, you MUST select one of these scene names:`;
-          context += "\n" + sceneNames.join(", ");
-          context += "\n=== END OF AVAILABLE SCENES ===\n";
+        context += "\n\n=== AVAILABLE SCENES FOR SCENE CHANGE ===";
+        context += `\nIf the ${isNPC ? 'NPC' : 'player'} wants to move to a new location, you MUST select one of these scene names (use EXACT name):\n`;
+        
+        // Format with location info to help LLM match natural language
+        for (const scenario of allScenarios) {
+          const name = scenario.snapshot.name;
+          const location = scenario.snapshot.location || "未知位置";
+          const description = scenario.snapshot.description ? 
+            (scenario.snapshot.description.substring(0, 50) + "...") : "";
+          
+          if (name) {
+            context += `\n- "${name}" @ ${location}`;
+            if (description) {
+              context += ` (${description})`;
+            }
+          }
         }
+        context += "\n=== END OF AVAILABLE SCENES ===\n";
       }
     }
 
@@ -562,9 +593,17 @@ Example:
           reason: parsed.sceneChange.reason || "Action-driven scene change",
           timestamp: new Date()
         };
-        stateManager.setSceneChangeRequest(sceneChangeRequest);
-
-        console.log(`Action Agent: Scene change request - `, sceneChangeRequest);
+        
+        // Only set scene change request if it's a positive request OR no existing request
+        const existingRequest = gameState.temporaryInfo.sceneChangeRequest;
+        const shouldOverwrite = sceneChangeRequest.shouldChange || !existingRequest?.shouldChange;
+        
+        if (shouldOverwrite) {
+          stateManager.setSceneChangeRequest(sceneChangeRequest);
+          console.log(`Action Agent: Scene change request - `, sceneChangeRequest);
+        } else {
+          console.log(`Action Agent: Keeping existing scene change request (not overwriting with shouldChange=false)`);
+        }
       }
     }
 
@@ -615,7 +654,14 @@ Example:
       location: gameState.currentScenario?.location || "Unknown location",
       character: character.name,
       result: parsed.summary || (isNPC && npcResponse?.responseDescription) || "performed an action",
-      diceRolls: toolLogs.map(log => log), // toolLogs already contain "expression -> result" format
+      // Use diceUsed from parsed response (AI-formatted) with character prefix
+      diceRolls: (parsed.diceUsed || []).map((roll: string) => {
+        // Add character name prefix if not already present
+        if (!roll.startsWith(character.name)) {
+          return `${character.name} ${roll}`;
+        }
+        return roll;
+      }),
       timeConsumption: parsed.timeConsumption || "instant", // Default to instant if not specified
       scenarioChanges: scenarioChanges.length > 0 ? scenarioChanges : undefined
     };

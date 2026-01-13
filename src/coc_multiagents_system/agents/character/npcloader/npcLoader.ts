@@ -942,23 +942,28 @@ Return ONLY JSON array, no extra text.`;
         npc.currentLocation || null
       );
 
-      // Delete existing clues and relationships for this NPC
-      database.prepare("DELETE FROM npc_clues WHERE npc_id = ?").run(npc.id);
-      database
-        .prepare("DELETE FROM npc_relationships WHERE source_id = ?")
-        .run(npc.id);
+      // Delete existing clues and relationships for this NPC (with session_id filter if available)
+      if (npc.sessionId) {
+        database.prepare("DELETE FROM npc_clues WHERE npc_id = ? AND session_id = ?").run(npc.id, npc.sessionId);
+        database.prepare("DELETE FROM npc_relationships WHERE source_id = ? AND session_id = ?").run(npc.id, npc.sessionId);
+      } else {
+        // Legacy: no session_id, delete all (only for template NPCs during initialization)
+        database.prepare("DELETE FROM npc_clues WHERE npc_id = ?").run(npc.id);
+        database.prepare("DELETE FROM npc_relationships WHERE source_id = ?").run(npc.id);
+      }
 
       // Insert clues
       if (npc.clues.length > 0) {
         const clueStmt = database.prepare(`
                     INSERT INTO npc_clues (
-                        id, npc_id, clue_text, category, difficulty, revealed, related_to
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                        id, session_id, npc_id, clue_text, category, difficulty, revealed, related_to
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 `);
 
         for (const clue of npc.clues) {
           clueStmt.run(
             clue.id,
+            npc.sessionId || null,
             npc.id,
             clue.clueText,
             clue.category || null,
@@ -973,8 +978,8 @@ Return ONLY JSON array, no extra text.`;
       if (npc.relationships.length > 0) {
         const relStmt = database.prepare(`
                     INSERT INTO npc_relationships (
-                        id, source_id, target_id, target_name, relationship_type, attitude, description, history
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                        id, session_id, source_id, target_id, target_name, relationship_type, attitude, description, history
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 `);
 
         const seenTargets = new Set<string>();
@@ -988,6 +993,7 @@ Return ONLY JSON array, no extra text.`;
           const relId = `${npc.id}-rel-${targetId}`;
           relStmt.run(
             relId,
+            npc.sessionId || null,
             npc.id,
             targetId,
             rel.targetName,

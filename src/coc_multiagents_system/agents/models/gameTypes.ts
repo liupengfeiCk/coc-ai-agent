@@ -240,6 +240,7 @@ export interface NPCProfile extends CharacterProfile {
   relationships: NPCRelationship[];
   isNPC: true; // flag to distinguish from player characters
   currentLocation?: string; // NPC的当前地点
+  sessionId?: string; // 游戏会话ID,用于多会话隔离
 }
 
 /**

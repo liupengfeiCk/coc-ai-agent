@@ -1,6 +1,12 @@
 /**
- * Scenario Loader
- * Loads scenario data from documents and stores them in the database
+ * Scenario Loader (Query Helper)
+ * 
+ * WARNING: This class only provides READ operations for scenario data.
+ * DO NOT use loadScenariosFromDirectory() or saveScenarioToDatabase() - they are DEPRECATED.
+ * 
+ * For loading scenarios:
+ * - Use TemplateScenarioLoader to load scenarios into module_scenarios (template table)
+ * - Use GameInstanceManager.createGameInstance() to create game instances
  */
 
 import { randomUUID } from "crypto";
@@ -20,15 +26,17 @@ import type {
 import { ScenarioDocumentParser } from "./scenarioDocumentParser.js";
 
 /**
- * Scenario Loader class
+ * Scenario Loader class (Query Helper for reading scenario data)
  */
 export class ScenarioLoader {
   private db: CoCDatabase;
   private parser: ScenarioDocumentParser;
+  private sessionId?: string; // Optional session filter
 
-  constructor(db: CoCDatabase, parser?: ScenarioDocumentParser) {
+  constructor(db: CoCDatabase, parser?: ScenarioDocumentParser, sessionId?: string) {
     this.db = db;
     this.parser = parser || new ScenarioDocumentParser();
+    this.sessionId = sessionId;
   }
 
   /**
@@ -200,318 +208,33 @@ export class ScenarioLoader {
   }
 
   /**
-   * Load scenarios from a directory (only if files have changed)
+   * @deprecated DO NOT USE - This method writes to instance tables without session_id.
+   * Use TemplateScenarioLoader.loadScenariosToTemplate() instead.
    */
   async loadScenariosFromDirectory(dirPath: string, forceReload = false): Promise<ScenarioProfile[]> {
-    console.log(`\n=== Checking Scenarios in directory: ${dirPath} ===`);
-
-    if (!fs.existsSync(dirPath)) {
-      console.log(`Directory does not exist, creating: ${dirPath}`);
-      fs.mkdirSync(dirPath, { recursive: true });
-      return [];
-    }
-
-    // Check for file changes unless forced reload
-    if (!forceReload) {
-      const { hasChanges } = this.checkForChanges(dirPath);
-      if (!hasChanges) {
-        const existingScenarios = this.getAllScenarios();
-        console.log(`No changes detected. Using ${existingScenarios.length} existing scenarios from database.`);
-        return existingScenarios;
-      }
-    }
-
-    console.log(`Loading Scenarios from directory: ${dirPath}`);
-
-    // Parse all documents in the directory
-    const parsedScenarios = await this.parser.parseDirectory(dirPath);
-
-    if (parsedScenarios.length === 0) {
-      console.log("No scenario documents found in directory.");
-      this.updateLastLoadTimestamp(dirPath);
-      return [];
-    }
-
-    // Convert and store each scenario
-    const scenarioProfiles: ScenarioProfile[] = [];
-    for (const parsedData of parsedScenarios) {
-      try {
-        const scenarioProfile = this.convertToScenarioProfile(parsedData);
-        this.saveScenarioToDatabase(scenarioProfile);
-        scenarioProfiles.push(scenarioProfile);
-        console.log(`✓ Loaded Scenario: ${scenarioProfile.name} (${scenarioProfile.id})`);
-      } catch (error) {
-        console.error(`✗ Failed to load scenario ${parsedData.name}:`, error);
-      }
-    }
-
-    // Update timestamp after successful load
-    this.updateLastLoadTimestamp(dirPath);
-
-    console.log(`\n=== Successfully loaded ${scenarioProfiles.length} scenarios ===\n`);
-    return scenarioProfiles;
+    throw new Error('loadScenariosFromDirectory() is DEPRECATED. Use TemplateScenarioLoader.loadScenariosToTemplate() instead.');
   }
 
   /**
-   * Convert a single parsed snapshot to ScenarioSnapshot
+   * @deprecated Helper methods for loadScenariosFromDirectory - no longer used
    */
-  private convertSnapshot(
-    snapshotData: import("../../models/scenarioTypes.js").ParsedScenarioSnapshot,
-    scenarioId: string,
-    snapshotIndex: number,
-    scenarioName: string
-  ): ScenarioSnapshot {
-    const snapshotId = snapshotIndex === 0 
-      ? `${scenarioId}-snapshot` 
-      : `${scenarioId}-snapshot-${snapshotIndex}`;
+  private convertSnapshot(...args: any[]): any {
+    throw new Error('Method is DEPRECATED');
+  }
 
-    // Convert characters
-    const characters: ScenarioCharacter[] = (snapshotData.characters || []).map((char, charIndex) => ({
-      id: `${snapshotId}-char-${charIndex}`,
-      name: char.name,
-      role: char.role || "unknown",
-      status: char.status || "unknown",
-      location: char.location,
-      notes: char.notes,
-    }));
+  private convertToScenarioProfile(...args: any[]): any {
+    throw new Error('Method is DEPRECATED');
+  }
 
-    // Convert clues
-    const clues: ScenarioClue[] = (snapshotData.clues || []).map((clue, clueIndex) => ({
-      id: `${snapshotId}-clue-${clueIndex}`,
-      clueText: clue.clueText,
-      category: (clue.category as any) || "observation",
-      difficulty: (clue.difficulty as any) || "regular",
-      location: clue.location || snapshotData.location,
-      discoveryMethod: clue.discoveryMethod,
-      reveals: clue.reveals || [],
-      discovered: false,
-    }));
-
-    // Convert conditions
-    const conditions: ScenarioCondition[] = (snapshotData.conditions || []).map((cond) => ({
-      type: (cond.type as any) || "other",
-      description: cond.description,
-      mechanicalEffect: cond.mechanicalEffect,
-    }));
-
-    const snapshot: ScenarioSnapshot = {
-      id: snapshotId,
-      name: snapshotData.name || scenarioName,
-      location: snapshotData.location,
-      description: snapshotData.description,
-      characters,
-      clues,
-      conditions,
-      events: snapshotData.events || [],
-      exits: snapshotData.exits || [],
-      permanentChanges: snapshotData.permanentChanges || [],
-      keeperNotes: snapshotData.keeperNotes,
-      timeRestriction: snapshotData.timeRestriction,
-    };
-
-    return snapshot;
+  private generateScenarioId(...args: any[]): any {
+    throw new Error('Method is DEPRECATED');
   }
 
   /**
-   * Convert ParsedScenarioData to ScenarioProfile
-   * Supports both single snapshot and multiple snapshots
-   */
-  private convertToScenarioProfile(parsedData: ParsedScenarioData): ScenarioProfile {
-    const scenarioId = this.generateScenarioId(parsedData.name);
-
-    // Handle both single snapshot (legacy) and multiple snapshots (new format)
-    let snapshots: ScenarioSnapshot[];
-    if (parsedData.snapshots && parsedData.snapshots.length > 0) {
-      // Multiple snapshots
-      snapshots = parsedData.snapshots.map((snapshotData, index) =>
-        this.convertSnapshot(snapshotData, scenarioId, index, parsedData.name)
-      );
-    } else if (parsedData.snapshot) {
-      // Single snapshot (legacy format)
-      snapshots = [this.convertSnapshot(parsedData.snapshot, scenarioId, 0, parsedData.name)];
-    } else {
-      throw new Error(`Scenario "${parsedData.name}" has no snapshot or snapshots`);
-    }
-
-    // Use the first snapshot as the default snapshot for backward compatibility
-    // (or the one without timeRestriction if available)
-    const defaultSnapshot = snapshots.find(s => !s.timeRestriction) || snapshots[0];
-
-    const scenarioProfile: ScenarioProfile = {
-      id: scenarioId,
-      name: parsedData.name,
-      description: parsedData.description,
-      snapshot: defaultSnapshot,
-      tags: parsedData.tags || [],
-      connections: parsedData.connections?.map((conn) => ({
-        scenarioId: this.generateScenarioId(conn.scenarioName),
-        relationshipType: conn.relationshipType as any,
-        description: conn.description,
-      })) || [],
-      metadata: {
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        gameSystem: "CoC 7e",
-      },
-    };
-
-    // Store all snapshots for saving to database
-    (scenarioProfile as any).__allSnapshots = snapshots;
-
-    return scenarioProfile;
-  }
-
-  /**
-   * Generate a unique ID for a scenario based on its name
-   */
-  private generateScenarioId(name: string): string {
-    return `scenario-${name.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]/g, "")}-${randomUUID().slice(0, 8)}`;
-  }
-
-  /**
-   * Save scenario to database
+   * @deprecated DO NOT USE - This method writes to instance tables without session_id.
    */
   private saveScenarioToDatabase(scenario: ScenarioProfile): void {
-    const database = this.db.getDatabase();
-    const hasCategoryColumn = this.db.hasColumn("scenarios", "category");
-    const hasTimeOrderColumn = this.db.hasColumn("scenario_snapshots", "time_order");
-
-    this.db.transaction(() => {
-      // Insert or update scenario (including scenario-level permanent_changes)
-      const scenarioColumns = ["scenario_id", "name", "description", "tags", "connections", "permanent_changes", "metadata"];
-      const scenarioValues: any[] = [
-        scenario.id,
-        scenario.name,
-        scenario.description,
-        JSON.stringify(scenario.tags),
-        JSON.stringify(scenario.connections),
-        scenario.snapshot.permanentChanges ? JSON.stringify(scenario.snapshot.permanentChanges) : null,
-        JSON.stringify(scenario.metadata),
-      ];
-
-      if (hasCategoryColumn) {
-        // Backward compatibility: older DBs may have category
-        scenarioColumns.splice(2, 0, "category");
-        scenarioValues.splice(2, 0, "location");
-      }
-
-      const scenarioStmt = database.prepare(
-        `INSERT OR REPLACE INTO scenarios (${scenarioColumns.join(", ")}) VALUES (${scenarioColumns
-          .map(() => "?")
-          .join(", ")})`
-      );
-
-      scenarioStmt.run(...scenarioValues);
-
-      // Delete existing related data
-      database.prepare("DELETE FROM scenario_snapshots WHERE scenario_id = ?").run(scenario.id);
-      // Note: Foreign key constraints will cascade delete related characters, clues, and conditions
-
-      // Get all snapshots to save (support multiple snapshots)
-      const allSnapshots: ScenarioSnapshot[] = (scenario as any).__allSnapshots || [scenario.snapshot];
-
-      // Insert all snapshots
-      for (const snapshot of allSnapshots) {
-        // Insert snapshot (with time_restriction field)
-        const snapshotColumns = [
-          "snapshot_id",
-          "scenario_id",
-          "snapshot_name",
-          "location",
-          "description",
-          "events",
-          "exits",
-          "keeper_notes",
-          "time_restriction",
-        ];
-        const snapshotValues: any[] = [
-          snapshot.id,
-          scenario.id,
-          snapshot.name,
-          snapshot.location,
-          snapshot.description,
-          JSON.stringify(snapshot.events),
-          JSON.stringify(snapshot.exits),
-          snapshot.keeperNotes || null,
-          snapshot.timeRestriction || null,
-        ];
-
-        const snapshotStmt = database.prepare(
-          `INSERT INTO scenario_snapshots (${snapshotColumns.join(", ")}) VALUES (${snapshotColumns
-            .map(() => "?")
-            .join(", ")})`
-        );
-
-        snapshotStmt.run(...snapshotValues);
-
-        // Insert characters for this snapshot
-        if (snapshot.characters.length > 0) {
-          const charStmt = database.prepare(`
-                        INSERT INTO scenario_characters (
-                            id, snapshot_id, character_name, character_role, character_status,
-                            character_location, character_notes
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?)
-                    `);
-
-          for (const char of snapshot.characters) {
-            charStmt.run(
-              char.id,
-              snapshot.id,
-              char.name,
-              char.role,
-              char.status,
-              char.location || null,
-              char.notes || null
-            );
-          }
-        }
-
-        // Insert clues for this snapshot
-        if (snapshot.clues.length > 0) {
-          const clueStmt = database.prepare(`
-                        INSERT INTO scenario_clues (
-                            clue_id, snapshot_id, clue_text, category, difficulty,
-                            clue_location, discovery_method, reveals, discovered, discovery_details
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    `);
-
-          for (const clue of snapshot.clues) {
-            clueStmt.run(
-              clue.id,
-              snapshot.id,
-              clue.clueText,
-              clue.category,
-              clue.difficulty,
-              clue.location,
-              clue.discoveryMethod || null,
-              JSON.stringify(clue.reveals),
-              clue.discovered ? 1 : 0,
-              clue.discoveryDetails ? JSON.stringify(clue.discoveryDetails) : null
-            );
-          }
-        }
-
-        // Insert conditions for this snapshot
-        if (snapshot.conditions.length > 0) {
-          const condStmt = database.prepare(`
-                        INSERT INTO scenario_conditions (
-                            condition_id, snapshot_id, condition_type, description, mechanical_effect
-                        ) VALUES (?, ?, ?, ?, ?)
-                    `);
-
-          for (const cond of snapshot.conditions) {
-            const condId = `${snapshot.id}-cond-${randomUUID().slice(0, 8)}`;
-            condStmt.run(
-              condId,
-              snapshot.id,
-              cond.type,
-              cond.description,
-              cond.mechanicalEffect || null
-            );
-          }
-        }
-      }
-    });
+    throw new Error('saveScenarioToDatabase() is DEPRECATED. Use TemplateScenarioLoader instead.');
   }
 
   /**
@@ -583,13 +306,24 @@ export class ScenarioLoader {
 
   /**
    * Get all scenarios from the database
+   * 
+   * If session_id is set in constructor, returns only scenarios for that session.
+   * Otherwise returns all scenarios across all sessions.
    */
   getAllScenarios(): ScenarioProfile[] {
     const database = this.db.getDatabase();
 
+    let query = `SELECT scenario_id FROM scenarios`;
+    const params: any[] = [];
+    
+    if (this.sessionId) {
+      query += ` WHERE session_id = ?`;
+      params.push(this.sessionId);
+    }
+
     const scenarios = database
-      .prepare(`SELECT scenario_id FROM scenarios`)
-      .all() as any[];
+      .prepare(query)
+      .all(...params) as any[];
 
     return scenarios
       .map((s) => this.getScenarioById(s.scenario_id))
@@ -659,11 +393,19 @@ export class ScenarioLoader {
   /**
    * Search scenarios based on query with fuzzy matching
    * Returns only the best matching scenario
+   * 
+   * If session_id is set in constructor, searches only within that session.
    */
   searchScenarios(query: ScenarioQuery): ScenarioSearchResult {
     const database = this.db.getDatabase();
     let sqlQuery = `SELECT scenario_id, name FROM scenarios WHERE 1=1`;
     const params: any[] = [];
+
+    // Filter by session if set
+    if (this.sessionId) {
+      sqlQuery += ` AND session_id = ?`;
+      params.push(this.sessionId);
+    }
 
     if (query.name) {
       // Use very loose matching - match if ANY word from search term appears

@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from "react";
+import React, { useMemo, useState, useRef, useEffect } from "react";
 import Homes from "./views/Homes";
 import { GameChat } from "./components/GameChat";
 import { GameSidebar } from "./components/GameSidebar";
@@ -130,6 +130,12 @@ const App: React.FC = () => {
   const [isCreatingFromGameFlow, setIsCreatingFromGameFlow] = useState(false);
   const [importingModule, setImportingModule] = useState(false);
   const [importMessage, setImportMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [latestDiceRolls, setLatestDiceRolls] = useState<string[]>([]); // Store latest dice rolls
+
+  // Debug effect to log dice rolls updates
+  useEffect(() => {
+    console.log('[App] latestDiceRolls 状态更新:', latestDiceRolls);
+  }, [latestDiceRolls]);
 
   const [form, setForm] = React.useState<Record<string, string>>({});
 
@@ -328,12 +334,12 @@ const App: React.FC = () => {
   };
 
   // Handle checkpoint selection and load
-  const handleLoadCheckpoint = async (checkpointId: string) => {
+  const handleLoadCheckpoint = async (sessionId: string) => {
     try {
       const response = await fetch("http://localhost:3000/api/checkpoints/load", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ checkpointId }),
+        body: JSON.stringify({ sessionId }),
       });
 
       const data = await response.json();
@@ -372,7 +378,7 @@ const App: React.FC = () => {
   };
 
   // Handle checkpoint deletion
-  const handleDeleteCheckpoint = async (checkpointId: string, checkpointName: string) => {
+  const handleDeleteCheckpoint = async (sessionId: string, checkpointName: string) => {
     // Confirmation dialog
     const confirmed = window.confirm(
       `确定要删除存档 "${checkpointName}" 吗?\n\n此操作无法撤销!`
@@ -383,7 +389,7 @@ const App: React.FC = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/api/checkpoints/${checkpointId}`, {
+      const response = await fetch(`http://localhost:3000/api/checkpoints/${sessionId}`, {
         method: "DELETE",
       });
 
@@ -392,9 +398,9 @@ const App: React.FC = () => {
       if (response.ok && data.success) {
         // Remove checkpoint from local state
         setCheckpoints((prevCheckpoints) => 
-          prevCheckpoints.filter((cp) => cp.checkpointId !== checkpointId)
+          prevCheckpoints.filter((cp) => cp.sessionId !== sessionId)
         );
-        console.log(`✓ Checkpoint deleted: ${checkpointId}`);
+        console.log(`✓ Checkpoint deleted: ${sessionId}`);
       } else {
         alert("删除存档失败: " + (data.error || "Unknown error"));
       }
@@ -1511,7 +1517,7 @@ const App: React.FC = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {checkpoints.map((checkpoint: any) => (
                     <div
-                      key={checkpoint.checkpointId}
+                      key={checkpoint.sessionId}
                       style={{
                         padding: '15px',
                         border: '2px solid #8b7355',
@@ -1535,7 +1541,7 @@ const App: React.FC = () => {
                       {/* Action buttons */}
                       <div style={{ display: 'flex', gap: '8px' }}>
                         <button
-                          onClick={() => handleLoadCheckpoint(checkpoint.checkpointId)}
+                          onClick={() => handleLoadCheckpoint(checkpoint.sessionId)}
                           style={{
                             flex: 1,
                             padding: '8px 12px',
@@ -1560,7 +1566,7 @@ const App: React.FC = () => {
                         <button
                           onClick={(e) => {
                             e.stopPropagation(); // Prevent triggering parent click
-                            handleDeleteCheckpoint(checkpoint.checkpointId, checkpoint.checkpointName || '未命名存档');
+                            handleDeleteCheckpoint(checkpoint.sessionId, checkpoint.checkpointName || '未命名存档');
                           }}
                           style={{
                             padding: '8px 12px',
@@ -2019,11 +2025,16 @@ const App: React.FC = () => {
             moduleIntroduction={moduleIntroduction}
             initialMessages={conversationHistory || undefined}
             onNarrativeComplete={() => setSidebarRefreshTrigger(prev => prev + 1)}
+            onDiceRollsUpdate={(diceRolls: string[]) => {
+              console.log('[App] 接收到骰子数据更新:', diceRolls);
+              setLatestDiceRolls(diceRolls);
+            }}
           />
           <GameSidebar
             sessionId={sessionId}
             apiBaseUrl="http://localhost:3000/api"
             refreshTrigger={sidebarRefreshTrigger}
+            latestDiceRolls={latestDiceRolls}
           />
         </div>
       </div>

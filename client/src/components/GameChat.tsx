@@ -6,12 +6,14 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useTurnPolling } from '../hooks/useTurnPolling';
+// DiceRollDisplay和parseDiceRolls已移到GameSidebar中使用
 
 interface Message {
   role: 'character' | 'keeper';
   content: string;
   timestamp: string;
   turnNumber: number;
+  // diceRolls字段已删除 - 骰子数据通过onDiceRollsUpdate传递给侧边栏
 }
 
 interface GameChatProps {
@@ -21,9 +23,10 @@ interface GameChatProps {
   moduleIntroduction?: { introduction: string; moduleNotes: string } | null;
   initialMessages?: Message[];
   onNarrativeComplete?: () => void;
+  onDiceRollsUpdate?: (diceRolls: string[]) => void; // Callback to update dice rolls
 }
 
-export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', characterName = 'Investigator', moduleIntroduction, initialMessages, onNarrativeComplete }: GameChatProps) {
+export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', characterName = 'Investigator', moduleIntroduction, initialMessages, onNarrativeComplete, onDiceRollsUpdate }: GameChatProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages || []);
   const [inputValue, setInputValue] = useState('');
   const [isSending, setIsSending] = useState(false);
@@ -196,11 +199,29 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
   // Update messages when turn completes
   useEffect(() => {
     if (turn && turn.status === 'completed') {
-      // Check if we've already processed this turn to avoid duplicates
       const turnKey = turn.turnId || `turn-${turn.turnNumber}`;
+      
+      // Check if we've already processed this turn
       if (processedTurnIdsRef.current.has(turnKey)) {
         console.log(`[GameChat] Turn ${turnKey} already processed, skipping...`);
         return;
+      }
+      
+      // Mark as processed immediately to prevent race conditions
+      processedTurnIdsRef.current.add(turnKey);
+      
+      // Extract dice rolls (only once per turn)
+      if (turn.actionResults && Array.isArray(turn.actionResults)) {
+        const diceRolls: string[] = [];
+        turn.actionResults.forEach((result: any) => {
+          if (result.diceRolls && Array.isArray(result.diceRolls)) {
+            diceRolls.push(...result.diceRolls);
+          }
+        });
+
+        if (diceRolls.length > 0 && onDiceRollsUpdate) {
+          onDiceRollsUpdate(diceRolls);
+        }
       }
 
       // Log turn details for debugging
@@ -211,9 +232,6 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
         keeperNarrativeLength: turn.keeperNarrative?.length || 0,
         characterInput: turn.characterInput?.substring(0, 50) + '...',
       });
-
-      // Mark this turn as processed
-      processedTurnIdsRef.current.add(turnKey);
 
       // Add both character input and keeper response
       setMessages(prev => {
@@ -238,11 +256,14 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
 
         // Only add keeper message if narrative exists (show for both real and simulated turns)
         if (turn.keeperNarrative) {
+
+          // 消息中不再保存diceRolls,只在侧边栏显示
           newMessages.push({
             role: 'keeper',
             content: turn.keeperNarrative,
             timestamp: turn.completedAt || turn.startedAt,
             turnNumber: turn.turnNumber,
+            // diceRolls字段已移除,改为通过onDiceRollsUpdate传递给侧边栏
           });
         } else {
           console.warn(`[GameChat] Turn ${turn.turnNumber} completed but keeperNarrative is empty`);
@@ -261,7 +282,7 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
       console.error(`[GameChat] Turn ${turn.turnId || turn.turnNumber} failed:`, turn.errorMessage);
       setIsSending(false);
     }
-  }, [turn, onNarrativeComplete]);
+  }, [turn, onNarrativeComplete, onDiceRollsUpdate]);
 
   const loadConversationHistory = async () => {
     try {
@@ -360,6 +381,42 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
     }
   };
 
+  // 测试骰子显示的函数
+  const handleTestDiceDisplay = () => {
+    // 使用完整格式,区分执行者和目标
+    const testDiceRolls = [
+      '调查员 侦查检定: 1d100=1 (目标70) → 大成功',
+      '调查员 对 藤蔓怪物 进行 攻击: 1d100=35 (斗殴 71) → 成功',
+      '藤蔓怪物 对 调查员 进行 攻击: 1d100=45 (藤蔓缠绕 60) → 成功',
+      '调查员 闪避检定: 1d100=88 (目标50) → 失败',
+      '调查员 对 藤蔓怪物 造成伤害: 1d6+2=4+2=6',
+      '藤蔓怪物 对 调查员 造成伤害: 1d6+0=3+0=3',
+      '调查员 运气检定: 1d100=100 (目标80) → 大失败',
+    ];
+
+    const testMessage: Message = {
+      role: 'keeper',
+      content: '🧪 骰子显示测试 - 展示战斗中的各种检定\n\n包含调查员和怪物的攻击、闪避、伤害等,骰子详情已显示在右侧"骰子记录"标签页中。',
+      timestamp: new Date().toISOString(),
+      turnNumber: 999,
+    };
+
+    setMessages(prev => [...prev, testMessage]);
+    
+    // Update sidebar with test dice rolls
+    console.log('[GameChat] 🎲 测试骰子 - 发送骰子数据到侧边栏:', testDiceRolls);
+    if (onDiceRollsUpdate) {
+      onDiceRollsUpdate(testDiceRolls);
+    } else {
+      console.warn('[GameChat] ⚠️ onDiceRollsUpdate回调未定义!');
+    }
+    
+    // 自动滚动到底部
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <div className="game-chat-container">
       {/* Session Info Bar */}
@@ -380,6 +437,23 @@ export function GameChat({ sessionId, apiBaseUrl = 'http://localhost:3000/api', 
             title="保存当前游戏进度"
           >
             {isSaving ? '💾 保存中...' : '💾 保存'}
+          </button>
+          <button
+            className="test-dice-btn"
+            onClick={handleTestDiceDisplay}
+            title="测试骰子显示效果"
+            style={{
+              marginLeft: '10px',
+              padding: '8px 16px',
+              backgroundColor: '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '0.9rem',
+            }}
+          >
+            🎲 测试骰子
           </button>
           {saveMessage && (
             <span className="save-message" style={{ 

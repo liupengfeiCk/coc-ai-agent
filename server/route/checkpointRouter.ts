@@ -38,7 +38,7 @@ checkpointRouter.post("/save", async (req, res) => {
     const checkpointName = `${currentScenario.name} - ${currentDate}`;
     const description = `Manual save at ${currentScenario.location}`;
 
-    const checkpointId = saveManualCheckpoint(
+    const sessionId = saveManualCheckpoint(
       persistentGameState,
       db,
       checkpointName,
@@ -49,19 +49,19 @@ checkpointRouter.post("/save", async (req, res) => {
     // Save RAG state to checkpoint if RAG Manager is initialized
     if (ragManager) {
       try {
-        await ragManager.saveToCheckpoint(checkpointId);
-        console.log(`[${new Date().toISOString()}] RAG state saved to checkpoint: ${checkpointId}`);
+        await ragManager.saveToCheckpoint(sessionId);
+        console.log(`[${new Date().toISOString()}] RAG state saved to checkpoint: ${sessionId}`);
       } catch (error) {
         console.warn(`[${new Date().toISOString()}] Failed to save RAG state to checkpoint:`, error);
         // Don't fail the checkpoint save if RAG save fails
       }
     }
 
-    console.log(`[${new Date().toISOString()}] Checkpoint saved: ${checkpointName} (${checkpointId})`);
+    console.log(`[${new Date().toISOString()}] Checkpoint saved: ${checkpointName} (Session: ${sessionId})`);
 
     res.json({
       success: true,
-      checkpointId: checkpointId,
+      sessionId: sessionId,
       checkpointName: checkpointName,
       message: "存档成功",
       timestamp: new Date().toISOString(),
@@ -84,26 +84,16 @@ checkpointRouter.get("/list", (req, res) => {
     let checkpoints: any[] = [];
 
     if (sessionId && sessionId !== "all") {
-      // List checkpoints for specific session
+      // List checkpoint for specific session (max 1)
       checkpoints = listAvailableCheckpoints(sessionId, db, limit);
     } else {
       // List all checkpoints from all sessions
-      const database = db.getDatabase();
-      const stmt = database.prepare(`
-        SELECT 
-          checkpoint_id, checkpoint_name, checkpoint_type, description,
-          game_day, game_time, current_scene_name, current_location,
-          player_hp, player_sanity, created_at, session_id
-        FROM game_checkpoints 
-        ORDER BY created_at DESC
-        LIMIT ?
-      `);
-      checkpoints = stmt.all(limit) as any[];
+      checkpoints = listAvailableCheckpoints(undefined, db, limit);
     }
 
     // Convert snake_case field names to camelCase for frontend compatibility
     const normalizedCheckpoints = checkpoints.map((cp: any) => ({
-      checkpointId: cp.checkpoint_id || cp.checkpointId,
+      sessionId: cp.session_id || cp.sessionId,
       checkpointName: cp.checkpoint_name || cp.checkpointName,
       checkpointType: cp.checkpoint_type || cp.checkpointType,
       description: cp.description,
@@ -114,7 +104,7 @@ checkpointRouter.get("/list", (req, res) => {
       playerHp: cp.player_hp || cp.playerHp,
       playerSanity: cp.player_sanity || cp.playerSanity,
       createdAt: cp.created_at || cp.createdAt,
-      sessionId: cp.session_id || cp.sessionId,
+      updatedAt: cp.updated_at || cp.updatedAt,
     }));
 
     res.json({
@@ -127,34 +117,34 @@ checkpointRouter.get("/list", (req, res) => {
   }
 });
 
-// DELETE /api/checkpoints/:checkpointId - Delete a checkpoint
-checkpointRouter.delete("/:checkpointId", (req, res) => {
+// DELETE /api/checkpoints/:sessionId - Delete a checkpoint
+checkpointRouter.delete("/:sessionId", (req, res) => {
   try {
     // Initialize database if not already initialized
     let db = container.resolve("db") as CoCDatabase;
 
-    const { checkpointId } = req.params;
-    if (!checkpointId) {
-      return res.status(400).json({ error: "checkpointId is required" });
+    const { sessionId } = req.params;
+    if (!sessionId) {
+      return res.status(400).json({ error: "sessionId is required" });
     }
 
     // Check if checkpoint exists before deletion
     const database = db.getDatabase();
-    const checkStmt = database.prepare("SELECT checkpoint_id FROM game_checkpoints WHERE checkpoint_id = ?");
-    const checkpoint = checkStmt.get(checkpointId);
+    const checkStmt = database.prepare("SELECT session_id FROM game_checkpoints WHERE session_id = ?");
+    const checkpoint = checkStmt.get(sessionId);
 
     if (!checkpoint) {
       return res.status(404).json({ error: "Checkpoint not found" });
     }
 
-    // Delete the checkpoint using database method
-    db.deleteCheckpoint(checkpointId);
-    console.log(`✓ Checkpoint deleted: ${checkpointId}`);
+    // Delete the checkpoint and all associated session data
+    db.deleteCheckpoint(sessionId);
+    console.log(`✓ Checkpoint and all related session data deleted: ${sessionId}`);
 
     res.json({
       success: true,
-      message: "Checkpoint deleted successfully",
-      checkpointId,
+      message: "存档及相关数据已成功删除",
+      sessionId,
     });
   } catch (error) {
     console.error("Error deleting checkpoint:", error);
@@ -168,18 +158,30 @@ checkpointRouter.post("/load", async (req, res) => {
     // Initialize database if not already initialized
     let db = container.resolve("db") as CoCDatabase;
 
-    const { checkpointId } = req.body;
-    if (!checkpointId) {
-      return res.status(400).json({ error: "checkpointId is required" });
+    const { sessionId } = req.body;
+    if (!sessionId) {
+      return res.status(400).json({ error: "sessionId is required" });
     }
 
-    const gameState = loadCheckpoint(checkpointId, db);
+    const gameState = loadCheckpoint(sessionId, db);
     if (!gameState) {
       return res.status(404).json({ error: "Checkpoint not found" });
     }
 
-    // Restore persistent game state
-    container.register("gameState", gameState);
+    // 🔧 Restore persistent game state
+    // Two scenarios:
+    // 1. User loaded a checkpoint after creating a new game → update existing gameState in-place
+    // 2. User loaded a checkpoint directly (cold start) → register new gameState
+    try {
+      const containerGameState = container.resolve("gameState") as GameState;
+      // Container already has a gameState, update it in-place
+      Object.assign(containerGameState, gameState);
+      console.log(`✓ [Checkpoint] 已原地更新 gameState: session="${gameState.sessionId}"`);
+    } catch (error) {
+      // First time loading (cold start from checkpoint), register new instance
+      container.register("gameState", gameState);
+      console.log(`✓ [Checkpoint] 首次注册 gameState (从存档冷启动): session="${gameState.sessionId}"`);
+    }
 
     // Initialize TurnManager if not already initialized (needed for fetching conversation history)
     let turnManager = container.resolve("turnManager") as TurnManager;
@@ -206,10 +208,10 @@ checkpointRouter.post("/load", async (req, res) => {
       // Extract mod name from scenario if available, or use a default
       // The mod should be loaded when the checkpoint was created
       // For now, we'll just restore the state - the graph should work with existing state
-      console.log(`[${new Date().toISOString()}] Restoring game state from checkpoint: ${checkpointId}`);
+      console.log(`[${new Date().toISOString()}] Restoring game state from checkpoint: ${sessionId}`);
     }
 
-    console.log(`[${new Date().toISOString()}] Checkpoint loaded: ${checkpointId}`);
+    console.log(`[${new Date().toISOString()}] Checkpoint loaded: ${sessionId}`);
 
     res.json({
       success: true,

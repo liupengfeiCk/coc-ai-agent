@@ -16,6 +16,7 @@ import { TurnManager } from "../../src/coc_multiagents_system/agents/memory/inde
 import { randomUUID, createHash } from "crypto";
 import { GameInstanceManager } from "../../src/coc_multiagents_system/agents/memory/gameInstanceManager.js";
 import type { ScenarioProfile } from "../../src/coc_multiagents_system/agents/models/scenarioTypes.js";
+import { saveManualCheckpoint } from "../../src/coc_multiagents_system/agents/memory/memoryAgent.js";
 
 
 const gameRouter = Router();
@@ -196,6 +197,28 @@ function isNameSimilar(name1: string, name2: string): boolean {
   if (maxLen === 0) return false;
   const similarity = 1 - dist / maxLen;
   return similarity >= 0.8; // 80%相似度阈值
+}
+
+/**
+ * 创建游戏开始时的初始存档
+ */
+function createInitialCheckpoint(gameState: GameState, db: CoCDatabase, characterName: string): void {
+  try {
+    const checkpointName = `【游戏开始】${characterName}的冒险`;
+    const description = `自动存档 - 游戏开始时的初始状态`;
+    
+    const checkpointId = saveManualCheckpoint(
+      gameState,
+      db,
+      checkpointName,
+      description
+    );
+    
+    console.log(`✓ 自动创建初始存档: ${checkpointName} (${checkpointId})`);
+  } catch (error) {
+    console.error("Failed to create initial checkpoint:", error);
+    // 不让存档失败阻止游戏启动
+  }
 }
 
 gameRouter.post("/start", async (req, res) => {
@@ -612,6 +635,9 @@ gameRouter.post("/start", async (req, res) => {
         throw new Error("Failed to initialize game state");
       }
 
+      // 自动创建初始存档
+      createInitialCheckpoint(persistentGameState, db, character.name);
+
       // Create introduction turn if module introduction is available and turnManager is initialized
       if (moduleIntroduction && turnManager && db) {
         try {
@@ -913,6 +939,9 @@ gameRouter.post("/start", async (req, res) => {
       if (!persistentGameState) {
         throw new Error("Failed to initialize game state");
       }
+
+      // 自动创建初始存档
+      createInitialCheckpoint(persistentGameState, db, persistentGameState.playerCharacter.name);
 
       // Create introduction turn if module introduction is available and turnManager is initialized
       if (moduleIntroduction && turnManager && db) {

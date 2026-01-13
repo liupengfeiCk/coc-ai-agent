@@ -161,12 +161,10 @@ export const createScenarioCheckpoint = async (
 
   db.transaction(() => {
     // UNIFIED CHECKPOINT: Save complete game state to single checkpoint table
-    const checkpointId = `checkpoint-${currentScenario.id}-${Date.now()}`;
     const checkpointName = `${currentScenario.name}`;
     const description = `Auto-saved at ${currentScenario.location}`;
     
     db.saveCheckpoint(
-      checkpointId,
       gameState.sessionId,
       checkpointName,
       gameState,
@@ -174,20 +172,22 @@ export const createScenarioCheckpoint = async (
       description
     );
 
-    // LEGACY: Still save to normalized tables for backwards compatibility and queries
-    // Determine scenarioId - infer from snapshot ID
+    // Determine scenarioId from snapshot ID
+    // Format: "snapshot-template-scenario-xxx-session-yyy" → "game-template-scenario-xxx-session-yyy"
     let scenarioId = (currentScenario as any).scenarioId;
     if (!scenarioId && currentScenario.id) {
-      // Infer scenario ID from snapshot ID (e.g., "scenario-xyz-snapshot" -> "scenario-xyz")
-      scenarioId = currentScenario.id.replace(/-snapshot.*$/, '');
+      if (!currentScenario.id.startsWith('snapshot-')) {
+        console.warn(`[memoryAgent] Unexpected snapshot ID format: ${currentScenario.id}`);
+      }
+      // Replace "snapshot-" prefix with "game-" to get scenario_id
+      scenarioId = currentScenario.id.replace(/^snapshot-/, 'game-');
     }
     const finalScenarioId = scenarioId || 'unknown';
 
-    // 1. Save/Update permanent changes at scenario level
+    // 1. Update permanent changes if provided (scenario record already exists from game initialization)
     if (currentScenario.permanentChanges && currentScenario.permanentChanges.length > 0) {
-      // Check if scenario exists in scenarios table
       const existingScenario = database
-        .prepare("SELECT scenario_id, permanent_changes FROM scenarios WHERE scenario_id = ?")
+        .prepare("SELECT permanent_changes FROM scenarios WHERE scenario_id = ?")
         .get(finalScenarioId) as any;
 
       if (existingScenario) {
@@ -204,38 +204,20 @@ export const createScenarioCheckpoint = async (
           .prepare("UPDATE scenarios SET permanent_changes = ? WHERE scenario_id = ?")
           .run(JSON.stringify(mergedChanges), finalScenarioId);
       } else {
-        // Create minimal scenario record if it doesn't exist
-        database
-          .prepare(`
-            INSERT INTO scenarios (
-              scenario_id, name, description, tags, connections, permanent_changes, metadata
-            ) VALUES (?, ?, ?, ?, ?, ?, ?)
-          `)
-          .run(
-            finalScenarioId,
-            currentScenario.name,
-            currentScenario.description || "",
-            JSON.stringify([]),
-            JSON.stringify([]),
-            JSON.stringify(currentScenario.permanentChanges),
-            JSON.stringify({
-              createdAt: new Date().toISOString(),
-              updatedAt: new Date().toISOString(),
-              gameSystem: "CoC 7e",
-            })
-          );
+        console.error(`[memoryAgent] Scenario ${finalScenarioId} not found in scenarios table - this should not happen!`);
       }
     }
 
     // 2. Save/Update the scenario snapshot (without permanent_changes - those are at scenario level)
     const snapshotStmt = database.prepare(`
       INSERT OR REPLACE INTO scenario_snapshots (
-        snapshot_id, scenario_id, snapshot_name, location, description, events, exits, keeper_notes, time_restriction
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        snapshot_id, session_id, scenario_id, snapshot_name, location, description, events, exits, keeper_notes, time_restriction
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
 
     snapshotStmt.run(
       currentScenario.id,
+      gameState.sessionId, // 添加 session_id
       finalScenarioId,
       currentScenario.name,
       currentScenario.location,
@@ -255,14 +237,15 @@ export const createScenarioCheckpoint = async (
     if (currentScenario.characters.length > 0) {
       const charStmt = database.prepare(`
         INSERT INTO scenario_characters (
-          id, snapshot_id, character_name, character_role, character_status,
+          id, session_id, snapshot_id, character_name, character_role, character_status,
           character_location, character_notes
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
       `);
 
       for (const char of currentScenario.characters) {
         charStmt.run(
           char.id,
+          gameState.sessionId, // 添加 session_id
           currentScenario.id,
           char.name,
           char.role,
@@ -281,14 +264,15 @@ export const createScenarioCheckpoint = async (
     if (currentScenario.clues.length > 0) {
       const clueStmt = database.prepare(`
         INSERT INTO scenario_clues (
-          clue_id, snapshot_id, clue_text, category, difficulty,
+          clue_id, session_id, snapshot_id, clue_text, category, difficulty,
           clue_location, discovery_method, reveals, discovered, discovery_details
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `);
 
       for (const clue of currentScenario.clues) {
         clueStmt.run(
           clue.id,
+          gameState.sessionId, // 添加 session_id
           currentScenario.id,
           clue.clueText,
           clue.category,
@@ -310,14 +294,15 @@ export const createScenarioCheckpoint = async (
     if (currentScenario.conditions.length > 0) {
       const condStmt = database.prepare(`
         INSERT INTO scenario_conditions (
-          condition_id, snapshot_id, condition_type, description, mechanical_effect
-        ) VALUES (?, ?, ?, ?, ?)
+          condition_id, session_id, snapshot_id, condition_type, description, mechanical_effect
+        ) VALUES (?, ?, ?, ?, ?, ?)
       `);
 
       for (const cond of currentScenario.conditions) {
         const condId = `${currentScenario.id}-cond-${cond.type}-${Date.now()}`;
         condStmt.run(
           condId,
+          gameState.sessionId, // 添加 session_id
           currentScenario.id,
           cond.type,
           cond.description,
@@ -381,18 +366,19 @@ export const createScenarioCheckpoint = async (
         // Save NPC clues if available
         if (npcWithExtras.clues && Array.isArray(npcWithExtras.clues)) {
           // Delete existing clues for this NPC
-          database.prepare("DELETE FROM npc_clues WHERE npc_id = ?").run(npc.id);
+          database.prepare("DELETE FROM npc_clues WHERE npc_id = ? AND session_id = ?").run(npc.id, gameState.sessionId);
           
           if (npcWithExtras.clues.length > 0) {
             const clueStmt = database.prepare(`
               INSERT INTO npc_clues (
-                id, npc_id, clue_text, category, difficulty, revealed, related_to
-              ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                id, session_id, npc_id, clue_text, category, difficulty, revealed, related_to
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             `);
             
             for (const clue of npcWithExtras.clues) {
               clueStmt.run(
                 clue.id,
+                gameState.sessionId,
                 npc.id,
                 clue.clueText,
                 clue.category || null,
@@ -407,20 +393,21 @@ export const createScenarioCheckpoint = async (
         // Save NPC relationships if available
         if (npcWithExtras.relationships && Array.isArray(npcWithExtras.relationships)) {
           // Delete existing relationships for this NPC
-          database.prepare("DELETE FROM npc_relationships WHERE source_id = ?").run(npc.id);
+          database.prepare("DELETE FROM npc_relationships WHERE source_id = ? AND session_id = ?").run(npc.id, gameState.sessionId);
           
           if (npcWithExtras.relationships.length > 0) {
             const relStmt = database.prepare(`
               INSERT INTO npc_relationships (
-                id, source_id, target_id, target_name, relationship_type,
+                id, session_id, source_id, target_id, target_name, relationship_type,
                 attitude, description, history
-              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             `);
             
             for (const rel of npcWithExtras.relationships) {
               const relId = `${npc.id}-to-${rel.targetId}`;
               relStmt.run(
                 relId,
+                gameState.sessionId,
                 npc.id,
                 rel.targetId,
                 rel.targetName,
@@ -579,17 +566,16 @@ export const updateCurrentScenarioWithCheckpoint = async (
 
 /**
  * Manually save a checkpoint with custom name
+ * Uses session_id as primary key for automatic overwrite
  */
 export const saveManualCheckpoint = (
   gameState: GameState,
   db: CoCDatabase,
   checkpointName: string,
-  description?: string
+  description?: string,
+  overwrite = true  // Kept for API compatibility, but always overwrites now
 ): string => {
-  const checkpointId = `manual-${Date.now()}`;
-  
   db.saveCheckpoint(
-    checkpointId,
     gameState.sessionId,
     checkpointName,
     gameState,
@@ -597,21 +583,22 @@ export const saveManualCheckpoint = (
     description
   );
 
-  console.log(`✓ Manual checkpoint saved: "${checkpointName}" (ID: ${checkpointId})`);
-  return checkpointId;
+  console.log(`✓ Manual checkpoint saved: "${checkpointName}" (Session: ${gameState.sessionId})`);
+  return gameState.sessionId;  // Return sessionId as checkpoint identifier
 };
 
 /**
  * Load a checkpoint and restore game state
+ * Now uses sessionId directly
  */
 export const loadCheckpoint = (
-  checkpointId: string,
+  sessionId: string,
   db: CoCDatabase
 ): GameState | null => {
-  const checkpoint = db.loadCheckpoint(checkpointId);
+  const checkpoint = db.loadCheckpoint(sessionId);
   
   if (!checkpoint) {
-    console.error(`Checkpoint not found: ${checkpointId}`);
+    console.error(`Checkpoint not found for session: ${sessionId}`);
     return null;
   }
 
@@ -624,12 +611,15 @@ export const loadCheckpoint = (
 };
 
 /**
- * List all available checkpoints for current session
+ * List all available checkpoints
+ * If sessionId is provided, returns the checkpoint for that session (max 1)
+ * Otherwise returns all checkpoints (one per session)
  */
 export const listAvailableCheckpoints = (
-  sessionId: string,
-  db: CoCDatabase,
+  sessionId?: string,
+  db?: CoCDatabase,
   limit = 20
 ): any[] => {
+  if (!db) return [];
   return db.listCheckpoints(sessionId, limit);
 };

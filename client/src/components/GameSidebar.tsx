@@ -6,14 +6,17 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { getSkillNameCn } from '../utils/skillTranslation';
+import { DiceRollDisplay } from './DiceRollDisplay';
+import { parseDiceRolls } from '../utils/diceParser';
 
 interface GameSidebarProps {
   sessionId: string;
   apiBaseUrl?: string;
   refreshTrigger?: number; // When this changes, refresh game state
+  latestDiceRolls?: string[]; // Latest dice rolls from turns
 }
 
-type TabType = 'status' | 'clues';
+type TabType = 'status' | 'clues' | 'dice';
 
 interface CharacterStatus {
   hp: number;
@@ -57,13 +60,17 @@ interface GameState {
   timeOfDay: string;
 }
 
-export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api', refreshTrigger }: GameSidebarProps) {
+export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api', refreshTrigger, latestDiceRolls }: GameSidebarProps) {
   const [activeTab, setActiveTab] = useState<TabType>('status');
   const [gameState, setGameState] = useState<GameState | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [occupationalSkills, setOccupationalSkills] = useState<string[]>([]);
   const isInitialLoadRef = useRef(true);
+  const [hasUnreadDice, setHasUnreadDice] = useState(false); // 未读骰子提示
+  const previousDiceCountRef = useRef(0); // 记录之前的骰子数量
+  const [hasUnreadClues, setHasUnreadClues] = useState(false); // 未读线索提示
+  const previousCluesCountRef = useRef(0); // 记录之前的线索数量
 
   // Fetch game state from backend
   useEffect(() => {
@@ -137,21 +144,104 @@ export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api
     fetchOccupationalSkills();
   }, [gameState?.playerCharacter?.occupation, apiBaseUrl]);
 
+  // Monitor dice rolls for unread notification
+  useEffect(() => {
+    const currentDiceCount = latestDiceRolls?.length || 0;
+    
+    // If there are new dice rolls and user is NOT on dice tab, show red dot
+    if (currentDiceCount > previousDiceCountRef.current && activeTab !== 'dice') {
+      console.log('[GameSidebar] 检测到新骰子事件,显示红点提示');
+      setHasUnreadDice(true);
+    }
+    
+    // Update previous count
+    previousDiceCountRef.current = currentDiceCount;
+  }, [latestDiceRolls, activeTab]);
+
+  // Monitor clues for unread notification
+  useEffect(() => {
+    const currentCluesCount = gameState?.discoveredClues?.length || 0;
+    
+    // If there are new clues and user is NOT on clues tab, show red dot
+    if (currentCluesCount > previousCluesCountRef.current && activeTab !== 'clues') {
+      console.log('[GameSidebar] 检测到新线索,显示红点提示');
+      setHasUnreadClues(true);
+    }
+    
+    // Update previous count
+    previousCluesCountRef.current = currentCluesCount;
+  }, [gameState?.discoveredClues, activeTab]);
+
+  // Clear unread notification when user switches to dice tab
+  const handleTabChange = (tab: TabType) => {
+    setActiveTab(tab);
+    if (tab === 'dice') {
+      console.log('[GameSidebar] 用户切换到骰子标签页,清除红点提示');
+      setHasUnreadDice(false);
+    }
+    if (tab === 'clues') {
+      console.log('[GameSidebar] 用户切换到线索标签页,清除红点提示');
+      setHasUnreadClues(false);
+    }
+  };
+
   return (
     <div className="game-sidebar">
       {/* Tab Headers */}
       <div className="sidebar-tabs">
         <button
           className={`sidebar-tab ${activeTab === 'status' ? 'active' : ''}`}
-          onClick={() => setActiveTab('status')}
+          onClick={() => handleTabChange('status')}
         >
           角色状态
         </button>
         <button
           className={`sidebar-tab ${activeTab === 'clues' ? 'active' : ''}`}
-          onClick={() => setActiveTab('clues')}
+          onClick={() => handleTabChange('clues')}
+          style={{ position: 'relative' }}
         >
           发现的线索
+          {hasUnreadClues && (
+            <span
+              className="notification-dot"
+              style={{
+                position: 'absolute',
+                top: '8px',
+                right: '8px',
+                width: '8px',
+                height: '8px',
+                backgroundColor: '#ff4444',
+                borderRadius: '50%',
+                border: '2px solid #f5f1e8',
+                boxShadow: '0 0 6px rgba(255, 68, 68, 0.9)',
+              }}
+              title="有新的线索发现"
+            />
+          )}
+        </button>
+        <button
+          className={`sidebar-tab ${activeTab === 'dice' ? 'active' : ''}`}
+          onClick={() => handleTabChange('dice')}
+          style={{ position: 'relative' }}
+        >
+          骰子记录
+          {hasUnreadDice && (
+            <span
+              className="notification-dot"
+              style={{
+                position: 'absolute',
+                top: '8px',
+                right: '8px',
+                width: '8px',
+                height: '8px',
+                backgroundColor: '#ff4444',
+                borderRadius: '50%',
+                border: '2px solid #f5f1e8',
+                boxShadow: '0 0 6px rgba(255, 68, 68, 0.9)',
+              }}
+              title="有新的骰子记录"
+            />
+          )}
         </button>
       </div>
 
@@ -312,6 +402,29 @@ export function GameSidebar({ sessionId, apiBaseUrl = 'http://localhost:3000/api
             ) : (
               <p className="empty-state">无数据</p>
             )}
+          </div>
+        )}
+
+        {activeTab === 'dice' && (
+          <div className="tab-panel dice-panel">
+            <div className="dice-section">
+              <h3>最近骰子记录</h3>
+              {(() => {
+                console.log('[GameSidebar] 骰子面板渲染 - latestDiceRolls:', latestDiceRolls);
+                if (latestDiceRolls && latestDiceRolls.length > 0) {
+                  const parsedRolls = parseDiceRolls(latestDiceRolls);
+                  console.log('[GameSidebar] 解析后的骰子数据:', parsedRolls);
+                  return (
+                    <div style={{ marginTop: '10px' }}>
+                      <DiceRollDisplay rolls={parsedRolls} />
+                    </div>
+                  );
+                } else {
+                  console.log('[GameSidebar] 无骰子数据显示空状态');
+                  return <p className="empty-state">暂无骰子记录</p>;
+                }
+              })()}
+            </div>
           </div>
         )}
       </div>

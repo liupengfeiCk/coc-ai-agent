@@ -119,13 +119,21 @@ async function checkAndTriggerSimulate(sessionId: string): Promise<boolean> {
 
       console.log(`🔔 [WebSocket] Simulate processed for session ${sessionId}`);
 
-      // Update persistent state
-      persistentGameState = result.gameState as GameState;
-
+      // 🔧 CRITICAL: Update container's gameState in-place (preserve reference)
+      const updatedState = result.gameState as GameState;
+      const containerGameState = container.resolve('gameState') as GameState;
+      
+      // Copy all properties from updated state to container's gameState
+      Object.assign(containerGameState, updatedState);
+      
       // Reset the idle timer after listener executes successfully
-      const gsmReset = new GameStateManager(persistentGameState);
+      const gsmReset = new GameStateManager(containerGameState);
       gsmReset.updatePlayerInputTime();
-      persistentGameState = gsmReset.getGameState() as GameState;
+      const finalState = gsmReset.getGameState() as GameState;
+      Object.assign(containerGameState, finalState); // Apply timer update in-place
+      
+      persistentGameState = containerGameState; // Keep using the container's reference
+      console.log(`✓ [Container] gameState 已原地更新: scene="${persistentGameState.currentScenario?.name}", location="${persistentGameState.currentScenario?.location}", time="${persistentGameState.timeOfDay}"`);
       console.log(`⏰ [WebSocket] Idle timer reset for session ${sessionId}`);
 
       // Get the completed turn to send to client

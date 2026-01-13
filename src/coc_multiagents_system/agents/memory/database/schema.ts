@@ -860,10 +860,10 @@ export class CoCDatabase {
         `);
 
     // Game Checkpoints table - unified checkpoint storage for save/load functionality
+    // Uses session_id as PRIMARY KEY to ensure one checkpoint per session (automatic overwrite)
     this.db.exec(`
             CREATE TABLE IF NOT EXISTS game_checkpoints (
-                checkpoint_id TEXT PRIMARY KEY,
-                session_id TEXT NOT NULL,
+                session_id TEXT PRIMARY KEY,
                 checkpoint_name TEXT NOT NULL,
                 checkpoint_type TEXT NOT NULL DEFAULT 'auto', -- 'auto' | 'manual' | 'scene_transition'
                 description TEXT,
@@ -876,14 +876,13 @@ export class CoCDatabase {
                 player_hp INTEGER,
                 player_sanity INTEGER,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (session_id) REFERENCES sessions(session_id)
             );
-            CREATE INDEX IF NOT EXISTS idx_checkpoints_session ON game_checkpoints(session_id);
             CREATE INDEX IF NOT EXISTS idx_checkpoints_type ON game_checkpoints(checkpoint_type);
             CREATE INDEX IF NOT EXISTS idx_checkpoints_created ON game_checkpoints(created_at);
             CREATE INDEX IF NOT EXISTS idx_checkpoints_game_day ON game_checkpoints(game_day);
             CREATE INDEX IF NOT EXISTS idx_checkpoints_scene_name ON game_checkpoints(current_scene_name);
-            CREATE INDEX IF NOT EXISTS idx_checkpoints_session_scene ON game_checkpoints(session_id, current_scene_name);
         `);
   }
 
@@ -944,9 +943,9 @@ export class CoCDatabase {
 
   /**
    * Save a game checkpoint (complete game state snapshot)
+   * Uses INSERT OR REPLACE to automatically overwrite existing checkpoint for same session
    */
   saveCheckpoint(
-    checkpointId: string,
     sessionId: string,
     checkpointName: string,
     gameState: any, // GameState object
@@ -967,15 +966,14 @@ export class CoCDatabase {
     const playerSanity = gameState.playerCharacter?.status?.sanity || null;
 
     const stmt = database.prepare(`
-      INSERT INTO game_checkpoints (
-        checkpoint_id, session_id, checkpoint_name, checkpoint_type, description,
+      INSERT OR REPLACE INTO game_checkpoints (
+        session_id, checkpoint_name, checkpoint_type, description,
         game_state, game_day, game_time, current_scene_name, current_location,
-        player_hp, player_sanity
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        player_hp, player_sanity, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
     `);
 
     stmt.run(
-      checkpointId,
       sessionId,
       checkpointName,
       checkpointType,
@@ -991,19 +989,18 @@ export class CoCDatabase {
   }
 
   /**
-   * Load a game checkpoint by ID
+   * Load a game checkpoint by session ID
    */
-  loadCheckpoint(checkpointId: string): any | null {
+  loadCheckpoint(sessionId: string): any | null {
     const database = this.db;
     const stmt = database.prepare(`
-      SELECT * FROM game_checkpoints WHERE checkpoint_id = ?
+      SELECT * FROM game_checkpoints WHERE session_id = ?
     `);
     
-    const row = stmt.get(checkpointId) as any;
+    const row = stmt.get(sessionId) as any;
     if (!row) return null;
 
     return {
-      checkpointId: row.checkpoint_id,
       sessionId: row.session_id,
       checkpointName: row.checkpoint_name,
       checkpointType: row.checkpoint_type,
@@ -1017,33 +1014,51 @@ export class CoCDatabase {
         playerHp: row.player_hp,
         playerSanity: row.player_sanity,
         createdAt: row.created_at,
+        updatedAt: row.updated_at,
       }
     };
   }
 
   /**
-   * List all checkpoints for a session
+   * List all checkpoints (one per session)
    */
-  listCheckpoints(sessionId: string, limit = 50): any[] {
+  listCheckpoints(sessionId?: string, limit = 50): any[] {
     const database = this.db;
-    const stmt = database.prepare(`
-      SELECT 
-        checkpoint_id, checkpoint_name, checkpoint_type, description,
-        game_day, game_time, current_scene_name, current_location,
-        player_hp, player_sanity, created_at
-      FROM game_checkpoints 
-      WHERE session_id = ?
-      ORDER BY created_at DESC
-      LIMIT ?
-    `);
     
-    return stmt.all(sessionId, limit) as any[];
+    let stmt;
+    let params: any[];
+    
+    if (sessionId) {
+      stmt = database.prepare(`
+        SELECT 
+          session_id, checkpoint_name, checkpoint_type, description,
+          game_day, game_time, current_scene_name, current_location,
+          player_hp, player_sanity, created_at, updated_at
+        FROM game_checkpoints 
+        WHERE session_id = ?
+        ORDER BY updated_at DESC
+        LIMIT ?
+      `);
+      params = [sessionId, limit];
+    } else {
+      stmt = database.prepare(`
+        SELECT 
+          session_id, checkpoint_name, checkpoint_type, description,
+          game_day, game_time, current_scene_name, current_location,
+          player_hp, player_sanity, created_at, updated_at
+        FROM game_checkpoints 
+        ORDER BY updated_at DESC
+        LIMIT ?
+      `);
+      params = [limit];
+    }
+    
+    return stmt.all(...params) as any[];
   }
 
   /**
    * Find the latest checkpoint for a specific scenario
-   * Returns the most recent checkpoint where current_scene_name matches the scenario name
-   * or where the scenario snapshot ID matches
+   * Returns the checkpoint for the given session (only one checkpoint per session now)
    */
   findLatestCheckpointForScenario(
     sessionId: string, 
@@ -1052,94 +1067,104 @@ export class CoCDatabase {
   ): any | null {
     const database = this.db;
     
-    // First try to find by scenario name
-    let stmt = database.prepare(`
+    // Simply load the checkpoint for this session
+    const row = database.prepare(`
       SELECT 
-        checkpoint_id, checkpoint_name, checkpoint_type, description,
+        session_id, checkpoint_name, checkpoint_type, description,
         game_day, game_time, current_scene_name, current_location,
-        player_hp, player_sanity, created_at, game_state
+        player_hp, player_sanity, created_at, updated_at, game_state
       FROM game_checkpoints 
-      WHERE session_id = ? AND current_scene_name = ?
-      ORDER BY created_at DESC
-      LIMIT 1
-    `);
-    
-    let row = stmt.get(sessionId, scenarioName) as any;
-    
-    // If not found by name and we have snapshot ID, try to find by matching snapshot ID in game_state
-    if (!row && scenarioSnapshotId) {
-      // Get all checkpoints for this session and filter by snapshot ID
-      const allCheckpoints = database.prepare(`
-        SELECT 
-          checkpoint_id, checkpoint_name, checkpoint_type, description,
-          game_day, game_time, current_scene_name, current_location,
-          player_hp, player_sanity, created_at, game_state
-        FROM game_checkpoints 
-        WHERE session_id = ?
-        ORDER BY created_at DESC
-      `).all(sessionId) as any[];
-      
-      // Find checkpoint where the scenario snapshot ID matches
-      for (const checkpointRow of allCheckpoints) {
-        try {
-          const gameState = JSON.parse(checkpointRow.game_state);
-          if (gameState.currentScenario?.id === scenarioSnapshotId) {
-            row = checkpointRow;
-            break;
-          }
-        } catch (e) {
-          // Skip invalid JSON
-          continue;
-        }
-      }
-    }
+      WHERE session_id = ?
+    `).get(sessionId) as any;
     
     if (!row) return null;
 
-    return {
-      checkpointId: row.checkpoint_id,
-      sessionId: sessionId,
-      checkpointName: row.checkpoint_name,
-      checkpointType: row.checkpoint_type,
-      description: row.description,
-      gameState: JSON.parse(row.game_state),
-      metadata: {
-        gameDay: row.game_day,
-        gameTime: row.game_time,
-        currentSceneName: row.current_scene_name,
-        currentLocation: row.current_location,
-        playerHp: row.player_hp,
-        playerSanity: row.player_sanity,
-        createdAt: row.created_at,
+    // Verify if the checkpoint matches the scenario
+    try {
+      const gameState = JSON.parse(row.game_state);
+      const matchesName = gameState.currentScenario?.name === scenarioName;
+      const matchesId = scenarioSnapshotId ? gameState.currentScenario?.id === scenarioSnapshotId : false;
+      
+      // Return checkpoint only if it matches the requested scenario
+      if (matchesName || matchesId) {
+        return {
+          sessionId: row.session_id,
+          checkpointName: row.checkpoint_name,
+          checkpointType: row.checkpoint_type,
+          description: row.description,
+          gameState: gameState,
+          metadata: {
+            gameDay: row.game_day,
+            gameTime: row.game_time,
+            currentSceneName: row.current_scene_name,
+            currentLocation: row.current_location,
+            playerHp: row.player_hp,
+            playerSanity: row.player_sanity,
+            createdAt: row.created_at,
+            updatedAt: row.updated_at,
+          }
+        };
       }
-    };
+    } catch (e) {
+      // Invalid JSON
+    }
+    
+    return null;
   }
 
   /**
-   * Delete a checkpoint
+   * Delete a checkpoint by session ID and cascade delete all related session data
+   * Deletion order matters due to foreign key constraints:
+   * 1. Delete child tables first (those with FK to scenarios/characters)
+   * 2. Delete parent tables (scenarios, characters)
+   * 3. Delete checkpoint and session last
    */
-  deleteCheckpoint(checkpointId: string): void {
+  deleteCheckpoint(sessionId: string): void {
     const database = this.db;
-    database.prepare("DELETE FROM game_checkpoints WHERE checkpoint_id = ?").run(checkpointId);
+    
+    // Use transaction to ensure all deletes succeed or fail together
+    const deleteTransaction = database.transaction(() => {
+      // Step 1: Delete scenario-related child tables first (FK to scenario_snapshots)
+      database.prepare("DELETE FROM scenario_characters WHERE session_id = ?").run(sessionId);
+      database.prepare("DELETE FROM scenario_clues WHERE session_id = ?").run(sessionId);
+      database.prepare("DELETE FROM scenario_conditions WHERE session_id = ?").run(sessionId);
+      
+      // Step 2: Delete scenario snapshots (FK to scenarios)
+      database.prepare("DELETE FROM scenario_snapshots WHERE session_id = ?").run(sessionId);
+      
+      // Step 3: Delete NPC-related child tables (FK to characters)
+      database.prepare("DELETE FROM npc_clues WHERE session_id = ?").run(sessionId);
+      database.prepare("DELETE FROM npc_relationships WHERE session_id = ?").run(sessionId);
+      
+      // Step 4: Delete scenarios (FK to sessions)
+      database.prepare("DELETE FROM scenarios WHERE session_id = ?").run(sessionId);
+      
+      // Step 5: Delete characters (FK to sessions)
+      database.prepare("DELETE FROM characters WHERE session_id = ?").run(sessionId);
+      
+      // Step 6: Delete other session-related data
+      database.prepare("DELETE FROM game_turns WHERE session_id = ?").run(sessionId);
+      database.prepare("DELETE FROM game_events WHERE session_id = ?").run(sessionId);
+      database.prepare("DELETE FROM discoveries WHERE session_id = ?").run(sessionId);
+      database.prepare("DELETE FROM relationships WHERE session_id = ?").run(sessionId);
+      
+      // Step 7: Delete checkpoint (FK to sessions)
+      database.prepare("DELETE FROM game_checkpoints WHERE session_id = ?").run(sessionId);
+      
+      // Step 8: Finally delete the session (parent of all above)
+      database.prepare("DELETE FROM sessions WHERE session_id = ?").run(sessionId);
+    });
+    
+    deleteTransaction();
   }
 
   /**
-   * Delete old auto-save checkpoints (keep only the most recent N)
+   * Cleanup method is no longer needed since we only keep one checkpoint per session
+   * Kept for backwards compatibility but does nothing
    */
   cleanupAutoCheckpoints(sessionId: string, keepCount = 10): void {
-    const database = this.db;
-    database.prepare(`
-      DELETE FROM game_checkpoints 
-      WHERE session_id = ? 
-        AND checkpoint_type = 'auto'
-        AND checkpoint_id NOT IN (
-          SELECT checkpoint_id 
-          FROM game_checkpoints 
-          WHERE session_id = ? AND checkpoint_type = 'auto'
-          ORDER BY created_at DESC 
-          LIMIT ?
-        )
-    `).run(sessionId, sessionId, keepCount);
+    // No-op: we only keep one checkpoint per session now
+    console.log(`[Deprecated] cleanupAutoCheckpoints is no longer needed (one checkpoint per session)`);
   }
 
   /**
@@ -1201,20 +1226,39 @@ export class CoCDatabase {
     directorDecision?: any
   ): void {
     const database = this.db;
+    
+    // Only update non-undefined fields to avoid overwriting existing data
+    const updates: string[] = [];
+    const values: any[] = [];
+    
+    if (actionAnalysis !== undefined) {
+      updates.push('action_analysis = ?');
+      values.push(actionAnalysis ? JSON.stringify(actionAnalysis) : null);
+    }
+    
+    if (actionResults !== undefined) {
+      updates.push('action_results = ?');
+      values.push(actionResults ? JSON.stringify(actionResults) : null);
+    }
+    
+    if (directorDecision !== undefined) {
+      updates.push('director_decision = ?');
+      values.push(directorDecision ? JSON.stringify(directorDecision) : null);
+    }
+    
+    if (updates.length === 0) {
+      return;
+    }
+    
+    values.push(turnId);
+    
     const stmt = database.prepare(`
       UPDATE game_turns 
-      SET action_analysis = ?,
-          action_results = ?,
-          director_decision = ?
+      SET ${updates.join(', ')}
       WHERE turn_id = ?
     `);
     
-    stmt.run(
-      actionAnalysis ? JSON.stringify(actionAnalysis) : null,
-      actionResults ? JSON.stringify(actionResults) : null,
-      directorDecision ? JSON.stringify(directorDecision) : null,
-      turnId
-    );
+    stmt.run(...values);
   }
 
   /**
@@ -1487,7 +1531,7 @@ export class CoCDatabase {
       INSERT INTO npc_relationships (
         id, session_id, source_id, target_id, target_name, relationship_type, attitude, description, history
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(id) DO UPDATE SET
+      ON CONFLICT(source_id, target_id, session_id) DO UPDATE SET
         target_name = excluded.target_name,
         relationship_type = excluded.relationship_type,
         attitude = excluded.attitude,

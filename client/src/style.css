@@ -791,6 +791,7 @@ textarea {
   transition: all 0.2s;
   text-transform: none;
   box-shadow: none;
+  position: relative; /* For red dot positioning */
 }
 
 .sidebar-tab:last-child {
@@ -807,6 +808,22 @@ textarea {
   border-bottom: 3px solid var(--accent);
   color: var(--accent);
   transform: none;
+}
+
+/* Red dot notification badge with pulse animation */
+@keyframes pulse-red-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.sidebar-tab .notification-dot {
+  animation: pulse-red-dot 2s ease-in-out infinite;
 }
 
 /* Sidebar Content */
